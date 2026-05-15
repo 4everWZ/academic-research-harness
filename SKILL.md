@@ -31,6 +31,7 @@ Do not read all references by default. Do not create a full paper workspace unle
 | Search, collect, index, download, classify, or summarize papers | `references/literature.md` | `literature` | `paper_index.md`, `references.bib`, `reading_note.md` only when writing them |
 | Refine an idea using papers | `references/literature.md` | `idea` | `idea_log.md` only when writing it |
 | Convert repo/code/config/logged setup into paper sections | `references/repo-to-paper.md` | `repo-to-paper` | only the requested section template plus `claims.md` when adding claims |
+| Create result tables or placeholders | `references/repo-to-paper.md` | `repo-to-paper` | `results_tables.md` |
 | Audit citations, claims, novelty, related work, or SOTA language | `references/citation-audit.md` | `citation-audit` | `claims.md` and the audited section only |
 | Prepare paper-state handoff | `references/handoff.md` | `handoff` | `handoff.md` only |
 | Check shared evidence, results, or confirmation constraints | `references/evidence-policy.md` | existing mode | only files needed to support the decision |
@@ -39,6 +40,8 @@ Do not read all references by default. Do not create a full paper workspace unle
 
 - For workspace creation, validation, mode selection, and scripts, load `references/workspace.md`.
 - For novelty, SOTA, superiority, results, claim support, or user-confirmation boundaries, load `references/evidence-policy.md`.
+- **Cross-Route Tasks:** If a task spans multiple intents (e.g., search + related work draft), you may load multiple reference files but must still follow progressive disclosure for templates.
+- **Tool Usage:** Use `google_web_search` with `site:` filters (e.g., `site:arxiv.org`, `site:openreview.net`) for literature. Use `web_fetch` for abstracts/full-text. Use `grep_search` and `read_file` to probe the repo for logs and configs.
 - For cross-file consistency, inspect only the necessary workspace files, normally `venue_profile.md`, `paper_index.md`, `claims.md`, and the target section.
 - Do not write unsupported academic claims into paper sections without recording them in `claims.md`.
 - Do not write experimental results unless the user provides numbers or verified logs.

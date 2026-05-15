@@ -28,27 +28,7 @@ Create files progressively by task route. Do not create full paper-section scaff
 | `handoff` | paper-state handoff only | `README.md`, `venue_profile.md`, `handoff.md` |
 | `full` | user explicitly requests complete paper workspace | full paper workspace |
 
-The full paper workspace is:
-
-```text
-docs/<paper_slug>/
-  README.md
-  venue_profile.md
-  paper_index.md
-  references.bib
-  claims.md
-  idea_log.md
-  intro.md
-  related_work.md
-  method.md
-  experiments.md
-  results_tables.md
-  limitations.md
-  figures.md
-  handoff.md
-  papers/
-  notes/
-```
+**Note:** "Workspace Mode" (above) defines the current task's scope and file structure. "Outlet Mode" (defined in `venue_profile.md`) defines the target writing style (e.g., `conference`, `journal`). Do not confuse the two.
 
 ## Venue / Outlet Handling
 
@@ -57,6 +37,8 @@ After the target venue or outlet is confirmed, the workspace folder may use a do
 ```text
 docs/<paper_slug>__<venue_slug>/
 ```
+
+**Safety Rule:** You MUST ask the user before renaming a workspace folder. After renaming, immediately update all internal references and subsequent tool call paths to use the new directory name.
 
 Use `venue_profile.md` to record venue/outlet assumptions and the explicit writing mode: `conference`, `journal`, or another stated outlet type.
 

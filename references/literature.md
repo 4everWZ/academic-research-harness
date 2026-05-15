@@ -29,9 +29,18 @@ Default outputs are limited to:
 - `notes/*.md`;
 - `idea_log.md` when idea refinement is requested.
 
+## Search and Extraction Policy
+
+Use `google_web_search` with domain filters (e.g., `site:arxiv.org`, `site:openreview.net`, `site:neurips.cc`) to find specific papers or trends. Use `web_fetch` to retrieve abstracts, conclusion sections, or BibTeX from raw paper pages or repository blobs.
+
 ## Source Hierarchy and Filtering Policy
 
 Search, filter, and summarize literature according to this hierarchy. The goal is to avoid low-quality literature, novelty noise, and unsupported claims.
+
+### Source Priority vs. Evidence Grade
+
+- **Source Priority** (P1-P3): Objective classification of the publication venue and timing (e.g., P1 for top-tier peer-reviewed, P2 for recent arXiv).
+- **Evidence Grade** (Strong-Reject): Subjective assessment of how well the source supports the **current project's specific claims**. A top-tier paper can be "Weak" evidence if its method or evaluation settings differ significantly from the current task.
 
 ### Priority 1: Core Sources
 

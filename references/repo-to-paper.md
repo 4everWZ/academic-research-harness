@@ -30,6 +30,8 @@ Before writing, distinguish:
 - assumption;
 - unverified.
 
+**Log Probing:** Use `grep_search` and `list_directory` to find evidence in common experiment folders (`logs/`, `runs/`, `results/`). Verify that logs match the current version of the code and config.
+
 Do not invent tensor shapes, modules, equations, training settings, datasets, metrics, losses, or results.
 
 ## Code to Logic to Writing

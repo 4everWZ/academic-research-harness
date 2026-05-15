@@ -51,6 +51,12 @@ Claims marked unsupported or speculative must not appear as final conclusions.
 
 Do not write experimental results unless the user provides numbers or verified logs.
 
+**Verified Log Detection:**
+Search for files that provide direct, timestamped, or serial evidence of execution. Look for:
+- Standard log folders: `logs/`, `runs/`, `checkpoints/`, `results/`.
+- File formats: `.log`, `.jsonl` (e.g., from `training_log.jsonl`), `.yaml` (config/summary), `.csv` (metric dumps).
+- Tool-specific outputs: `wandb/`, `tensorboard/`, or Hydra output directories.
+
 For results, you may only:
 
 - create table structures;
