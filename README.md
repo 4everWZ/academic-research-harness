@@ -2,7 +2,7 @@
 
 A Codex/OpenAI-style global skill for on-demand literature-grounded paper writing and evidence management.
 
-This skill is not an autonomous research system. It is a paper-writing evidence layer for existing or evolving research projects.
+This skill is not an autonomous research system. It is a router-only paper-writing evidence layer for existing or evolving research projects.
 
 ## Install
 
@@ -35,6 +35,7 @@ academic-research-harness/
 
 ## What It Does
 
+- Routes each task to the smallest needed reference file.
 - Search and curate literature.
 - Maintain `paper_index.md`.
 - Maintain `references.bib`.
@@ -43,6 +44,19 @@ academic-research-harness/
 - Convert implemented code/config/design into Markdown paper sections.
 - Audit claims and citations.
 - Prepare Tier A/B paper handoff.
+
+## Progressive Disclosure
+
+`SKILL.md` only decides whether the skill applies and which reference to load. Task details live under `references/`:
+
+- `workspace.md`: workspace modes, scripts, validation, venue suffixes.
+- `literature.md`: paper search, indexing, reading notes, idea refinement.
+- `repo-to-paper.md`: code/config to paper sections.
+- `citation-audit.md`: claim and citation checking.
+- `handoff.md`: paper-state handoff.
+- `evidence-policy.md`: novelty, SOTA, results, claim support, and confirmation boundaries.
+
+Load only the reference needed for the current task.
 
 ## What It Does Not Do
 

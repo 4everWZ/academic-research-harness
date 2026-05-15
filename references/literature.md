@@ -14,6 +14,10 @@ Use this reference for:
 
 Do not use this reference to write paper prose unless the user explicitly asks for a section draft.
 
+For workspace creation or validation, load `references/workspace.md` instead of using this file as a workspace guide.
+
+For novelty, SOTA, final claim conversion, or user-confirmation boundaries, load `references/evidence-policy.md`.
+
 ## Workflow Boundary
 
 Literature collection must not automatically produce `intro.md`, `related_work.md`, or `method.md`.

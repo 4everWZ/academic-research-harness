@@ -7,221 +7,46 @@ description: Use only when the user explicitly requests this skill or explicitly
 
 ## Purpose
 
-Use this skill as an on-demand paper-writing and evidence-management layer for an existing or evolving deep learning research project.
+Use this skill as an on-demand paper-writing and evidence-management layer for an existing or evolving research project.
 
-It is not an autonomous research system. It must not run as a default research layer. It should activate only when the user explicitly requests literature search, citation management, idea refinement from papers, repo-to-paper writing, citation audit, or paper handoff.
+It is a router, not an autonomous research system. The main implementation harness owns code, training, debugging, validation, experiment execution, and code handoff. This skill owns literature evidence, paper index maintenance, claim tracking, Markdown paper sections, citation audit, and paper-writing handoff.
 
-The main implementation harness owns code, training, debugging, validation, experiment execution, and code handoff. This skill owns literature evidence, paper index maintenance, claim tracking, Markdown paper sections, citation audit, and paper-writing handoff.
+## Activation Boundary
 
-## Non-Goals
+Use only when the user explicitly requests this skill or asks for paper-writing / literature-grounded work.
 
-Do not use this skill to:
+Do not use for normal coding, debugging, training, log analysis, experiment execution, or general research chat unless the user explicitly asks to connect that work to papers, claims, citations, or paper sections.
 
-- autonomously conduct research;
-- automatically run experiments;
-- automatically write paper prose after literature search;
-- invent results, ablations, metrics, captions, or conclusions;
-- claim novelty, superiority, or SOTA without explicit evidence;
-- change datasets, splits, metrics, protocols, baselines, or contribution framing without user confirmation;
-- optimize for novelty over evidence quality, reproducibility, and real effect.
+## Progressive Disclosure Rule
 
-## Progressive Flat Workspace
+Start with only this file. Pick one route, then load only the reference files and templates needed for that route.
 
-For each paper-like project, use one flat workspace under `docs/`, but create files progressively by task route. Do not create full paper-section scaffolding for literature search, idea refinement, citation audit, or handoff-only work.
+Do not read all references by default. Do not create a full paper workspace unless the route is `repo-to-paper`, `full`, or the user explicitly asks for complete paper scaffolding.
 
-```text
-docs/<paper_slug>/
-  README.md
-  venue_profile.md
-  ...
-```
+## Task Router
 
-Use these workspace levels:
+| User intent | Load | Workspace mode | Template loading |
+|---|---|---|---|
+| Initialize or validate a paper workspace | `references/workspace.md` | requested mode, default `minimal` | only files being created or checked |
+| Search, collect, index, download, classify, or summarize papers | `references/literature.md` | `literature` | `paper_index.md`, `references.bib`, `reading_note.md` only when writing them |
+| Refine an idea using papers | `references/literature.md` | `idea` | `idea_log.md` only when writing it |
+| Convert repo/code/config/logged setup into paper sections | `references/repo-to-paper.md` | `repo-to-paper` | only the requested section template plus `claims.md` when adding claims |
+| Audit citations, claims, novelty, related work, or SOTA language | `references/citation-audit.md` | `citation-audit` | `claims.md` and the audited section only |
+| Prepare paper-state handoff | `references/handoff.md` | `handoff` | `handoff.md` only |
+| Check shared evidence, results, or confirmation constraints | `references/evidence-policy.md` | existing mode | only files needed to support the decision |
 
-| Mode | Create When | Files / Dirs |
-|---|---|---|
-| `minimal` | workspace anchor only | `README.md`, `venue_profile.md` |
-| `literature` | literature search, paper indexing, BibTeX, reading notes | `README.md`, `venue_profile.md`, `paper_index.md`, `references.bib`, `papers/`, `notes/` |
-| `idea` | literature-grounded idea refinement | literature files plus `idea_log.md` |
-| `citation-audit` | claim/citation checking without section drafting | `README.md`, `venue_profile.md`, `claims.md` |
-| `repo-to-paper` | converting repo/code/config into paper sections | full paper workspace |
-| `handoff` | paper-state handoff only | `README.md`, `venue_profile.md`, `handoff.md` |
-| `full` | user explicitly requests complete paper workspace | full paper workspace |
+## Shared Rules
 
-The full paper workspace is:
+- For workspace creation, validation, mode selection, and scripts, load `references/workspace.md`.
+- For novelty, SOTA, superiority, results, claim support, or user-confirmation boundaries, load `references/evidence-policy.md`.
+- For cross-file consistency, inspect only the necessary workspace files, normally `venue_profile.md`, `paper_index.md`, `claims.md`, and the target section.
+- Do not write unsupported academic claims into paper sections without recording them in `claims.md`.
+- Do not write experimental results unless the user provides numbers or verified logs.
 
-```text
-docs/<paper_slug>/
-  README.md
-  venue_profile.md
-  paper_index.md
-  references.bib
-  claims.md
-  idea_log.md
-  intro.md
-  related_work.md
-  method.md
-  experiments.md
-  results_tables.md
-  limitations.md
-  figures.md
-  handoff.md
-  papers/
-  notes/
-```
+## Route Boundaries
 
-After the target venue/outlet is confirmed, the workspace folder may be renamed with a double-underscore suffix, for example:
-
-```text
-docs/<paper_slug>__<venue_slug>/
-```
-
-Use `venue_profile.md` to record venue/outlet assumptions and the explicit writing mode: `conference`, `journal`, or another stated outlet type. Do not create many venue-specific writing templates.
-
-When a workspace uses the suffix form `docs/<paper_slug>__<venue_slug>/`, treat the suffix as an explicit outlet signal. Before drafting paper prose, read `venue_profile.md` and state which outlet-aware mode is being used. Use the mode to guide content emphasis only; do not apply a concrete venue-specific writing template.
-
-## Core Files
-
-Treat these files as the central state:
-
-- `paper_index.md` when present: indexed literature and evidence quality;
-- `claims.md` when present: claim ledger linking draft claims to literature, code, experiments, user decisions, or explicit assumptions;
-- `idea_log.md` when present: literature-driven idea refinement and rejected options;
-- `venue_profile.md`: confirmed or provisional target venue/outlet and writing tendencies.
-
-Do not write unsupported academic claims into paper sections without recording them in `claims.md`.
-
-## Progressive Loading Policy
-
-Load the smallest useful reference file. Do not read every reference by default.
-
-### Load 0: Router only
-
-Use only this `SKILL.md` when deciding whether the skill should apply, selecting a task route, or initializing a workspace.
-
-### Load 1: Single task reference
-
-Use one reference file when the task is narrow:
-
-- Literature collection or idea refinement: load `references/literature.md`.
-- Repo/code/config to paper section: load `references/repo-to-paper.md`.
-- Citation/claim checking: load `references/citation-audit.md`.
-- Paper handoff: load `references/handoff.md`.
-
-### Load 2: Task reference plus templates
-
-Load the relevant template from `assets/templates/` only when writing or validating that file.
-
-Examples:
-
-- `paper_index.md` work: load `references/literature.md` plus `assets/templates/paper_index.md`.
-- Method section work: load `references/repo-to-paper.md` plus `assets/templates/method.md`.
-- Claim audit: load `references/citation-audit.md` plus `assets/templates/claims.md`.
-
-### Load 3: Cross-file consistency
-
-Use Load 3 when the user asks for consistency across literature, claims, and sections. Inspect only the necessary workspace files, normally `paper_index.md`, `claims.md`, the target section, and `venue_profile.md`.
-
-### Load 4: Major paper-state update
-
-Use Load 4 only for Tier A/B changes or explicit paper handoff. Inspect the relevant workspace state and update `handoff.md` if required.
-
-## Task Routing
-
-### Literature collection
-
-Use `references/literature.md` when the user asks to search, collect, index, classify, download, or summarize academic papers, build/update `paper_index.md`, add BibTeX, or create reading notes.
-
-For new workspaces, use `--mode literature`.
-
-Do not write introduction, related work, or method prose after literature collection unless the user explicitly asks for section writing.
-
-### Idea refinement from literature
-
-Use `references/literature.md` when the user asks to refine an idea using papers.
-
-For new workspaces, use `--mode idea`.
-
-Write candidate refinements to `idea_log.md`. Do not modify code. Do not convert suggestions into paper claims without evidence and user decision.
-
-### Repo-to-paper writing
-
-Use `references/repo-to-paper.md` when the user asks to convert implemented code, configs, architecture notes, or experiment setup into Markdown paper sections.
-
-For new workspaces, use `--mode repo-to-paper`.
-
-Write only the requested section. Update `claims.md` for nontrivial claims introduced by the section.
-
-### Citation audit
-
-Use `references/citation-audit.md` when the user asks whether citations support claims, whether related work is distorted, whether novelty is overclaimed, or whether claims are unsupported.
-
-For new audit-only workspaces, use `--mode citation-audit`.
-
-### Handoff
-
-Use `references/handoff.md` when the user asks for paper handoff or when a Tier A/B change has occurred.
-
-For new handoff-only workspaces, use `--mode handoff`.
-
-## Source Hierarchy Summary
-
-Use the full policy in `references/literature.md`. The short version is:
-
-1. Prefer recent formal peer-reviewed papers from the last 1-3 years in top venues and top journals recognized by the relevant subfield.
-2. Include older foundational work, strong baselines, community-standard methods, datasets, metrics, and protocols when still relevant.
-3. Use recent arXiv only as frontier supplement, not as sole theoretical support or sole evidence for key conclusions.
-4. Presumptively downgrade or exclude MDPI, Hindawi, Frontiers, isolated low-quality preprints, marketing-like sources, weakly reproducible works, and sources with unclear academic consensus unless a specific source is explicitly audited and strongly justified.
-5. Venue rank is not evidence. Final evidence strength depends on relevance, method clarity, baseline strength, evaluation fairness, dataset/metric/split transparency, code/reproducibility support, and claim-evidence alignment.
-
-## Confirmation Checkpoints
-
-Ask the user before:
-
-- changing contribution framing;
-- declaring novelty or SOTA;
-- choosing the final method direction;
-- removing or replacing strong baselines;
-- changing dataset, split, metric, or evaluation protocol;
-- converting speculative refinements into final paper claims;
-- downgrading or excluding a source if that decision materially affects the paper narrative.
-
-## Results Policy
-
-Do not write experimental results unless the user provides the numbers.
-
-For results, you may only:
-
-- create table structures;
-- define metric columns;
-- prepare neutral captions;
-- mark missing cells as `TODO`;
-- list required experiments.
-
-## Handoff Policy
-
-Do not update `handoff.md` for every small edit.
-
-Update `handoff.md` for:
-
-- Tier A: paper direction, contribution framing, method direction, baseline strategy, or evaluation protocol changes;
-- Tier B: completed literature collection, major section draft, important idea refinement, strong similar-work discovery, or major evidence gap discovery.
-
-Do not update `handoff.md` for Tier C local edits such as wording, formatting, single BibTeX fixes, or one citation addition.
-
-## Scripts
-
-Use scripts only for explicit workspace initialization or local validation.
-
-```bash
-# Writes files. Run only when the user asks to create or refresh a paper workspace.
-python scripts/init_paper_workspace.py docs/<paper_slug> --mode literature
-python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper
-
-# Read-only validation.
-python scripts/validate_workspace.py docs/<paper_slug> --mode literature
-python scripts/validate_paper_index.py docs/<paper_slug>/paper_index.md
-python scripts/quick_validate_skill.py .
-```
-
-Do not add or rely on scripts that scrape Google Scholar, automatically summarize PDFs, or automatically write related work.
+- Literature collection must not automatically draft `intro.md`, `related_work.md`, or `method.md`.
+- Idea refinement writes candidates to `idea_log.md`; it must not modify code or convert suggestions into final claims without evidence and user decision.
+- Repo-to-paper writes only the requested section and marks unknown implementation details as `TODO` or unverified.
+- Citation audit checks exact claim support, not topical similarity.
+- Handoff updates `handoff.md` only for explicit handoff or material Tier A/B paper-state changes.

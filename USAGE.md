@@ -4,6 +4,7 @@
 
 ```text
 Use academic-research-harness.
+Load only references/workspace.md.
 Create docs/<paper_slug> as a minimal flat paper workspace.
 Do not search literature.
 Do not write paper content.
@@ -13,6 +14,7 @@ Do not write paper content.
 
 ```text
 Use academic-research-harness.
+Load only references/workspace.md unless writing starts.
 Create docs/<paper_slug>__<venue_slug> as a repo-to-paper or full flat paper workspace.
 Set venue_profile.md outlet mode to conference or journal.
 Do not add concrete venue-specific writing templates.
@@ -22,6 +24,7 @@ Do not add concrete venue-specific writing templates.
 
 ```text
 Use academic-research-harness literature mode.
+Load references/literature.md only.
 Initialize the workspace with --mode literature if needed.
 Search high-quality deep learning papers related to [topic].
 Update only paper_index.md, references.bib, and reading notes.
@@ -33,6 +36,7 @@ Rank sources by evidence quality, not venue alone.
 
 ```text
 Use academic-research-harness idea refinement mode.
+Load references/literature.md only.
 Initialize the workspace with --mode idea if needed.
 Current idea: [paste idea].
 Use indexed papers to suggest refinements.
@@ -45,6 +49,7 @@ Write only to idea_log.md.
 
 ```text
 Use academic-research-harness repo-to-paper mode.
+Load references/repo-to-paper.md, plus references/evidence-policy.md only if claim/result/confirmation boundaries arise.
 Initialize the workspace with --mode repo-to-paper if needed.
 Convert the implemented module into method.md.
 Inspect code/config first.
@@ -68,6 +73,7 @@ Use TODO for all missing metrics.
 
 ```text
 Use academic-research-harness citation-audit mode.
+Load references/citation-audit.md only.
 Initialize the workspace with --mode citation-audit if needed.
 Check whether related_work.md citations support the claims.
 Update claims.md with unsupported or partially supported claims.
@@ -78,6 +84,7 @@ Do not rewrite the whole section unless necessary.
 
 ```text
 Use academic-research-harness.
+Load references/handoff.md only.
 Initialize the workspace with --mode handoff if needed.
 Prepare paper handoff because the method direction changed.
 Classify this as Tier A/B/C and update handoff.md only if needed.

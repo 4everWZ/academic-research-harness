@@ -4,6 +4,10 @@
 
 Use this reference when checking whether citations support claims, whether novelty is overclaimed, whether related work is distorted, or whether paper sections contain unsupported statements.
 
+For workspace creation or validation, load `references/workspace.md`.
+
+For global result, novelty, SOTA, and confirmation boundaries, load `references/evidence-policy.md` when the audit needs the shared policy.
+
 ## Core Principle
 
 A citation is valid only if it supports the exact claim being made.

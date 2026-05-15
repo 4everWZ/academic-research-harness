@@ -4,6 +4,10 @@
 
 Use this reference only when the user requests paper handoff or when a Tier A/B paper-state change has occurred.
 
+For workspace creation or validation, load `references/workspace.md`.
+
+For claim, result, novelty, SOTA, or confirmation-boundary status, load `references/evidence-policy.md` only if the handoff needs those details.
+
 Do not update `handoff.md` for local edits.
 
 ## Update Triggers

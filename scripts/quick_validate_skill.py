@@ -9,6 +9,8 @@ from pathlib import Path
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,62}[a-z0-9]$")
 
 REQUIRED_REFERENCES = [
+    "references/workspace.md",
+    "references/evidence-policy.md",
     "references/literature.md",
     "references/repo-to-paper.md",
     "references/citation-audit.md",

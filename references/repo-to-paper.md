@@ -4,6 +4,10 @@
 
 Use this reference when converting existing code, configs, architecture notes, experiment setup, or implementation details into Markdown paper sections.
 
+For workspace creation or validation, load `references/workspace.md`.
+
+For novelty, SOTA, superiority, result interpretation, or contribution-framing decisions, load `references/evidence-policy.md`.
+
 Supported target files:
 
 - `intro.md` only when the user explicitly asks for introduction writing;
