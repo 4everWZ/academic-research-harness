@@ -19,7 +19,9 @@ Do not use for normal coding, debugging, training, log analysis, experiment exec
 
 ## Progressive Disclosure Rule
 
-Start with only this file. Pick one route, then load only the reference files and templates needed for that route.
+Start with only this file. Identify the necessary route(s), then load only the reference files and templates required for the active tasks.
+
+**Anti-Bloat Rule:** You MUST NOT initialize a `full` paper workspace (all sections) unless the user explicitly requests it or the task is `repo-to-paper`. For all other work, initialize only the **minimal necessary set** of files required for the active tasks. Avoid creating "ghost files" (empty templates for sections not yet being worked on) to maintain context efficiency.
 
 Do not read all references by default. Do not create a full paper workspace unless the route is `repo-to-paper`, `full`, or the user explicitly asks for complete paper scaffolding.
 

@@ -51,6 +51,13 @@ When the suffix form is present, treat the suffix as an explicit outlet signal. 
 - `claims.md` when present: claim ledger linking draft claims to literature, code, experiments, user decisions, or explicit assumptions.
 - `idea_log.md` when present: literature-driven idea refinement and rejected options.
 
+## Strict Minimalism Enforcement
+
+When initializing or evolving a workspace:
+1. **Minimal Necessary Set:** Select or combine `--mode` settings to match the **active tasks**. If a task is hybrid, you may manually add specific files required for that work.
+2. **Incremental Growth:** Treat the workspace as an evolving structure. Only add files (e.g., `method.md`, `experiments.md`) when you have verified evidence, code, or intent to actively draft that specific section.
+3. **No Ghost Files:** Do not leave empty template files for sections that are not part of the current work scope. Unused placeholders consume context and invite hallucinations.
+
 ## Scripts
 
 Use scripts only for explicit workspace initialization or local validation.
