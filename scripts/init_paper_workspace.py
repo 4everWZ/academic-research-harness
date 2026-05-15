@@ -85,7 +85,9 @@ def main() -> int:
 
     papers = workspace / "papers"
     papers.mkdir(exist_ok=True)
-    (papers / ".gitignore").write_text("*.pdf\n*.epub\n", encoding="utf-8")
+    papers_gitignore = papers / ".gitignore"
+    if not papers_gitignore.exists() or args.force:
+        papers_gitignore.write_text("*.pdf\n*.epub\n", encoding="utf-8")
     if not (papers / "README.md").exists() or args.force:
         (papers / "README.md").write_text(
             "# Local Papers\n\nStore local PDF copies here when legally and practically appropriate. PDFs are ignored by git by default.\n",

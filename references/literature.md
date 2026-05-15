@@ -85,7 +85,7 @@ Do not use an arXiv preprint as the sole theoretical basis or sole support for a
 
 ### Strict Downgrade / Exclusion
 
-Strictly downgrade or exclude:
+Presumptively downgrade or exclude these sources unless the user explicitly asks to audit a specific source and strong, directly relevant evidence exists:
 
 - MDPI;
 - Hindawi;

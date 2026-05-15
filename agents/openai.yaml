@@ -1,3 +1,3 @@
 display_name: Academic Research Harness
 short_description: Literature-grounded paper writing and evidence management.
-default_prompt: Use academic-research-harness to manage literature, paper_index, claims, repo-to-paper Markdown sections, citation audit, and paper handoff for an existing research project.
+default_prompt: Use academic-research-harness only for explicit literature-grounded paper writing, citation management, claim auditing, repo-to-paper Markdown drafting, or paper handoff requests.

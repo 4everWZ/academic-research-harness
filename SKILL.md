@@ -180,10 +180,13 @@ Do not update `handoff.md` for Tier C local edits such as wording, formatting, s
 
 ## Scripts
 
-Use scripts only for low-risk local structure checks:
+Use scripts only for explicit workspace initialization or local validation.
 
 ```bash
+# Writes files. Run only when the user asks to create or refresh a paper workspace.
 python scripts/init_paper_workspace.py docs/<paper_slug>
+
+# Read-only validation.
 python scripts/validate_workspace.py docs/<paper_slug>
 python scripts/validate_paper_index.py docs/<paper_slug>/paper_index.md
 python scripts/quick_validate_skill.py .

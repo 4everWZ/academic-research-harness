@@ -12,6 +12,12 @@ Place the `academic-research-harness/` folder in your Codex skills directory, fo
 $CODEX_HOME/skills/academic-research-harness/
 ```
 
+On a local Codex setup this may be:
+
+```text
+~/.agents/skills/academic-research-harness/
+```
+
 Restart Codex after installing or updating the skill.
 
 ## Standard Skill Shape

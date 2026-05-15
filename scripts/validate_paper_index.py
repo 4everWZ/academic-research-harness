@@ -24,10 +24,36 @@ EXPECTED_COLUMNS = [
 
 VALID_PRIORITIES = {"P1_core", "P2_frontier", "P3_background", "downgraded", "excluded", "TODO"}
 VALID_GRADES = {"strong", "medium", "weak", "low_confidence", "reject", "TODO"}
+VALID_ROLES = {
+    "baseline",
+    "competing_method",
+    "supporting_mechanism",
+    "background",
+    "dataset_metric_reference",
+    "implementation_reference",
+    "weak_signal",
+    "TODO",
+}
 
 
 def split_row(line: str) -> list[str]:
     return [cell.strip() for cell in line.strip().strip("|").split("|")]
+
+
+def validate_enum(
+    errors: list[str],
+    *,
+    line_number: int,
+    field: str,
+    value: str,
+    valid_values: set[str],
+    allow_template_placeholder: bool,
+) -> None:
+    if value in valid_values:
+        return
+    if allow_template_placeholder and "/" in value:
+        return
+    errors.append(f"line {line_number}: unexpected {field}: {value}")
 
 
 def main() -> int:
@@ -69,10 +95,31 @@ def main() -> int:
             if key in keys:
                 errors.append(f"line {idx}: duplicate key: {key}")
             keys.add(key)
-        if row["Source Priority"] not in VALID_PRIORITIES and "/" not in row["Source Priority"]:
-            errors.append(f"line {idx}: unexpected Source Priority: {row['Source Priority']}")
-        if row["Evidence Grade"] not in VALID_GRADES and "/" not in row["Evidence Grade"]:
-            errors.append(f"line {idx}: unexpected Evidence Grade: {row['Evidence Grade']}")
+        allow_template_placeholder = key == "TODO"
+        validate_enum(
+            errors,
+            line_number=idx,
+            field="Source Priority",
+            value=row["Source Priority"],
+            valid_values=VALID_PRIORITIES,
+            allow_template_placeholder=allow_template_placeholder,
+        )
+        validate_enum(
+            errors,
+            line_number=idx,
+            field="Evidence Grade",
+            value=row["Evidence Grade"],
+            valid_values=VALID_GRADES,
+            allow_template_placeholder=allow_template_placeholder,
+        )
+        validate_enum(
+            errors,
+            line_number=idx,
+            field="Role",
+            value=row["Role"],
+            valid_values=VALID_ROLES,
+            allow_template_placeholder=allow_template_placeholder,
+        )
 
     if errors:
         print("paper_index validation failed:")

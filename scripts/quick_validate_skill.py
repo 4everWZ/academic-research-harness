@@ -8,6 +8,38 @@ from pathlib import Path
 
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,62}[a-z0-9]$")
 
+REQUIRED_REFERENCES = [
+    "references/literature.md",
+    "references/repo-to-paper.md",
+    "references/citation-audit.md",
+    "references/handoff.md",
+]
+
+REQUIRED_TEMPLATES = [
+    "assets/templates/README.md",
+    "assets/templates/venue_profile.md",
+    "assets/templates/paper_index.md",
+    "assets/templates/references.bib",
+    "assets/templates/claims.md",
+    "assets/templates/idea_log.md",
+    "assets/templates/intro.md",
+    "assets/templates/related_work.md",
+    "assets/templates/method.md",
+    "assets/templates/experiments.md",
+    "assets/templates/results_tables.md",
+    "assets/templates/limitations.md",
+    "assets/templates/figures.md",
+    "assets/templates/handoff.md",
+    "assets/templates/reading_note.md",
+]
+
+REQUIRED_SCRIPTS = [
+    "scripts/init_paper_workspace.py",
+    "scripts/validate_workspace.py",
+    "scripts/validate_paper_index.py",
+    "scripts/quick_validate_skill.py",
+]
+
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
     if not text.startswith("---\n"):
@@ -28,6 +60,15 @@ def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
         value = value.strip().strip('"').strip("'")
         data[key] = value
     return data, body
+
+
+def require_files(skill_dir: Path, errors: list[str], label: str, paths: list[str]) -> None:
+    for relative in paths:
+        path = skill_dir / relative
+        if not path.exists():
+            errors.append(f"Missing required {label}: {relative}")
+        elif not path.is_file():
+            errors.append(f"Required {label} is not a file: {relative}")
 
 
 def main() -> int:
@@ -57,13 +98,24 @@ def main() -> int:
                 errors.append("Missing frontmatter description")
             elif len(description) > 1024:
                 errors.append("Frontmatter description should stay under 1024 characters for Codex compatibility")
+            if description and not description.startswith("Use "):
+                errors.append('Frontmatter description should start with "Use "')
             if not body.strip():
                 errors.append("SKILL.md body is empty")
         except Exception as exc:  # noqa: BLE001
             errors.append(str(exc))
 
-    if not (skill_dir / "agents" / "openai.yaml").exists():
+    agent_prompt = skill_dir / "agents" / "openai.yaml"
+    if not agent_prompt.exists():
         errors.append("Missing recommended agents/openai.yaml")
+    else:
+        prompt_text = agent_prompt.read_text(encoding="utf-8")
+        if "only" not in prompt_text.lower() or "explicit" not in prompt_text.lower():
+            errors.append("agents/openai.yaml should preserve the conservative explicit-request trigger boundary")
+
+    require_files(skill_dir, errors, "reference file", REQUIRED_REFERENCES)
+    require_files(skill_dir, errors, "template file", REQUIRED_TEMPLATES)
+    require_files(skill_dir, errors, "script file", REQUIRED_SCRIPTS)
 
     if errors:
         print("Skill validation failed:")
