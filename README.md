@@ -1,4 +1,4 @@
-# research-writing-harness
+# academic-research-harness
 
 A Codex/OpenAI-style global skill for on-demand literature-grounded paper writing and evidence management.
 
@@ -6,10 +6,10 @@ This skill is not an autonomous research system. It is a paper-writing evidence 
 
 ## Install
 
-Place the `research-writing-harness/` folder in your Codex skills directory, for example:
+Place the `academic-research-harness/` folder in your Codex skills directory, for example:
 
 ```text
-$CODEX_HOME/skills/research-writing-harness/
+$CODEX_HOME/skills/academic-research-harness/
 ```
 
 Restart Codex after installing or updating the skill.
@@ -17,7 +17,7 @@ Restart Codex after installing or updating the skill.
 ## Standard Skill Shape
 
 ```text
-research-writing-harness/
+academic-research-harness/
   SKILL.md
   agents/openai.yaml
   references/

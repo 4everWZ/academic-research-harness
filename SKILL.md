@@ -1,5 +1,5 @@
 ---
-name: research-writing-harness
+name: academic-research-harness
 description: Use only when the user explicitly requests this skill or explicitly asks to search/curate academic literature, update paper_index/references/claims, refine an idea using papers, convert repo/code into Markdown paper sections, audit citations, or prepare paper handoff. Do not use for normal coding/debugging/training/log analysis/general research chat without an explicit paper-writing or literature-grounding request.
 ---
 

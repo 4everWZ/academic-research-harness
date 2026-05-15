@@ -44,7 +44,7 @@ def repo_root_from_script() -> Path:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Initialize a research-writing paper workspace.")
+    parser = argparse.ArgumentParser(description="Initialize a academic-research paper workspace.")
     parser.add_argument("workspace", help="Target workspace, e.g. docs/example_paper")
     parser.add_argument("--venue", default="", help="Optional target venue/outlet name to record in venue_profile.md")
     parser.add_argument(

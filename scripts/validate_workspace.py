@@ -26,7 +26,7 @@ REQUIRED_DIRS = ["papers", "notes"]
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate a research-writing workspace.")
+    parser = argparse.ArgumentParser(description="Validate a academic-research workspace.")
     parser.add_argument("workspace")
     args = parser.parse_args()
 
