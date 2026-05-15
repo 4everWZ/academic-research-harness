@@ -25,9 +25,30 @@ Do not use this skill to:
 - change datasets, splits, metrics, protocols, baselines, or contribution framing without user confirmation;
 - optimize for novelty over evidence quality, reproducibility, and real effect.
 
-## Required Flat Workspace
+## Progressive Flat Workspace
 
-For each paper-like project, use one flat workspace under `docs/`:
+For each paper-like project, use one flat workspace under `docs/`, but create files progressively by task route. Do not create full paper-section scaffolding for literature search, idea refinement, citation audit, or handoff-only work.
+
+```text
+docs/<paper_slug>/
+  README.md
+  venue_profile.md
+  ...
+```
+
+Use these workspace levels:
+
+| Mode | Create When | Files / Dirs |
+|---|---|---|
+| `minimal` | workspace anchor only | `README.md`, `venue_profile.md` |
+| `literature` | literature search, paper indexing, BibTeX, reading notes | `README.md`, `venue_profile.md`, `paper_index.md`, `references.bib`, `papers/`, `notes/` |
+| `idea` | literature-grounded idea refinement | literature files plus `idea_log.md` |
+| `citation-audit` | claim/citation checking without section drafting | `README.md`, `venue_profile.md`, `claims.md` |
+| `repo-to-paper` | converting repo/code/config into paper sections | full paper workspace |
+| `handoff` | paper-state handoff only | `README.md`, `venue_profile.md`, `handoff.md` |
+| `full` | user explicitly requests complete paper workspace | full paper workspace |
+
+The full paper workspace is:
 
 ```text
 docs/<paper_slug>/
@@ -63,9 +84,9 @@ When a workspace uses the suffix form `docs/<paper_slug>__<venue_slug>/`, treat 
 
 Treat these files as the central state:
 
-- `paper_index.md`: indexed literature and evidence quality;
-- `claims.md`: claim ledger linking draft claims to literature, code, experiments, user decisions, or explicit assumptions;
-- `idea_log.md`: literature-driven idea refinement and rejected options;
+- `paper_index.md` when present: indexed literature and evidence quality;
+- `claims.md` when present: claim ledger linking draft claims to literature, code, experiments, user decisions, or explicit assumptions;
+- `idea_log.md` when present: literature-driven idea refinement and rejected options;
 - `venue_profile.md`: confirmed or provisional target venue/outlet and writing tendencies.
 
 Do not write unsupported academic claims into paper sections without recording them in `claims.md`.
@@ -111,11 +132,15 @@ Use Load 4 only for Tier A/B changes or explicit paper handoff. Inspect the rele
 
 Use `references/literature.md` when the user asks to search, collect, index, classify, download, or summarize academic papers, build/update `paper_index.md`, add BibTeX, or create reading notes.
 
+For new workspaces, use `--mode literature`.
+
 Do not write introduction, related work, or method prose after literature collection unless the user explicitly asks for section writing.
 
 ### Idea refinement from literature
 
 Use `references/literature.md` when the user asks to refine an idea using papers.
+
+For new workspaces, use `--mode idea`.
 
 Write candidate refinements to `idea_log.md`. Do not modify code. Do not convert suggestions into paper claims without evidence and user decision.
 
@@ -123,15 +148,21 @@ Write candidate refinements to `idea_log.md`. Do not modify code. Do not convert
 
 Use `references/repo-to-paper.md` when the user asks to convert implemented code, configs, architecture notes, or experiment setup into Markdown paper sections.
 
+For new workspaces, use `--mode repo-to-paper`.
+
 Write only the requested section. Update `claims.md` for nontrivial claims introduced by the section.
 
 ### Citation audit
 
 Use `references/citation-audit.md` when the user asks whether citations support claims, whether related work is distorted, whether novelty is overclaimed, or whether claims are unsupported.
 
+For new audit-only workspaces, use `--mode citation-audit`.
+
 ### Handoff
 
 Use `references/handoff.md` when the user asks for paper handoff or when a Tier A/B change has occurred.
+
+For new handoff-only workspaces, use `--mode handoff`.
 
 ## Source Hierarchy Summary
 
@@ -140,7 +171,7 @@ Use the full policy in `references/literature.md`. The short version is:
 1. Prefer recent formal peer-reviewed papers from the last 1-3 years in top venues and top journals recognized by the relevant subfield.
 2. Include older foundational work, strong baselines, community-standard methods, datasets, metrics, and protocols when still relevant.
 3. Use recent arXiv only as frontier supplement, not as sole theoretical support or sole evidence for key conclusions.
-4. Strictly downgrade or exclude MDPI, Hindawi, Frontiers, isolated low-quality preprints, marketing-like sources, weakly reproducible works, and sources with unclear academic consensus.
+4. Presumptively downgrade or exclude MDPI, Hindawi, Frontiers, isolated low-quality preprints, marketing-like sources, weakly reproducible works, and sources with unclear academic consensus unless a specific source is explicitly audited and strongly justified.
 5. Venue rank is not evidence. Final evidence strength depends on relevance, method clarity, baseline strength, evaluation fairness, dataset/metric/split transparency, code/reproducibility support, and claim-evidence alignment.
 
 ## Confirmation Checkpoints
@@ -184,10 +215,11 @@ Use scripts only for explicit workspace initialization or local validation.
 
 ```bash
 # Writes files. Run only when the user asks to create or refresh a paper workspace.
-python scripts/init_paper_workspace.py docs/<paper_slug>
+python scripts/init_paper_workspace.py docs/<paper_slug> --mode literature
+python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper
 
 # Read-only validation.
-python scripts/validate_workspace.py docs/<paper_slug>
+python scripts/validate_workspace.py docs/<paper_slug> --mode literature
 python scripts/validate_paper_index.py docs/<paper_slug>/paper_index.md
 python scripts/quick_validate_skill.py .
 ```

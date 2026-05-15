@@ -56,16 +56,30 @@ academic-research-harness/
 ## Initialize a Workspace
 
 ```bash
-python scripts/init_paper_workspace.py docs/example_paper
+python scripts/init_paper_workspace.py docs/example_paper --mode literature
 ```
+
+Workspace creation is progressive:
+
+```bash
+python scripts/init_paper_workspace.py docs/example_paper --mode minimal
+python scripts/init_paper_workspace.py docs/example_paper --mode literature
+python scripts/init_paper_workspace.py docs/example_paper --mode idea
+python scripts/init_paper_workspace.py docs/example_paper --mode citation-audit
+python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper
+python scripts/init_paper_workspace.py docs/example_paper --mode handoff
+python scripts/init_paper_workspace.py docs/example_paper --mode full
+```
+
+Use `repo-to-paper` or `full` only when full paper-section scaffolding is needed.
 
 After target venue/outlet is confirmed:
 
 ```bash
-python scripts/init_paper_workspace.py docs/example_paper --venue "Target Venue" --outlet-mode conference --suffix-venue
+python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper --venue "Target Venue" --outlet-mode conference --suffix-venue
 ```
 
-This creates:
+`repo-to-paper` and `full` create:
 
 ```text
 docs/example_paper__target-venue/
@@ -95,6 +109,6 @@ Use `venue_profile.md` to record whether the target is `conference`, `journal`, 
 
 ```bash
 python scripts/quick_validate_skill.py .
-python scripts/validate_workspace.py docs/example_paper
+python scripts/validate_workspace.py docs/example_paper --mode literature
 python scripts/validate_paper_index.py docs/example_paper/paper_index.md
 ```

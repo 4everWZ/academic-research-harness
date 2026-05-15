@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Initialize a flat paper workspace under docs/<paper_slug>.
+"""Initialize a progressive flat paper workspace under docs/<paper_slug>.
 
 Usage:
-  python scripts/init_paper_workspace.py docs/example_paper
-  python scripts/init_paper_workspace.py docs/example_paper --venue "Target Venue" --outlet-mode conference --suffix-venue
+  python scripts/init_paper_workspace.py docs/example_paper --mode literature
+  python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper
+  python scripts/init_paper_workspace.py docs/example_paper --mode full --venue "Target Venue" --outlet-mode conference --suffix-venue
 """
 from __future__ import annotations
 
@@ -12,7 +13,7 @@ import re
 import shutil
 from pathlib import Path
 
-REQUIRED_TEMPLATES = [
+FULL_TEMPLATES = [
     "README.md",
     "venue_profile.md",
     "paper_index.md",
@@ -28,6 +29,26 @@ REQUIRED_TEMPLATES = [
     "figures.md",
     "handoff.md",
 ]
+
+MODE_TEMPLATES = {
+    "minimal": ["README.md", "venue_profile.md"],
+    "literature": ["README.md", "venue_profile.md", "paper_index.md", "references.bib"],
+    "idea": ["README.md", "venue_profile.md", "paper_index.md", "references.bib", "idea_log.md"],
+    "citation-audit": ["README.md", "venue_profile.md", "claims.md"],
+    "repo-to-paper": FULL_TEMPLATES,
+    "handoff": ["README.md", "venue_profile.md", "handoff.md"],
+    "full": FULL_TEMPLATES,
+}
+
+MODE_DIRS = {
+    "minimal": [],
+    "literature": ["papers", "notes"],
+    "idea": ["papers", "notes"],
+    "citation-audit": [],
+    "repo-to-paper": ["papers", "notes"],
+    "handoff": [],
+    "full": ["papers", "notes"],
+}
 
 
 def slugify(value: str) -> str:
@@ -46,6 +67,12 @@ def repo_root_from_script() -> Path:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Initialize a academic-research paper workspace.")
     parser.add_argument("workspace", help="Target workspace, e.g. docs/example_paper")
+    parser.add_argument(
+        "--mode",
+        default="minimal",
+        choices=sorted(MODE_TEMPLATES),
+        help="Workspace level to create. Defaults to minimal; use full for all paper files.",
+    )
     parser.add_argument("--venue", default="", help="Optional target venue/outlet name to record in venue_profile.md")
     parser.add_argument(
         "--outlet-mode",
@@ -74,7 +101,7 @@ def main() -> int:
 
     workspace.mkdir(parents=True, exist_ok=True)
 
-    for name in REQUIRED_TEMPLATES:
+    for name in MODE_TEMPLATES[args.mode]:
         src = templates_dir / name
         dst = workspace / name
         if not src.exists():
@@ -83,24 +110,27 @@ def main() -> int:
             continue
         shutil.copyfile(src, dst)
 
-    papers = workspace / "papers"
-    papers.mkdir(exist_ok=True)
-    papers_gitignore = papers / ".gitignore"
-    if not papers_gitignore.exists() or args.force:
-        papers_gitignore.write_text("*.pdf\n*.epub\n", encoding="utf-8")
-    if not (papers / "README.md").exists() or args.force:
-        (papers / "README.md").write_text(
-            "# Local Papers\n\nStore local PDF copies here when legally and practically appropriate. PDFs are ignored by git by default.\n",
-            encoding="utf-8",
-        )
+    if "papers" in MODE_DIRS[args.mode]:
+        papers = workspace / "papers"
+        papers.mkdir(exist_ok=True)
+        papers_gitignore = papers / ".gitignore"
+        if not papers_gitignore.exists() or args.force:
+            papers_gitignore.write_text("*.pdf\n*.epub\n", encoding="utf-8")
+        if not (papers / "README.md").exists() or args.force:
+            (papers / "README.md").write_text(
+                "# Local Papers\n\nStore local PDF copies here when legally and practically appropriate. PDFs are ignored by git by default.\n",
+                encoding="utf-8",
+            )
 
-    notes = workspace / "notes"
-    notes.mkdir(exist_ok=True)
-    if not (notes / "README.md").exists() or args.force:
-        (notes / "README.md").write_text(
-            "# Reading Notes\n\nUse one Markdown file per important paper, based on assets/templates/reading_note.md.\n",
-            encoding="utf-8",
-        )
+    if "notes" in MODE_DIRS[args.mode]:
+        notes = workspace / "notes"
+        notes.mkdir(exist_ok=True)
+        if not (notes / "README.md").exists() or args.force:
+            notes_readme = notes / "README.md"
+            notes_readme.write_text(
+                "# Reading Notes\n\nUse one Markdown file per important paper, based on assets/templates/reading_note.md.\n",
+                encoding="utf-8",
+            )
 
     if args.venue:
         venue_profile = workspace / "venue_profile.md"
