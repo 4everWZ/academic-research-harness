@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Local contract checks for the academic writing-style skill iteration."""
+"""Local contract checks for concise, paper-prose-oriented skill writing."""
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -36,6 +37,20 @@ def require_absent(errors: list[str], relative: str, needles: list[str]) -> None
             errors.append(f"{relative} should not contain: {needle}")
 
 
+def require_word_limit(errors: list[str], relative: str, limit: int) -> None:
+    text = read(relative)
+    count = len(text.split())
+    if count > limit:
+        errors.append(f"{relative} too long: {count} words > {limit}")
+
+
+def require_low_pressure_terms(errors: list[str], relative: str, limit: int) -> None:
+    text = read(relative)
+    terms = re.findall(r"\b(defensive|rebuttal|objection|attack|confession)\b", text, flags=re.IGNORECASE)
+    if len(terms) > limit:
+        errors.append(f"{relative} has high defensive/rebuttal term density: {len(terms)} > {limit}")
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -46,7 +61,7 @@ def main() -> int:
             "Paper prose is not rebuttal.",
             "Contribution framing",
             "Public prose vs internal ledger",
-            "Limitations and caveats",
+            "Limitations and Scope",
             "Research taste",
             "Do not omit material limitations",
             "load `references/evidence-policy.md`",
@@ -57,7 +72,7 @@ def main() -> int:
         "SKILL.md",
         [
             "references/writing-style.md",
-            "writing style, contribution framing, limitation placement, or defensive prose",
+            "over-defensive prose",
         ],
     )
     require_contains(
@@ -66,7 +81,7 @@ def main() -> int:
         [
             "references/writing-style.md",
             "paper-prose mode",
-            "Do not turn every possible reviewer objection into visible prose.",
+            "reviewer-response style",
         ],
     )
     require_contains(
@@ -74,7 +89,6 @@ def main() -> int:
         "references/evidence-policy.md",
         [
             "Evidence control is not rebuttal prose.",
-            "Keep unsupported claims out of final conclusions without automatically promoting every risk into the manuscript.",
         ],
     )
     require_contains(
@@ -126,8 +140,8 @@ def main() -> int:
         errors,
         "assets/templates/venue_profile.md",
         [
-            "defensive prose",
-            "taste focus",
+            "Mode Emphasis",
+            "focus: central contribution",
         ],
     )
     require_contains(
@@ -135,6 +149,44 @@ def main() -> int:
         "tmp/quick_validate_skill.py",
         ["references/writing-style.md"],
     )
+
+    for relative, limit in {
+        "SKILL.md": 650,
+        "references/literature.md": 1200,
+        "references/repo-to-paper.md": 850,
+        "references/evidence-policy.md": 450,
+        "references/workspace.md": 550,
+        "references/writing-style.md": 700,
+        "assets/templates/venue_profile.md": 260,
+        "USAGE.md": 320,
+    }.items():
+        require_word_limit(errors, relative, limit)
+
+    for relative, limit in {
+        "SKILL.md": 3,
+        "references/repo-to-paper.md": 4,
+        "references/evidence-policy.md": 2,
+        "references/writing-style.md": 4,
+        "assets/templates/venue_profile.md": 0,
+    }.items():
+        require_low_pressure_terms(errors, relative, limit)
+
+    for relative in ["SKILL.md", "references/literature.md", "references/repo-to-paper.md", "references/workspace.md", "references/writing-style.md", "assets/templates/venue_profile.md"]:
+        require_absent(
+            errors,
+            relative,
+            [
+                "Anti-Bloat Rule",
+                "Strict Minimalism Enforcement",
+                "No Ghost Files",
+                "invite hallucinations",
+                "anticipated attacks",
+                "reviewer objections",
+                "confession list",
+                "plausible attack",
+                "Do not turn every possible reviewer objection into visible prose.",
+            ],
+        )
 
     if errors:
         print("Writing-style contract failed:")

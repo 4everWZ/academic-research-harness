@@ -2,7 +2,7 @@
 
 ## Scope
 
-Use this reference for:
+Use this reference for literature-facing work:
 
 - academic literature search;
 - paper collection and indexing;
@@ -12,23 +12,15 @@ Use this reference for:
 - paper source filtering;
 - method comparison and baseline identification.
 
-Do not use this reference to write paper prose unless the user explicitly asks for a section draft.
-
-For workspace creation or validation, load `references/workspace.md` instead of using this file as a workspace guide.
-
-For novelty, SOTA, final claim conversion, or user-confirmation boundaries, load `references/evidence-policy.md`.
+For section drafting, workspace creation, or novelty/SOTA decisions, load the corresponding reference instead of stretching this one.
 
 ## Workspace Readiness
 
-If required output files or folders are missing, load `references/workspace.md` and initialize or evolve only the minimal `literature` or `idea` workspace needed for the task.
-
-Do not create full paper scaffolding for literature search, source indexing, BibTeX maintenance, reading notes, or idea refinement unless the user explicitly asks for full scaffolding.
+If output files are missing, load `references/workspace.md` and create only the minimal `literature` or `idea` workspace needed.
 
 ## Workflow Boundary
 
-Literature collection must not automatically produce `intro.md`, `related_work.md`, or `method.md`.
-
-Default outputs are limited to:
+Literature collection indexes evidence; it does not draft paper sections unless the user asks. Default outputs:
 
 - `paper_index.md`;
 - `references.bib`;
@@ -38,32 +30,28 @@ Default outputs are limited to:
 
 ## Search and Extraction Policy
 
-Use available web search and fetch tools with domain filters where supported (e.g., `site:arxiv.org`, `site:openreview.net`, `site:neurips.cc`) to find specific papers or trends.
+Use available search/fetch tools with domain filters where supported. Do not invent tool names.
 
-Do not invent tool names. If the current environment exposes different browsing tools, adapt to the available tools and prefer primary sources: proceedings pages, OpenReview, arXiv, DOI/publisher pages, official project pages, and official repositories.
-
-Retrieve abstracts, conclusions, BibTeX, code links, and protocol details from primary pages when possible. Use secondary summaries only as search leads, not as evidence.
+Prefer primary sources: proceedings pages, OpenReview, arXiv, DOI/publisher pages, official project pages, and official repositories. Use secondary summaries only as search leads.
 
 ## Source Hierarchy and Filtering Policy
 
-Search, filter, and summarize literature according to this hierarchy. The goal is to avoid low-quality literature, novelty noise, and unsupported claims.
+Search and filter by role in the current paper, not by venue prestige alone.
 
 ### Source Priority vs. Evidence Grade
 
-- **Source Priority** (P1-P3): Objective classification of the publication venue and timing (e.g., P1 for top-tier peer-reviewed, P2 for recent arXiv).
-- **Evidence Grade** (`strong`, `medium`, `weak`, `low_confidence`, `reject`): subjective assessment of how well the source supports the **current project's specific claims**. A top-tier paper can be weak evidence if its method or evaluation settings differ significantly from the current task.
+- **Source Priority**: venue/timing role (`P1_core`, `P2_frontier`, `P3_background`, `downgraded`, `excluded`).
+- **Evidence Grade**: how directly the source supports the current claim (`strong`, `medium`, `weak`, `low_confidence`, `reject`).
 
 ### Priority 1: Core Sources
 
-Prefer formal peer-reviewed papers from the last 1-3 years in top venues and top journals recognized by the specific subfield, plus older foundational or community-standard work when it directly supports the current claim.
+Prefer recent peer-reviewed work from venues recognized by the subfield, plus older foundational or community-standard work when it directly supports the claim.
 
-Match venues to the target subfield instead of mechanically restricting all work to a few generic conferences or journals.
-
-Use `venue_profile.md` to record the relevant venue/outlet assumptions for the current paper workspace. When the target subfield is unclear, keep the search broad and explicitly mark venue assumptions as provisional.
+Use `venue_profile.md` to record subfield and outlet assumptions. If the subfield is unclear, keep assumptions provisional.
 
 ### Non-Exhaustive Venue and Journal Examples
 
-Use these examples only as search-orientation hints. They are not an allowlist, not a ranking rule, and not a substitute for evidence-quality judgment. Match the source to the subfield and current claim.
+Use these only as search-orientation hints, not as an allowlist or ranking rule.
 
 - machine learning: NeurIPS, ICML, ICLR, JMLR, TMLR;
 - computer vision: CVPR, ICCV, ECCV, TPAMI, IJCV, TIP, WACV, BMVC when relevant;
@@ -74,7 +62,7 @@ Use these examples only as search-orientation hints. They are not an allowlist, 
 - data mining / information retrieval: KDD, WWW, SIGIR, WSDM, TKDE when relevant;
 - systems / AI infrastructure: SOSP, OSDI, NSDI, MLSys, EuroSys, ASPLOS when relevant.
 
-Do not mechanically prefer conference papers over journal papers. Conference and journal sources should both be judged by relevance, protocol clarity, baseline strength, reproducibility support, and claim-evidence alignment.
+Judge conference and journal sources by relevance, protocol clarity, baseline strength, reproducibility support, and claim-evidence alignment.
 
 Include older papers when they are:
 
@@ -86,60 +74,34 @@ Include older papers when they are:
 
 ### Priority 2: Frontier Supplement
 
-Use recent arXiv preprints from the last year mainly as frontier signals.
-
-They may help identify:
+Use recent arXiv preprints mainly as frontier signals. They help identify:
 
 - emerging trends;
 - newly forming research directions;
 - recent method families not yet stabilized by peer review;
 - active benchmark or implementation trends.
 
-For arXiv papers, make paper-level transparency the primary criterion. Assess credibility using:
+For arXiv papers, make paper-level transparency the primary criterion:
 
 - public code availability;
 - implementation detail;
 - experiment transparency;
 - strength of baselines;
 - dataset / metric / split clarity;
-- time-normalized community attention;
-- signs of later acceptance or adoption;
+- time-normalized community attention or later acceptance/adoption;
 - author or team track record as a secondary signal.
 
-Recent preprints may support factual existence, method-context, dataset, benchmark, protocol, or implementation-trend claims when the paper itself provides enough detail.
-
-Do not use an arXiv preprint as the sole theoretical basis or sole support for a key novelty, superiority, or final conclusion.
+Recent preprints may support factual existence, method-context, dataset, benchmark, protocol, or implementation-trend claims. Do not use one as the sole support for key novelty, superiority, or final conclusions.
 
 ### Downgrade / Exclusion Risk Signals
 
-Presumptively downgrade or exclude sources with one or more of these risk signals unless the user explicitly asks to audit a specific source and strong, directly relevant evidence exists:
+Downgrade sources when paper-level evidence is weak: unclear protocol, weak baselines, unverifiable claims, no reproducibility support, marketing-like framing, isolated low-quality preprints, or disputed venue/publisher fit in the target subfield.
 
-- publisher, journal, or venue family has a weak or disputed reputation in the target subfield;
-- low-quality isolated preprints;
-- papers without reproducibility support;
-- papers without meaningful citation or community uptake;
-- marketing-like sources;
-- sources with unclear academic consensus;
-- works with weak baselines, unclear metrics, or unverifiable claims.
-
-Publisher or venue family can be a risk signal, but it is not a substitute for paper-level evidence review.
-
-Do not use publisher identity alone as the reason to reject a paper.
-
-These sources must not be used as:
-
-- key evidence;
-- primary theoretical basis;
-- core support for method superiority;
-- main support for novelty claims.
-
-If such a source is mentioned for completeness, explicitly mark it as low-confidence or weak evidence, with limitations stated.
+Publisher identity is a signal, not a verdict. Reject or downgrade because the paper cannot support the claim, and mark any retained weak source as low-confidence or auxiliary.
 
 ### Evidence Quality Overrides Venue Rank
 
-Venue rank alone is not evidence.
-
-A top-venue paper can still be weak evidence if:
+Venue rank alone is not evidence. A top-venue paper can still be weak evidence if:
 
 - the comparison is unfair;
 - the metric or split is unclear;
@@ -158,22 +120,11 @@ A journal paper, older paper, or non-top-venue paper can still be useful if:
 
 ### Final Judgment Criteria
 
-Judge every candidate source by:
-
-1. relevance to the current project;
-2. venue/subfield fit;
-3. method clarity;
-4. baseline strength;
-5. dataset, metric, and split transparency;
-6. code or reproducibility support;
-7. claim-evidence alignment;
-8. role in the current writing task;
-9. risk of novelty noise;
-10. whether it can support a specific claim in `claims.md`.
+For each candidate, record the role it can actually play: baseline, competing method, mechanism support, dataset/metric reference, implementation reference, background, or weak signal. Grade by relevance, protocol clarity, baseline strength, reproducibility support, and claim-evidence alignment.
 
 ## Paper Index Rules
 
-Update `paper_index.md` for every selected source and for evaluated `downgraded` or `excluded` sources that materially affected the search, filtering decision, or paper narrative.
+Update `paper_index.md` for every selected source and for downgraded/excluded sources that materially affected the search or paper narrative.
 
 Use stable citation keys. Prefer:
 
@@ -240,7 +191,7 @@ Each note should record:
 
 ## Idea Refinement Rules
 
-When asked to refine an idea using literature:
+When refining an idea with literature:
 
 1. Summarize the current idea as understood.
 2. Identify directly relevant mechanisms from indexed or newly found papers.
@@ -249,15 +200,9 @@ When asked to refine an idea using literature:
 5. Record expected benefit, expected cost, evidence, risk, and required experiments.
 6. Mark every suggestion as a candidate, not a decision.
 
-Write to `idea_log.md`.
+Update `idea_log.md`.
 
-Do not:
-
-- modify code;
-- choose the final method direction;
-- frame speculative refinements as final contributions;
-- optimize for novelty alone;
-- ignore efficiency, reproducibility, baseline strength, or deployment constraints.
+Keep suggestions as candidates. Do not modify code, choose the final method direction, or turn speculative refinements into final contributions.
 
 ## Literature Search Output Format
 

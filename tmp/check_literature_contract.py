@@ -15,18 +15,17 @@ def main() -> int:
     errors: list[str] = []
 
     required = [
-        "Use available web search and fetch tools",
+        "Use available search/fetch tools",
         "Do not invent tool names",
-        "If required output files or folders are missing",
-        "initialize or evolve only the minimal `literature` or `idea` workspace",
+        "minimal `literature` or `idea` workspace",
         "BibTeX Rules",
         "Do not fabricate BibTeX fields",
-        "`P1_core`: recent core peer-reviewed work or older foundational/standard work",
-        "Publisher or venue family can be a risk signal, but it is not a substitute for paper-level evidence review.",
-        "Do not use publisher identity alone as the reason to reject a paper.",
-        "evaluated `downgraded` or `excluded` sources that materially affected the search",
+        "`P1_core`",
+        "`P2_frontier`",
+        "`P3_background`",
+        "Publisher identity is a signal, not a verdict.",
         "paper-level transparency the primary criterion",
-        "may support factual existence, method-context, dataset, benchmark, protocol, or implementation-trend claims",
+        "factual existence, method-context, dataset, benchmark, protocol, or implementation-trend claims",
         "Files updated or read-only status",
     ]
     forbidden = [
@@ -46,6 +45,9 @@ def main() -> int:
 
     if "Use available browsing/search tools" not in skill_text:
         errors.append("SKILL.md missing generic browsing/search tool guidance")
+
+    if len(text.split()) > 1200:
+        errors.append("references/literature.md should stay under 1200 words")
 
     if errors:
         print("Literature contract failed:")

@@ -10,15 +10,15 @@ Do not load this file for mechanical workspace creation, citation-format checkin
 
 Paper prose is not rebuttal.
 
-Default to claim-first, evidence-calibrated writing: say what the work does, scope the claim to the evidence, and keep reviewer-defense inventory out of prominent paper prose unless it changes interpretation.
+Default to claim-first, evidence-calibrated writing: say what the work does, scope the claim to the evidence, and keep internal risk notes out of prominent paper prose unless they change interpretation.
 
 ## Paper-Prose Defaults
 
 - State implementation-confirmed facts directly.
 - Use hedging only when uncertainty is real and relevant to the claim.
 - Avoid stacked hedges such as "may possibly suggest" or repeated "although" clauses.
-- Do not turn every possible reviewer objection into visible prose.
-- Keep paper sections organized around reader value, not around anticipated attacks.
+- Surface only boundaries that matter for interpretation.
+- Keep paper sections organized around reader value.
 
 ## Contribution framing
 
@@ -39,14 +39,14 @@ Good contribution prose:
 
 Avoid contribution prose that:
 
-- opens with apologies, missing experiments, or reviewer objections;
+- opens with apologies, missing experiments, or edge-case qualifications;
 - says the work is "only", "merely", or "preliminary" unless that is the intended publication category;
-- converts every untested variant into a visible caveat;
-- hides the main contribution behind defensive clauses.
+- converts every untested variant into a visible qualification;
+- hides the main contribution behind caveats.
 
 ## Public prose vs internal ledger
 
-Use `claims.md` as the internal control plane. It may contain risks, unsupported claims, required evidence, and reviewer-sensitive notes.
+Use `claims.md` as the internal ledger. It may contain risks, unsupported claims, required evidence, and notes that do not belong in the manuscript.
 
 The manuscript should contain only the public-facing handling selected for each claim:
 
@@ -62,7 +62,7 @@ Risk tracking is not prose drafting. A real concern can be true and still not be
 
 If a revision changes contribution framing, load `references/evidence-policy.md` and follow its user-confirmation checkpoints.
 
-## Limitations and caveats
+## Limitations and Scope
 
 Limitations should explain how readers should interpret or apply the work.
 
@@ -75,7 +75,7 @@ Include limitations that affect:
 - comparison fairness;
 - deployment or safety interpretation.
 
-Do not use limitations as a confession list. Do not dismiss limitations immediately after admitting them. Explain the source of uncertainty and its reader impact.
+Limitations are for interpretation, not apology. Explain the source of uncertainty and its reader impact.
 
 For paper sections, prefer compact interpretive boundaries:
 
@@ -90,10 +90,10 @@ No paper is complete. Good research writing selects what matters.
 Use taste as a focus filter:
 
 - important problem: the paper addresses a bottleneck, confusion, or useful gap;
-- plausible attack: the authors have a concrete way to make progress;
+- tractable move: the authors have a concrete way to make progress;
 - evidence fit: the central claim is supported by code, data, experiments, or literature;
 - reader value: the paper gives readers a reusable method, result, explanation, or framing;
-- selective context: related work and caveats serve the main claim instead of expanding into a survey.
+- selective context: related work and limitations serve the main claim instead of expanding into a survey.
 
 Ask before broadening the paper into a larger claim, survey, benchmark suite, or general theory.
 

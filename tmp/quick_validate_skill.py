@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]{0,62}[a-z0-9]$")
@@ -42,6 +44,18 @@ REQUIRED_SCRIPTS = [
     "scripts/validate_paper_index.py",
 ]
 
+NON_MUTATING_CONTRACTS = [
+    "tmp/check_tool_name_contract.py",
+    "tmp/check_literature_contract.py",
+    "tmp/check_writing_style_contract.py",
+    "tmp/check_route_contract.py",
+    "tmp/check_dev_artifacts_contract.py",
+]
+
+MUTATING_CONTRACTS = [
+    "tmp/check_script_contracts.py",
+]
+
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
     if not text.startswith("---\n"):
@@ -73,12 +87,31 @@ def require_files(skill_dir: Path, errors: list[str], label: str, paths: list[st
             errors.append(f"Required {label} is not a file: {relative}")
 
 
+def run_contracts(skill_dir: Path, errors: list[str], contracts: list[str]) -> None:
+    for relative in contracts:
+        path = skill_dir / relative
+        if not path.exists():
+            errors.append(f"Missing contract check: {relative}")
+            continue
+        result = subprocess.run(
+            [sys.executable, str(path)],
+            cwd=skill_dir,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+        )
+        if result.returncode != 0:
+            errors.append(f"{relative} failed:\n{result.stdout.strip()}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate a Codex skill folder.")
     parser.add_argument("skill_dir")
+    parser.add_argument("--with-mutating-contracts", action="store_true", help="Also run checks that create temporary workspaces under tmp/")
     args = parser.parse_args()
 
-    skill_dir = Path(args.skill_dir)
+    skill_dir = Path(args.skill_dir).resolve()
     errors: list[str] = []
 
     skill_md = skill_dir / "SKILL.md"
@@ -118,6 +151,9 @@ def main() -> int:
     require_files(skill_dir, errors, "reference file", REQUIRED_REFERENCES)
     require_files(skill_dir, errors, "template file", REQUIRED_TEMPLATES)
     require_files(skill_dir, errors, "script file", REQUIRED_SCRIPTS)
+    run_contracts(skill_dir, errors, NON_MUTATING_CONTRACTS)
+    if args.with_mutating_contracts:
+        run_contracts(skill_dir, errors, MUTATING_CONTRACTS)
 
     if errors:
         print("Skill validation failed:")

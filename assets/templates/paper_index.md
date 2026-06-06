@@ -2,7 +2,7 @@
 
 | Key | Title | Venue/Type | Year | Source Priority | Evidence Grade | Code | Task | Dataset/Metric | Role | Risk | PDF | URL/DOI |
 |---|---|---:|---:|---|---|---|---|---|---|---|---|---|
-| TODO | TODO | TODO | TODO | P1_core/P2_frontier/P3_background/downgraded/excluded | strong/medium/weak/low_confidence/reject | yes/no/unknown | TODO | TODO | baseline/competing_method/supporting_mechanism/background/dataset_metric_reference/implementation_reference/weak_signal | TODO | papers/TODO.pdf | TODO |
+| TODO | TODO | TODO | TODO | TODO | TODO | unknown | TODO | TODO | TODO | TODO | papers/TODO.pdf | TODO |
 
 ## Source Priority Legend
 
@@ -19,3 +19,13 @@
 - `weak`: auxiliary only.
 - `low_confidence`: mention only with explicit caveat.
 - `reject`: do not cite as support.
+
+## Role Legend
+
+- `baseline`
+- `competing_method`
+- `supporting_mechanism`
+- `background`
+- `dataset_metric_reference`
+- `implementation_reference`
+- `weak_signal`

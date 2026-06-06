@@ -2,25 +2,15 @@
 
 ## Scope
 
-Use this reference when a task involves novelty, SOTA, superiority, claim support, result wording, contribution framing, evidence gaps, or user-confirmation boundaries.
+Use this reference for novelty, SOTA, superiority, claim support, result wording, contribution framing, evidence gaps, or user-confirmation boundaries.
 
-Do not load this file for simple workspace initialization or purely mechanical formatting.
+## Evidence Boundaries
 
-## Non-Goals
-
-Do not:
-
-- autonomously conduct research;
-- automatically run experiments;
-- automatically write paper prose after literature search;
-- invent results, ablations, metrics, captions, or conclusions;
-- claim novelty, superiority, or SOTA without explicit evidence;
-- change datasets, splits, metrics, protocols, baselines, or contribution framing without user confirmation;
-- optimize for novelty over evidence quality, reproducibility, and real effect.
+Keep evidence decisions separate from paper ambition. Do not invent results, claim novelty/SOTA/superiority without explicit evidence, or change datasets, splits, metrics, protocols, baselines, or contribution framing without user confirmation.
 
 ## Confirmation Checkpoints
 
-Ask the user before:
+Ask the user before decisions that change research meaning:
 
 - changing contribution framing;
 - declaring novelty or SOTA;
@@ -32,7 +22,7 @@ Ask the user before:
 
 ## Claims
 
-Do not write unsupported academic claims into paper sections without recording them in `claims.md`.
+Record unsupported or nontrivial academic claims in `claims.md` before using them in paper sections.
 
 For every nontrivial claim, distinguish whether support comes from:
 
@@ -45,27 +35,23 @@ For every nontrivial claim, distinguish whether support comes from:
 - assumption;
 - unverified inference.
 
-Claims marked unsupported or speculative must not appear as final conclusions.
+Unsupported or speculative claims stay out of final conclusions.
 
 ## Evidence vs Prose Tone
 
-Evidence control is not rebuttal prose.
-
-Keep unsupported claims out of final conclusions without automatically promoting every risk into the manuscript.
-
-Use the claim ledger to track risks, missing evidence, and reviewer-sensitive issues. In public prose, expose only the handling that improves reader interpretation: direct statement, compact scope boundary, limitations placement, or omission from public prose.
+Evidence control is not rebuttal prose. Use `claims.md` to track risks and missing evidence; expose only boundaries that help readers interpret the work.
 
 ## Results
 
-Do not write experimental results unless the user provides numbers or verified logs.
+Report experimental results only from user-provided numbers or verified logs.
 
 **Verified Log Detection:**
 Search for files that provide direct, timestamped, or serial evidence of execution. Look for:
 - Standard log folders: `logs/`, `runs/`, `checkpoints/`, `results/`.
 - File formats: `.log`, `.jsonl` (e.g., from `training_log.jsonl`), `.yaml` (config/summary), `.csv` (metric dumps).
-- Tool-specific outputs: `wandb/`, `tensorboard/`, or Hydra output directories.
+- Experiment-tracking output directories from the current project.
 
-For results, you may only:
+Without verified numbers, limit results work to:
 
 - create table structures;
 - define metric columns;

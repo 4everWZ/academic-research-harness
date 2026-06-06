@@ -8,7 +8,7 @@ For workspace creation or validation, load `references/workspace.md`.
 
 For novelty, SOTA, superiority, result interpretation, or contribution-framing decisions, load `references/evidence-policy.md`.
 
-For writing style, contribution framing, limitation placement, or defensive-prose decisions, load `references/writing-style.md`.
+For tone, contribution framing, limitation placement, or over-defensive prose, load `references/writing-style.md`.
 
 Supported target files:
 
@@ -32,7 +32,7 @@ Before writing, distinguish:
 - assumption;
 - unverified.
 
-**Log Probing:** Use available local search and directory-listing tools to find evidence in common experiment folders (`logs/`, `runs/`, `results/`). Verify that logs match the current version of the code and config. Do not invent tool names.
+**Log Probing:** Use available local tools to inspect common experiment folders (`logs/`, `runs/`, `results/`). Verify that logs match the current code/config. Do not invent tool names.
 
 Do not invent tensor shapes, modules, equations, training settings, datasets, metrics, losses, or results.
 
@@ -44,23 +44,22 @@ Prioritize this order:
 2. Explain the logical mechanism.
 3. Connect the mechanism to the problem or design goal.
 4. Add literature support only when directly relevant.
-5. Write clear Markdown prose.
+5. Draft clear Markdown prose.
 
 Do not start from a venue template. The human decides final paper composition.
 
 ## Paper-Prose Mode
 
-When drafting manuscript text, default to paper-prose mode rather than rebuttal mode.
+When drafting manuscript text, use paper-prose mode rather than rebuttal mode.
 
 In paper-prose mode:
 
 - state what the implementation does;
 - connect the mechanism to the paper's problem;
 - scope claims to available evidence;
-- keep internal reviewer-risk notes in `claims.md`;
-- Do not turn every possible reviewer objection into visible prose.
+- keep internal reviewer-risk notes in `claims.md`.
 
-Use rebuttal-style defensive writing only when the user explicitly asks for reviewer response, rebuttal, response letter, or point-by-point revision text.
+Use reviewer-response style only for rebuttals, response letters, or point-by-point revision text.
 
 ## Outlet-Aware Writing
 
@@ -72,7 +71,7 @@ Use only broad outlet modes, not concrete venue-specific prose templates.
 
 ### Conference Mode
 
-When `venue_profile.md` indicates `conference`, write with:
+When `venue_profile.md` indicates `conference`, emphasize:
 
 - sharper motivation;
 - early contribution framing;
@@ -80,7 +79,6 @@ When `venue_profile.md` indicates `conference`, write with:
 - concise method explanation;
 - focused experiment setup and key ablation placeholders;
 - neutral, compact limitation statements.
-- low defensive-prose density.
 
 ### Journal Mode
 
@@ -91,13 +89,13 @@ When `venue_profile.md` indicates `journal`, allow:
 - more detailed method explanation;
 - richer experiment setup and ablation planning;
 - more explicit limitations, failure cases, and reproducibility notes.
-- more space for interpretive boundaries without converting the paper into rebuttal prose.
+- more space for interpretive boundaries.
 
 ### Other Outlet Modes
 
 For workshop, thesis, technical report, undecided, or other modes, use `venue_profile.md`'s expected audience and style notes. If those notes are missing, write neutral academic Markdown and state that the outlet style is unresolved.
 
-The mode changes emphasis and depth only. It must not change evidence standards, invent results, or alter the user's scientific claims.
+The mode changes emphasis and depth only; evidence standards stay fixed.
 
 ## Method Section Rules
 
@@ -114,7 +112,7 @@ A useful method draft may include:
 - relation to prior mechanisms;
 - limitations or open implementation questions.
 
-Add claim entries to `claims.md` for nontrivial statements, especially:
+Add `claims.md` entries for nontrivial statements about:
 
 - performance expectation;
 - efficiency expectation;

@@ -4,7 +4,7 @@
 
 Use this reference for workspace creation, validation, mode selection, venue/outlet suffix handling, and script usage.
 
-Do not load task-specific references unless the user asks for the corresponding task.
+Load task-specific references only for the active task.
 
 ## Flat Workspace Rule
 
@@ -14,7 +14,7 @@ Use one flat workspace under `docs/` for each paper-like project:
 docs/<paper_slug>/
 ```
 
-Create files progressively by task route. Do not create full paper-section scaffolding for literature search, idea refinement, citation audit, or handoff-only work.
+Create files progressively by task route. Literature search, idea refinement, citation audit, and handoff-only work use their route files, not full paper-section scaffolding.
 
 ## Workspace Modes
 
@@ -28,7 +28,7 @@ Create files progressively by task route. Do not create full paper-section scaff
 | `handoff` | paper-state handoff only | `README.md`, `venue_profile.md`, `handoff.md` |
 | `full` | user explicitly requests complete paper workspace | all route-state files and paper-section files |
 
-**Note:** "Workspace Mode" (above) defines the current task's scope and file structure. "Outlet Mode" (defined in `venue_profile.md`) defines the target writing style (e.g., `conference`, `journal`). Do not confuse the two.
+`Workspace Mode` defines files. `Outlet Mode` in `venue_profile.md` defines writing emphasis.
 
 ## Venue / Outlet Handling
 
@@ -38,7 +38,7 @@ After the target venue or outlet is confirmed, the workspace folder may use a do
 docs/<paper_slug>__<venue_slug>/
 ```
 
-**Safety Rule:** You MUST ask the user before renaming a workspace folder. After renaming, immediately update all internal references and subsequent tool call paths to use the new directory name.
+Ask before renaming a workspace folder. After renaming, update internal references and subsequent paths.
 
 Use `venue_profile.md` to record venue/outlet assumptions and the explicit writing mode: `conference`, `journal`, or another stated outlet type.
 
@@ -51,12 +51,12 @@ When the suffix form is present, treat the suffix as an explicit outlet signal. 
 - `claims.md` when present: claim ledger linking draft claims to literature, code, experiments, user decisions, or explicit assumptions.
 - `idea_log.md` when present: literature-driven idea refinement and rejected options.
 
-## Strict Minimalism Enforcement
+## Progressive Growth
 
 When initializing or evolving a workspace:
-1. **Minimal Necessary Set:** Select or combine `--mode` settings to match the **active tasks**. If a task is hybrid, you may manually add specific files required for that work.
-2. **Incremental Growth:** Treat the workspace as an evolving structure. Only add files (e.g., `method.md`, `experiments.md`) when you have verified evidence, code, or intent to actively draft that specific section.
-3. **No Ghost Files:** Do not leave empty template files for sections that are not part of the current work scope. Unused placeholders consume context and invite hallucinations.
+1. Select the mode that matches the active task.
+2. For hybrid tasks, add only the specific extra files needed.
+3. Add section files when there is evidence, code, or intent to draft that section.
 
 ## Scripts
 
@@ -78,4 +78,4 @@ python scripts/validate_workspace.py docs/<paper_slug> --mode literature --stric
 python scripts/validate_paper_index.py docs/<paper_slug>/paper_index.md
 ```
 
-Do not add or rely on scripts that scrape Google Scholar, automatically summarize PDFs, or automatically write related work.
+Runtime scripts should support workspace creation and validation, not autonomous paper writing or web scraping.

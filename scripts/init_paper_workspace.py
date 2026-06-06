@@ -80,7 +80,7 @@ def repo_root_from_script() -> Path:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Initialize a academic-research paper workspace.")
+    parser = argparse.ArgumentParser(description="Initialize an academic research paper workspace.")
     parser.add_argument("workspace", help="Target workspace, e.g. docs/example_paper")
     parser.add_argument(
         "--mode",

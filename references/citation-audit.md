@@ -2,23 +2,19 @@
 
 ## Scope
 
-Use this reference when checking whether citations support claims, whether novelty is overclaimed, whether related work is distorted, or whether paper sections contain unsupported statements.
+Use this reference to check whether citations support the exact claims made in a paper section.
 
 For workspace creation or validation, load `references/workspace.md`.
 
-For global result, novelty, SOTA, and confirmation boundaries, load `references/evidence-policy.md` when the audit needs the shared policy.
-
-For source-quality, downgraded-source, arXiv-only, or venue-prestige checks, load only the necessary evidence files: `paper_index.md`, `references.bib`, relevant reading notes, and exact cited sources. Load `references/literature.md` only when source-priority or evidence-grade rules are needed.
+For novelty, SOTA, result wording, or source-quality policy, load only the needed evidence files and the relevant shared reference.
 
 ## Core Principle
 
-A citation is valid only if it supports the exact claim being made.
-
-Do not treat a related paper as support for a stronger, broader, or different claim.
+A citation is valid only if it supports the claim as written. Related work is not support for a stronger or broader claim.
 
 ## Claim Ledger
 
-Every nontrivial academic claim should be recorded in `claims.md`.
+Record nontrivial academic claims in `claims.md`.
 
 Claim types:
 
@@ -36,30 +32,27 @@ Evidence status:
 - `unsupported`;
 - `speculative`.
 
-Claims marked `unsupported` or `speculative` must not appear as final conclusions.
+Unsupported or speculative claims stay out of final conclusions.
 
 ## Audit Procedure
 
-1. Read the target section.
+1. Inspect the target section.
 2. Extract nontrivial claims.
 3. Match each claim to `claims.md` when possible.
-4. Check whether cited sources directly support the claim.
-5. Check source quality and source role when the claim depends on literature support.
-6. Downgrade overbroad claims.
-7. Mark missing evidence.
-8. Suggest precise revisions.
+4. Check direct citation support and source role.
+5. Mark unsupported, overbroad, or missing-evidence claims.
+6. Suggest precise revisions.
 
 ## Common Failure Modes
 
-Flag these cases:
+Flag material mismatches:
 
 - citation supports the general topic but not the exact claim;
 - citation is based only on the abstract;
 - novelty claim ignores recent strong work;
 - SOTA claim does not match dataset, split, metric, or protocol;
 - method superiority is claimed without user-provided results or verified logs;
-- weak or downgraded sources are used as key evidence;
-- arXiv is used as the only support for a central theoretical claim;
+- weak sources are used as key evidence;
 - venue prestige is used as evidence quality.
 
 ## Strong Revision Pattern

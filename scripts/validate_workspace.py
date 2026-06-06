@@ -59,10 +59,10 @@ MODE_DIRS = {
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Validate a academic-research workspace.")
+    parser = argparse.ArgumentParser(description="Validate an academic research workspace.")
     parser.add_argument("workspace")
     parser.add_argument("--mode", default="minimal", choices=sorted(MODE_FILES))
-    parser.add_argument("--strict", action="store_true", help="Reject extra known template files or route directories for the selected mode")
+    parser.add_argument("--strict", action="store_true", help="Reject extra template files or directories for the selected mode")
     args = parser.parse_args()
 
     workspace = Path(args.workspace)
@@ -98,7 +98,7 @@ def main() -> int:
         for name in {"papers", "notes"}:
             path = workspace / name
             if name not in expected_dirs and path.exists():
-                errors.append(f"Unexpected route directory for mode {args.mode}: {name}")
+                errors.append(f"Unexpected directory for mode {args.mode}: {name}")
 
     if errors:
         print("Workspace validation failed:")

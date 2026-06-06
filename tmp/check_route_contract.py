@@ -15,7 +15,7 @@ def main() -> int:
     errors: list[str] = []
     checks = {
         "SKILL.md": [
-            "paper-section scaffold",
+            "complete scaffolding",
             "notes/<citation_key>.md",
             "papers/*.pdf",
             "`paper_index.md`, `references.bib`, relevant notes/sources",
@@ -32,14 +32,13 @@ def main() -> int:
             "same dataset, split, metric, and protocol",
         ],
         "references/citation-audit.md": [
-            "paper_index.md",
-            "references.bib",
-            "relevant reading notes",
+            "needed evidence files",
+            "relevant shared reference",
             "user-provided results or verified logs",
         ],
         "agents/openai.yaml": [
-            "workspace init/validation",
-            "results placeholders",
+            "workspace setup",
+            "literature indexing",
             "writing-style revision",
         ],
         "USAGE.md": [

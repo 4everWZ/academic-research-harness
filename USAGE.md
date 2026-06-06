@@ -1,93 +1,71 @@
 # Usage Examples
 
+All examples assume `academic-research-harness` is explicitly requested. Load the listed reference, initialize the matching workspace mode only if needed, and keep outputs to the named files.
+
 ## Initialize only
 
 ```text
-Use academic-research-harness.
-Load only references/workspace.md.
+Load references/workspace.md.
 Create docs/<paper_slug> as a minimal flat paper workspace.
-Do not search literature.
-Do not write paper content.
 ```
 
 ## Initialize with confirmed outlet mode
 
 ```text
-Use academic-research-harness.
 Load only references/workspace.md unless writing starts.
 Create docs/<paper_slug>__<venue_slug> as a repo-to-paper or full flat paper workspace.
 Set venue_profile.md outlet mode to conference or journal.
-Do not add concrete venue-specific writing templates.
 ```
 
 ## Literature search only
 
 ```text
-Use academic-research-harness literature mode.
-Load references/literature.md only.
-Initialize the workspace with --mode literature if needed.
+Load references/literature.md.
 Search high-quality deep learning papers related to [topic].
 Update only paper_index.md, references.bib, and reading notes.
-Do not write introduction or related work.
 Rank sources by evidence quality, not venue alone.
 ```
 
 ## Idea refinement
 
 ```text
-Use academic-research-harness idea refinement mode.
-Load references/literature.md only.
-Initialize the workspace with --mode idea if needed.
+Load references/literature.md.
 Current idea: [paste idea].
 Use indexed papers to suggest refinements.
-Do not modify code.
-Do not optimize for novelty alone.
-Write only to idea_log.md.
+Update only idea_log.md.
 ```
 
 ## Repo to method section
 
 ```text
-Use academic-research-harness repo-to-paper mode.
 Load references/repo-to-paper.md, plus references/evidence-policy.md only if claim/result/confirmation boundaries arise.
-Initialize the workspace with --mode repo-to-paper if needed.
 Convert the implemented module into method.md.
 Inspect code/config first.
-Read venue_profile.md and state whether conference, journal, or neutral mode is being used.
-Do not invent tensor shapes.
-Do not write results.
-Do not claim novelty.
+Inspect venue_profile.md and state whether conference, journal, or neutral mode is being used.
 Update claims.md for nontrivial claims.
 ```
 
 ## Results placeholders only
 
 ```text
-Use academic-research-harness.
 Load references/repo-to-paper.md.
 Initialize or evolve the workspace with --mode repo-to-paper only if results_tables.md is missing.
 Create results_tables.md placeholders for my main comparison and ablation study.
-Do not fill values.
 Use TODO for all missing metrics.
 ```
 
 ## Citation audit
 
 ```text
-Use academic-research-harness citation-audit mode.
-Load references/citation-audit.md only.
-Initialize the workspace with --mode citation-audit if needed.
+Load references/citation-audit.md.
 Check whether related_work.md citations support the claims.
 Update claims.md with unsupported or partially supported claims.
-Do not rewrite the whole section unless necessary.
 ```
 
 ## Paper handoff
 
 ```text
-Use academic-research-harness.
-Load references/handoff.md only.
-Initialize the workspace with --mode handoff if needed.
+Load references/handoff.md.
 Prepare paper handoff because the method direction changed.
 Classify this as Tier A/B/C and update handoff.md only if needed.
 ```

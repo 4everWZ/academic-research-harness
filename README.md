@@ -33,17 +33,13 @@ academic-research-harness/
 
 `SKILL.md` is at the skill folder root and has YAML frontmatter with only `name` and `description`.
 
-## What It Does
+## Capabilities
 
-- Routes each task to the smallest needed reference file.
-- Search and curate literature.
-- Maintain `paper_index.md`.
-- Maintain `references.bib`.
-- Maintain `claims.md`.
-- Refine ideas using literature without changing code automatically.
-- Convert implemented code/config/design into Markdown paper sections.
-- Audit claims and citations.
-- Prepare Tier A/B paper handoff.
+- Route each task to the smallest needed reference file.
+- Search and index literature, BibTeX, and reading notes.
+- Track paper claims in `claims.md`.
+- Convert code/config/design into Markdown paper sections.
+- Audit claims, citations, writing style, and handoff state.
 
 ## Progressive Disclosure
 
@@ -58,14 +54,12 @@ academic-research-harness/
 
 Load only the reference needed for the current task.
 
-## What It Does Not Do
+## Boundaries
 
-- Does not auto-run research.
-- Does not always activate.
-- Does not write paper sections after literature search unless explicitly requested.
-- Does not invent results.
-- Does not claim novelty/SOTA without evidence.
-- Does not use venue rank alone as evidence quality.
+- Activate only for explicit paper-writing or literature-grounded work.
+- Draft paper sections only when requested.
+- Report results only from user-provided numbers or verified logs.
+- Treat venue rank as context, not evidence quality.
 
 ## Initialize a Workspace
 
@@ -93,7 +87,7 @@ After target venue/outlet is confirmed:
 python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper --venue "Target Venue" --outlet-mode conference --suffix-venue
 ```
 
-`repo-to-paper` and `full` create:
+`repo-to-paper` creates the paper-section scaffold:
 
 ```text
 docs/example_paper__target-venue/
@@ -102,7 +96,6 @@ docs/example_paper__target-venue/
   paper_index.md
   references.bib
   claims.md
-  idea_log.md
   intro.md
   related_work.md
   method.md
@@ -110,10 +103,11 @@ docs/example_paper__target-venue/
   results_tables.md
   limitations.md
   figures.md
-  handoff.md
   papers/
   notes/
 ```
+
+`full` also includes route-state files such as `idea_log.md` and `handoff.md`.
 
 ## Outlet-Aware Drafting
 
