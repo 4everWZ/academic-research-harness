@@ -1,6 +1,6 @@
 ---
 name: academic-research-harness
-description: Use when explicitly requested for paper-writing or literature-grounded work: paper search/indexing, BibTeX/reading notes, idea refinement, repo-to-paper Markdown drafting, claim/citation audits, writing-style revision, or paper handoff.
+description: "Use when explicitly requested for paper-writing or literature-grounded work: paper search/indexing, BibTeX/reading notes, idea refinement, repo-to-paper Markdown drafting, claim/citation audits, writing-style revision, or paper handoff."
 ---
 
 # Academic Research Harness

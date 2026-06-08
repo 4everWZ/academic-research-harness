@@ -45,6 +45,7 @@ REQUIRED_SCRIPTS = [
 ]
 
 NON_MUTATING_CONTRACTS = [
+    "tmp/check_skill_frontmatter_yaml_contract.py",
     "tmp/check_tool_name_contract.py",
     "tmp/check_literature_contract.py",
     "tmp/check_writing_style_contract.py",
@@ -73,7 +74,11 @@ def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
             raise ValueError(f"Invalid frontmatter line: {line}")
         key, value = line.split(":", 1)
         key = key.strip()
-        value = value.strip().strip('"').strip("'")
+        raw_value = value.strip()
+        is_quoted = len(raw_value) >= 2 and raw_value[0] == raw_value[-1] and raw_value[0] in {'"', "'"}
+        if raw_value and not is_quoted and ": " in raw_value:
+            raise ValueError(f"Frontmatter value for {key} contains ': ' and must be quoted")
+        value = raw_value.strip('"').strip("'")
         data[key] = value
     return data, body
 
