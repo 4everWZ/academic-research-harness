@@ -24,7 +24,7 @@ Create files progressively by task route. Literature search, idea refinement, ci
 | `literature` | literature search, paper indexing, BibTeX, reading notes | `README.md`, `venue_profile.md`, `paper_index.md`, `references.bib`, `papers/`, `notes/` |
 | `idea` | literature-grounded idea refinement | literature files plus `idea_log.md` |
 | `citation-audit` | claim/citation checking without section drafting | `README.md`, `venue_profile.md`, `claims.md` |
-| `repo-to-paper` | converting repo/code/config into paper sections | paper-section scaffold: `README.md`, `venue_profile.md`, `paper_index.md`, `references.bib`, `claims.md`, section files, `figures.md`, `papers/`, `notes/` |
+| `repo-to-paper` | converting repo/code/config into requested paper sections | base files plus `--section <name>` files |
 | `handoff` | paper-state handoff only | `README.md`, `venue_profile.md`, `handoff.md` |
 | `full` | user explicitly requests complete paper workspace | all route-state files and paper-section files |
 
@@ -56,7 +56,7 @@ When the suffix form is present, treat the suffix as an explicit outlet signal. 
 When initializing or evolving a workspace:
 1. Select the mode that matches the active task.
 2. For hybrid tasks, add only the specific extra files needed.
-3. Add section files when there is evidence, code, or intent to draft that section.
+3. Add section files with `--section <name>` only when there is evidence, code, or intent to draft that section.
 
 ## Scripts
 
@@ -66,7 +66,7 @@ Writes files:
 
 ```bash
 python scripts/init_paper_workspace.py docs/<paper_slug> --mode literature
-python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper
+python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper --section method
 python scripts/init_paper_workspace.py docs/<paper_slug> --mode full
 ```
 
@@ -75,6 +75,7 @@ Read-only validation:
 ```bash
 python scripts/validate_workspace.py docs/<paper_slug> --mode literature
 python scripts/validate_workspace.py docs/<paper_slug> --mode literature --strict
+python scripts/validate_workspace.py docs/<paper_slug> --mode repo-to-paper --section method --strict
 python scripts/validate_paper_index.py docs/<paper_slug>/paper_index.md
 ```
 

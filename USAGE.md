@@ -40,6 +40,7 @@ Update only idea_log.md.
 
 ```text
 Load references/repo-to-paper.md, plus references/evidence-policy.md only if claim/result/confirmation boundaries arise.
+Initialize or evolve the workspace with --mode repo-to-paper --section method if method.md is missing.
 Convert the implemented module into method.md.
 Inspect code/config first.
 Inspect venue_profile.md and state whether conference, journal, or neutral mode is being used.
@@ -50,7 +51,7 @@ Update claims.md for nontrivial claims.
 
 ```text
 Load references/repo-to-paper.md.
-Initialize or evolve the workspace with --mode repo-to-paper only if results_tables.md is missing.
+Initialize or evolve the workspace with --mode repo-to-paper --section results_tables only if results_tables.md is missing.
 Create results_tables.md placeholders for my main comparison and ablation study.
 Use TODO for all missing metrics.
 ```

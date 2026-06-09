@@ -15,7 +15,7 @@ def main() -> int:
     errors: list[str] = []
     checks = {
         "SKILL.md": [
-            "complete scaffolding",
+            "repo-to-paper --section <target>",
             "notes/<citation_key>.md",
             "papers/*.pdf",
             "references/source-quality.md",
@@ -23,11 +23,12 @@ def main() -> int:
             "contribution framing",
         ],
         "references/workspace.md": [
-            "paper-section scaffold",
+            "--section <name>",
             "--strict",
             "all route-state files and paper-section files",
         ],
         "references/repo-to-paper.md": [
+            "--section method",
             "user provides numbers or you verify matching logs",
             "Other Outlet Modes",
             "same dataset, split, metric, and protocol",
@@ -45,7 +46,7 @@ def main() -> int:
         ],
         "USAGE.md": [
             "Load references/repo-to-paper.md.",
-            "results_tables.md is missing",
+            "--section results_tables",
         ],
         "README.md": [
             "package-maintainer check",

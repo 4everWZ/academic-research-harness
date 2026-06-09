@@ -29,8 +29,8 @@ Create workspaces progressively. Use `full` only when the user asks for complete
 | Search, collect, index, download, classify, or summarize papers | `references/literature.md` | `literature` | `paper_index.md`, `references.bib`, `notes/<citation_key>.md`, and `papers/*.pdf` only when writing/downloading them |
 | Judge source freshness, venue priority, arXiv credibility, or downgrade/exclusion | `references/source-quality.md` | `literature` or `citation-audit` | `paper_index.md` or audited claim evidence only |
 | Refine an idea using papers | `references/literature.md` | `idea` | `idea_log.md` only when writing it |
-| Convert repo/code/config/logged setup into paper sections | `references/repo-to-paper.md` | `repo-to-paper` | only the requested section template plus `claims.md` when adding claims |
-| Create result tables or placeholders | `references/repo-to-paper.md` | `repo-to-paper` | `results_tables.md` |
+| Convert repo/code/config/logged setup into paper sections | `references/repo-to-paper.md` | `repo-to-paper --section <target>` | only the requested section template plus `claims.md` when adding claims |
+| Create result tables or placeholders | `references/repo-to-paper.md` | `repo-to-paper --section results_tables` | `results_tables.md` |
 | Draft or revise writing style, contribution framing, limitation placement, or over-defensive prose | `references/writing-style.md` | existing mode | target section plus `claims.md` when claim handling changes |
 | Audit citations, claims, novelty, related work, or SOTA language | `references/citation-audit.md` | `citation-audit` | `claims.md`, audited section, and only the needed evidence files (`paper_index.md`, `references.bib`, relevant notes/sources) |
 | Prepare paper-state handoff | `references/handoff.md` | `handoff` | `handoff.md` only |

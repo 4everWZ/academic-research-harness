@@ -30,12 +30,15 @@ FULL_TEMPLATES = [
     "handoff.md",
 ]
 
-PAPER_SECTION_TEMPLATES = [
+REPO_TO_PAPER_BASE_TEMPLATES = [
     "README.md",
     "venue_profile.md",
     "paper_index.md",
     "references.bib",
     "claims.md",
+]
+
+PAPER_SECTION_TEMPLATES = [
     "intro.md",
     "related_work.md",
     "method.md",
@@ -50,7 +53,7 @@ MODE_TEMPLATES = {
     "literature": ["README.md", "venue_profile.md", "paper_index.md", "references.bib"],
     "idea": ["README.md", "venue_profile.md", "paper_index.md", "references.bib", "idea_log.md"],
     "citation-audit": ["README.md", "venue_profile.md", "claims.md"],
-    "repo-to-paper": PAPER_SECTION_TEMPLATES,
+    "repo-to-paper": REPO_TO_PAPER_BASE_TEMPLATES,
     "handoff": ["README.md", "venue_profile.md", "handoff.md"],
     "full": FULL_TEMPLATES,
 }
@@ -79,6 +82,22 @@ def repo_root_from_script() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
+def parse_sections(raw_sections: list[str]) -> list[str]:
+    section_map = {Path(name).stem: name for name in PAPER_SECTION_TEMPLATES}
+    selected: list[str] = []
+    for raw in raw_sections:
+        for item in raw.split(","):
+            key = item.strip().removesuffix(".md")
+            if not key:
+                continue
+            if key not in section_map:
+                raise ValueError(f"unknown section: {item.strip()}")
+            filename = section_map[key]
+            if filename not in selected:
+                selected.append(filename)
+    return selected
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Initialize an academic research paper workspace.")
     parser.add_argument("workspace", help="Target workspace, e.g. docs/example_paper")
@@ -96,6 +115,12 @@ def main() -> int:
         help="Optional broad outlet mode to record in venue_profile.md",
     )
     parser.add_argument(
+        "--section",
+        action="append",
+        default=[],
+        help="Section file to create for repo-to-paper mode, e.g. method or results_tables. Repeat or comma-separate.",
+    )
+    parser.add_argument(
         "--suffix-venue",
         action="store_true",
         help="Append __<venue> to workspace folder name. Use only after target venue/outlet is confirmed.",
@@ -106,6 +131,12 @@ def main() -> int:
     skill_root = repo_root_from_script()
     templates_dir = skill_root / "assets" / "templates"
     workspace = Path(args.workspace)
+    try:
+        selected_sections = parse_sections(args.section)
+    except ValueError as exc:
+        parser.error(str(exc))
+    if selected_sections and args.mode != "repo-to-paper":
+        parser.error("--section is only valid with --mode repo-to-paper")
 
     if args.suffix_venue:
         if not args.venue:
@@ -116,7 +147,11 @@ def main() -> int:
 
     workspace.mkdir(parents=True, exist_ok=True)
 
-    for name in MODE_TEMPLATES[args.mode]:
+    template_names = [*MODE_TEMPLATES[args.mode]]
+    if args.mode == "repo-to-paper":
+        template_names.extend(selected_sections)
+
+    for name in template_names:
         src = templates_dir / name
         dst = workspace / name
         if not src.exists():

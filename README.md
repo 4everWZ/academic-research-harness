@@ -75,20 +75,20 @@ python scripts/init_paper_workspace.py docs/example_paper --mode minimal
 python scripts/init_paper_workspace.py docs/example_paper --mode literature
 python scripts/init_paper_workspace.py docs/example_paper --mode idea
 python scripts/init_paper_workspace.py docs/example_paper --mode citation-audit
-python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper
+python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper --section method
 python scripts/init_paper_workspace.py docs/example_paper --mode handoff
 python scripts/init_paper_workspace.py docs/example_paper --mode full
 ```
 
-Use `repo-to-paper` or `full` only when full paper-section scaffolding is needed.
+Use `repo-to-paper --section <name>` for the section being drafted. Use `full` only when complete scaffolding is explicitly needed.
 
 After target venue/outlet is confirmed:
 
 ```bash
-python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper --venue "Target Venue" --outlet-mode conference --suffix-venue
+python scripts/init_paper_workspace.py docs/example_paper --mode repo-to-paper --section method --venue "Target Venue" --outlet-mode conference --suffix-venue
 ```
 
-`repo-to-paper` creates the paper-section scaffold:
+`repo-to-paper --section method` creates only the base files and `method.md`:
 
 ```text
 docs/example_paper__target-venue/
@@ -97,18 +97,12 @@ docs/example_paper__target-venue/
   paper_index.md
   references.bib
   claims.md
-  intro.md
-  related_work.md
   method.md
-  experiments.md
-  results_tables.md
-  limitations.md
-  figures.md
   papers/
   notes/
 ```
 
-`full` also includes route-state files such as `idea_log.md` and `handoff.md`.
+`full` includes all route-state and paper-section files.
 
 ## Outlet-Aware Drafting
 

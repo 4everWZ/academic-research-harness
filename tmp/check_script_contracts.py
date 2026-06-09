@@ -44,10 +44,20 @@ def main() -> int:
         repo_ws = WORK / "repo_to_paper"
         result = run(["scripts/init_paper_workspace.py", str(repo_ws), "--mode", "repo-to-paper"])
         require(result.returncode == 0, errors, f"repo-to-paper init failed: {result.stdout}")
-        require((repo_ws / "method.md").exists(), errors, "repo-to-paper missing method.md")
         require((repo_ws / "claims.md").exists(), errors, "repo-to-paper missing claims.md")
+        require(not (repo_ws / "method.md").exists(), errors, "repo-to-paper default created method.md")
+        require(not (repo_ws / "intro.md").exists(), errors, "repo-to-paper default created intro.md")
         require(not (repo_ws / "idea_log.md").exists(), errors, "repo-to-paper created unrelated idea_log.md")
         require(not (repo_ws / "handoff.md").exists(), errors, "repo-to-paper created unrelated handoff.md")
+
+        method_ws = WORK / "repo_to_method"
+        result = run(["scripts/init_paper_workspace.py", str(method_ws), "--mode", "repo-to-paper", "--section", "method"])
+        require(result.returncode == 0, errors, f"repo-to-paper section init failed: {result.stdout}")
+        require((method_ws / "method.md").exists(), errors, "--section method did not create method.md")
+        require((method_ws / "claims.md").exists(), errors, "--section method missing claims.md")
+        require(not (method_ws / "intro.md").exists(), errors, "--section method created unrelated intro.md")
+        result = run(["scripts/validate_workspace.py", str(method_ws), "--mode", "repo-to-paper", "--section", "method", "--strict"])
+        require(result.returncode == 0, errors, f"strict repo-to-paper section validation failed: {result.stdout}")
 
         full_ws = WORK / "full"
         result = run(["scripts/init_paper_workspace.py", str(full_ws), "--mode", "full"])

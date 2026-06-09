@@ -20,6 +20,14 @@ Supported target files:
 - `limitations.md`;
 - `figures.md`.
 
+When initializing a repo-to-paper workspace, create only the needed section file:
+
+```bash
+python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper --section method
+```
+
+Use `full` only when the user explicitly wants complete paper scaffolding.
+
 ## Evidence Sources
 
 Before writing, distinguish:
