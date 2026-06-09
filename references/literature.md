@@ -34,6 +34,12 @@ Use available search/fetch tools with domain filters where supported. Do not inv
 
 Prefer primary sources: proceedings pages, OpenReview, arXiv, DOI/publisher pages, official project pages, and official repositories. Use secondary summaries only as search leads.
 
+## Freshness Weighting
+
+Default search weight favors the last 3-5 years, and the last 1-2 years for fast-moving areas such as LLMs, multimodal models, and active benchmarks.
+
+Older sources need a role: foundational method, standard baseline, dataset/metric/protocol reference, survey context, or direct support for a specific claim. Do not include old papers merely because they are topically related.
+
 ## Source Hierarchy and Filtering Policy
 
 Search and filter by role in the current paper, not by venue prestige alone.
