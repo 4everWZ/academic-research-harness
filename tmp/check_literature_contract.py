@@ -6,11 +6,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "references" / "literature.md"
+CITATION_AUDIT = ROOT / "references" / "citation-audit.md"
+BIB_TEMPLATE = ROOT / "assets" / "templates" / "references.bib"
 SKILL = ROOT / "SKILL.md"
 
 
 def main() -> int:
     text = TARGET.read_text(encoding="utf-8")
+    audit_text = CITATION_AUDIT.read_text(encoding="utf-8")
+    bib_template_text = BIB_TEMPLATE.read_text(encoding="utf-8")
     skill_text = SKILL.read_text(encoding="utf-8")
     errors: list[str] = []
 
@@ -20,6 +24,9 @@ def main() -> int:
         "minimal `literature` or `idea` workspace",
         "references/source-quality.md",
         "BibTeX Rules",
+        "Formal-version precedence is a hard check",
+        "Before adding an arXiv-only BibTeX entry",
+        "use the formal proceedings or journal BibTeX as the primary entry",
         "Do not fabricate BibTeX fields",
         "Files updated or read-only status",
     ]
@@ -32,6 +39,12 @@ def main() -> int:
     for needle in required:
         if needle not in text:
             errors.append(f"Missing: {needle}")
+    for needle in ["arXiv-only BibTeX entry when a formal version exists"]:
+        if needle not in audit_text:
+            errors.append(f"Citation audit missing: {needle}")
+    for needle in ["Formal-version check", "prefer proceedings or journal metadata over arXiv-only entries"]:
+        if needle not in bib_template_text:
+            errors.append(f"BibTeX template missing: {needle}")
     for needle in forbidden:
         if needle in text:
             errors.append(f"Forbidden: {needle}")

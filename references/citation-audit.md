@@ -39,7 +39,7 @@ Unsupported or speculative claims stay out of final conclusions.
 1. Inspect the target section.
 2. Extract nontrivial claims.
 3. Match each claim to `claims.md` when possible.
-4. Check direct citation support and source role.
+4. Check direct citation support, source role, and arXiv/formal-version status.
 5. Mark unsupported, overbroad, or missing-evidence claims.
 6. Suggest precise revisions.
 
@@ -53,6 +53,7 @@ Flag material mismatches:
 - SOTA claim does not match dataset, split, metric, or protocol;
 - method superiority is claimed without user-provided results or verified logs;
 - weak sources are used as key evidence;
+- arXiv-only BibTeX entry when a formal version exists;
 - venue prestige is used as evidence quality.
 
 ## Strong Revision Pattern

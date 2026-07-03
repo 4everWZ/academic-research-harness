@@ -34,6 +34,8 @@ Use available search/fetch tools with domain filters where supported. Do not inv
 
 Prefer primary sources: proceedings pages, OpenReview, arXiv, DOI/publisher pages, official project pages, and official repositories. Use secondary summaries only as search leads.
 
+When a candidate is first found through arXiv, search by exact title and authors for a formal conference, journal, DOI, or publisher page before writing BibTeX.
+
 ## Source Quality Route
 
 For source freshness, priority labels, arXiv credibility, venue risk, or downgrade/exclusion decisions, load `references/source-quality.md`.
@@ -86,7 +88,11 @@ Classify `Role` as:
 
 Update `references.bib` for selected sources that may be cited, using the same citation key as `paper_index.md`.
 
-Prefer BibTeX from official proceedings pages, OpenReview, arXiv, DOI/publisher pages, or the paper's official repository.
+Formal-version precedence is a hard check. Before adding an arXiv-only BibTeX entry, check whether the paper already has a formal conference or journal version.
+
+If a formal version exists, use the formal proceedings or journal BibTeX as the primary entry. Keep arXiv only as `eprint`, `note`, or a `paper_index.md` link when useful.
+
+Use arXiv as the primary BibTeX source only when no formal version is found, the cited object is specifically the preprint, or the user explicitly requests the preprint version. Record that status in `paper_index.md` or the reading note.
 
 Do not fabricate BibTeX fields. If metadata is unavailable, include only verified fields and mark missing information in `paper_index.md` or the relevant reading note.
 

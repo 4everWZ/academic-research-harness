@@ -56,6 +56,8 @@ Then check paper-level evidence:
 
 Do not use an arXiv preprint as the only theoretical basis or only support for key novelty, superiority, or final conclusions.
 
+If the same work has a formal conference or journal version, use that version for citation and priority decisions unless the preprint itself is the cited object.
+
 ## Priority 3: Background
 
 Use `P3_background` for useful surveys, dataset or metric references, implementation context, or non-central background.
