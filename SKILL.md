@@ -7,19 +7,19 @@ description: "Use when explicitly requested for paper-writing or literature-grou
 
 ## Purpose
 
-Use this skill as an on-demand paper-writing and evidence-management layer for a research project.
+Use this skill as the paper-writing and evidence layer for literature, indexes, claims, Markdown sections, citation audits, and handoff.
 
-It routes paper-facing work: literature evidence, paper indexes, claim tracking, Markdown paper sections, citation audits, and paper handoff. Keep code, training, debugging, validation, and experiment execution in the main implementation harness unless the user explicitly connects them to paper writing.
+Keep code, training, debugging, validation, and experiment execution outside unless the user explicitly connects them to paper writing.
 
 ## Activation Boundary
 
-Use only for explicit paper-writing or literature-grounded work. Normal coding, debugging, training, log analysis, and general research stay outside this skill unless the user asks to connect them to papers, claims, citations, or sections.
+Use only for explicit paper-writing or literature-grounded work. Coding, debugging, training, logs, and general research stay outside unless tied to papers, claims, citations, or sections.
 
 ## Progressive Disclosure Rule
 
-Start with this file, choose the route, then load only the reference files and templates needed for the task.
+Start here, choose the route, then load only needed references and templates.
 
-Create workspaces progressively. Use `full` only when the user asks for complete scaffolding; otherwise create the route's minimal files and add section templates only when they are being drafted.
+Create workspaces progressively. Use `full` only on request; otherwise create the route's minimal files and add section templates only when drafting them.
 
 ## Task Router
 
@@ -40,10 +40,10 @@ Create workspaces progressively. Use `full` only when the user asks for complete
 
 - For workspace creation, validation, mode selection, and scripts, load `references/workspace.md`.
 - For source freshness, venue priority, arXiv credibility, or downgrade/exclusion, load `references/source-quality.md`.
-- For novelty, SOTA, superiority, results, contribution framing, claim support, or user-confirmation boundaries, load `references/evidence-policy.md`.
+- For novelty, SOTA, superiority, results, contribution framing, claim support, or confirmation boundaries, load `references/evidence-policy.md`.
 - For writing style, contribution framing, limitation placement, or over-defensive prose, load `references/writing-style.md`.
-- If a task spans routes, load the relevant references but keep template loading minimal.
-- Use available browsing/search tools with `site:` filters when supported for literature. Use available fetch/open tools for abstracts and full text. Use local search and file-reading tools for repo evidence. Do not invent tool names.
+- If a task spans routes, load relevant references but keep template loading minimal.
+- Use available browsing/search tools with `site:` filters when supported. Use available fetch/open tools for abstracts/full text and local file tools for repo evidence. Do not invent tool names.
 - For cross-file consistency, inspect only the necessary workspace files, normally `venue_profile.md`, `paper_index.md`, `claims.md`, and the target section.
 - Keep raw engineering identifiers out of paper prose; translate them through repo-to-paper or writing-style rules.
 - Record nontrivial paper claims in `claims.md`.

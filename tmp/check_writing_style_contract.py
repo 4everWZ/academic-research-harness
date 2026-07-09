@@ -156,15 +156,15 @@ def main() -> int:
     )
 
     for relative, limit in {
-        "SKILL.md": 650,
-        "references/literature.md": 750,
-        "references/source-quality.md": 550,
-        "references/repo-to-paper.md": 850,
-        "references/evidence-policy.md": 450,
-        "references/workspace.md": 550,
-        "references/writing-style.md": 700,
-        "assets/templates/venue_profile.md": 260,
-        "USAGE.md": 320,
+        "SKILL.md": 600,
+        "references/literature.md": 700,
+        "references/source-quality.md": 500,
+        "references/repo-to-paper.md": 760,
+        "references/evidence-policy.md": 400,
+        "references/workspace.md": 500,
+        "references/writing-style.md": 600,
+        "assets/templates/venue_profile.md": 220,
+        "USAGE.md": 300,
     }.items():
         require_word_limit(errors, relative, limit)
 

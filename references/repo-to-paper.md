@@ -10,17 +10,9 @@ For novelty, SOTA, superiority, result interpretation, or contribution-framing d
 
 For tone, contribution framing, limitation placement, or over-defensive prose, load `references/writing-style.md`.
 
-Supported target files:
+Target files: `method.md`, `experiments.md`, `limitations.md`, `figures.md`; `results_tables.md` placeholders; `intro.md` and `related_work.md` only on explicit request.
 
-- `intro.md` only when the user explicitly asks for introduction writing;
-- `related_work.md` only when the user explicitly asks for related work;
-- `method.md`;
-- `experiments.md`;
-- `results_tables.md` only as placeholders;
-- `limitations.md`;
-- `figures.md`.
-
-When initializing a repo-to-paper workspace, create only the needed section file:
+Initialize only the needed section:
 
 ```bash
 python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper --section method
@@ -30,21 +22,13 @@ Use `full` only when the user explicitly wants complete paper scaffolding.
 
 ## Evidence Sources
 
-Before writing, distinguish:
-
-- confirmed from code;
-- confirmed from config;
-- confirmed from logs or user-provided results;
-- supported by literature;
-- user-stated intent;
-- assumption;
-- unverified.
+Before writing, distinguish support: code, config, logs/user results, literature, user intent, assumption, or unverified.
 
 ## Artifact Firewall
 
-Repo evidence enters prose only after translation into paper concepts. Treat variable names, config keys, filenames, paths, metadata fields, branch names, run IDs, scratch labels, and internal codenames as evidence anchors, not manuscript terms.
+Repo evidence enters prose only after translation into paper concepts. Treat variables, config keys, filenames, paths, metadata, branches, run IDs, scratch labels, and internal codenames as evidence anchors, not manuscript terms.
 
-Preserve exact tokens only for public artifact names, studied APIs, reproducibility-critical settings, or quoted logs; otherwise keep them in `claims.md` or notes.
+Preserve exact tokens only for public artifact names, studied APIs, critical settings, or quoted logs; otherwise keep them in `claims.md` or notes.
 
 **Log Probing:** Use available local tools to inspect common experiment folders (`logs/`, `runs/`, `results/`). Verify that logs match the current code/config. Do not invent tool names.
 
@@ -52,12 +36,12 @@ Do not invent tensor shapes, modules, equations, training settings, datasets, me
 
 ## Code to Logic to Writing
 
-Prioritize this order:
+Order:
 
-1. Identify what the code actually implements.
-2. Explain the logical mechanism.
-3. Connect the mechanism to the problem or design goal.
-4. Add literature support only when directly relevant.
+1. Identify what the code implements.
+2. Explain the mechanism.
+3. Connect it to the problem or design goal.
+4. Add literature only when directly relevant.
 5. Draft clear Markdown prose.
 
 Do not start from a venue template. The human decides final paper composition.
@@ -77,11 +61,11 @@ Use reviewer-response style only for rebuttals, response letters, or point-by-po
 
 ## Outlet-Aware Writing
 
-Before drafting any paper section, inspect the active workspace path and `venue_profile.md`.
+Before drafting, inspect the workspace path and `venue_profile.md`.
 
-If the workspace uses `docs/<paper_slug>__<venue_slug>/`, treat the suffix as an explicit target-outlet signal. Use it to report the target outlet, but use `venue_profile.md` to determine the writing mode. If the mode is missing or undecided, state that and write in neutral academic Markdown without assuming a concrete venue style.
+If the workspace uses `docs/<paper_slug>__<venue_slug>/`, report the suffix as the target-outlet signal, but use `venue_profile.md` to determine mode. If missing, write neutral academic Markdown.
 
-Use only broad outlet modes, not concrete venue-specific prose templates.
+Use broad outlet modes, not venue-specific prose templates.
 
 ### Conference Mode
 
@@ -107,13 +91,13 @@ When `venue_profile.md` indicates `journal`, allow:
 
 ### Other Outlet Modes
 
-For workshop, thesis, technical report, undecided, or other modes, use `venue_profile.md`'s expected audience and style notes. If those notes are missing, write neutral academic Markdown and state that the outlet style is unresolved.
+For workshop, thesis, technical report, undecided, or other modes, use `venue_profile.md` audience/style notes. If missing, write neutral academic Markdown and state the outlet style is unresolved.
 
-The mode changes emphasis and depth only; evidence standards stay fixed.
+Mode changes emphasis only; evidence standards stay fixed.
 
 ## Method Section Rules
 
-For `method.md`, include only implementation-confirmed or explicitly intended content.
+For `method.md`, include only implementation-confirmed or intended content.
 
 A useful method draft may include:
 
@@ -163,7 +147,7 @@ For `results_tables.md`, only:
 - mark values as `TODO`;
 - list missing experiments.
 
-Avoid interpretive wording such as "outperforms", "achieves SOTA", or "significantly improves" unless user-provided results or verified logs support that exact claim under the same dataset, split, metric, and protocol.
+Avoid "outperforms", "achieves SOTA", or "significantly improves" unless user-provided results or verified logs support that exact claim under the same dataset, split, metric, and protocol.
 
 ## Introduction and Related Work Rules
 
@@ -177,7 +161,7 @@ Related work should be organized by method families, problem settings, or evalua
 
 ## Output Format
 
-When reporting repo-to-paper work, include:
+Report:
 
 1. Section updated;
 2. Implementation facts used;
