@@ -45,6 +45,7 @@ Create workspaces progressively. Use `full` only when the user asks for complete
 - If a task spans routes, load the relevant references but keep template loading minimal.
 - Use available browsing/search tools with `site:` filters when supported for literature. Use available fetch/open tools for abstracts and full text. Use local search and file-reading tools for repo evidence. Do not invent tool names.
 - For cross-file consistency, inspect only the necessary workspace files, normally `venue_profile.md`, `paper_index.md`, `claims.md`, and the target section.
+- Keep raw engineering identifiers out of paper prose; translate them through repo-to-paper or writing-style rules.
 - Record nontrivial paper claims in `claims.md`.
 - Report results only from user-provided numbers or verified logs.
 

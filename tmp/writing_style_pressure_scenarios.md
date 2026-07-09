@@ -64,3 +64,28 @@ Expected behavior after this revision:
 
 - The skill treats taste as a focus decision: important problem, plausible attack,
   evidence-supported claim, clear reader value, and selective omission of minor side paths.
+
+## Scenario 4: Engineering artifact ingress
+
+Prompt:
+
+```text
+Use academic-research-harness repo-to-paper mode.
+Draft the method section from source files, config snippets, experiment logs, and notes.
+The evidence includes variable names, config keys, file paths, run IDs, issue labels,
+branch names, scratch TODOs, and an internal codename.
+```
+
+Expected failure before this revision:
+
+- Raw engineering identifiers appear in manuscript prose as if they were paper concepts.
+- Metadata, process labels, and scratch planning notes are treated as method content.
+- The method reads like an implementation log rather than academic explanation.
+
+Expected behavior after this revision:
+
+- Raw identifiers are kept as evidence anchors in `claims.md` or notes.
+- Manuscript prose uses semantic academic terms for mechanisms, datasets, metrics,
+  settings, and public artifact names.
+- Exact internal tokens appear only when they are public names, studied APIs,
+  reproducibility-critical settings, or quoted logs analyzed as data.

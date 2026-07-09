@@ -2,15 +2,15 @@
 
 ## Scope
 
-Use this reference when drafting or revising paper prose where tone, contribution framing, limitation placement, hedging, or research focus is involved.
+Use this reference when drafting or revising paper prose involving tone, framing, limitations, hedging, or focus.
 
-Do not load this file for mechanical workspace creation, citation-format checking, or result-table placeholders.
+Do not load this file for workspace creation, citation-format checking, or result-table placeholders.
 
 ## Core Principle
 
 Paper prose is not rebuttal.
 
-Default to claim-first, evidence-calibrated writing: say what the work does, scope the claim to the evidence, and keep internal risk notes out of prominent paper prose unless they change interpretation.
+Default to claim-first prose: say what the work does, scope it to evidence, and keep internal risk notes out unless they change interpretation.
 
 ## Paper-Prose Defaults
 
@@ -18,6 +18,10 @@ Default to claim-first, evidence-calibrated writing: say what the work does, sco
 - Use hedging only when uncertainty is real and relevant to the claim.
 - Avoid stacked hedges such as "may possibly suggest" or repeated "although" clauses.
 - Surface only boundaries that matter for interpretation.
+- Admit only paper-facing facts: concepts, mechanisms, datasets, metrics, public artifact names.
+- Keep variable names, config keys, paths, filenames, branch names, run IDs, metadata fields, scratch labels, and internal codenames in evidence notes.
+- Translate raw implementation labels into semantic academic terms.
+- Preserve exact internal tokens only for public artifact names, studied APIs, critical parameters, or logs quoted as data.
 - Keep paper sections organized around reader value.
 
 ## Contribution framing

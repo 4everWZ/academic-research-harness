@@ -2,7 +2,7 @@
 
 ## Scope
 
-Use this reference when converting existing code, configs, architecture notes, experiment setup, or implementation details into Markdown paper sections.
+Use this reference when converting code, configs, architecture notes, experiment setup, or implementation details into Markdown paper sections.
 
 For workspace creation or validation, load `references/workspace.md`.
 
@@ -39,6 +39,12 @@ Before writing, distinguish:
 - user-stated intent;
 - assumption;
 - unverified.
+
+## Artifact Firewall
+
+Repo evidence enters prose only after translation into paper concepts. Treat variable names, config keys, filenames, paths, metadata fields, branch names, run IDs, scratch labels, and internal codenames as evidence anchors, not manuscript terms.
+
+Preserve exact tokens only for public artifact names, studied APIs, reproducibility-critical settings, or quoted logs; otherwise keep them in `claims.md` or notes.
 
 **Log Probing:** Use available local tools to inspect common experiment folders (`logs/`, `runs/`, `results/`). Verify that logs match the current code/config. Do not invent tool names.
 

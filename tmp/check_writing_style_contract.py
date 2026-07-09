@@ -59,6 +59,8 @@ def main() -> int:
         "references/writing-style.md",
         [
             "Paper prose is not rebuttal.",
+            "paper-facing facts",
+            "Translate raw implementation labels into semantic academic terms.",
             "Contribution framing",
             "Public prose vs internal ledger",
             "Limitations and Scope",
@@ -73,6 +75,7 @@ def main() -> int:
         [
             "references/writing-style.md",
             "over-defensive prose",
+            "Keep raw engineering identifiers out of paper prose",
         ],
     )
     require_contains(
@@ -80,6 +83,8 @@ def main() -> int:
         "references/repo-to-paper.md",
         [
             "references/writing-style.md",
+            "Artifact Firewall",
+            "evidence anchors, not manuscript terms",
             "paper-prose mode",
             "reviewer-response style",
         ],
