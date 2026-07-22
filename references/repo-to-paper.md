@@ -1,171 +1,49 @@
-# Repo-to-Paper Writing
+# Repository to Paper
 
-## Scope
+Use this reference to turn code, configuration, architecture, experiment setup,
+or verified results into the paper section the user requested. Load
+`evidence-and-citations.md` for claims or results and `writing-style.md` for
+manuscript prose.
 
-Use this reference when converting code, configs, architecture notes, experiment setup, or implementation details into Markdown paper sections.
+## Establish the evidence boundary
 
-For workspace creation or validation, load `references/workspace.md`.
+Distinguish implementation evidence, literature, verified results, user intent,
+assumptions, and unresolved inference. Do not invent modules, equations, tensor
+shapes, training settings, datasets, metrics, losses, or results.
 
-For novelty, SOTA, superiority, result interpretation, or contribution-framing decisions, load `references/evidence-policy.md`.
+Raw variables, config keys, paths, run IDs, branch names, scratch labels, and
+internal codenames are evidence anchors rather than manuscript terminology.
+Preserve exact tokens only when they are public artifact names, studied APIs,
+reproducibility-critical settings, or data being quoted.
 
-For tone, contribution framing, limitation placement, or over-defensive prose, load `references/writing-style.md`.
+## Synthesize rather than transcribe
 
-Target files: `method.md`, `experiments.md`, `limitations.md`, `figures.md`; `results_tables.md` placeholders; `intro.md` and `related_work.md` only on explicit request.
+Code constrains factual implementation claims; it does not dictate the paper's
+section structure, terminology, motivation, or explanatory level. The draft may:
 
-Initialize only the needed section:
+- abstract implementation details into a coherent mechanism;
+- connect that mechanism to the research problem and relevant literature;
+- choose academically useful organization and terminology;
+- explain rationale and expected behavior when clearly separated from measured results;
+- foreground the contribution supported by the combined evidence.
 
-```bash
-python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper --section method
-```
+Do not mirror the module tree or turn source files into a prose walkthrough.
+Academic packaging may clarify and synthesize the work, but it must not create
+unsupported novelty, theory, causality, or empirical performance.
 
-Use `full` only when the user explicitly wants complete paper scaffolding.
+## Draft the requested section
 
-## Evidence Sources
+Inspect the evidence relevant to that section, then write at the level expected
+by the target audience. If `venue_profile.md` exists, use its outlet and audience
+constraints as emphasis guidance rather than a rigid prose template.
 
-Before writing, distinguish support: code, config, logs/user results, literature, user intent, assumption, or unverified.
+For methods, explain the mechanism, assumptions, integration point, rationale,
+and material computational considerations. For experiments, use only confirmed
+datasets, splits, metrics, baselines, protocols, hardware, and implementation
+details. For results, follow the provenance rules in
+`evidence-and-citations.md`. Mark unresolved factual details explicitly instead
+of guessing.
 
-## Artifact Firewall
-
-Repo evidence enters prose only after translation into paper concepts. Treat variables, config keys, filenames, paths, metadata, branches, run IDs, scratch labels, and internal codenames as evidence anchors, not manuscript terms.
-
-Preserve exact tokens only for public artifact names, studied APIs, critical settings, or quoted logs; otherwise keep them in `claims.md` or notes.
-
-**Log Probing:** Use available local tools to inspect common experiment folders (`logs/`, `runs/`, `results/`). Verify that logs match the current code/config. Do not invent tool names.
-
-Do not invent tensor shapes, modules, equations, training settings, datasets, metrics, losses, or results.
-
-## Code to Logic to Writing
-
-Order:
-
-1. Identify what the code implements.
-2. Explain the mechanism.
-3. Connect it to the problem or design goal.
-4. Add literature only when directly relevant.
-5. Draft clear Markdown prose.
-
-Do not start from a venue template. The human decides final paper composition.
-
-## Paper-Prose Mode
-
-When drafting manuscript text, use paper-prose mode rather than rebuttal mode.
-
-In paper-prose mode:
-
-- state what the implementation does;
-- connect the mechanism to the paper's problem;
-- scope claims to available evidence;
-- keep internal reviewer-risk notes in `claims.md`.
-
-Use reviewer-response style only for rebuttals, response letters, or point-by-point revision text.
-
-## Outlet-Aware Writing
-
-Before drafting, inspect the workspace path and `venue_profile.md`.
-
-If the workspace uses `docs/<paper_slug>__<venue_slug>/`, report the suffix as the target-outlet signal, but use `venue_profile.md` to determine mode. If missing, write neutral academic Markdown.
-
-Use broad outlet modes, not venue-specific prose templates.
-
-### Conference Mode
-
-When `venue_profile.md` indicates `conference`, emphasize:
-
-- sharper motivation;
-- early contribution framing;
-- compact related work;
-- concise method explanation;
-- focused experiment setup and key ablation placeholders;
-- neutral, compact limitation statements.
-
-### Journal Mode
-
-When `venue_profile.md` indicates `journal`, allow:
-
-- fuller background and problem context;
-- deeper related-work taxonomy;
-- more detailed method explanation;
-- richer experiment setup and ablation planning;
-- more explicit limitations, failure cases, and reproducibility notes.
-- more space for interpretive boundaries.
-
-### Other Outlet Modes
-
-For workshop, thesis, technical report, undecided, or other modes, use `venue_profile.md` audience/style notes. If missing, write neutral academic Markdown and state the outlet style is unresolved.
-
-Mode changes emphasis only; evidence standards stay fixed.
-
-## Method Section Rules
-
-For `method.md`, include only implementation-confirmed or intended content.
-
-A useful method draft may include:
-
-- module overview;
-- input/output assumptions;
-- operation sequence;
-- architecture integration point;
-- design rationale;
-- computational considerations;
-- relation to prior mechanisms;
-- limitations or open implementation questions.
-
-Add `claims.md` entries for nontrivial statements about:
-
-- performance expectation;
-- efficiency expectation;
-- novelty or difference from prior work;
-- mechanism benefit;
-- generalization or robustness statement.
-
-## Experiment Section Rules
-
-For `experiments.md`, describe setup only when provided or confirmed:
-
-- datasets;
-- splits;
-- metrics;
-- baselines;
-- implementation details;
-- training schedule;
-- hardware;
-- inference settings.
-
-Mark unknown fields as `TODO`, not guesses.
-
-Do not change metric, split, protocol, or baseline framing without user confirmation.
-
-## Results Policy
-
-Do not write results unless the user provides numbers or you verify matching logs.
-
-For `results_tables.md`, only:
-
-- build table structure;
-- define columns;
-- prepare neutral captions;
-- mark values as `TODO`;
-- list missing experiments.
-
-Avoid "outperforms", "achieves SOTA", or "significantly improves" unless user-provided results or verified logs support that exact claim under the same dataset, split, metric, and protocol.
-
-## Introduction and Related Work Rules
-
-Only write `intro.md` or `related_work.md` when explicitly requested.
-
-Use `paper_index.md` and `claims.md`.
-
-Do not use source collection as permission to write prose.
-
-Related work should be organized by method families, problem settings, or evaluation assumptions, not as a paper-by-paper list.
-
-## Output Format
-
-Report:
-
-1. Section updated;
-2. Implementation facts used;
-3. Literature evidence used;
-4. Assumptions or TODOs;
-5. Claims added or updated;
-6. Files changed.
+Write only the requested section. Literature collection, repository inspection,
+or creation of a result-table structure does not authorize drafting adjacent
+sections.

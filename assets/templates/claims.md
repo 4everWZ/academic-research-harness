@@ -1,35 +1,11 @@
 # Claim Ledger
 
-## Claim 001
+Create entries only for material claims or unresolved evidence risks.
 
-**Claim text:**
-TODO
+## [Claim]
 
-**Claim type:**
-background / method / experiment / comparison / limitation / speculation
-
-**Support:**
-- paper:
-- code:
-- config:
-- experiment:
-- user-provided result:
-- assumption:
-
-**Evidence status:**
-supported / partially_supported / unsupported / speculative
-
-**Citation key:**
-TODO
-
-**Risk:**
-TODO
-
-**Public-facing handling:**
-state_directly / scope_briefly / move_to_limitations / omit_from_public_prose / needs_user_decision
-
-**Internal review notes:**
-TODO
-
-**Allowed in final paper?**
-yes / no / only_with_caveat
+- **Intended use:** [section or conclusion]
+- **Evidence:** [citation keys, code/config references, result provenance, or user decision]
+- **Status:** supported | partial | unsupported | speculative
+- **Required action:** [verification, revision, decision, or none]
+- **Public handling:** direct | scoped | limitations | omit | user decision

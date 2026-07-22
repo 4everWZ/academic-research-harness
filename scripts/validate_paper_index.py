@@ -1,59 +1,27 @@
 #!/usr/bin/env python3
-"""Validate paper_index.md table structure and common fields."""
+"""Validate the compact paper index schema and persistent identities."""
 from __future__ import annotations
 
 import argparse
 import re
 from pathlib import Path
 
+
 EXPECTED_COLUMNS = [
     "Key",
     "Title",
-    "Venue/Type",
     "Year",
-    "Source Priority",
-    "Evidence Grade",
-    "Code",
-    "Task",
-    "Dataset/Metric",
+    "Formal source/status",
     "Role",
-    "Risk",
-    "PDF",
+    "Claim/use",
+    "Quality basis",
+    "Code/data",
     "URL/DOI",
 ]
-
-VALID_PRIORITIES = {"P1_core", "P2_frontier", "P3_background", "downgraded", "excluded"}
-VALID_GRADES = {"strong", "medium", "weak", "low_confidence", "reject"}
-VALID_CODE = {"yes", "no", "unknown"}
-VALID_ROLES = {
-    "baseline",
-    "competing_method",
-    "supporting_mechanism",
-    "background",
-    "dataset_metric_reference",
-    "implementation_reference",
-    "weak_signal",
-}
 
 
 def split_row(line: str) -> list[str]:
     return [cell.strip() for cell in line.strip().strip("|").split("|")]
-
-
-def validate_enum(
-    errors: list[str],
-    *,
-    line_number: int,
-    field: str,
-    value: str,
-    valid_values: set[str],
-    allow_template_placeholder: bool,
-) -> None:
-    if value in valid_values:
-        return
-    if allow_template_placeholder and ("/" in value or value == "TODO"):
-        return
-    errors.append(f"line {line_number}: unexpected {field}: {value}")
 
 
 def main() -> int:
@@ -62,80 +30,51 @@ def main() -> int:
     args = parser.parse_args()
 
     path = Path(args.paper_index)
-    if not path.exists():
-        print(f"paper_index not found: {path}")
+    if not path.is_file():
+        print(f"paper index not found: {path}")
         return 1
 
-    lines = path.read_text(encoding="utf-8").splitlines()
-    table_lines = [(line_number, line) for line_number, line in enumerate(lines, start=1) if line.strip().startswith("|")]
-    if len(table_lines) < 2:
-        print("paper_index validation failed: no Markdown table found")
+    table = [
+        (number, line)
+        for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1)
+        if line.strip().startswith("|")
+    ]
+    if len(table) < 2:
+        print("paper index validation failed: no Markdown table found")
+        return 1
+    if split_row(table[0][1]) != EXPECTED_COLUMNS:
+        print("paper index validation failed: unexpected header")
         return 1
 
-    header = split_row(table_lines[0][1])
-    if header != EXPECTED_COLUMNS:
-        print("paper_index validation failed: unexpected header")
-        print("Expected:", EXPECTED_COLUMNS)
-        print("Actual:  ", header)
-        return 1
-
-    keys: set[str] = set()
     errors: list[str] = []
-
-    for idx, line in table_lines[2:]:
+    keys: set[str] = set()
+    for line_number, line in table[2:]:
         cells = split_row(line)
         if len(cells) != len(EXPECTED_COLUMNS):
-            errors.append(f"line {idx}: expected {len(EXPECTED_COLUMNS)} cells, got {len(cells)}")
+            errors.append(f"line {line_number}: expected {len(EXPECTED_COLUMNS)} cells, got {len(cells)}")
             continue
         row = dict(zip(EXPECTED_COLUMNS, cells))
         key = row["Key"]
-        if key and key != "TODO":
-            if not re.match(r"^[A-Za-z][A-Za-z0-9_-]*$", key):
-                errors.append(f"line {idx}: suspicious key format: {key}")
-            if key in keys:
-                errors.append(f"line {idx}: duplicate key: {key}")
-            keys.add(key)
-        allow_template_placeholder = key == "TODO"
-        validate_enum(
-            errors,
-            line_number=idx,
-            field="Source Priority",
-            value=row["Source Priority"],
-            valid_values=VALID_PRIORITIES,
-            allow_template_placeholder=allow_template_placeholder,
-        )
-        validate_enum(
-            errors,
-            line_number=idx,
-            field="Evidence Grade",
-            value=row["Evidence Grade"],
-            valid_values=VALID_GRADES,
-            allow_template_placeholder=allow_template_placeholder,
-        )
-        validate_enum(
-            errors,
-            line_number=idx,
-            field="Code",
-            value=row["Code"],
-            valid_values=VALID_CODE,
-            allow_template_placeholder=allow_template_placeholder,
-        )
-        validate_enum(
-            errors,
-            line_number=idx,
-            field="Role",
-            value=row["Role"],
-            valid_values=VALID_ROLES,
-            allow_template_placeholder=allow_template_placeholder,
-        )
+        if key == "TODO":
+            continue
+        if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]*", key):
+            errors.append(f"line {line_number}: invalid citation key: {key}")
+        elif key in keys:
+            errors.append(f"line {line_number}: duplicate citation key: {key}")
+        keys.add(key)
+        if not re.fullmatch(r"\d{4}", row["Year"]):
+            errors.append(f"line {line_number}: invalid year: {row['Year']}")
+        for field in ("Title", "Formal source/status", "Role", "Claim/use", "Quality basis", "URL/DOI"):
+            if not row[field] or row[field] == "TODO":
+                errors.append(f"line {line_number}: missing {field}")
 
     if errors:
-        print("paper_index validation failed:")
+        print("paper index validation failed:")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    print("paper_index validation passed")
+    print("paper index validation passed")
     return 0
 
 

@@ -1,47 +1,26 @@
-# Reading Note: TODO
+# Reading Note: [Citation key]
 
-## Bibliographic Info
+- **Title:**
+- **Formal source/status:**
+- **Year:**
+- **URL/DOI:**
+- **Code/data:**
 
-- Key:
-- Title:
-- Authors:
-- Venue/Type:
-- Year:
-- URL/DOI:
-- Code:
+## Claim and Evidence
 
-## What It Claims
+[What the paper claims and what evidence supports it.]
 
-TODO
+## Method and Protocol
 
-## What Evidence Supports It
+[Mechanism, datasets, splits, metrics, baselines, and material assumptions.]
 
-TODO
+## Quality and Limitations
 
-## Method Core
+[Reproducibility, comparability, revision status, and evidence gaps relevant to
+this project's use.]
 
-TODO
+## Use in This Paper
 
-## Dataset / Metric / Protocol
-
-TODO
-
-## Baseline Strength
-
-TODO
-
-## Reproducibility Risk
-
-TODO
-
-## Relevance to Current Project
-
-TODO
-
-## How It Can Be Cited
-
-TODO
-
-## How It Must Not Be Cited
-
-TODO
+- **Relevant role or claim:**
+- **Safe citation scope:**
+- **Must not be cited as:**

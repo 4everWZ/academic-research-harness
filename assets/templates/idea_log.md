@@ -1,37 +1,21 @@
-# Idea Refinement Log
+# Idea Refinement
 
-## Current Idea
+## Current Idea and Assumptions
 
-TODO
+[Current direction and unresolved assumptions.]
 
 ## Literature Signals
 
-| Paper | Mechanism | Evidence | Code | Relevance | Risk |
-|---|---|---|---|---|---|
-| TODO | TODO | TODO | TODO | TODO | TODO |
+| Source | Relevant mechanism or finding | Evidence limit | Implication |
+|---|---|---|---|
+|  |  |  |  |
 
 ## Candidate Refinements
 
-### Option A
+| Candidate | Expected value | Cost or risk | Evidence needed | Decision |
+|---|---|---|---|---|
+|  |  |  |  | pending |
 
-- Change:
-- Expected benefit:
-- Expected cost:
-- Evidence:
-- Risk:
-- Required experiment:
-- Human decision required: yes/no
+## Rejected Directions
 
-## Rejected or Downgraded Directions
-
-| Direction | Reason | Evidence |
-|---|---|---|
-| TODO | TODO | TODO |
-
-## Recommendation
-
-TODO
-
-## Human Decision Required
-
-TODO
+[Keep only rejections that remain material to the current research direction.]

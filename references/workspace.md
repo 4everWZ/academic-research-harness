@@ -1,82 +1,52 @@
-# Progressive Workspace
+# Paper Workspace
 
-## Scope
+## Location
 
-Use this reference for workspace creation, validation, mode selection, venue/outlet suffix handling, and script usage.
-
-Load task-specific references only for the active task.
-
-## Flat Workspace Rule
-
-Use one flat workspace under `docs/` for each paper-like project:
+Prefer an established repository convention. Otherwise use one flat workspace:
 
 ```text
 docs/<paper_slug>/
 ```
 
-Create files progressively by task route. Literature search, idea refinement, citation audit, and handoff-only work use their route files, not full paper-section scaffolding.
-
-## Workspace Modes
-
-| Mode | Create When | Files / Dirs |
-|---|---|---|
-| `minimal` | workspace anchor only | `README.md`, `venue_profile.md` |
-| `literature` | literature search, paper indexing, BibTeX, reading notes | `README.md`, `venue_profile.md`, `paper_index.md`, `references.bib`, `papers/`, `notes/` |
-| `idea` | literature-grounded idea refinement | literature files plus `idea_log.md` |
-| `citation-audit` | claim/citation checking without section drafting | `README.md`, `venue_profile.md`, `claims.md` |
-| `repo-to-paper` | converting repo/code/config into requested paper sections | base files plus `--section <name>` files |
-| `handoff` | paper-state handoff only | `README.md`, `venue_profile.md`, `handoff.md` |
-| `full` | user explicitly requests complete paper workspace | all route-state files and paper-section files |
-
-`Workspace Mode` defines files. `Outlet Mode` in `venue_profile.md` defines writing emphasis.
-
-## Venue / Outlet Handling
-
-After the target venue or outlet is confirmed, the workspace folder may use a double-underscore suffix:
+After a target outlet is confirmed, the optional form is:
 
 ```text
 docs/<paper_slug>__<venue_slug>/
 ```
 
-Ask before renaming a workspace folder. After renaming, update internal references and subsequent paths.
+Ask before renaming an existing workspace. Repair internal links and subsequent
+paths after a rename.
 
-Use `venue_profile.md` to record venue/outlet assumptions and the explicit writing mode: `conference`, `journal`, or another stated outlet type.
+## Create artifacts on demand
 
-When the suffix form is present, treat the suffix as an explicit outlet signal. Before drafting paper prose, read `venue_profile.md` and state which outlet-aware mode is being used. Use the mode to guide content emphasis only; do not apply concrete venue-specific prose templates.
+| Need | Create |
+|---|---|
+| literature collection | `paper_index.md`, `references.bib`, and `notes/` |
+| local source copies explicitly requested | `papers/` |
+| material or unresolved claim tracking | `claims.md` |
+| literature-grounded idea refinement | `idea_log.md` |
+| outlet-specific emphasis or constraints | `venue_profile.md` |
+| manuscript drafting | only the requested section, using the repository or user-selected name |
 
-## Central Files
+Do not create a workspace README, empty section files, or a complete paper
+scaffold merely because a workspace exists.
 
-- `venue_profile.md`: confirmed or provisional target venue/outlet and writing tendencies.
-- `paper_index.md` when present: indexed literature and evidence quality.
-- `claims.md` when present: claim ledger linking draft claims to literature, code, experiments, user decisions, or explicit assumptions.
-- `idea_log.md` when present: literature-driven idea refinement and rejected options.
+## Initialize
 
-## Progressive Growth
-
-When initializing or evolving a workspace:
-1. Select the mode that matches the active task.
-2. For hybrid tasks, add only the specific extra files needed.
-3. Add section files with `--section <name>` only when there is evidence, code, or intent to draft that section.
-
-## Scripts
-
-Use scripts only for explicit workspace initialization or local validation.
-
-Writes files:
+Use the initializer only when the user asks to create or extend a workspace:
 
 ```bash
-python scripts/init_paper_workspace.py docs/<paper_slug> --mode literature
-python scripts/init_paper_workspace.py docs/<paper_slug> --mode repo-to-paper --section method
-python scripts/init_paper_workspace.py docs/<paper_slug> --mode full
+python scripts/init_paper_workspace.py docs/<paper_slug> --include literature
+python scripts/init_paper_workspace.py docs/<paper_slug> --include literature,ideas,claims
+python scripts/init_paper_workspace.py docs/<paper_slug> --include venue --venue "Target Venue" --outlet-mode conference
 ```
 
-Read-only validation:
+Available includes are `literature`, `papers`, `claims`, `ideas`, and `venue`.
+Existing files are preserved except when explicit venue arguments update
+`venue_profile.md`.
+
+Validate an index after structural edits:
 
 ```bash
-python scripts/validate_workspace.py docs/<paper_slug> --mode literature
-python scripts/validate_workspace.py docs/<paper_slug> --mode literature --strict
-python scripts/validate_workspace.py docs/<paper_slug> --mode repo-to-paper --section method --strict
 python scripts/validate_paper_index.py docs/<paper_slug>/paper_index.md
 ```
-
-Runtime scripts should support workspace creation and validation, not autonomous paper writing or web scraping.

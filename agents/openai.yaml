@@ -1,3 +1,4 @@
-display_name: Academic Research Harness
-short_description: Literature-grounded paper writing and evidence management.
-default_prompt: Use academic-research-harness only for explicit paper-writing or literature-grounded work: workspace setup, literature indexing, repo-to-paper drafting, claim/citation audits, writing-style revision, or paper handoff.
+interface:
+  display_name: "Academic Research Harness"
+  short_description: "Evidence-bound academic paper writing"
+  default_prompt: "Use $academic-research-harness to complete the requested literature-grounded paper task with evidence-bound claims and academically effective prose."
