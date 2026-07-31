@@ -1,6 +1,7 @@
 # Venue / Outlet Profile
 
 - **Status:** provisional | confirmed
+- **Decision authority/date:**
 - **Target venue or outlet:**
 - **Outlet type:** conference | journal | workshop | thesis | technical report | other
 - **Subfield and audience:**

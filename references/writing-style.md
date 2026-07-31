@@ -1,45 +1,45 @@
 # Academic Writing Style
 
-Use this reference for manuscript tone, contribution framing, limitations,
-hedging, focus, and overly defensive prose.
+Use this reference for defensive-writing correction and method continuity.
 
-## State the work before defending it
+## Advance the argument directly
 
-Paper prose is not rebuttal. Lead with what the work does, why it matters, and
-what the evidence supports. Do not bury the contribution under anticipated
-reviewer objections, missing experiments, apologies, or stacked caveats.
+Keep a sentence only when it adds a premise, evidence, inference, mechanism,
+consequence, necessary scope, or logical relation. Delete repetitions,
+hypothetical-objection handling, denials of unmade claims, and explanations that
+only prevent unlikely misunderstandings.
 
-Hedge when uncertainty materially changes interpretation, not as a reflex.
-Avoid stacked qualifiers such as “may possibly suggest” and repeated concessive
-clauses. Keep internal evidence risks in `claims.md`; expose them in the
-manuscript only when readers need them to interpret validity, reproducibility,
-comparison fairness, safety, or scope.
+Give each paragraph one primary argumentative purpose. Combine claims, evidence,
+mechanisms, and scope when they jointly serve that purpose. Delete repetition
+and unrelated defensive explanation.
 
-## Package the research academically
+## Delete before rewriting
 
-Translate implementation into research concepts instead of reproducing code
-labels or repository structure. A strong draft may sharpen motivation, select a
-clear explanatory abstraction, connect mechanisms to prior work, and foreground
-reader value. This is legitimate synthesis, not fabrication, while factual and
-empirical claims remain inside the evidence boundary.
+Treat `not X but Y`, `rather than X, Y`, and equivalent frames as revision
+triggers. Remove the contrast and test Y alone. Keep only Y when it remains
+accurate and coherent. Retain X only when the argument must distinguish that
+live interpretation or alternative and the evidence supports the distinction.
 
-Contribution prose should name the artifact, mechanism, analysis, dataset, or
-finding; identify the problem it addresses; and state an evidence-supported
-scope. Avoid “only”, “merely”, or “preliminary” unless that qualification is
-scientifically necessary or intentionally defines the publication.
+Treat `however`, `therefore`, `since`, `not only ... but also`, and equivalent
+connective frames as audit signals. Delete the connector first and read the
+adjacent statements together. Restore it only when a material reversal,
+supported inference or cause, meaningful escalation, or temporal relation
+would otherwise be unclear.
 
-## Place limitations where they help readers
+Do not add background, caveats, transitions, or paraphrases to evade a revision
+trigger. Add words only when accuracy or a necessary logical relation requires
+them. Preserve qualifications that change meaning, scope, evidence strength,
+validity, safety, or ethics.
 
-Include limitations that change claim strength, evaluation meaning,
-reproducibility, transfer, comparison fairness, deployment, or safety
-interpretation. Explain their consequence rather than presenting a confession
-list. Minor untested variants and speculative reviewer risks do not belong in
-public prose merely because they can be imagined.
+## Keep method choices continuous
 
-## Use selective research taste
+Order supported method-selection links as: research need, selection criterion,
+chosen mechanism or setting, and its role. Omit unsupported links and report the
+gap outside the manuscript; never invent rationale to complete the chain. List
+alternatives only when the paper evaluates them or the comparison explains the
+choice.
 
-Organize the paper around the important problem, tractable contribution,
-strongest evidence, and reader value. Related work and limitations should serve
-that center. Depth, taxonomy, and background may expand for a journal or thesis;
-conference prose may be tighter and place the contribution earlier. Outlet mode
-changes emphasis, not evidence standards.
+Apply style revision only to paper-facing propositions. If an engineering or
+provenance identifier has no unambiguous paper-facing equivalent, withhold only
+the smallest dependent span, return unaffected requested text, and report the
+issue separately. Use `repo-to-paper.md` for identifier filtering.

@@ -2,6 +2,7 @@
 
 - **Title:**
 - **Formal source/status:**
+- **Verified on/version:**
 - **Year:**
 - **URL/DOI:**
 - **Code/data:**

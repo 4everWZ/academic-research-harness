@@ -16,6 +16,10 @@ docs/<paper_slug>__<venue_slug>/
 
 Ask before renaming an existing workspace. Repair internal links and subsequent
 paths after a rename.
+Treat venue name and status as user-owned decisions. Never infer `confirmed` or
+change an existing target or status without explicit user direction.
+Run the initializer only with exclusive control of the workspace path; concurrent
+renames or link replacement are outside its containment guarantee.
 
 ## Create artifacts on demand
 
@@ -33,20 +37,25 @@ scaffold merely because a workspace exists.
 
 ## Initialize
 
-Use the initializer only when the user asks to create or extend a workspace:
+Resolve `<skill-root>` as the directory containing this skill's `SKILL.md`.
+Run it from the target repository root; use `--workspace-root` only to authorize
+a different explicit root.
 
 ```bash
-python scripts/init_paper_workspace.py docs/<paper_slug> --include literature
-python scripts/init_paper_workspace.py docs/<paper_slug> --include literature,ideas,claims
-python scripts/init_paper_workspace.py docs/<paper_slug> --include venue --venue "Target Venue" --outlet-mode conference
+python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --include literature
+python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --include literature,ideas,claims
+python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --include venue --venue "Target Venue" --venue-status confirmed --venue-authority "user confirmation, YYYY-MM-DD" --outlet-mode conference
+python "<skill-root>/scripts/init_paper_workspace.py" docs/<new_paper_slug> --include venue --venue "Target Venue" --venue-status confirmed --venue-authority "user confirmation, YYYY-MM-DD" --suffix-venue
 ```
 
 Available includes are `literature`, `papers`, `claims`, `ideas`, and `venue`.
 Existing files are preserved except when explicit venue arguments update
-`venue_profile.md`.
+`venue_profile.md`. Use `--suffix-venue` only when the unsuffixed workspace does
+not exist; rename an existing workspace separately after approval. Supply
+`--venue-slug` with `--suffix-venue` when the venue name has no usable ASCII slug.
 
-Validate an index after structural edits:
+Validate the workspace after every index edit:
 
 ```bash
-python scripts/validate_paper_index.py docs/<paper_slug>/paper_index.md
+python "<skill-root>/scripts/validate_paper_index.py" docs/<paper_slug>
 ```

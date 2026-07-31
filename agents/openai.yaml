@@ -1,4 +1,4 @@
 interface:
   display_name: "Academic Research Harness"
-  short_description: "Evidence-bound academic paper writing"
-  default_prompt: "Use $academic-research-harness to complete the requested literature-grounded paper task with evidence-bound claims and academically effective prose."
+  short_description: "Academic literature, evidence, and paper writing"
+  default_prompt: "Use $academic-research-harness to complete the requested academic literature, evidence, or paper task with evidence-bound claims and effective prose."

@@ -12,9 +12,12 @@
 
 ## Candidate Refinements
 
-| Candidate | Expected value | Cost or risk | Evidence needed | Decision |
-|---|---|---|---|---|
-|  |  |  |  | pending |
+| Candidate | Expected value | Cost or risk | Evidence needed | Decision | Decision authority/date |
+|---|---|---|---|---|---|
+|  |  |  |  | pending | pending |
+
+Record an accepted research decision only with explicit user authorization and
+its date.
 
 ## Rejected Directions
 

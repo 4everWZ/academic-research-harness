@@ -16,13 +16,15 @@ source by the role it plays and the evidence needed for that claim. Check:
 - conflicts, limitations, and fit to the target subfield.
 
 Peer review and venue standing can raise confidence but do not replace these
-checks. Treat early or weakly documented work as a frontier signal, not sole
-support for a central novelty, superiority, or final-conclusion claim unless the
-paper explicitly frames that limitation and corroborating evidence is unavailable.
+checks. Treat early or weakly documented work only as attributed, scoped
+frontier evidence. Never use it as sole support for central novelty, superiority,
+or final-conclusion claims.
 
 ## Track only claims that need a ledger
 
-Use `claims.md` for material claims or unresolved evidence risks, especially:
+When persistent tracking is requested, create `claims.md` from the
+[bundled template](../assets/templates/claims.md) for material claims or
+unresolved evidence risks, especially:
 
 - novelty, SOTA, superiority, or comparative claims;
 - numerical results;
@@ -33,17 +35,28 @@ Use `claims.md` for material claims or unresolved evidence risks, especially:
 
 Ordinary background statements with direct, adequate citations do not require a
 ledger entry. Unsupported or speculative claims stay out of final conclusions.
+Before relying on a ledger status, manually verify citation keys against the
+index and BibTeX, and verify implementation or result provenance against source
+artifacts. Workspace validation does not establish claim semantics. Never infer
+an approval or verified audit from an unprovenanced ledger value. Direct public
+handling requires supported status and a verified audit; accepted research
+decisions require recorded explicit user authorization.
 
 ## Validate results
 
-Use user-provided results or evidence traceable to the relevant code or revision,
-configuration, dataset and split, metric, baseline, and evaluation protocol. A
-timestamp, run identifier, or file under `logs/`, `runs/`, or `results/` does not
-by itself establish that match.
+Use a result in manuscript claims only when its provenance is appropriate to the
+result and method. For computational experiments, verify the applicable code or
+revision, configuration, dataset and split, metric, baseline, and evaluation
+protocol. Treat user-provided values as unverified until the needed match is
+available. A timestamp, run identifier, or result file alone does not establish
+provenance.
 
-When provenance is incomplete, preserve the table structure or neutral prose,
-mark the value or interpretation `TODO` or unverified, and state what must be
-matched. Do not use stronger comparative language than the evidence supports.
+When provenance is incomplete, keep unresolved values and control states in the
+response or a separate author-facing artifact. Omit the unsupported manuscript
+sentence; never place the gap anywhere in manuscript source or output. Preserve
+citation keys only in the manuscript's established citation syntax; ask which
+syntax to use when none is established. Do not use stronger comparative language
+than the evidence supports.
 
 ## Preserve research authority
 
@@ -61,7 +74,8 @@ For the target text:
 2. inspect the cited source at the level needed for each claim;
 3. check publication status, source role, and protocol comparability;
 4. classify support as supported, partial, unsupported, or speculative;
-5. revise the claim, replace the citation, or record the evidence gap.
+5. report the needed revision, replacement, or evidence gap; apply it only when
+   editing or persistence is requested.
 
 A related paper is not evidence for a broader statement merely because it shares
 the topic.
