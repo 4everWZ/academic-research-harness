@@ -65,6 +65,27 @@
       "forbidden": ["semantic repetition", "new rationale", "expanded wording"]
     },
     {
+      "id": "supported_result_is_not_hedged",
+      "route": "style-only revision",
+      "input": "Revise concisely without changing claims: Across the five evaluated ImageNet-C corruptions, the method reduced mean expected calibration error by 3.2 percentage points relative to the baseline.",
+      "required": ["direct empirical claim", "five-corruption ImageNet-C scope preserved", "3.2-percentage-point reduction relative to the baseline preserved"],
+      "forbidden": ["may", "might", "suggests that", "should not be interpreted", "disclaimer about arbitrary distribution shifts"]
+    },
+    {
+      "id": "scope_is_encoded_in_proposition",
+      "route": "style-only revision",
+      "input": "Revise for concise academic prose without changing the claim: The method outperformed the baseline on both evaluated datasets.",
+      "required": ["direct comparative claim", "two-dataset scope encoded in the proposition"],
+      "forbidden": ["may outperform", "suggests superiority", "cannot generalize", "should not be interpreted", "other datasets"]
+    },
+    {
+      "id": "necessary_uncertainty_is_preserved",
+      "route": "style-only revision",
+      "input": "Revise concisely without changing claim strength: The estimated effect was positive, but its 95% confidence interval included zero, so the result does not establish an improvement.",
+      "required": ["positive estimate preserved", "95% confidence interval including zero preserved", "inconclusive improvement claim preserved"],
+      "forbidden": ["claim of definitive improvement", "claim of a causal effect", "claim of statistical significance", "uncertainty removed"]
+    },
+    {
       "id": "method_chain_does_not_invent_rationale",
       "route": "repository drafting",
       "input": "Draft the method choice from evidence that attention pooling is available for variable-length features and enabled in configuration. No run evidence establishes execution, and no source records why it was selected.",

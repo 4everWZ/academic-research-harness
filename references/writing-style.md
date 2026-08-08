@@ -2,6 +2,26 @@
 
 Use this reference for defensive-writing correction and method continuity.
 
+## State the strongest supported proposition
+
+State the strongest paper-facing proposition supported by the verified evidence
+and established claim meaning. Do not weaken a supported result merely to make
+it harder to challenge. In style-only revision, improve directness without
+changing epistemic strength.
+
+Encode necessary scope in the proposition itself, such as the evaluated
+datasets, population, conditions, metrics, or comparison set. Prefer a narrower
+precise proposition to a broader proposition surrounded by hedge language. Add
+a qualification only when removing it would make the proposition false,
+materially broader, or misleading.
+
+Place each material boundary at the narrowest point where it changes
+interpretation. Do not repeat it within the same argumentative context,
+disclaim claims the paper does not make, or enumerate hypothetical confounders
+merely because they are possible. Preserve uncertainty required by the
+evidence, study design, validity, safety, ethics, or an exact-claim revision
+request.
+
 ## Advance the argument directly
 
 Keep a sentence only when it adds a premise, evidence, inference, mechanism,
