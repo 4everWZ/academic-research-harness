@@ -2,13 +2,21 @@
 
 Use this reference for defensive-writing correction and method continuity.
 
+## Resolve competing instructions
+
+When writing goals compete, preserve claim truth and evidence-calibrated claim strength first, necessary scope second, argumentative continuity third, and concision fourth. This ordering does not override evidence constraints or an exact-claim request. Never gain concision by broadening a claim, increasing its certainty, or removing a boundary that changes interpretation.
+
 ## State the strongest supported proposition
 
 State the strongest paper-facing proposition supported by the verified evidence and established claim meaning. Do not weaken a supported result merely to make it harder to challenge. In style-only revision, improve directness without changing epistemic strength.
 
+Paper-facing content helps readers understand the research question, method, results, or conclusions. Apply `repo-to-paper.md` before revising engineering or provenance identifiers.
+
 Encode necessary scope in the proposition itself, such as the evaluated datasets, population, conditions, metrics, or comparison set. Prefer a narrower precise proposition to a broader proposition surrounded by hedge language. Add a qualification only when removing it would make the proposition false, materially broader, or misleading.
 
 Place each material boundary at the narrowest point where it changes interpretation. Do not repeat it within the same argumentative context, disclaim claims the paper does not make, or enumerate hypothetical confounders merely because they are possible. Preserve uncertainty required by the evidence, study design, validity, safety, ethics, or an exact-claim revision request.
+
+Repeat a material boundary in a later section only when the later claim would otherwise become broader or misleading; do not repeat it merely for local completeness.
 
 ## Advance the argument directly
 
@@ -34,6 +42,15 @@ Do not add background, caveats, transitions, or paraphrases to evade a revision 
 
 ## Keep method choices continuous
 
-Order supported method-selection links as: research need, selection criterion, chosen mechanism or setting, and its role. Omit unsupported links and report the gap outside the manuscript; never invent rationale to complete the chain. List alternatives only when the paper evaluates them or the comparison explains the choice.
+Order supported method-selection links as: research need, selection criterion, chosen mechanism or setting, and its role. Omit unsupported links and never invent rationale to complete the chain. List alternatives only when the paper evaluates them or the comparison explains the choice.
 
-Apply style revision only to paper-facing propositions. If an engineering or provenance identifier has no unambiguous paper-facing equivalent, withhold only the smallest dependent span, return unaffected requested text, and report the issue separately. Use `repo-to-paper.md` for identifier filtering.
+Revise only paper-facing propositions. If a requested span lacks required paper-facing evidence or mapping, withhold only the smallest dependent span, return unaffected requested text, and use the gap record below. Do not report identifiers that do not affect the requested revision; use `repo-to-paper.md` for filtering.
+
+Return one compact author-facing record per withheld span and combine all missing prerequisites for that span: `Gap — span: <smallest blocked span>; anchor: <identifier or source location>; missing: <paper-facing mapping or evidence>`. Keep unresolved provenance, execution, and identifier-mapping gaps in this record, not manuscript prose. Report nothing unrelated. Generalize both span and anchor when disclosure is prohibited.
+
+## Apply the rules together
+
+Given verified evidence from three benchmark datasets:
+
+- Avoid: `Figure 4 shows that our method consistently outperforms the baselines. However, this does not mean that the method is universally superior across all possible datasets.`
+- Prefer: `Our method outperforms all evaluated baselines on the three benchmark datasets (Figure 4).`

@@ -14,7 +14,7 @@ After a target outlet is confirmed, the optional form is:
 docs/<paper_slug>__<venue_slug>/
 ```
 
-Ask before renaming an existing workspace. Repair internal links and subsequent paths after a rename. Treat venue name and status as user-owned decisions. Never infer `confirmed` or change an existing target or status without explicit user direction. Run the initializer only with exclusive control of the workspace path; concurrent renames or link replacement are outside its containment guarantee.
+Ask before renaming an existing workspace. Repair internal links and subsequent paths after a rename. Treat venue name and status as user-owned decisions. The initializer's `provisional` value is an unconfirmed workflow default, not a recorded user decision. Never infer `confirmed` or change an existing target or status without explicit user direction. Run the initializer only with exclusive control of the workspace path; concurrent renames or link replacement are outside its containment guarantee.
 
 ## Create artifacts on demand
 
@@ -40,7 +40,7 @@ python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --includ
 python "<skill-root>/scripts/init_paper_workspace.py" docs/<new_paper_slug> --include venue --venue "Target Venue" --venue-status confirmed --venue-authority "user confirmation, YYYY-MM-DD" --suffix-venue
 ```
 
-Available includes are `literature`, `papers`, `claims`, `ideas`, and `venue`. Existing files are preserved except when explicit venue arguments update `venue_profile.md`. Use `--suffix-venue` only when the unsuffixed workspace does not exist; rename an existing workspace separately after approval. Supply `--venue-slug` with `--suffix-venue` when the venue name has no usable ASCII slug.
+Available includes are `literature`, `papers`, `claims`, `ideas`, and `venue`. Existing files are preserved except when explicit venue arguments update `venue_profile.md`. Changing a confirmed profile to provisional clears its decision authority/date; later confirmation requires new authority. Repair a legacy provisional profile with stale authority by explicitly rebinding its venue with `--venue-status provisional`. Use `--suffix-venue` only when the unsuffixed workspace does not exist; rename an existing workspace separately after approval. Supply `--venue-slug` with `--suffix-venue` when the venue name has no usable ASCII slug.
 
 Validate the workspace after every index edit:
 

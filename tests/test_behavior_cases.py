@@ -12,6 +12,9 @@ CASES = ROOT / "assets" / "evals" / "behavior_cases.json"
 class BehaviorCaseTests(unittest.TestCase):
     def test_fresh_context_evaluation_fixture_is_actionable(self) -> None:
         payload = json.loads(CASES.read_text(encoding="utf-8"))
+        self.assertIn("fixture and its rubrics outside that context", payload["execution"])
+        self.assertIn("every required outcome", payload["scoring"])
+        self.assertIn("no forbidden outcome", payload["scoring"])
         cases = payload["cases"]
         identifiers = {case["id"] for case in cases}
         self.assertEqual(len(identifiers), len(cases))
@@ -33,6 +36,9 @@ class BehaviorCaseTests(unittest.TestCase):
                 "visuals_are_synthesized_into_argument",
                 "caption_is_not_repeated_in_body",
                 "necessary_visual_navigation_is_retained",
+                "rule_priority_preserves_scoped_claim",
+                "material_boundary_survives_section_change",
+                "blocking_gap_report_is_minimal",
                 "method_chain_does_not_invent_rationale",
                 "engineering_provenance_is_not_laundered",
                 "citation_markup_is_preserved",

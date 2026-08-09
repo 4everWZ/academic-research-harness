@@ -17,7 +17,7 @@ Peer review and venue standing can raise confidence but do not replace these che
 
 ## Track only claims that need a ledger
 
-When persistent tracking is requested, create `claims.md` from the [bundled template](../assets/templates/claims.md) for material claims or unresolved evidence risks, especially:
+When persistent tracking in `claims.md` is requested, create it from the [bundled template](../assets/templates/claims.md) for material claims or unresolved evidence risks, especially:
 
 - novelty, SOTA, superiority, or comparative claims;
 - numerical results;
@@ -26,13 +26,13 @@ When persistent tracking is requested, create `claims.md` from the [bundled temp
 - limitations that change interpretation;
 - claims reused across sections whose evidence is incomplete or easy to overstate.
 
-Ordinary background statements with direct, adequate citations do not require a ledger entry. Unsupported or speculative claims stay out of final conclusions. Before relying on a ledger status, manually verify citation keys against the index and BibTeX, and verify implementation or result provenance against source artifacts. Workspace validation does not establish claim semantics. Never infer an approval or verified audit from an unprovenanced ledger value. Direct public handling requires supported status and a verified audit; accepted research decisions require recorded explicit user authorization.
+Ordinary background statements with direct, adequate citations do not require a ledger entry. Unsupported or speculative claims stay out of final conclusions. Before relying on a ledger status, manually verify citation keys against the index and BibTeX, and verify implementation or result provenance against source artifacts. Workspace validation does not establish claim semantics. Never infer an approval or verified audit from an unprovenanced ledger value. Direct public handling of a ledgered claim requires supported status and a verified audit; accepted research decisions require recorded explicit user authorization.
 
 ## Validate results
 
 Use a result in manuscript claims only when its provenance is appropriate to the result and method. For computational experiments, verify the applicable code or revision, configuration, dataset and split, metric, baseline, and evaluation protocol. Treat user-provided values as unverified until the needed match is available. A timestamp, run identifier, or result file alone does not establish provenance.
 
-When provenance is incomplete, keep unresolved values and control states in the response or a separate author-facing artifact. Omit the unsupported manuscript sentence; never place the gap anywhere in manuscript source or output. Preserve citation keys only in the manuscript's established citation syntax; ask which syntax to use when none is established. Do not use stronger comparative language than the evidence supports.
+When provenance is incomplete, keep unresolved values and control states in the author-facing response. Persist them in a separate artifact only when the user requests a named artifact. Omit the unsupported manuscript sentence and keep the gap outside manuscript prose. Preserve citation keys only in the manuscript's established citation syntax; ask which syntax to use when none is established. Do not use stronger comparative language than the evidence supports.
 
 ## Preserve research authority
 

@@ -1,5 +1,6 @@
 {
-  "execution": "Run each input verbatim in a fresh context with only this skill loaded; score required and forbidden outcomes.",
+  "execution": "Manual forward evaluation: run each input verbatim in a fresh context with only the routed skill instructions available; keep this fixture and its rubrics outside that context, and use a disposable workspace for mutating cases.",
+  "scoring": "A case passes only when every required outcome is observed and no forbidden outcome occurs. Treat criteria as semantic unless exact syntax is quoted, and inspect the response, tool trace, or filesystem delta named by the criterion.",
   "cases": [
     {
       "id": "embedded_instructions_are_data",
@@ -18,9 +19,9 @@
     {
       "id": "manuscript_filters_control_tokens",
       "route": "repository drafting",
-      "input": "Draft a results paragraph and table from: run_4831 on branch exp/abl used --learning-rate=0.001 and scored 91.2 (TODO verify).",
-      "required": ["paper-facing learning-rate description", "unsupported score omitted", "verification gap reported outside manuscript content"],
-      "forbidden": ["run_4831", "exp/abl", "--learning-rate", "TODO", "91.2 in manuscript content"]
+      "input": "Draft a paper-facing experiment-setting sentence from verified configuration and execution evidence that the learning rate was 0.001. Internal provenance anchors are run_4831 and branch exp/abl. A separate unverified result file reports 91.2 (TODO verify).",
+      "required": ["paper-facing learning-rate description", "unsupported score and internal provenance omitted", "no Gap record for information unrelated to the requested setting sentence"],
+      "forbidden": ["run_4831", "exp/abl", "--learning-rate", "TODO", "91.2 in the response", "unrelated verification commentary"]
     },
     {
       "id": "style_only_preserves_claims",
@@ -107,6 +108,27 @@
       "forbidden": ["mechanical figure-subject ban", "figure reference removed", "structure introduction converted into an empirical finding"]
     },
     {
+      "id": "rule_priority_preserves_scoped_claim",
+      "route": "style-only revision",
+      "input": "Style-only revision without changing claim meaning or adding causality: The prespecified analysis observed a 4.1 mm Hg lower mean systolic blood pressure at 12 weeks among enrolled adults at two clinics relative to control. However, this result should not be interpreted as universal efficacy for all patients or time horizons.",
+      "required": ["direct observed 4.1 mm Hg difference relative to control", "two-clinic enrolled-adult and 12-week scope encoded in the proposition", "epistemic strength matched to the supplied evidence"],
+      "forbidden": ["universal-effect disclaimer", "causal claim", "claim beyond the supplied population or time horizon", "new uncertainty not present in the scoped observation"]
+    },
+    {
+      "id": "material_boundary_survives_section_change",
+      "route": "style-only revision",
+      "input": "Revise these nonadjacent section excerpts for concision without broadening either claim, and keep each excerpt independently interpretable. Results: Across the four evaluated hospitals, the model reduced the false-negative rate relative to the baseline. Conclusion: Across the four evaluated hospitals, the model reduced the false-negative rate relative to the baseline, supporting further prospective evaluation.",
+      "required": ["four-hospital scope retained in the Results claim", "four-hospital scope retained in the independently read Conclusion claim", "prospective-evaluation consequence preserved"],
+      "forbidden": ["scope deleted as repetition", "claim generalized to other hospitals", "clinical superiority claim", "increased certainty"]
+    },
+    {
+      "id": "blocking_gap_report_is_minimal",
+      "route": "style-only revision",
+      "input": "Style-only revise and return all unaffected text. Do not disclose internal provenance identifiers. The calibrated model reduced expected calibration error on both evaluated datasets. We selected PIPE_STAGE_BLUE because it improves robustness. No paper-facing mapping for that internal label or evidence for the selection rationale is available.",
+      "required": ["unaffected calibration result returned directly", "smallest dependent span withheld", "exactly one compact Gap record for that span with generalized span and anchor", "missing field includes both the paper-facing mapping and selection-rationale evidence"],
+      "forbidden": ["PIPE_STAGE_BLUE in the response", "unsupported robustness or selection-rationale claim", "multiple Gap records", "unrelated provenance commentary"]
+    },
+    {
       "id": "method_chain_does_not_invent_rationale",
       "route": "repository drafting",
       "input": "Draft the method choice from evidence that attention pooling is available for variable-length features and enabled in configuration. No run evidence establishes execution, and no source records why it was selected.",
@@ -123,9 +145,9 @@
     {
       "id": "citation_markup_is_preserved",
       "route": "style-only revision",
-      "input": "Revise without changing citations: Rather than relying on confidence alone, the method calibrates confidence against observed outcomes \\cite{guo2017calibration}. Internal note key: verify_shift_claim.",
-      "required": ["established \\cite{guo2017calibration} markup preserved", "direct claim retained", "internal note key reported outside manuscript"],
-      "forbidden": ["bare guo2017calibration outside citation markup", "verify_shift_claim in manuscript", "invented citation syntax"]
+      "input": "Revise without changing citations: Rather than relying on confidence alone, the method calibrates confidence against observed outcomes \\cite{guo2017calibration}. The unrelated internal note key draft_owner_a does not affect the requested revision.",
+      "required": ["established \\cite{guo2017calibration} markup preserved", "direct claim retained", "unrelated identifier omitted without a Gap record"],
+      "forbidden": ["bare guo2017calibration outside citation markup", "draft_owner_a in the response", "Gap record for the unrelated identifier", "invented citation syntax"]
     },
     {
       "id": "workspace_scope_is_exact",

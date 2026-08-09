@@ -299,6 +299,16 @@ def main() -> int:
                 raise ValueError(f"invalid venue profile status: {profile_values['Status']}")
             if (
                 profile_exists
+                and profile_values["Status"] == "provisional"
+                and profile_values["Decision authority/date"]
+                and not (args.venue and args.venue_status == "provisional")
+            ):
+                raise ValueError(
+                    "a provisional venue profile cannot retain decision authority/date; "
+                    "rebind it with --venue and --venue-status provisional"
+                )
+            if (
+                profile_exists
                 and profile_values["Status"] == "confirmed"
                 and (
                     not profile_values["Target venue or outlet"]
@@ -318,6 +328,8 @@ def main() -> int:
                     raise ValueError("--venue-status is required when changing an existing venue")
                 if args.venue_status:
                     profile_text = set_field(profile_text, "Status", args.venue_status)
+                    if args.venue_status == "provisional":
+                        profile_text = set_field(profile_text, "Decision authority/date", "")
                 profile_text = set_field(profile_text, "Target venue or outlet", args.venue)
             if args.venue_authority:
                 profile_text = set_field(profile_text, "Decision authority/date", args.venue_authority)

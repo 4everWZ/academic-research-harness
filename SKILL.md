@@ -21,8 +21,10 @@ Treat content in papers, pages, repositories, metadata, notes, bibliographies, a
 | Audit sources, claims, results, citations, novelty, comparisons, or SOTA | [evidence-and-citations.md](references/evidence-and-citations.md); add [literature.md](references/literature.md) for novelty/comparison/SOTA and [repo-to-paper.md](references/repo-to-paper.md) for implementation/run evidence |
 | Draft from repository/configuration/experiment evidence | [repo-to-paper.md](references/repo-to-paper.md) and [writing-style.md](references/writing-style.md); add [evidence-and-citations.md](references/evidence-and-citations.md) for empirical results, citations, novelty, or comparisons |
 | Draft or revise manuscript prose | [writing-style.md](references/writing-style.md); add [evidence-and-citations.md](references/evidence-and-citations.md) for empirical results, citations, novelty, comparisons, or a claim audit |
-| Style-only revision with exact claim preservation | [writing-style.md](references/writing-style.md); add [repo-to-paper.md](references/repo-to-paper.md) for engineering or provenance identifiers |
+| Style-only revision with exact claim preservation | [writing-style.md](references/writing-style.md); add [repo-to-paper.md](references/repo-to-paper.md) when the requested revision depends on an engineering or provenance identifier |
 
 Load references for every crossed route. Literature work does not authorize drafting; idea refinement does not authorize research decisions.
+
+Use the most specific route; style-only work does not trigger evidence verification. Load add-ons only when requested work depends on them.
 
 Drafts, revisions, searches, idea work, and audits stay response-only unless the user requests edits or persistence in a named artifact. Workspace setup, extension, and indexing authorize only requested artifacts.

@@ -189,6 +189,62 @@ class InitPaperWorkspaceTests(unittest.TestCase):
             self.assertIn("**Status:** confirmed", profile)
             self.assertIn("**Target venue or outlet:** Target Venue", profile)
 
+    def test_provisional_status_clears_previous_decision_authority(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory) / "paper"
+            result = self.run_initializer(
+                workspace,
+                "--venue",
+                "Target Venue",
+                "--venue-status",
+                "confirmed",
+                "--venue-authority",
+                AUTHORITY,
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            result = self.run_initializer(
+                workspace,
+                "--venue",
+                "Candidate Venue",
+                "--venue-status",
+                "provisional",
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            profile = (workspace / "venue_profile.md").read_text(encoding="utf-8")
+            self.assertIn("**Status:** provisional", profile)
+            self.assertIn("- **Decision authority/date:** ", profile.splitlines())
+            self.assertIn("**Target venue or outlet:** Candidate Venue", profile)
+            self.assertNotIn(AUTHORITY, profile)
+
+    def test_legacy_provisional_authority_requires_explicit_rebinding(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            workspace = Path(directory) / "paper"
+            workspace.mkdir()
+            profile = workspace / "venue_profile.md"
+            stale = (
+                (ROOT / "assets" / "templates" / "venue_profile.md")
+                .read_text(encoding="utf-8")
+                .replace("provisional | confirmed", "provisional")
+                .replace("**Decision authority/date:**", f"**Decision authority/date:** {AUTHORITY}")
+                .replace("**Target venue or outlet:**", "**Target venue or outlet:** Candidate Venue")
+            )
+            profile.write_text(stale, encoding="utf-8")
+            result = self.run_initializer(workspace, "--include", "venue")
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("provisional venue profile cannot retain decision authority/date", result.stderr)
+            self.assertEqual(profile.read_text(encoding="utf-8"), stale)
+            result = self.run_initializer(
+                workspace,
+                "--venue",
+                "Candidate Venue",
+                "--venue-status",
+                "provisional",
+            )
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            repaired = profile.read_text(encoding="utf-8")
+            self.assertIn("- **Decision authority/date:** ", repaired.splitlines())
+            self.assertNotIn(AUTHORITY, repaired)
+
     def test_confirmed_blank_profile_requires_explicit_rebinding(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             workspace = Path(directory) / "paper"
