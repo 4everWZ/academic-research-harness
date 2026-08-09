@@ -86,6 +86,27 @@
       "forbidden": ["claim of definitive improvement", "claim of a causal effect", "claim of statistical significance", "uncertainty removed"]
     },
     {
+      "id": "visuals_are_synthesized_into_argument",
+      "route": "style-only revision",
+      "input": "Revise as one analytical sequence without changing claims or LaTeX cross-references: Figure~\\ref{fig:blur} shows that expected calibration error rises under blur. Figure~\\ref{fig:recovery} shows that temperature scaling recovers part of the loss. Table~\\ref{tab:shift} reports that the recovery is smaller under label shift.",
+      "required": ["blur degradation, partial recovery, and label-shift boundary synthesized into one analytical sequence", "all three empirical propositions preserved", "established LaTeX cross-reference syntax and labels preserved"],
+      "forbidden": ["figure-by-figure running inventory", "invented causal mechanism", "lost or altered cross-reference"]
+    },
+    {
+      "id": "caption_is_not_repeated_in_body",
+      "route": "style-only revision",
+      "input": "Revise only the body for analytical academic prose without changing claims or the figure reference. Caption: Figure 3. Mean expected calibration error by corruption type for the baseline and proposed method. Body: Figure 3 shows mean expected calibration error by corruption type for the baseline and proposed method. Blur produces the largest baseline error, while the proposed method narrows the gap most under noise.",
+      "required": ["blur and noise findings preserved", "Figure 3 retained as the supporting reference", "body advances the cross-condition comparison"],
+      "forbidden": ["caption inventory repeated in the body", "material comparison deleted", "invented explanation or mechanism"]
+    },
+    {
+      "id": "necessary_visual_navigation_is_retained",
+      "route": "style-only revision",
+      "input": "Revise without removing necessary navigation: Figure 2 diagrams the three-stage pipeline and defines the color coding used in the following analysis.",
+      "required": ["Figure 2 remains the grammatical subject", "three-stage pipeline and color-coding navigation preserved"],
+      "forbidden": ["mechanical figure-subject ban", "figure reference removed", "structure introduction converted into an empirical finding"]
+    },
+    {
       "id": "method_chain_does_not_invent_rationale",
       "route": "repository drafting",
       "input": "Draft the method choice from evidence that attention pooling is available for variable-length features and enabled in configuration. No run evidence establishes execution, and no source records why it was selected.",

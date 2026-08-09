@@ -15,5 +15,4 @@ Create entries only for material claims or unresolved evidence risks.
 - **Required action:** [verification, revision, decision, or none]
 - **Public handling:** direct | scoped | limitations | omit | pending decision
 
-Never infer approval or verification. `direct` requires `supported` status and
-a `verified` audit. Resolve contradictory fields before using the entry.
+Never infer approval or verification. `direct` requires `supported` status and a `verified` audit. Resolve contradictory fields before using the entry.

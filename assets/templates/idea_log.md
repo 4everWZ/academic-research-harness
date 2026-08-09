@@ -16,8 +16,7 @@
 |---|---|---|---|---|---|
 |  |  |  |  | pending | pending |
 
-Record an accepted research decision only with explicit user authorization and
-its date.
+Record an accepted research decision only with explicit user authorization and its date.
 
 ## Rejected Directions
 

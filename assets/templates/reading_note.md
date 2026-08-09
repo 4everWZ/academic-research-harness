@@ -17,8 +17,7 @@
 
 ## Quality and Limitations
 
-[Reproducibility, comparability, revision status, and evidence gaps relevant to
-this project's use.]
+[Reproducibility, comparability, revision status, and evidence gaps relevant to this project's use.]
 
 ## Use in This Paper
 

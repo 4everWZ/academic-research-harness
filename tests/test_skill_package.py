@@ -29,6 +29,47 @@ class SkillPackageTests(unittest.TestCase):
                 resolved = (markdown.parent / target).resolve()
                 self.assertTrue(resolved.exists(), f"broken link in {markdown}: {target}")
 
+    def test_markdown_prose_is_not_hard_wrapped(self) -> None:
+        markdown_files = [
+            ROOT / "SKILL.md",
+            *(ROOT / "references").glob("*.md"),
+            *(ROOT / "assets" / "templates").glob("*.md"),
+        ]
+        for markdown in markdown_files:
+            in_fence = False
+            in_frontmatter = False
+            previous_textual = False
+            for line_number, line in enumerate(markdown.read_text(encoding="utf-8").splitlines(), start=1):
+                stripped = line.strip()
+                if line_number == 1 and stripped == "---":
+                    in_frontmatter = True
+                    previous_textual = False
+                    continue
+                if in_frontmatter:
+                    if stripped == "---":
+                        in_frontmatter = False
+                    continue
+                if stripped.startswith("```"):
+                    in_fence = not in_fence
+                    previous_textual = False
+                    continue
+                if in_fence:
+                    continue
+                is_list_item = bool(re.match(r"^(?:[-+*]|\d+[.)])\s+", stripped))
+                is_structural = (
+                    not stripped
+                    or stripped.startswith(("#", "|", ">"))
+                    or stripped == "---"
+                    or line.startswith("    ")
+                    or is_list_item
+                )
+                is_plain = not is_structural
+                self.assertFalse(
+                    is_plain and previous_textual,
+                    f"hard-wrapped Markdown prose in {markdown}:{line_number}",
+                )
+                previous_textual = is_plain or is_list_item
+
     def test_ui_metadata_and_package_shape(self) -> None:
         metadata = (ROOT / "agents" / "openai.yaml").read_text(encoding="utf-8")
         self.assertIn('display_name: "Academic Research Harness"', metadata)
@@ -74,6 +115,9 @@ class SkillPackageTests(unittest.TestCase):
         self.assertIn("style-only revision, improve directness without", writing)
         self.assertRegex(writing, r"without\s+changing epistemic strength")
         self.assertIn("Preserve uncertainty required by the", writing)
+        self.assertIn("pointers to supporting evidence, not as a running inventory", writing)
+        self.assertIn("Preserve the manuscript's established cross-reference syntax and labels", writing)
+        self.assertIn("if no meaningful paper-facing proposition remains and navigation is not needed", writing)
         self.assertIn("smallest dependent span", writing)
         repository = (ROOT / "references" / "repo-to-paper.md").read_text(encoding="utf-8")
         self.assertIn("Every raw engineering, workflow, or provenance token", repository)

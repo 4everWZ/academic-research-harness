@@ -8,5 +8,4 @@
 - **Formatting constraints:** [length, citations, figures, supplement]
 - **Writing emphasis:** [motivation, depth, taxonomy, reproducibility, or other priorities]
 
-Use this profile to guide emphasis and constraints, not to weaken evidence
-standards or impose venue-specific stock prose.
+Use this profile to guide emphasis and constraints, not to weaken evidence standards or impose venue-specific stock prose.
