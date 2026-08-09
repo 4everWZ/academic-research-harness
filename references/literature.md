@@ -4,9 +4,11 @@ Use this reference for literature search, selection, indexing, BibTeX, reading n
 
 ## Collect sources
 
-Use secondary sources for discovery, then cite the primary paper, formal record, official project page, or official repository that supports the claim.
+Use secondary sources for discovery. Cite original studies for study-specific results and reviews or meta-analyses for synthesis claims; use a formal record, official project page, or official repository when it directly supports the claim.
 
 Choose a search window appropriate to the subfield, claim, and pace of change. Cover recent work as well as older foundational, standard, dataset, metric, or baseline sources when they remain relevant. Record material coverage limits rather than treating a fixed year window as universal.
+
+For novelty, SOTA, or synthesis, seek material conflicting, null, and overlapping work that could change the conclusion. Stop when further search is unlikely to change the scoped judgment. Unless a systematic review is requested, require neither exhaustive coverage nor fixed source, query, or database counts; report material limits. Keep ordinary background collection within scope.
 
 When a candidate is found as a preprint, search its exact title and authors for a formal version, correction, retraction, or materially newer revision before using it.
 

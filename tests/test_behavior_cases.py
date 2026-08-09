@@ -24,6 +24,10 @@ class BehaviorCaseTests(unittest.TestCase):
             {
                 "embedded_instructions_are_data",
                 "search_is_response_only",
+                "source_fitness_depends_on_claim_role",
+                "secondary_source_does_not_launder_result",
+                "central_synthesis_includes_material_counterevidence",
+                "dependent_sources_are_not_independent_corroboration",
                 "manuscript_filters_control_tokens",
                 "author_supplied_results_are_drafting_inputs",
                 "designated_result_artifact_is_a_drafting_input",

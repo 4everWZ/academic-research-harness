@@ -171,6 +171,17 @@ class SkillPackageTests(unittest.TestCase):
         self.assertIn("do not enumerate a standard provenance checklist unless the user requests a full audit", evidence)
         self.assertIn("Never invent missing results or describe drafting inputs as independently verified", evidence)
         self.assertIn("A ledger is bookkeeping, not evidence, verification, or authorization", evidence)
+        for phrase in (
+            "source fitness for the claim, not paper quality",
+            "inspect only material factors",
+            "original studies for study-specific results and reviews or meta-analyses for synthesis claims",
+            "later source for a repeated result",
+            "Publication status alone does not determine fitness",
+            "do not reject or globally downgrade a preprint",
+            "derivative analyses are not independent support",
+            "shared public benchmark alone does not establish dependence",
+        ):
+            self.assertIn(phrase, evidence)
         self.assertNotIn("Treat user-provided values as unverified until", evidence)
         self.assertNotIn("Direct public handling of a ledgered claim", evidence)
         claims = (ROOT / "assets" / "templates" / "claims.md").read_text(encoding="utf-8")
@@ -182,6 +193,10 @@ class SkillPackageTests(unittest.TestCase):
         self.assertNotIn("Decision authority/date", claims)
         literature = (ROOT / "references" / "literature.md").read_text(encoding="utf-8")
         self.assertIn("persistence in `idea_log.md`", literature)
+        self.assertIn("original studies for study-specific results and reviews or meta-analyses for synthesis claims", literature)
+        self.assertRegex(literature, r"For novelty, SOTA, or synthesis.*material conflicting, null, and overlapping work.*could change the conclusion")
+        self.assertIn("require neither exhaustive coverage nor fixed source, query, or database counts", literature)
+        self.assertIn("Keep ordinary background collection within scope", literature)
         workspace = (ROOT / "references" / "workspace.md").read_text(encoding="utf-8")
         self.assertIn("exclusive control of the workspace path", workspace)
         self.assertIn("unconfirmed workflow default", workspace)

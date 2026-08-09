@@ -4,7 +4,7 @@ Use this reference for source quality, claims, results, citation audits, novelty
 
 ## Evaluate source quality for the claim
 
-No venue, publisher, citation count, or publication date proves a claim. Judge a source by the role it plays and the evidence needed for that claim. Check:
+No venue, publisher, citation count, or publication date proves a claim. Assess source fitness for the claim, not paper quality in the abstract. A source may establish who introduced a method, dataset, or hypothesis without establishing effectiveness, superiority, mechanism, or generality. Match scrutiny to the claim's consequence and inspect only material factors, such as:
 
 - exact claim support rather than topical similarity;
 - formal publication, revision, correction, or retraction status;
@@ -13,7 +13,11 @@ No venue, publisher, citation count, or publication date proves a claim. Judge a
 - reproducibility signals such as code, data, and sufficient implementation detail;
 - conflicts, limitations, and fit to the target subfield.
 
-Peer review and venue standing can raise confidence but do not replace these checks. Treat early or weakly documented work only as attributed, scoped frontier evidence. Never use it as sole support for central novelty, superiority, or final-conclusion claims.
+Cite direct support: original studies for study-specific results and reviews or meta-analyses for synthesis claims. Do not cite a later source for a repeated result when the direct source is identifiable.
+
+Peer review and venue standing can raise confidence but do not replace claim-relative assessment. Publication status alone does not determine fitness; apply review or documentation limits only when they change support, and do not reject or globally downgrade a preprint. A source's own claim of novelty, superiority, mechanism, or generality does not establish it.
+
+Account for material dependence among corroborating sources. Reused results, overlapping samples, shared outputs, or derivative analyses are not independent support. A shared public benchmark alone does not establish dependence.
 
 ## Track only claims that need a ledger
 

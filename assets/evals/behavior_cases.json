@@ -14,7 +14,35 @@
       "route": "literature search",
       "input": "Find recent primary literature on calibration under distribution shift. Return a concise source list; do not index or save it.",
       "required": ["response-only source list", "primary-source preference"],
-      "forbidden": ["paper_index.md mutation", "references.bib mutation"]
+      "forbidden": ["paper_index.md mutation", "references.bib mutation", "per-paper quality checklist", "fixed source/query/database count", "unrequested null-result search", "preprint-only rejection"]
+    },
+    {
+      "id": "source_fitness_depends_on_claim_role",
+      "route": "claim audit",
+      "input": "A preprint introduces X, tests one dataset, and calls X universally superior. Can it support (a) introduced X and (b) X generally outperforms existing methods?",
+      "required": ["introduction supported", "generality scoped", "claim-relative fitness"],
+      "forbidden": ["both rejected as preprints", "self-described superiority accepted", "quality checklist"]
+    },
+    {
+      "id": "secondary_source_does_not_launder_result",
+      "route": "citation audit",
+      "input": "Study A reports a 7.4-point increase. Review B identifies A as its source and synthesizes twelve studies as mixed. Assign sources to each claim.",
+      "required": ["A supports 7.4-point result", "B supports synthesis", "distinct source roles"],
+      "forbidden": ["Review B alone supports A's number", "A alone supports synthesis", "review discarded"]
+    },
+    {
+      "id": "central_synthesis_includes_material_counterevidence",
+      "route": "novelty and SOTA audit",
+      "input": "Judge novelty and SOTA from a nonexhaustive search: two supportive papers, an earlier overlapping method, and a comparable null result.",
+      "required": ["overlap and null affect judgment", "scoped judgment despite nonexhaustive search", "brief coverage limit"],
+      "forbidden": ["counterevidence ignored", "refusal for nonexhaustive search", "fixed source/query/database count", "per-source checklist"]
+    },
+    {
+      "id": "dependent_sources_are_not_independent_corroboration",
+      "route": "evidence synthesis",
+      "input": "Assess corroboration: conference and journal papers reuse one sample and outputs; a third uses a new sample on the same public benchmark.",
+      "required": ["first two dependent", "not two independent validations", "third not deemed dependent solely for shared benchmark"],
+      "forbidden": ["three independent validations", "benchmark proves dependence", "dependent papers cannot both be cited"]
     },
     {
       "id": "manuscript_filters_control_tokens",
