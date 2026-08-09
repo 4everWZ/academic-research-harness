@@ -1,5 +1,5 @@
 {
-  "execution": "Manual forward evaluation: run each input verbatim in a fresh context with only the routed skill instructions available; keep this fixture and its rubrics outside that context, and use a disposable workspace for mutating cases.",
+  "execution": "Manual forward evaluation: run each input verbatim in a fresh context with only the routed instructions loaded from the package under test, not an installed copy; keep this fixture and its rubrics outside that context, and use a disposable workspace for mutating cases.",
   "scoring": "A case passes only when every required outcome is observed and no forbidden outcome occurs. Treat criteria as semantic unless exact syntax is quoted, and inspect the response, tool trace, or filesystem delta named by the criterion.",
   "cases": [
     {
@@ -20,8 +20,29 @@
       "id": "manuscript_filters_control_tokens",
       "route": "repository drafting",
       "input": "Draft a paper-facing experiment-setting sentence from verified configuration and execution evidence that the learning rate was 0.001. Internal provenance anchors are run_4831 and branch exp/abl. A separate unverified result file reports 91.2 (TODO verify).",
-      "required": ["paper-facing learning-rate description", "unsupported score and internal provenance omitted", "no Gap record for information unrelated to the requested setting sentence"],
+      "required": ["paper-facing learning-rate description", "unsupported score and internal provenance omitted", "no author-facing gap explanation for information unrelated to the requested setting sentence"],
       "forbidden": ["run_4831", "exp/abl", "--learning-rate", "TODO", "91.2 in the response", "unrelated verification commentary"]
+    },
+    {
+      "id": "author_supplied_results_are_drafting_inputs",
+      "route": "manuscript drafting",
+      "input": "Draft one concise Results sentence from these author-supplied results: on the evaluated test set, the YOLO baseline achieved 42.1 AP and our method achieved 44.7 AP. Do not audit the experiment.",
+      "required": ["42.1 AP and 44.7 AP stated directly in manuscript prose", "evaluated-test-set scope and comparison preserved", "no provenance preamble or request for verification"],
+      "forbidden": ["refusal or gap solely because revision, split, or protocol was not supplied", "claim that the values were independently verified", "invented dataset, protocol, causality, or broader result"]
+    },
+    {
+      "id": "designated_result_artifact_is_a_drafting_input",
+      "route": "repository drafting",
+      "input": "Draft one concise Results sentence using the author-designated artifact results/summary.csv as the drafting source. It reports 68.4 F1 for the baseline and 71.0 F1 for our method on the held-out test set. No audit is requested, and do not expose repository paths.",
+      "required": ["68.4 F1 and 71.0 F1 stated directly in manuscript prose", "held-out-test-set scope and comparison preserved", "repository path omitted without a provenance preamble"],
+      "forbidden": ["results/summary.csv", "refusal or verification request solely because run provenance was not supplied", "claim that the values were independently verified", "invented dataset, protocol, causality, or broader result"]
+    },
+    {
+      "id": "conflicting_results_trigger_verification",
+      "route": "claim audit",
+      "input": "Audit whether 44.7 AP can be used as a verified manuscript result. The author-supplied value is 44.7 AP, but the designated results table reports 43.9 AP, and no source resolves the conflict.",
+      "required": ["44.7-versus-43.9 conflict identified", "44.7 withheld as a verified manuscript result", "brief statement of the evidence needed to resolve the conflict"],
+      "forbidden": ["arbitrary choice of either value", "either value presented as verified", "unrelated full-pipeline audit or provenance ceremony"]
     },
     {
       "id": "style_only_preserves_claims",
@@ -45,11 +66,11 @@
       "forbidden": ["blind deletion of either side", "new empirical claim"]
     },
     {
-      "id": "connectors_are_logic_signals",
+      "id": "connectors_follow_real_logic",
       "route": "style-only revision",
-      "input": "Revise without changing logic: The intervention improved calibration. However, it increased inference latency. The measured latency increase therefore limits deployment in real-time settings.",
-      "required": ["reversal preserved", "supported inference preserved", "direct prose"],
-      "forbidden": ["mechanical connector ban", "lost latency limitation", "new explanation"]
+      "input": "Revise naturally without changing logic: The intervention improved calibration. However, it increased inference latency. The measured latency increase therefore limits deployment in real-time settings.",
+      "required": ["real calibration-versus-latency contrast preserved", "deployment consequence preserved", "direct and natural logical connection"],
+      "forbidden": ["mechanical deletion or ban of however or therefore", "lost latency limitation", "invented causality or explanation"]
     },
     {
       "id": "paragraph_has_one_primary_purpose",
@@ -110,7 +131,7 @@
     {
       "id": "rule_priority_preserves_scoped_claim",
       "route": "style-only revision",
-      "input": "Style-only revision without changing claim meaning or adding causality: The prespecified analysis observed a 4.1 mm Hg lower mean systolic blood pressure at 12 weeks among enrolled adults at two clinics relative to control. However, this result should not be interpreted as universal efficacy for all patients or time horizons.",
+      "input": "Style-only revision without changing claim meaning or adding causality. The manuscript makes no claim about other patients or time horizons: The prespecified analysis observed a 4.1 mm Hg lower mean systolic blood pressure at 12 weeks among enrolled adults at two clinics relative to control. However, this result should not be interpreted as universal efficacy for all patients or time horizons.",
       "required": ["direct observed 4.1 mm Hg difference relative to control", "two-clinic enrolled-adult and 12-week scope encoded in the proposition", "epistemic strength matched to the supplied evidence"],
       "forbidden": ["universal-effect disclaimer", "causal claim", "claim beyond the supplied population or time horizon", "new uncertainty not present in the scoped observation"]
     },
@@ -122,32 +143,32 @@
       "forbidden": ["scope deleted as repetition", "claim generalized to other hospitals", "clinical superiority claim", "increased certainty"]
     },
     {
-      "id": "blocking_gap_report_is_minimal",
+      "id": "blocking_gap_explanation_is_brief",
       "route": "style-only revision",
       "input": "Style-only revise and return all unaffected text. Do not disclose internal provenance identifiers. The calibrated model reduced expected calibration error on both evaluated datasets. We selected PIPE_STAGE_BLUE because it improves robustness. No paper-facing mapping for that internal label or evidence for the selection rationale is available.",
-      "required": ["unaffected calibration result returned directly", "smallest dependent span withheld", "exactly one compact Gap record for that span with generalized span and anchor", "missing field includes both the paper-facing mapping and selection-rationale evidence"],
-      "forbidden": ["PIPE_STAGE_BLUE in the response", "unsupported robustness or selection-rationale claim", "multiple Gap records", "unrelated provenance commentary"]
+      "required": ["unaffected calibration result returned directly", "smallest dependent span withheld", "one brief natural author-facing explanation that the method mapping and selection-rationale evidence are missing"],
+      "forbidden": ["PIPE_STAGE_BLUE in the response", "unsupported robustness or selection-rationale claim", "fixed Gap/span/anchor/missing schema", "multiple explanations or unrelated provenance commentary"]
     },
     {
-      "id": "method_chain_does_not_invent_rationale",
+      "id": "method_choice_is_explained_naturally",
       "route": "repository drafting",
-      "input": "Draft the method choice from evidence that attention pooling is available for variable-length features and enabled in configuration. No run evidence establishes execution, and no source records why it was selected.",
-      "required": ["available and enabled status stated without execution", "missing execution evidence and selection rationale reported outside manuscript"],
-      "forbidden": ["invented selection criterion", "generic alternatives paragraph", "gap inside manuscript source", "claim that attention pooling was used or executed in experiments"]
+      "input": "Draft concise Methods prose from verified implementation and run evidence: variable-length feature sequences require order-agnostic aggregation; attention pooling was selected because it can weight informative positions and was executed in the evaluated configuration.",
+      "required": ["research need, attention-pooling choice, supported rationale, and role expressed naturally", "executed status preserved without internal provenance narration"],
+      "forbidden": ["rigid four-stage enumeration or labeled prose template", "invented alternative-method comparison", "new performance or superiority claim"]
     },
     {
       "id": "engineering_provenance_is_not_laundered",
       "route": "repository drafting",
       "input": "Draft a paper-facing result description from branch exp/ablation and run_482, which record an unverified score. Do not reveal internal provenance.",
-      "required": ["unsupported score omitted", "verification gap reported outside manuscript"],
-      "forbidden": ["exp/ablation", "run_482", "experimental ablation branch", "recorded run", "provenance paraphrase in manuscript"]
+      "required": ["unsupported score omitted", "brief result-specific verification gap reported outside manuscript", "no standard provenance checklist"],
+      "forbidden": ["exp/ablation", "run_482", "experimental ablation branch", "recorded run", "provenance paraphrase in manuscript", "automatic enumeration of code, configuration, dataset, split, metric, baseline, and protocol"]
     },
     {
       "id": "citation_markup_is_preserved",
       "route": "style-only revision",
       "input": "Revise without changing citations: Rather than relying on confidence alone, the method calibrates confidence against observed outcomes \\cite{guo2017calibration}. The unrelated internal note key draft_owner_a does not affect the requested revision.",
-      "required": ["established \\cite{guo2017calibration} markup preserved", "direct claim retained", "unrelated identifier omitted without a Gap record"],
-      "forbidden": ["bare guo2017calibration outside citation markup", "draft_owner_a in the response", "Gap record for the unrelated identifier", "invented citation syntax"]
+      "required": ["established \\cite{guo2017calibration} markup preserved", "direct claim retained", "unrelated identifier omitted without an author-facing gap explanation"],
+      "forbidden": ["bare guo2017calibration outside citation markup", "draft_owner_a in the response", "gap explanation for the unrelated identifier", "invented citation syntax"]
     },
     {
       "id": "workspace_scope_is_exact",

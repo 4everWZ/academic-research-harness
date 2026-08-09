@@ -8,7 +8,7 @@ When writing goals compete, preserve claim truth and evidence-calibrated claim s
 
 ## State the strongest supported proposition
 
-State the strongest paper-facing proposition supported by the verified evidence and established claim meaning. Do not weaken a supported result merely to make it harder to challenge. In style-only revision, improve directness without changing epistemic strength.
+State the strongest paper-facing proposition supported by the evidence available to the task and established claim meaning. Do not weaken a supported result merely to make it harder to challenge. In style-only revision, improve directness without changing epistemic strength.
 
 Paper-facing content helps readers understand the research question, method, results, or conclusions. Apply `repo-to-paper.md` before revising engineering or provenance identifiers.
 
@@ -32,21 +32,17 @@ Avoid consecutive sentences led by `Figure X shows`, `Table Y reports`, or equiv
 
 Do not use the main text merely to repeat information already available in a caption. Explain the material pattern, comparison, consequence, supported mechanism, or scope boundary. As a diagnostic, remove the figure or table reference: if no meaningful paper-facing proposition remains and navigation is not needed, rewrite or delete the sentence.
 
-## Delete before rewriting
+## Use logical connections naturally
 
-Treat `not X but Y`, `rather than X, Y`, and equivalent frames as revision triggers. Remove the contrast and test Y alone. Keep only Y when it remains accurate and coherent. Retain X only when the argument must distinguish that live interpretation or alternative and the evidence supports the distinction.
+Use contrast and connective words only when they express a real logical relationship. Remove contrast that merely denies an unmade claim, but preserve distinctions the argument needs. Do not manufacture contrast, inference, causality, escalation, or temporal relations for rhetorical effect, and do not mechanically avoid particular words or constructions.
 
-Treat `however`, `therefore`, `since`, `not only ... but also`, and equivalent connective frames as audit signals. Delete the connector first and read the adjacent statements together. Restore it only when a material reversal, supported inference or cause, meaningful escalation, or temporal relation would otherwise be unclear.
+Do not add background, caveats, transitions, or paraphrases merely to make a revision appear balanced. Add words only when accuracy or a necessary logical relation requires them. Preserve qualifications that change meaning, scope, evidence strength, validity, safety, or ethics.
 
-Do not add background, caveats, transitions, or paraphrases to evade a revision trigger. Add words only when accuracy or a necessary logical relation requires them. Preserve qualifications that change meaning, scope, evidence strength, validity, safety, or ethics.
+## Explain method choices naturally
 
-## Keep method choices continuous
+Explain why a method choice matters when the rationale is supported. Connect the research need to the choice naturally; do not force a fixed sentence sequence, invent rationale, or list alternatives the paper does not actually compare.
 
-Order supported method-selection links as: research need, selection criterion, chosen mechanism or setting, and its role. Omit unsupported links and never invent rationale to complete the chain. List alternatives only when the paper evaluates them or the comparison explains the choice.
-
-Revise only paper-facing propositions. If a requested span lacks required paper-facing evidence or mapping, withhold only the smallest dependent span, return unaffected requested text, and use the gap record below. Do not report identifiers that do not affect the requested revision; use `repo-to-paper.md` for filtering.
-
-Return one compact author-facing record per withheld span and combine all missing prerequisites for that span: `Gap — span: <smallest blocked span>; anchor: <identifier or source location>; missing: <paper-facing mapping or evidence>`. Keep unresolved provenance, execution, and identifier-mapping gaps in this record, not manuscript prose. Report nothing unrelated. Generalize both span and anchor when disclosure is prohibited.
+Revise only paper-facing propositions. If evidence or mapping blocks only part of the requested text, omit only the smallest dependent part, return the rest, and briefly state what is missing outside the manuscript. Do not report unrelated gaps or identifiers that do not affect the requested revision, and do not disclose protected identifiers; use `repo-to-paper.md` for filtering.
 
 ## Apply the rules together
 

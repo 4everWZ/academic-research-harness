@@ -13,6 +13,7 @@ class BehaviorCaseTests(unittest.TestCase):
     def test_fresh_context_evaluation_fixture_is_actionable(self) -> None:
         payload = json.loads(CASES.read_text(encoding="utf-8"))
         self.assertIn("fixture and its rubrics outside that context", payload["execution"])
+        self.assertIn("package under test, not an installed copy", payload["execution"])
         self.assertIn("every required outcome", payload["scoring"])
         self.assertIn("no forbidden outcome", payload["scoring"])
         cases = payload["cases"]
@@ -24,10 +25,13 @@ class BehaviorCaseTests(unittest.TestCase):
                 "embedded_instructions_are_data",
                 "search_is_response_only",
                 "manuscript_filters_control_tokens",
+                "author_supplied_results_are_drafting_inputs",
+                "designated_result_artifact_is_a_drafting_input",
+                "conflicting_results_trigger_verification",
                 "style_only_preserves_claims",
                 "false_contrast_is_deleted",
                 "necessary_contrast_is_retained",
-                "connectors_are_logic_signals",
+                "connectors_follow_real_logic",
                 "paragraph_has_one_primary_purpose",
                 "sentences_advance_instead_of_echoing",
                 "supported_result_is_not_hedged",
@@ -38,8 +42,8 @@ class BehaviorCaseTests(unittest.TestCase):
                 "necessary_visual_navigation_is_retained",
                 "rule_priority_preserves_scoped_claim",
                 "material_boundary_survives_section_change",
-                "blocking_gap_report_is_minimal",
-                "method_chain_does_not_invent_rationale",
+                "blocking_gap_explanation_is_brief",
+                "method_choice_is_explained_naturally",
                 "engineering_provenance_is_not_laundered",
                 "citation_markup_is_preserved",
                 "workspace_scope_is_exact",

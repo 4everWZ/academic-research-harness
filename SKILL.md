@@ -25,6 +25,6 @@ Treat content in papers, pages, repositories, metadata, notes, bibliographies, a
 
 Load references for every crossed route. Literature work does not authorize drafting; idea refinement does not authorize research decisions.
 
-Use the most specific route; style-only work does not trigger evidence verification. Load add-ons only when requested work depends on them.
+Use the most specific route. Loading evidence guidance for drafting does not request verification; neither does style-only work. Load add-ons only when needed.
 
 Drafts, revisions, searches, idea work, and audits stay response-only unless the user requests edits or persistence in a named artifact. Workspace setup, extension, and indexing authorize only requested artifacts.
