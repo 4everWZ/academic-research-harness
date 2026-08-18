@@ -103,16 +103,16 @@
     {
       "id": "paragraph_has_one_primary_purpose",
       "route": "style-only revision",
-      "input": "Revise as one coherent paragraph: Calibration error fell across all three shifts. This reduction supports the claim that the adjustment improves reliability under distribution shift. The effect was smaller under label shift, which bounds the claim.",
-      "required": ["claim, evidence, and scope integrated around one purpose", "all three propositions preserved"],
-      "forbidden": ["claim-only paragraph", "evidence-only fragment", "repeated conclusion"]
+      "input": "Revise as one coherent paragraph without dropping the definition: Failure rate is the percentage of evaluated samples with absolute calibration error above 0.10, computed per hospital and macro-averaged across the four evaluated hospitals. It fell from 18% for the baseline to 12% for the adjusted model. The reduction occurred at all four hospitals but was smaller at Hospital D, supporting a consistent but nonuniform improvement across the evaluated sites.",
+      "required": ["operational meaning, sample unit, threshold, aggregation, baseline, and four-hospital scope preserved", "definition, result, and boundary integrated around one purpose"],
+      "forbidden": ["definition or material quantity omitted", "claim beyond evaluated hospitals", "invented configuration, mechanism, or causality"]
     },
     {
       "id": "sentences_advance_instead_of_echoing",
       "route": "style-only revision",
-      "input": "Revise concisely: The method improves calibration. Calibration is improved by the method. This improvement reduces expected calibration error on the shifted test sets.",
-      "required": ["duplicate proposition stated once", "metric consequence preserved"],
-      "forbidden": ["semantic repetition", "new rationale", "expanded wording"]
+      "input": "Revise concisely without adding a mechanism: Across the three shifted test sets, expected calibration error fell from 0.128 for the baseline to 0.091 for the method. The method reduced expected calibration error on those test sets. This reduction supports the bounded conclusion that the method improves calibration under the evaluated shifts.",
+      "required": ["single observation-comparison-consequence sequence", "values, baseline comparison, and evaluated-shift scope preserved"],
+      "forbidden": ["semantic repetition", "invented mechanism, causality, or rationale", "broader distribution-shift claim"]
     },
     {
       "id": "supported_result_is_not_hedged",

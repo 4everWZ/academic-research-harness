@@ -18,11 +18,13 @@ Place each material boundary at the narrowest point where it changes interpretat
 
 Repeat a material boundary in a later section only when the later claim would otherwise become broader or misleading; do not repeat it merely for local completeness.
 
-## Advance the argument directly
+## Make the scientific content explicit
 
-Keep a sentence only when it adds a premise, evidence, inference, mechanism, consequence, necessary scope, or logical relation. Delete repetitions, hypothetical-objection handling, denials of unmade claims, and explanations that only prevent unlikely misunderstandings.
+Make the scientific content do material work: define a construct, variable, or evaluation quantity; report evidence; connect a comparison or inference; explain a supported mechanism; state a consequence; or encode necessary scope. When a definition affects interpretation or reproducibility, give its operational meaning and the relevant unit, aggregation, reference condition, or evaluated scope. Provide enough paper-facing information to reconstruct what was measured or compared without narrating internal configuration structure or provenance anchors.
 
-Give each paragraph one primary argumentative purpose. Combine claims, evidence, mechanisms, and scope when they jointly serve that purpose. Delete repetition and unrelated defensive explanation.
+Interpret results through the shortest evidence-supported link that advances the paper: connect the material observation to the comparison, boundary, inference, or consequence it establishes. Explain a mechanism only when the evidence supports it; otherwise state the pattern or inference without inventing causality. Generic caveats, denials, and repeated result statements do not replace a missing explanatory link.
+
+Give each paragraph one primary argumentative purpose. Combine definitions, evidence, comparisons, inferences, supported mechanisms, consequences, and scope when they jointly serve that purpose. Delete repetition and unrelated defensive explanation.
 
 ## Integrate figures and tables into the argument
 

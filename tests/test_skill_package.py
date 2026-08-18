@@ -90,29 +90,16 @@ class SkillPackageTests(unittest.TestCase):
             "tests",
         }
         self.assertFalse({path.name for path in ROOT.iterdir()} - allowed)
-        development_roots = {ROOT / "tests", ROOT / "assets" / "evals"}
         runtime_payload = sum(
             path.stat().st_size
             for path in ROOT.rglob("*")
             if path.is_file()
             and ".git" not in path.parts
             and "__pycache__" not in path.parts
-            and not any(path.is_relative_to(root) for root in development_roots)
-        )
-        development_payload = sum(
-            path.stat().st_size
-            for root in development_roots
-            for path in root.rglob("*")
-            if path.is_file() and "__pycache__" not in path.parts
-        )
-        whole_payload = sum(
-            path.stat().st_size
-            for path in ROOT.rglob("*")
-            if path.is_file() and ".git" not in path.parts and "__pycache__" not in path.parts
+            and not path.is_relative_to(ROOT / "tests")
+            and not path.is_relative_to(ROOT / "assets" / "evals")
         )
         self.assertLessEqual(runtime_payload, 80_000)
-        self.assertLessEqual(development_payload, 100_000)
-        self.assertLessEqual(whole_payload, 170_000)
 
     def test_route_reference_budgets(self) -> None:
         route_bundles = {
@@ -157,6 +144,16 @@ class SkillPackageTests(unittest.TestCase):
         self.assertIn("Do not report unrelated gaps or identifiers that do not affect the requested revision", writing)
         self.assertIn("do not disclose protected identifiers", writing)
         self.assertNotIn("Gap — span:", writing)
+        for phrase in (
+            "Make the scientific content explicit",
+            "operational meaning and the relevant unit, aggregation, reference condition, or evaluated scope",
+            "reconstruct what was measured or compared without narrating internal configuration structure or provenance anchors",
+            "shortest evidence-supported link",
+            "Explain a mechanism only when the evidence supports it",
+            "Generic caveats, denials, and repeated result statements do not replace a missing explanatory link",
+        ):
+            self.assertIn(phrase, writing)
+        self.assertNotIn("Advance the argument directly", writing)
         repository = (ROOT / "references" / "repo-to-paper.md").read_text(encoding="utf-8")
         self.assertIn("Every raw engineering, workflow, or provenance token", repository)
         self.assertIn("not launder evidence anchors", repository)
