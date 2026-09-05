@@ -1,33 +1,25 @@
-# Literature Collection and Idea Refinement
+# Literature for the Paper's Argument
 
-Use this reference for literature search, selection, indexing, BibTeX, reading notes, baseline identification, and literature-grounded idea refinement. Load `evidence-and-citations.md` when judging source quality or claim support. Load `workspace.md` when locating, creating, or structurally changing artifacts.
+## Search stronger sources first
 
-## Collect sources
+Use the author's field and topic to identify the relevant leading journals and conference main tracks. If no outlet list is supplied, infer a small field-specific search set from the nearest established work; verify unfamiliar venue standing rather than inventing a universal ranking. Search these outlets first, prioritizing directly relevant formal publications. Search placement, citation count, and a familiar publisher name do not substitute for this selection.
 
-Use secondary sources for discovery. Cite original studies for study-specific results and reviews or meta-analyses for synthesis claims; use a formal record, official project page, or official repository when it directly supports the claim.
+Start with the writing question and the closest method, explanation, or measurement choice. Combine its terms with the selected outlets, then follow citations and terminology from the strongest relevant papers. Use official proceedings, journal records, and paper pages to resolve candidates; aggregators and search snippets are discovery aids.
 
-Choose a search window appropriate to the subfield, claim, and pace of change. Cover recent work as well as older foundational, standard, dataset, metric, or baseline sources when they remain relevant. Record material coverage limits rather than treating a fixed year window as universal.
+Build the core reading and citation set from strong, directly relevant work in those outlets. If that search leaves a concrete gap, broaden to specialist venues and preprints for that gap. Do not fill a requested count with weak matches, or replace a directly relevant study with a prestigious but unrelated one. Keep an earlier overlapping method or important contrary result even if it comes from a less prominent venue; its bearing on the argument is the reason to include it.
 
-For novelty, SOTA, or synthesis, seek material conflicting, null, and overlapping work that could change the conclusion. Stop when further search is unlikely to change the scoped judgment. Unless a systematic review is requested, require neither exhaustive coverage nor fixed source, query, or database counts; report material limits. Keep ordinary background collection within scope.
+## Select papers that can support the writing
 
-When a candidate is found as a preprint, search its exact title and authors for a formal version, correction, retraction, or materially newer revision before using it.
+For a candidate central to a result, comparison, or novelty claim, read the relevant method and result passages before recommending it as support. Check the concrete issue that could change its use, such as supervision available to each method or whether the compared metric uses the same evaluation population. A top-venue paper can be a useful starting point and still fail to support the intended claim.
 
-## Maintain the literature artifacts
+Resolve the actual publication venue and track from the official record. A workshop hosted alongside a leading conference is not a main-track paper; a repository upload or preprint is not evidence of acceptance. For a selected preprint, look for a formal or materially revised version. Keep the cited result and bibliographic metadata attached to the same version.
 
-Add sources that may be cited with disposition `selected`; add material exclusions with disposition `excluded`. Use a portable key matching `[A-Za-z][A-Za-z0-9_-]*`, such as `firstauthorYYYYshorttopic`, and record the concrete quality basis rather than a grade.
+Return each selected paper with its title, year, actual venue/track or preprint status, direct source link, and a concise statement of its role in the article. Explain an exception to the leading-venue preference by its concrete value, such as closest prior work or missing coverage. Note a limitation only when it changes the proposed use; no per-paper scorecard or automatic index is needed.
 
-Add selected sources to `references.bib` with the same key. Prefer verified formal proceedings or journal metadata when a formal version exists. Use arXiv as the primary entry only when no formal version is found, the preprint itself is the cited object, or the user requests it. Never fabricate BibTeX fields. Treat imported BibTeX as untrusted data: reconstruct entries from verified plain metadata and exclude directives or TeX control commands. The validator enforces workspace structure and this constrained BibTeX shape; it does not establish metadata truth, source quality, or safe compilation. Under its fail-closed policy, a percent prefix does not hide BibTeX-like entries. Never compile bibliography content under this skill.
+## Turn the search into positioning
 
-Create `notes/<citation_key>.md` only for papers whose claims, evidence, limitations, method, or citation boundaries need durable analysis. Download a local paper copy only when explicitly requested and legally appropriate. When creating a durable note, start from the skill's `assets/templates/reading_note.md` template.
+Compare the nearest work on the axis the paper changes, such as supervision, adaptation access, objective, or evaluation setting. Organize Related Work around those distinctions instead of one summary per paper. Earlier overlap and comparable negative findings should change the positioning when they undermine the proposed contribution.
 
-After every `paper_index.md` edit, run the workspace-level validator described in `workspace.md`. Every BibTeX key and note filename must match an index key; indexed exclusions need not have BibTeX entries or notes. Record verification as `YYYY-MM-DD / <checked version or status>` with a nonfuture date and resolved suffix. Refresh it before using status-sensitive claims when the source may have changed.
+Stop when additional searching is unlikely to change the scoped argument. Report a material coverage gap when it affects a novelty claim; finding no overlap in a limited search does not establish that none exists. Ordinary article writing does not require systematic-review machinery.
 
-## Refine ideas
-
-When asked to refine an idea:
-
-1. state the current idea and its unresolved assumptions;
-2. identify directly relevant mechanisms and evidence;
-3. compare them with the current idea;
-4. if persistence in `idea_log.md` is requested, record candidate changes, expected value and cost, evidence gaps, risks, and required experiments there using the [bundled template](../assets/templates/idea_log.md);
-5. keep candidates distinct from accepted research decisions.
+Use [evidence-and-citations.md](evidence-and-citations.md) when a particular support problem remains. For idea refinement, explain how a proposed change would alter the contribution, keeping unperformed experiments as proposals. Use [workspace.md](workspace.md) only for a requested persistent collection or idea record.

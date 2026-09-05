@@ -1,55 +1,13 @@
-# Evidence and Citations
+# Targeted Claim and Citation Checks
 
-Use this reference for source quality, claims, results, citation audits, novelty, comparisons, contribution boundaries, and SOTA language.
+Use for a requested audit or a concrete support problem in the current passage. Ordinary drafting from designated results does not require this workflow.
 
-## Evaluate source quality for the claim
+Start from the disputed proposition and inspect the source passage, table, or result artifact that could resolve it. Return the supported wording or the precise unresolved issue. A conflicting value calls for resolving that value's source, not a standard audit of the entire pipeline.
 
-No venue, publisher, citation count, or publication date proves a claim. Assess source fitness for the claim, not paper quality in the abstract. A source may establish who introduced a method, dataset, or hypothesis without establishing effectiveness, superiority, mechanism, or generality. Match scrutiny to the claim's consequence and inspect only material factors, such as:
+Scope negative findings to the evidence inspected. A supplied extract lacking an ablation does not establish that the study omitted ablations; a search finding no overlapping paper does not establish that none exists. Preserve the difference between missing material and confirmed nonperformance when proposing a revision or requesting the specific missing information.
 
-- exact claim support rather than topical similarity;
-- formal publication, revision, correction, or retraction status;
-- method and protocol clarity;
-- dataset, split, metric, and baseline comparability;
-- reproducibility signals such as code, data, and sufficient implementation detail;
-- conflicts, limitations, and fit to the target subfield.
+For comparative claims, examine the protocol difference that could change the conclusion: for example, target labels available to one method, a different evaluation split, or a different aggregation underlying the same metric name. If the comparison is indirect, write its actual basis instead of ranking unlike results as a controlled comparison.
 
-Cite direct support: original studies for study-specific results and reviews or meta-analyses for synthesis claims. Do not cite a later source for a repeated result when the direct source is identifiable.
+For novelty or literature synthesis, look for earlier overlap and material counterevidence through [literature.md](literature.md). Multiple publications reusing the same experimental outputs do not add independent corroboration; a shared benchmark alone does not imply reused outputs.
 
-Peer review and venue standing can raise confidence but do not replace claim-relative assessment. Publication status alone does not determine fitness; apply review or documentation limits only when they change support, and do not reject or globally downgrade a preprint. A source's own claim of novelty, superiority, mechanism, or generality does not establish it.
-
-Account for material dependence among corroborating sources. Reused results, overlapping samples, shared outputs, or derivative analyses are not independent support. A shared public benchmark alone does not establish dependence.
-
-## Track only claims that need a ledger
-
-When persistent tracking in `claims.md` is requested, create it from the [bundled template](../assets/templates/claims.md) for material claims or unresolved evidence risks, especially:
-
-- novelty, SOTA, superiority, or comparative claims;
-- numerical results;
-- causal or mechanism explanations;
-- contribution claims;
-- limitations that change interpretation;
-- claims reused across sections whose evidence is incomplete or easy to overstate.
-
-Ordinary background statements with direct, adequate citations do not require a ledger entry. A ledger is bookkeeping, not evidence, verification, or authorization; derive its status from the cited support rather than from the entry itself. Unsupported or speculative claims stay out of final conclusions. Before relying on a ledger status in an audit, verify citation keys against the index and BibTeX and verify implementation or result provenance against source artifacts. Workspace validation does not establish claim semantics. Existing ledgers need not be migrated; treat legacy fields as bookkeeping.
-
-## Draft and verify results
-
-For drafting, treat author-supplied results and result artifacts the author designates as drafting inputs. Verify provenance when verification or claim auditing is requested, when sources conflict, or when a claim depends on repository or run provenance. When verification is required for computational results, inspect only the sources and provenance links needed to resolve the claim. State only the conflict or missing link that blocks the requested claim; do not enumerate a standard provenance checklist unless the user requests a full audit. A timestamp, run identifier, or result file alone does not establish provenance.
-
-Never invent missing results or describe drafting inputs as independently verified. When verification or a source conflict blocks only part of a requested claim, keep the unresolved value outside manuscript prose, return unaffected requested text, and briefly state the conflict or missing evidence. Persist unresolved information only when the user requests a named artifact. Preserve citation keys only in the manuscript's established citation syntax; ask which syntax to use when none is established. Do not use stronger comparative language than the evidence supports.
-
-## Preserve research authority
-
-Ask before a material change to research meaning that is not already authorized by the user's request, including a new contribution claim, final method choice, dataset or split, metric, evaluation protocol, or baseline strategy. Routine editing within an explicitly authorized direction does not require renewed confirmation.
-
-## Audit citations
-
-For the target text:
-
-1. identify material claims;
-2. inspect the cited source at the level needed for each claim;
-3. check publication status, source role, and protocol comparability;
-4. classify support as supported, partial, unsupported, or speculative;
-5. report the needed revision, replacement, or evidence gap; apply it only when editing or persistence is requested.
-
-A related paper is not evidence for a broader statement merely because it shares the topic.
+Check only the support needed for the manuscript's use. An audit should end with a usable revision or a specific missing source, rather than a quality grade and a checklist for each paper. Record recurring unresolved claims only when a persistent tracker is requested; the optional template is in [workspace.md](workspace.md).

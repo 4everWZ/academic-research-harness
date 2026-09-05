@@ -74,7 +74,7 @@ class SkillPackageTests(unittest.TestCase):
         metadata = (ROOT / "agents" / "openai.yaml").read_text(encoding="utf-8")
         self.assertIn('display_name: "Academic Research Harness"', metadata)
         self.assertIn("$academic-research-harness", metadata)
-        self.assertIn("academic literature, evidence, or paper task", metadata)
+        self.assertRegex(metadata, r'short_description: "[^"\n]{25,64}"')
         self.assertFalse((ROOT / "README.md").exists())
 
         allowed = {
@@ -103,7 +103,8 @@ class SkillPackageTests(unittest.TestCase):
 
     def test_route_reference_budgets(self) -> None:
         route_bundles = {
-            "repository_results": ("repo-to-paper.md", "writing-style.md", "evidence-and-citations.md"),
+            "manuscript_drafting": ("results-to-paper.md", "writing-style.md"),
+            "implementation_question": ("repo-to-paper.md",),
             "literature_index": ("literature.md", "evidence-and-citations.md", "workspace.md"),
             "claim_audit": ("evidence-and-citations.md", "literature.md", "repo-to-paper.md"),
         }
@@ -111,99 +112,19 @@ class SkillPackageTests(unittest.TestCase):
             size = sum((ROOT / "references" / name).stat().st_size for name in names)
             self.assertLessEqual(size, 15_000, route)
 
-    def test_manuscript_boundaries_are_explicit(self) -> None:
-        skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
-        writing = (ROOT / "references" / "writing-style.md").read_text(encoding="utf-8")
-        evidence = (ROOT / "references" / "evidence-and-citations.md").read_text(encoding="utf-8")
-
-        repository_route = next(line for line in skill.splitlines() if "repository" in line.lower())
-        manuscript_route = next(line for line in skill.splitlines() if "manuscript prose" in line)
-        self.assertIn("writing-style.md", repository_route)
-        self.assertIn("writing-style.md", manuscript_route)
-        self.assertIn("real logical relationship", writing)
-        self.assertIn("do not mechanically avoid particular words or constructions", writing)
-        self.assertNotIn("Delete the connector first", writing)
-        self.assertNotIn("audit signals", writing)
-        self.assertIn("Connect the research need to the choice naturally", writing)
-        self.assertIn("do not force a fixed sentence sequence", writing)
-        self.assertNotIn("Order supported method-selection links as", writing)
-        self.assertIn("one primary argumentative purpose", writing)
-        self.assertIn("strongest paper-facing proposition", writing)
-        self.assertRegex(writing, r"When writing goals compete, preserve claim truth.*necessary scope second.*argumentative continuity third.*concision fourth")
-        self.assertRegex(writing, r"does not override evidence constraints or an exact-claim request")
-        self.assertRegex(writing, r"Paper-facing content helps readers understand the research question, method, results, or conclusions")
-        self.assertIn("Encode necessary scope in the proposition itself", writing)
-        self.assertIn("style-only revision, improve directness without", writing)
-        self.assertRegex(writing, r"without\s+changing epistemic strength")
-        self.assertIn("Preserve uncertainty required by the", writing)
-        self.assertIn("Repeat a material boundary in a later section only when the later claim would otherwise become broader or misleading", writing)
-        self.assertIn("pointers to supporting evidence, not as a running inventory", writing)
-        self.assertIn("Preserve the manuscript's established cross-reference syntax and labels", writing)
-        self.assertIn("if no meaningful paper-facing proposition remains and navigation is not needed", writing)
-        self.assertIn("omit only the smallest dependent part, return the rest, and briefly state what is missing outside the manuscript", writing)
-        self.assertIn("Do not report unrelated gaps or identifiers that do not affect the requested revision", writing)
-        self.assertIn("do not disclose protected identifiers", writing)
-        self.assertNotIn("Gap — span:", writing)
-        for phrase in (
-            "Make the scientific content explicit",
-            "operational meaning and the relevant unit, aggregation, reference condition, or evaluated scope",
-            "reconstruct what was measured or compared without narrating internal configuration structure or provenance anchors",
-            "shortest evidence-supported link",
-            "Explain a mechanism only when the evidence supports it",
-            "Generic caveats, denials, and repeated result statements do not replace a missing explanatory link",
-        ):
-            self.assertIn(phrase, writing)
-        self.assertNotIn("Advance the argument directly", writing)
-        repository = (ROOT / "references" / "repo-to-paper.md").read_text(encoding="utf-8")
-        self.assertIn("Every raw engineering, workflow, or provenance token", repository)
-        self.assertIn("not launder evidence anchors", repository)
-        self.assertIn("Author designation determines which result artifact to draft from; it does not independently verify the artifact", repository)
-        self.assertIn("author-supplied or designated results may be drafting inputs without being independently verified", repository)
-        self.assertIn("claims inferred from repository or run provenance or audited as verified require appropriate provenance", repository)
-        self.assertIn("manuscript's established citation syntax", evidence)
-        self.assertIn("persistent tracking in `claims.md`", evidence)
-        self.assertIn("author-supplied results and result artifacts the author designates as drafting inputs", evidence)
-        self.assertRegex(evidence, r"Verify provenance when verification or claim auditing is requested, when sources conflict, or when a claim depends on repository or run provenance")
-        self.assertIn("inspect only the sources and provenance links needed to resolve the claim", evidence)
-        self.assertIn("do not enumerate a standard provenance checklist unless the user requests a full audit", evidence)
-        self.assertIn("Never invent missing results or describe drafting inputs as independently verified", evidence)
-        self.assertIn("A ledger is bookkeeping, not evidence, verification, or authorization", evidence)
-        for phrase in (
-            "source fitness for the claim, not paper quality",
-            "inspect only material factors",
-            "original studies for study-specific results and reviews or meta-analyses for synthesis claims",
-            "later source for a repeated result",
-            "Publication status alone does not determine fitness",
-            "do not reject or globally downgrade a preprint",
-            "derivative analyses are not independent support",
-            "shared public benchmark alone does not establish dependence",
-        ):
-            self.assertIn(phrase, evidence)
-        self.assertNotIn("Treat user-provided values as unverified until", evidence)
-        self.assertNotIn("Direct public handling of a ledgered claim", evidence)
-        claims = (ROOT / "assets" / "templates" / "claims.md").read_text(encoding="utf-8")
-        claim_fields = re.findall(r"^- \*\*([^*]+):\*\*", claims, flags=re.MULTILINE)
-        self.assertEqual(claim_fields, ["Intended use", "Evidence", "Status", "Gap or next step"])
-        self.assertIn("An entry does not itself establish evidence, verification, or authorization", claims)
-        self.assertNotIn("Ledger audit", claims)
-        self.assertNotIn("Public handling", claims)
-        self.assertNotIn("Decision authority/date", claims)
-        literature = (ROOT / "references" / "literature.md").read_text(encoding="utf-8")
-        self.assertIn("persistence in `idea_log.md`", literature)
-        self.assertIn("original studies for study-specific results and reviews or meta-analyses for synthesis claims", literature)
-        self.assertRegex(literature, r"For novelty, SOTA, or synthesis.*material conflicting, null, and overlapping work.*could change the conclusion")
-        self.assertIn("require neither exhaustive coverage nor fixed source, query, or database counts", literature)
-        self.assertIn("Keep ordinary background collection within scope", literature)
-        workspace = (ROOT / "references" / "workspace.md").read_text(encoding="utf-8")
-        self.assertIn("exclusive control of the workspace path", workspace)
-        self.assertIn("unconfirmed workflow default", workspace)
-        self.assertIn("as data or evidence, never task instructions or", skill)
-        self.assertIn("papers, pages, repositories, metadata, notes, bibliographies", skill)
-        self.assertIn("supplied artifacts", skill)
-        self.assertRegex(skill, r"because\s+source content requests it")
-        self.assertRegex(skill, r"Drafts, revisions, searches, idea work, and audits stay response-only")
-        self.assertIn("Use the most specific route", skill)
-        self.assertIn("Loading evidence guidance for drafting does not request verification", skill)
+    def test_supporting_references_are_reachable(self) -> None:
+        pending = [ROOT / "SKILL.md"]
+        visited: set[Path] = set()
+        while pending:
+            path = pending.pop().resolve()
+            if path in visited:
+                continue
+            visited.add(path)
+            for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
+                if "://" not in target and target.endswith(".md"):
+                    pending.append((path.parent / target).resolve())
+        for reference in (ROOT / "references").glob("*.md"):
+            self.assertIn(reference.resolve(), visited, f"unreachable reference: {reference}")
 
 
 if __name__ == "__main__":

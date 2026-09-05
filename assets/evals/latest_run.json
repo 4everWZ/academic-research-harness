@@ -1,0 +1,551 @@
+{
+  "current": {
+    "date": "2026-09-05",
+    "package_version": "0.11.0",
+    "scope": "Leading-venue retrieval; author clarification for material gaps; scientific prose without implementation identifiers; preservation of direct writing.",
+    "protocol": {
+      "independent_contexts": true,
+      "fork_context": false,
+      "skills_activated": [],
+      "instructions": "All evaluated agents were instructed not to activate or consult any skills. Writers received plain editorial test material and author tasks. Evaluators received the raw tasks and outputs, not the candidate brief.",
+      "targeted_writing": "One fresh writer completed nine self-contained cases. A separate fresh evaluator assessed outcomes semantically against the current author contract.",
+      "live_retrieval": "A separate fresh agent searched for up to four primary ML papers; another independently checked official records and relevant primary-paper passages.",
+      "action_evidence": "The self-contained writer reported no file/tool use. Retrieval and verification agents used web tools and reported no repository access or activated skills. Skill activation is not separately instrumented.",
+      "interrupted_work": "One intermediate evaluation was interrupted after the author changed the missing-material contract. An earlier five-case run under the prior instructions is not used as a control for the final requirements."
+    },
+    "editorial_brief": "# Targeted Claim and Citation Checks\n\nUse for a requested audit or a concrete support problem in the current passage. Ordinary drafting from designated results does not require this workflow.\n\nStart from the disputed proposition and inspect the source passage, table, or result artifact that could resolve it. Return the supported wording or the precise unresolved issue. A conflicting value calls for resolving that value's source, not a standard audit of the entire pipeline.\n\nScope negative findings to the evidence inspected. A supplied extract lacking an ablation does not establish that the study omitted ablations; a search finding no overlapping paper does not establish that none exists. Preserve the difference between missing material and confirmed nonperformance when proposing a revision or requesting the specific missing information.\n\nFor comparative claims, examine the protocol difference that could change the conclusion: for example, target labels available to one method, a different evaluation split, or a different aggregation underlying the same metric name. If the comparison is indirect, write its actual basis instead of ranking unlike results as a controlled comparison.\n\nFor novelty or literature synthesis, look for earlier overlap and material counterevidence through [literature.md](literature.md). Multiple publications reusing the same experimental outputs do not add independent corroboration; a shared benchmark alone does not imply reused outputs.\n\nCheck only the support needed for the manuscript's use. An audit should end with a usable revision or a specific missing source, rather than a quality grade and a checklist for each paper. Record recurring unresolved claims only when a persistent tracker is requested; the optional template is in [workspace.md](workspace.md).\n\n\n\n\n# Academic Research Harness\n\nDevelop the paper's argument from existing research results and express it as manuscript prose.\n\nUse author-designated methods and results as drafting inputs without requiring an independent audit. If material needed for a requested passage is missing or conflicting, pause that passage and ask the author for the specific input. Do not replace it with a gap report, invented limitation, or repository investigation. Inspect code only when the author requests implementation extraction or verification.\n\nKeep author questions and work notes outside manuscript prose. Exclude code variables, internal labels, paths, run identifiers, and workflow metadata from the article. Use scientific descriptions; ask when a necessary mapping is missing.\n\nWork in the requested deliverable, without preliminary workspaces or ledgers. Keep intermediate outlines in working context unless requested.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature, prioritizing leading venues in the relevant field; position contributions or refine an idea | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Extract or check a method against implementation | [repo-to-paper.md](references/repo-to-paper.md) |\n| Manage a paper workspace or persistent literature collection | [workspace.md](references/workspace.md) |\n\nLoad additional references only to resolve a concrete need in the requested work. Numerical results and comparisons in ordinary drafting do not by themselves require the audit reference.\n\n\n# Literature for the Paper's Argument\n\n## Search stronger sources first\n\nUse the author's field and topic to identify the relevant leading journals and conference main tracks. If no outlet list is supplied, infer a small field-specific search set from the nearest established work; verify unfamiliar venue standing rather than inventing a universal ranking. Search these outlets first, prioritizing directly relevant formal publications. Search placement, citation count, and a familiar publisher name do not substitute for this selection.\n\nStart with the writing question and the closest method, explanation, or measurement choice. Combine its terms with the selected outlets, then follow citations and terminology from the strongest relevant papers. Use official proceedings, journal records, and paper pages to resolve candidates; aggregators and search snippets are discovery aids.\n\nBuild the core reading and citation set from strong, directly relevant work in those outlets. If that search leaves a concrete gap, broaden to specialist venues and preprints for that gap. Do not fill a requested count with weak matches, or replace a directly relevant study with a prestigious but unrelated one. Keep an earlier overlapping method or important contrary result even if it comes from a less prominent venue; its bearing on the argument is the reason to include it.\n\n## Select papers that can support the writing\n\nFor a candidate central to a result, comparison, or novelty claim, read the relevant method and result passages before recommending it as support. Check the concrete issue that could change its use, such as supervision available to each method or whether the compared metric uses the same evaluation population. A top-venue paper can be a useful starting point and still fail to support the intended claim.\n\nResolve the actual publication venue and track from the official record. A workshop hosted alongside a leading conference is not a main-track paper; a repository upload or preprint is not evidence of acceptance. For a selected preprint, look for a formal or materially revised version. Keep the cited result and bibliographic metadata attached to the same version.\n\nReturn each selected paper with its title, year, actual venue/track or preprint status, direct source link, and a concise statement of its role in the article. Explain an exception to the leading-venue preference by its concrete value, such as closest prior work or missing coverage. Note a limitation only when it changes the proposed use; no per-paper scorecard or automatic index is needed.\n\n## Turn the search into positioning\n\nCompare the nearest work on the axis the paper changes, such as supervision, adaptation access, objective, or evaluation setting. Organize Related Work around those distinctions instead of one summary per paper. Earlier overlap and comparable negative findings should change the positioning when they undermine the proposed contribution.\n\nStop when additional searching is unlikely to change the scoped argument. Report a material coverage gap when it affects a novelty claim; finding no overlap in a limited search does not establish that none exists. Ordinary article writing does not require systematic-review machinery.\n\nUse [evidence-and-citations.md](evidence-and-citations.md) when a particular support problem remains. For idea refinement, explain how a proposed change would alter the contribution, keeping unperformed experiments as proposals. Use [workspace.md](workspace.md) only for a requested persistent collection or idea record.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nMissing material is an author question, not manuscript content. If it prevents writing the requested claim, pause that passage and ask for the specific result, method detail, or intended source. Do not fill it with statements about unavailable materials, unverified results, or what the research supposedly did not do. If the missing material is irrelevant to the passage, leave it out and write the requested text. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express the supplied scientific objects, operations, settings, and values directly. Mathematical notation defined for the paper and established scientific method names are distinct from implementation identifiers. If a necessary internal label has no supplied scientific meaning, stop that passage and ask the author; do not guess its expansion or inspect the repository to avoid asking.\n\n\n# From Results to a Paper\n\n## Build the argument from the completed work\n\nStart with the supplied findings and the author's research question. Identify the central answer those findings support, then arrange the evidence around the questions a reader must resolve to accept it. When an early project slogan no longer fits the experiments, propose a framing grounded in the completed work; do not quietly redefine the method or evaluation to preserve the slogan.\n\nFor a full paper, settle that argument before polishing section prose. For a requested paragraph or section, work locally within the established argument. An outline is a working aid, not a mandatory intermediate deliverable.\n\nKeep research findings separate from the state of the handoff. Missing tables, logs, or definitions may require an author question; they are not findings to narrate in Results or Discussion. Pause the dependent passage rather than substituting a status report about files, verification, or unfinished workflow.\n\nSeparate evidence that establishes the main finding, evidence that explains a design choice, and evidence that locates a boundary or cost. Order them by their role in the argument, rather than by experiment chronology or table number. If results are mixed, use the pattern of differences to shape the thesis rather than hiding exceptions in a final limitations paragraph.\n\n## Use each result for the question it answers\n\n| Writing situation | Useful move |\n|---|---|\n| Main benchmark table | Select the comparisons that decide the research question. Distinguish consistent gains from gains concentrated in a condition; do not let an average obscure a reversal that changes the thesis. |\n| Component ablation | State what changes under the tested removal or replacement. Its performance cost supports the component's role under that intervention; it does not by itself establish the proposed internal mechanism. |\n| Robustness or transfer | Organize by the shift or condition where behavior changes. Make adaptation inputs, such as labeled target examples, part of the interpretation when they determine what kind of robustness was evaluated. |\n| Efficiency comparison | Connect the observed quality gain to its measured cost. Equal parameter count does not cancel higher latency; a measured latency difference should not be converted into an untested deployment verdict. |\n| Sensitivity analysis | Explain where the conclusion holds, weakens, or reverses. Use this to locate an operating range rather than describing every curve point. |\n| Null or uncertain result | State what remains unresolved and how that affects the paper's central answer. Do not turn lack of established improvement into equivalence or add generic future-work prose. |\n\n## Carry the same argument across sections\n\nWrite contribution statements as research advances established by the work. A list of implemented modules or completed experiments does not explain the advance. Keep a proposed framing distinct from an author-approved change in research meaning.\n\nBuild Methods around the objects and operations needed to understand the result. Introduce a component's rationale where its role becomes clear; supply material settings where they affect interpretation or reproduction, without reconstructing the source tree.\n\nUse Discussion to explain what the combined findings change about the motivating problem. Separate observed patterns from candidate explanations; plausible explanations can be discussed as interpretations without claiming they were experimentally established.\n\nDerive the abstract and conclusion from the resulting argument. Keep any resource requirement, exception, or uncertainty that changes the central claim, even if it is already explained in Results. Apply outlet-specific structure and reporting rules when a target outlet is supplied; do not import another field's conventions by default.\n",
+    "targeted_cases": [
+      {
+        "id": "uncertainty_not_needed",
+        "route": "paper drafting",
+        "input": "Write a concise English Results paragraph from the author's supplied extract: across three evaluated test sets, mean error fell from 0.128 to 0.091, and latency increased from 12 to 16 ms/image. Repeated-run estimates are not included in the handoff. Report the observed error-latency comparison.",
+        "required": [
+          "observed error and latency comparison written directly",
+          "no manuscript statement about handoff contents"
+        ],
+        "forbidden": [
+          "claim that uncertainty was not measured or runs not performed",
+          "unsolicited uncertainty disclaimer or demand for seeds before describing supplied values"
+        ]
+      },
+      {
+        "id": "uncertainty_needed",
+        "route": "paper drafting",
+        "input": "Write an English Results paragraph establishing that the 0.037 error reduction is stable across random seeds. The author supplied only the mean reduction; no seed-level results or uncertainty estimates are in the handoff, and the author has not said whether repeated runs were performed.",
+        "required": [
+          "pause the unsupported stability passage",
+          "ask author for seed-level results or uncertainty estimates"
+        ],
+        "forbidden": [
+          "stability assertion",
+          "invented nonperformance",
+          "paper prose describing missing handoff data or a code audit"
+        ]
+      },
+      {
+        "id": "ablation_needed",
+        "route": "paper drafting",
+        "input": "Write an English paragraph explaining how the ablation establishes that adaptive pooling causes the gain. The supplied materials contain only the full model's AP scores. No component comparison, ablation description, or statement about whether ablations were run has been supplied.",
+        "required": [
+          "pause the dependent explanation",
+          "ask author for the ablation design and results needed to assess the claim"
+        ],
+        "forbidden": [
+          "invented component effect",
+          "claim ablations were not performed",
+          "substitute manuscript paragraph about missing materials"
+        ]
+      },
+      {
+        "id": "unknown_internal_mapping",
+        "route": "paper drafting",
+        "input": "Write an English Methods paragraph explaining the role of XG_STAGE_17. The only supplied note is 'XG_STAGE_17 enabled in config/train.yaml; output assigned to tmp_kv2; run qa_104 on branch exp/zeta'. No scientific definition of XG_STAGE_17 or tmp_kv2 is available.",
+        "required": [
+          "pause Methods drafting",
+          "ask author for scientific operation or method description"
+        ],
+        "forbidden": [
+          "invented expansion or mechanism",
+          "engineering tokens in manuscript prose",
+          "repository inspection to resolve an unrequested code task"
+        ]
+      },
+      {
+        "id": "known_internal_mapping",
+        "route": "paper drafting",
+        "input": "Write one English Methods paragraph from this author description. Internal alias POOL_X7 means a learned scalar score per patch embedding, softmax over scores, and a weighted sum that is passed to a classifier. Code variables are tmp_logits3 and pool_buf_8. Config key agg.mode=weighted; CLI flag --agg-mode; file src/pool.py; run exp_482; job J_721; branch ablate/v2. The input is a variable-length unordered set; aggregation is permutation-invariant. Those are author-designated drafting facts.",
+        "required": [
+          "scientific scoring, normalization, aggregation and invariance explained",
+          "supplied facts sufficient without further questions"
+        ],
+        "forbidden": [
+          "code variables, internal alias, config keys, CLI flags, paths, run/job/branch metadata in manuscript",
+          "generic provenance paraphrases such as the recorded run",
+          "code inspection"
+        ]
+      },
+      {
+        "id": "confirmed_nonperformance",
+        "route": "paper drafting",
+        "input": "Write one concise English limitations sentence from this author statement: 'We ran the experiment once; we did not perform repeated-seed runs or compute confidence intervals.' Retain the actual limitation.",
+        "required": [
+          "explicitly confirmed experimental limitation retained"
+        ],
+        "forbidden": [
+          "weakened into merely missing documents",
+          "unnecessary author clarification"
+        ]
+      },
+      {
+        "id": "defensive_revision_regression",
+        "route": "prose revision",
+        "input": "Revise these two sentences into concise English manuscript prose. Keep the quantities and interpretation: On both evaluated datasets, the method reduced error by 0.03. However, this does not mean that it is better on all possible datasets. On the third dataset, the estimated reduction was 0.002 with a 95% confidence interval from -0.003 to 0.007, so improvement was not established.",
+        "required": [
+          "direct two-dataset result",
+          "third-dataset uncertainty and scope retained"
+        ],
+        "forbidden": [
+          "universal superiority disclaimer",
+          "uncertainty removed or all-dataset improvement claimed"
+        ]
+      },
+      {
+        "id": "venue_priority_selection",
+        "route": "literature selection",
+        "input": "Using only these fictional candidate records, choose a compact reading set for an article on label-assisted calibration under shift, ordered by where to start reading; briefly give each paper's role. Atlas main track and Beacon Journal are leading outlets in this field; Cedar Symposium is a specialist venue. All official records described here are verified. A: Atlas main-track study, directly matches label-assisted calibration under shift, controlled comparisons using the same label budget. B: Beacon Journal study of database indexing, shares the word calibration but no ML experiments. C: Cedar Symposium study closely matching the setting with a useful contrary result. D: arXiv preprint introducing the earliest overlapping method, no formal version found. E: Atlas-hosted workshop overview, reuses A's results and offers no new comparison. F: heavily cited anonymous search-engine summary claiming universal superiority; no primary source is identifiable. Do not browse; these are synthetic records.",
+        "required": [
+          "direct leading-venue primary study A prioritized",
+          "relevant contrary C and earliest overlap D retained with actual status and role",
+          "prestigious irrelevant B and untraceable F not used as support"
+        ],
+        "forbidden": [
+          "workshop E represented as main-track research or independent validation",
+          "all non-leading sources rejected",
+          "preprint D described as formally accepted"
+        ]
+      },
+      {
+        "id": "scoped_literature_gap",
+        "route": "literature positioning",
+        "input": "Give an English author-facing assessment of whether the current search can support a first-ever claim. The search covered the main proceedings of two relevant leading conferences for 2023–2025 using 'target calibration' and 'corruption adaptation'. No directly overlapping method was found there. Journal literature, citation chaining, workshops, and preprints have not been searched. The method uses labeled target examples.",
+        "required": [
+          "limited search finding distinguished from universal absence",
+          "targeted broadening suggested for unresolved prior-art coverage"
+        ],
+        "forbidden": [
+          "first-ever claim accepted",
+          "blanket statement no related work exists",
+          "unrequested manuscript novelty claim"
+        ]
+      }
+    ],
+    "targeted_outputs": {
+      "uncertainty_not_needed": {
+        "manuscript_text": "Across the three evaluated test sets, mean error decreased from 0.128 to 0.091, a reduction of 0.037, while latency increased from 12 to 16 ms/image."
+      },
+      "uncertainty_needed": {
+        "manuscript_text": "",
+        "author_question": "Were repeated runs with different random seeds performed? If so, please provide the seed-level error reductions or an uncertainty estimate and the number of seeds so that stability can be assessed."
+      },
+      "ablation_needed": {
+        "manuscript_text": "",
+        "author_question": "Was adaptive pooling removed or replaced in an otherwise matched comparison? Please provide the intervention, comparison conditions, and AP results. Such a comparison could establish its contribution under that intervention; explaining the mechanism would require evidence addressing that mechanism."
+      },
+      "unknown_internal_mapping": {
+        "manuscript_text": "",
+        "author_question": "What scientific operation does XG_STAGE_17 perform, what are its inputs and outputs, and how is the output represented by tmp_kv2 used in the method?"
+      },
+      "known_internal_mapping": {
+        "manuscript_text": "The method aggregates a variable-length, unordered set of patch embeddings by assigning each embedding a learned scalar score. A softmax over these scores produces normalized weights, which are used to compute a weighted sum of the embeddings. This permutation-invariant representation is then passed to a classifier."
+      },
+      "confirmed_nonperformance": {
+        "manuscript_text": "The experiment was run once, without repeated-seed runs or confidence intervals, leaving variability across random seeds unassessed."
+      },
+      "defensive_revision_regression": {
+        "manuscript_text": "The method reduced error by 0.03 on two evaluated datasets. On the third dataset, the estimated reduction was 0.002 (95% confidence interval: −0.003 to 0.007), so improvement was not established."
+      },
+      "venue_priority_selection": {
+        "author_response": "Read A first: its verified Atlas main-track study directly addresses label-assisted calibration under shift, with controlled comparisons at the same label budget. Read D next: this arXiv preprint introduces the earliest overlapping method and is essential for delimiting novelty; no formal version was found. Read C next: its closely matched setting and useful contrary result make the Cedar Symposium study important for identifying boundaries of the argument. Exclude B because its database-indexing topic is unrelated, E because the workshop overview reuses A's results without adding a comparison or independent corroboration, and F because its claim has no identifiable primary source. Titles, years, and direct links were not supplied."
+      },
+      "scoped_literature_gap": {
+        "author_response": "The current search does not support a first-ever claim. It establishes only that no directly overlapping method was found in the main proceedings of the two searched conferences for 2023–2025 using the two specified terms. Earlier work, journals, workshops, preprints, and citation chains remain unexamined. Broaden the search to those sources and terminology covering label-assisted calibration and adaptation with labeled target examples. Any novelty claim must retain the method's access to target labels as a defining condition."
+      },
+      "consultation_report": {
+        "tools_consulted": [],
+        "files_consulted": [],
+        "skills_activated": [],
+        "other_agents_consulted": [],
+        "material_used": "Only the editorial brief and author tasks supplied in the message."
+      }
+    },
+    "targeted_judgment": {
+      "cases": [
+        {
+          "case_id": "uncertainty_not_needed",
+          "pass": true,
+          "issues": [],
+          "reason": "Directly reports the supplied error reduction and latency increase without unnecessary uncertainty qualifications or claims about missing materials."
+        },
+        {
+          "case_id": "uncertainty_needed",
+          "pass": true,
+          "issues": [],
+          "reason": "Pauses manuscript drafting and requests seed-level results or uncertainty estimates without asserting stability or assuming repeated runs were not performed."
+        },
+        {
+          "case_id": "ablation_needed",
+          "pass": true,
+          "issues": [],
+          "reason": "Pauses the unsupported explanation and requests the intervention, matched comparison conditions, and AP results needed to assess adaptive pooling's contribution."
+        },
+        {
+          "case_id": "unknown_internal_mapping",
+          "pass": true,
+          "issues": [],
+          "reason": "Withholds Methods prose and asks for the scientific operation, inputs, outputs, and downstream use. Internal identifiers appear only in the permitted author question."
+        },
+        {
+          "case_id": "known_internal_mapping",
+          "pass": true,
+          "issues": [],
+          "reason": "Explains learned scoring, softmax normalization, weighted aggregation, permutation invariance, and classification without engineering identifiers, workflow metadata, or unnecessary questions."
+        },
+        {
+          "case_id": "confirmed_nonperformance",
+          "pass": true,
+          "issues": [],
+          "reason": "Retains the explicitly confirmed single-run limitation and absence of repeated-seed runs and confidence intervals as research content."
+        },
+        {
+          "case_id": "defensive_revision_regression",
+          "pass": true,
+          "issues": [],
+          "reason": "Preserves the two-dataset reduction and the third dataset's estimate, confidence interval, and inconclusive improvement while removing the universal-superiority disclaimer."
+        },
+        {
+          "case_id": "venue_priority_selection",
+          "pass": true,
+          "issues": [],
+          "reason": "Prioritizes A, retains D as an overlapping preprint and C as relevant contrary evidence, and excludes irrelevant, redundant, or untraceable support. D's placement before C is justified by its novelty-assessment role."
+        },
+        {
+          "case_id": "scoped_literature_gap",
+          "pass": true,
+          "issues": [],
+          "reason": "Rejects a first-ever conclusion from the limited search and proposes targeted expansion across sources, dates, citation chains, and terminology reflecting labeled target examples."
+        }
+      ],
+      "overall_assessment": "All nine cases satisfy their required outcomes without forbidden outcomes. Manuscript prose is concise, scientifically clear, and appropriately scoped; author questions address the missing information specifically. Minor editorial excess appears in the ablation mechanism aside and the literature response's closing metadata sentence. The consultation report references an editorial brief unavailable here, so that provenance claim cannot be verified."
+    },
+    "targeted_result": {
+      "passed": 9,
+      "total": 9
+    },
+    "live_retrieval": {
+      "author_task": "Find up to four primary papers suitable for positioning an ML article on predictive uncertainty and calibration under distribution shift in image classification. Favor useful foundational and empirical comparisons; organize Related Work and provide selected sources.",
+      "brief": "# Literature for the Paper's Argument\n\n## Search stronger sources first\n\nUse the author's field and topic to identify the relevant leading journals and conference main tracks. If no outlet list is supplied, infer a small field-specific search set from the nearest established work; verify unfamiliar venue standing rather than inventing a universal ranking. Search these outlets first, prioritizing directly relevant formal publications. Search placement, citation count, and a familiar publisher name do not substitute for this selection.\n\nStart with the writing question and the closest method, explanation, or measurement choice. Combine its terms with the selected outlets, then follow citations and terminology from the strongest relevant papers. Use official proceedings, journal records, and paper pages to resolve candidates; aggregators and search snippets are discovery aids.\n\nBuild the core reading and citation set from strong, directly relevant work in those outlets. If that search leaves a concrete gap, broaden to specialist venues and preprints for that gap. Do not fill a requested count with weak matches, or replace a directly relevant study with a prestigious but unrelated one. Keep an earlier overlapping method or important contrary result even if it comes from a less prominent venue; its bearing on the argument is the reason to include it.\n\n## Select papers that can support the writing\n\nFor a candidate central to a result, comparison, or novelty claim, read the relevant method and result passages before recommending it as support. Check the concrete issue that could change its use, such as supervision available to each method or whether the compared metric uses the same evaluation population. A top-venue paper can be a useful starting point and still fail to support the intended claim.\n\nResolve the actual publication venue and track from the official record. A workshop hosted alongside a leading conference is not a main-track paper; a repository upload or preprint is not evidence of acceptance. For a selected preprint, look for a formal or materially revised version. Keep the cited result and bibliographic metadata attached to the same version.\n\nReturn each selected paper with its title, year, actual venue/track or preprint status, direct source link, and a concise statement of its role in the article. Explain an exception to the leading-venue preference by its concrete value, such as closest prior work or missing coverage. Note a limitation only when it changes the proposed use; no per-paper scorecard or automatic index is needed.\n\n## Turn the search into positioning\n\nCompare the nearest work on the axis the paper changes, such as supervision, adaptation access, objective, or evaluation setting. Organize Related Work around those distinctions instead of one summary per paper. Earlier overlap and comparable negative findings should change the positioning when they undermine the proposed contribution.\n\nStop when additional searching is unlikely to change the scoped argument. Report a material coverage gap when it affects a novelty claim; finding no overlap in a limited search does not establish that none exists. Ordinary article writing does not require systematic-review machinery.\n\nUse [evidence-and-citations.md](evidence-and-citations.md) when a particular support problem remains. For idea refinement, explain how a proposed change would alter the contribution, keeping unperformed experiments as proposals. Use [workspace.md](workspace.md) only for a requested persistent collection or idea record.\n",
+      "deliverable_and_researcher_action_report": "I recommend these four papers as a compact foundation and comparison set. All are formal main-conference publications.\n\nOrganize Related Work around **how uncertainty is obtained and whether it survives shift**: Guo establishes post-hoc calibration using labeled validation data; Lakshminarayanan establishes averaging independently trained models as an uncertainty baseline; Ovadia directly tests these approaches under increasing shift. Then use Minderer to qualify broad failure claims: comparisons across newer architectures reveal better calibration robustness and stronger correspondence between in-distribution and shifted performance than comparisons across uncertainty methods suggest. Position the article’s contribution against the relevant axis—method, architecture, or access to target data—rather than claiming calibration under shift is unexplored. Sources and supporting passages follow.\n\n1. **Guo et al. (2017), “On Calibration of Modern Neural Networks.” ICML, main conference.**  \n   Use for calibration terminology and the temperature-scaling baseline: one positive scalar is fitted by minimizing negative log-likelihood on labeled validation data, preserving predicted classes. Its image experiments support effective calibration in the standard evaluation setting; they do not establish robustness under shift. Read: §4.2 and §5. [Published paper](https://proceedings.mlr.press/v70/guo17a/guo17a.pdf).\n\n2. **Lakshminarayanan, Pritzel, and Blundell (2017), “Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles.” NIPS, main conference.**  \n   Use as the foundational ensemble comparator: independently initialize networks, train on the full training set, and average probabilities; adversarial training is optional. Image experiments evaluate accuracy, NLL, Brier score, and uncertainty on unseen classes. The latter supports an OOD uncertainty argument, but does not demonstrate calibrated probabilities under same-class corruptions. Read: §2.4 and §§3.4–3.5. [Published paper](https://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles.pdf).\n\n3. **Ovadia et al. (2019), “Can You Trust Your Model’s Uncertainty? Evaluating Predictive Uncertainty Under Dataset Shift.” NeurIPS, main conference.**  \n   Make this the central empirical comparison. ResNet experiments on CIFAR-10 and ImageNet cover 16 corruption types at five severities, comparing temperature scaling, ensembles, dropout, and variational approaches. Calibration fitted on i.i.d. validation data deteriorates as shift grows; ensembles perform especially well at stronger shifts. Keep corrupted, labeled classification separate from entirely OOD inputs, which receive confidence/entropy analyses. Read: §3, §4.2, and §5. [Published paper](https://proceedings.nips.cc/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf).\n\n4. **Minderer et al. (2021), “Revisiting the Calibration of Modern Neural Networks.” NeurIPS, main conference.**  \n   Use as the necessary qualification to older architecture conclusions: ViT and MLP-Mixer show slower calibration degradation on ImageNet-C, and architecture rankings transfer relatively well to additional shifted benchmarks. Temperature is fitted on clean ImageNet validation images; corresponding corrupted images are excluded from evaluation. This is an architecture comparison, not a direct refutation of Ovadia’s method ranking. Its ECE analysis also motivates specifying binning and reporting accuracy alongside calibration. Read: §§4.1–4.3 and §5. [Published paper](https://proceedings.neurips.cc/paper/2021/file/8420d359404024567b5aefda1231af24-Paper.pdf).\n\nThe remaining positioning gap is method-specific: the supplied task does not identify the proposed method, shift assumption, or target-data access. This bounded set supports framing and baseline selection, but cannot establish novelty against adaptation or shift-specific recalibration methods.\n\n**Search record**\n\nActual queries, verbatim:\n\n```text\nsite.proceedings.mlr.press On Calibration of Modern Neural Networks Guo 2017\nsite.proceedings.neurips.cc Can You Trust Your Model Uncertainty Under Dataset Shift 2019\nsite.proceedings.neurips.cc Evaluating Predictive Uncertainty Under Dataset Shift ensembles 2021\nsite.proceedings.mlr.press calibration distribution shift image classification importance weighting temperature scaling ICML\nsite.proceedings.neurips.cc Simple and Scalable Predictive Uncertainty Estimation using Deep Ensembles 2017\nsite.proceedings.neurips.cc Revisiting the Calibration of Modern Neural Networks 2021\nsite.openreview.net ICLR 2021 2020 calibration distribution shift image classification temperature scaling\n```\n\nPrimary URLs opened and inspected: the four published PDFs linked above, plus their official publication records:\n\n- [Guo — ICML record](https://proceedings.mlr.press/v70/guo17a.html)\n- [Lakshminarayanan — NIPS record](https://papers.nips.cc/paper_files/paper/2017/hash/9ef2ed4b7fd2c810847ffa5fa85bce38-Abstract.html)\n- [Ovadia — NeurIPS record](https://proceedings.neurips.cc/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html)\n- [Minderer — NeurIPS record](https://proceedings.neurips.cc/paper/2021/hash/8420d359404024567b5aefda1231af24-Abstract.html)\n\n**Skills activated, loaded, or consulted: none.** No repository files were inspected or edited.",
+      "verification": {
+        "papers": [
+          {
+            "paper": "Guo et al. (2017)",
+            "status": "pass",
+            "venue_track": "ICML 2017, main conference, PMLR 70.",
+            "evidence": [
+              "[Official record](https://proceedings.mlr.press/v70/guo17a.html)",
+              "[Paper, §§4–5](https://proceedings.mlr.press/v70/guo17a/guo17a.pdf)"
+            ]
+          },
+          {
+            "paper": "Lakshminarayanan et al. (2017)",
+            "status": "pass",
+            "venue_track": "NIPS 2017, main conference, volume 30.",
+            "evidence": [
+              "[Official record](https://papers.nips.cc/paper_files/paper/2017/hash/9ef2ed4b7fd2c810847ffa5fa85bce38-Abstract.html)",
+              "[Paper, §§2.4, 3.4–3.5](https://papers.nips.cc/paper/7219-simple-and-scalable-predictive-uncertainty-estimation-using-deep-ensembles.pdf)"
+            ]
+          },
+          {
+            "paper": "Ovadia et al. (2019)",
+            "status": "pass",
+            "venue_track": "NeurIPS 2019, main conference, volume 32.",
+            "evidence": [
+              "[Official record](https://proceedings.neurips.cc/paper/2019/hash/8558cb408c1d76621371888657d2eb1d-Abstract.html)",
+              "[Paper, §§2–5](https://proceedings.nips.cc/paper/2019/file/8558cb408c1d76621371888657d2eb1d-Paper.pdf)"
+            ]
+          },
+          {
+            "paper": "Minderer et al. (2021)",
+            "status": "pass",
+            "venue_track": "NeurIPS 2021, main conference, volume 34.",
+            "evidence": [
+              "[Official record](https://proceedings.neurips.cc/paper/2021/hash/8420d359404024567b5aefda1231af24-Abstract.html)",
+              "[Paper, §§4.1–4.3, 5](https://proceedings.neurips.cc/paper/2021/file/8420d359404024567b5aefda1231af24-Paper.pdf)"
+            ]
+          }
+        ],
+        "overall": {
+          "status": "pass",
+          "material_issues": [],
+          "assessment": "All four papers fit the author task. The proposed organization and comparisons are supported, with appropriately bounded novelty claims.",
+          "provenance_limit": "Primary sources cannot establish whether the deliverable's reported historical queries or tool/skill usage actually occurred."
+        },
+        "interpretation_note": "Minderer's cross-benchmark transfer refers to preserved accuracy-calibration Pareto optimality, not an invariant total ranking.",
+        "tools_and_skills": {
+          "tools": [
+            "functions.exec",
+            "web.run: open, find, screenshot"
+          ],
+          "skills_activated_loaded_or_consulted": [],
+          "repository_files_accessed": false,
+          "files_edited": false,
+          "other_agents_used": false,
+          "scope_expanded": false,
+          "limitation": "Three screenshot requests timed out; the relevant passages were verified through successfully retrieved primary-paper text."
+        }
+      },
+      "result": {
+        "papers_verified": 4,
+        "papers_selected": 4
+      }
+    },
+    "checks": {
+      "unit_tests": "80 passed",
+      "skill_validator": "passed",
+      "diff_check": "passed"
+    },
+    "limits": [
+      "These targeted acceptance cases demonstrate the requested behaviors on these inputs, not broad writing-quality superiority.",
+      "The live retrieval test covers one ML topic with conference papers; it does not measure recall or validate journal selection across fields.",
+      "Plain-text editorial briefing does not test installed-skill dispatch. Historical skill/tool-use claims are consultation reports.",
+      "Previously retained scenarios outside these nine were not re-executed by agents in this iteration; unit tests validate fixtures and tools.",
+      "The live search used the final retrieval reference but preceded the last missing-material wording change; targeted writing tested that final wording."
+    ]
+  },
+  "history": [
+    {
+      "date": "2026-09-05",
+      "purpose": "Assess whether the candidate instructions improve article writing beyond the model's baseline while keeping attention on writing.",
+      "setup": {
+        "independent_contexts": true,
+        "fork_context": false,
+        "skills_activated": [],
+        "conditions": {
+          "baseline": "Author tasks only; no editorial brief.",
+          "candidate": "Author tasks plus candidate instructions supplied as plain editorial test material; no skill activated."
+        },
+        "writers": 3,
+        "blind_evaluators": 2,
+        "action_evidence": "Each writer reported consulting no tools or files and activating no skills. These are agent consultation reports; this evaluation does not instrument skill dispatch in a deployed session.",
+        "baseline_reused": true,
+        "limitations": [
+          "Four synthetic, self-contained ML writing tasks; one baseline sample and two candidate samples. No claim of broad statistical superiority.",
+          "The final candidate was retested on the same tasks after one writing-guidance change; these are diagnostic examples, not a held-out estimate.",
+          "Plain-text briefing tests the guidance, not installed-skill activation or routing behavior.",
+          "The 29 retained regression scenarios were not independently executed in this run. Unit tests validate fixtures and package/tool behavior, not prose quality."
+        ]
+      },
+      "author_tasks": [
+        {
+          "id": "mixed_results",
+          "input": "Write a Results subsection in English, at most 170 words, from these author-supplied findings. Organize the evidence into an argument. Table 1: object detection AP, baseline versus our adaptive pooling method: sparse scenes 42.1 / 44.7; crowded scenes 31.8 / 35.4; nighttime scenes 28.6 / 28.2. Figure 3: on crowded scenes, AP is 32.6 without adaptive weights and 35.4 with them. Table 2: both methods have 18 million parameters; on the same GPU with batch size one, baseline latency is 12 ms/image and ours is 16 ms/image. No repeated-run uncertainty estimates are available. These are the results to use for this draft."
+        },
+        {
+          "id": "paper_framing",
+          "input": "Propose a central thesis and a four-item Results outline in English for a paper using only these completed experiments. The motivating problem is reliable classification when deployed inputs are corrupted. On the three evaluated corruption types, post-hoc calibration reduces mean expected calibration error from 0.128 to 0.091. Classification accuracy is unchanged. Benefits shrink as corruption severity rises; at the most severe level the reduction is 0.004. Calibration uses 500 labeled target examples. A comparison using 50 target examples gives error 0.117. No target-label-free experiment has been run. An early project note called the idea 'label-free robust prediction'. End with two proposed contribution sentences suitable for the Introduction. The experiments are complete; help frame the article."
+        },
+        {
+          "id": "defensive_revision",
+          "input": "Revise these two manuscript paragraphs in English for directness and continuity, preserving the empirical content and necessary uncertainty. Return only the revised paragraphs. Paragraph 1: Figure 4 shows that the method reduced mean error from 0.128 to 0.091 on the three evaluated shifted test sets. This indicates a reduction in mean error on these test sets. However, this should not be interpreted as universal superiority across every conceivable distribution shift. Table 2 shows that inference latency increased from 12 to 16 ms per image. This does not mean that the method is suitable for all real-time systems, but rather suggests that there is a tradeoff. Paragraph 2: On the fourth test set, the estimated error reduction was 0.003, with a 95% confidence interval of -0.002 to 0.008, so this result does not establish an improvement. It is important to note that additional evidence would be needed to establish an improvement on that test set."
+        },
+        {
+          "id": "methods_from_description",
+          "input": "Write a Methods paragraph in English, at most 130 words, from the author's description below. Explain the method so readers can understand how its operations fit together. The evaluated model accepts a variable-length unordered set of patch embeddings. Each embedding receives a scalar score from a learned linear projection; softmax over the set gives normalized weights. A weighted sum produces a fixed-length representation passed to a classifier. The author chose weighted aggregation to let informative patches contribute unequally while keeping the output unchanged by permutation of the input set. Internal working label: POOL_X7. Implementation lives in src/pool.py, but the description here is the drafting source. No experiment comparing the interpretability of the weights has been performed."
+        }
+      ],
+      "baseline_outputs": {
+        "mixed_results": "Adaptive pooling improved detection AP in sparse and crowded scenes, but not at night (Table 1). AP increased from 42.1 to 44.7 in sparse scenes and from 31.8 to 35.4 in crowded scenes, gains of 2.6 and 3.6 points, respectively. Nighttime AP decreased by 0.4 points, from 28.6 to 28.2, indicating that the benefit depends on scene conditions. The crowded-scene ablation supports the contribution of adaptive weighting: AP rose from 32.6 without adaptive weights to 35.4 with them (Figure 3). These gains incurred a latency cost without increasing parameter count. Both models contained 18 million parameters, but latency on the same GPU at batch size one increased from 12 to 16 ms/image (Table 2). Together, the results support adaptive pooling for improved sparse- and crowded-scene detection at higher inference latency. No repeated-run uncertainty estimates are available, so the reliability of the observed differences across runs remains unquantified.",
+        "paper_framing": "**Central thesis:** On the three evaluated corruption types, post-hoc calibration using labeled target examples improves mean calibration error while leaving classification accuracy unchanged; its benefit diminishes with corruption severity and fewer target labels. The evidence supports framing the paper around label-assisted calibration under corruption. The early description “label-free robust prediction” is unsupported because calibration uses target labels and no target-label-free experiment was conducted.\n\n**Results outline:**\n\n1. **Calibration under corruption:** Present the reduction in mean expected calibration error from 0.128 to 0.091 across the three evaluated corruption types.\n2. **Classification accuracy:** Show that accuracy remains unchanged, locating the observed improvement in calibration.\n3. **Dependence on corruption severity:** Report shrinking calibration benefits as severity increases, including the reduction of 0.004 at the most severe level.\n4. **Target-label requirements:** Compare error of 0.091 with 500 labeled target examples against 0.117 with 50, establishing the practical importance of the label budget.\n\n**Proposed Introduction contribution sentences:**\n\nWe evaluate post-hoc calibration on three corruption types and show that, with 500 labeled target examples, it reduces mean expected calibration error from 0.128 to 0.091 while preserving classification accuracy.\n\nWe characterize the dependence of these benefits on corruption severity and target-label availability, finding a reduction of only 0.004 at the most severe level and error of 0.117 when calibration uses 50 labeled target examples.",
+        "defensive_revision": "The method reduced mean error from 0.128 to 0.091 on the three evaluated shifted test sets (Figure 4), while increasing inference latency from 12 to 16 ms per image (Table 2). These results show an error–latency tradeoff on the evaluated shifts; suitability for real-time use depends on the system’s latency requirements.\n\nEvidence of improvement was inconclusive on the fourth test set: the estimated error reduction was 0.003, with a 95% confidence interval of −0.002 to 0.008.",
+        "methods_from_description": "The model accepts a variable-length, unordered set of patch embeddings and aggregates them into a fixed-length representation for classification. A learned linear projection assigns each embedding a scalar score, and a softmax over all scores in the set converts them into normalized weights. The model then computes the weighted sum of the embeddings and passes this representation to a classifier. This aggregation allows informative patches to contribute unequally while preserving invariance to input order: permuting the embeddings permutes their corresponding weights but leaves the weighted sum unchanged. The weights serve as aggregation coefficients; their interpretability has not been experimentally evaluated."
+      },
+      "rounds": [
+        {
+          "candidate_editorial_brief": "\n\n# Academic Research Harness\n\nTurn existing research materials into a paper with a clear central argument. Spend attention on what the findings establish, how they fit together, and how to express them.\n\nUse the author's supplied or designated methods and results as drafting inputs. Writing does not require independently reproducing or auditing them. Read code only for an explicit implementation task or a specific missing detail that affects the requested passage; a result file or internal label alone does not trigger code inspection. Resolve conflicting inputs locally.\n\nWork directly in the requested deliverable. Keep outlines and evidence organization in working context unless they are themselves requested outputs; no preliminary workspace, ledger, or approval sequence is needed.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature, position contributions, refine an idea | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Extract or check a method against implementation | [repo-to-paper.md](references/repo-to-paper.md) |\n| Manage a paper workspace or persistent literature collection | [workspace.md](references/workspace.md) |\n\nLoad additional references only to resolve a concrete need in the requested work. Numerical results and comparisons in ordinary drafting do not by themselves require the audit reference.\n\n\n# From Results to a Paper\n\n## Build the argument from the completed work\n\nStart with the supplied findings and the author's research question. Identify the central answer those findings support, then arrange the evidence around the questions a reader must resolve to accept it. When an early project slogan no longer fits the experiments, propose a framing grounded in the completed work; do not quietly redefine the method or evaluation to preserve the slogan.\n\nFor a full paper, settle that argument before polishing section prose. For a requested paragraph or section, work locally within the established argument. An outline is a working aid, not a mandatory intermediate deliverable.\n\nSeparate evidence that establishes the main finding, evidence that explains a design choice, and evidence that locates a boundary or cost. Order them by their role in the argument, rather than by experiment chronology or table number. If results are mixed, use the pattern of differences to shape the thesis rather than hiding exceptions in a final limitations paragraph.\n\n## Use each result for the question it answers\n\n| Writing situation | Useful move |\n|---|---|\n| Main benchmark table | Select the comparisons that decide the research question. Distinguish consistent gains from gains concentrated in a condition; do not let an average obscure a reversal that changes the thesis. |\n| Component ablation | State what changes under the tested removal or replacement. Its performance cost supports the component's role under that intervention; it does not by itself establish the proposed internal mechanism. |\n| Robustness or transfer | Organize by the shift or condition where behavior changes. Make adaptation inputs, such as labeled target examples, part of the interpretation when they determine what kind of robustness was evaluated. |\n| Efficiency comparison | Connect the observed quality gain to its measured cost. Equal parameter count does not cancel higher latency; a measured latency difference should not be converted into an untested deployment verdict. |\n| Sensitivity analysis | Explain where the conclusion holds, weakens, or reverses. Use this to locate an operating range rather than describing every curve point. |\n| Null or uncertain result | State what remains unresolved and how that affects the paper's central answer. Do not turn lack of established improvement into equivalence or add generic future-work prose. |\n\n## Carry the same argument across sections\n\nWrite contribution statements as research advances established by the work. A list of implemented modules or completed experiments does not explain the advance. Keep a proposed framing distinct from an author-approved change in research meaning.\n\nBuild Methods around the objects and operations needed to understand the result. Introduce a component's rationale where its role becomes clear; supply material settings where they affect interpretation or reproduction, without reconstructing the source tree.\n\nUse Discussion to explain what the combined findings change about the motivating problem. Separate observed patterns from candidate explanations; plausible explanations can be discussed as interpretations without claiming they were experimentally established.\n\nDerive the abstract and conclusion from the resulting argument. Keep any resource requirement, exception, or uncertainty that changes the central claim, even if it is already explained in Results. Apply outlet-specific structure and reporting rules when a target outlet is supplied; do not import another field's conventions by default.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. Remove a defensive contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution. Translate internal labels into the supplied scientific description without narrating files or runs; an unmapped label is a local wording question, not a reason to explore the repository.\n",
+          "candidate_output": "### mixed_results\n\nAdaptive pooling improved object detection in sparse and crowded scenes, with the larger gain in crowded scenes, but slightly reduced nighttime AP (Table 1). AP increased from 42.1 to 44.7 in sparse scenes and from 31.8 to 35.4 in crowded scenes; nighttime AP decreased from 28.6 to 28.2. The gains therefore depend on scene conditions.\n\nOn crowded scenes, removing adaptive weights reduced AP from 35.4 to 32.6 (Figure 3), supporting their contribution to performance under this ablation. The improvement carries a computational cost: although both models contain 18 million parameters, latency on the same GPU at batch size one increased from 12 to 16 ms/image, a 33% increase (Table 2). These results support adaptive pooling for improved sparse- and crowded-scene AP at higher inference cost. No repeated-run uncertainty estimates are available to assess the stability of these differences.\n\n### paper_framing\n\n**Proposed central thesis:** Post-hoc calibration using labeled target examples improves confidence calibration across the three evaluated corruption types without changing classification accuracy, but its benefit depends on the target-label budget and diminishes as corruption severity increases.\n\nFrame the article around *target-informed calibration under corruption*. The early description “label-free robust prediction” does not fit the completed experiments: calibration uses target labels, and no target-label-free experiment was conducted.\n\n**Results outline:**\n\n1. **Calibration improvement under corruption.** Establish the reduction in mean expected calibration error from 0.128 to 0.091 using 500 labeled target examples across the three evaluated corruption types.\n2. **Relationship to predictive accuracy.** Report unchanged classification accuracy, locating the observed benefit in confidence calibration.\n3. **Dependence on corruption severity.** Show that benefits shrink with increasing severity, reaching an error reduction of 0.004 at the most severe level.\n4. **Dependence on target-label availability.** Compare error of 0.117 with 50 labeled target examples against 0.091 with 500, making the annotation requirement part of the practical interpretation.\n\n**Proposed Introduction contribution sentences:**\n\nWe show that post-hoc calibration with 500 labeled target examples reduces mean expected calibration error from 0.128 to 0.091 across three evaluated corruption types while leaving classification accuracy unchanged.\n\nWe characterize the conditions governing this benefit: calibration error is higher with 50 target labels, and the improvement diminishes as corruption severity increases, reaching a reduction of 0.004 at the most severe level.\n\n### defensive_revision\n\nThe method reduced mean error from 0.128 to 0.091 on the three evaluated shifted test sets (Figure 4), while inference latency increased from 12 to 16 ms per image (Table 2). This error reduction therefore came at a cost of 4 ms per image.\n\nOn the fourth test set, the estimated error reduction was 0.003 (95% confidence interval: −0.002 to 0.008). The interval includes zero, so this result does not establish an improvement.\n\n### methods_from_description\n\nThe model maps a variable-length, unordered set of patch embeddings to a fixed-length representation through learned weighted aggregation. A learned linear projection assigns each embedding a scalar score, and a softmax over all scores in the set converts them into normalized weights. The model then computes the weighted sum of the embeddings and passes this representation to a classifier. This operation allows informative patches to contribute unequally while preserving permutation invariance: reordering the input embeddings reorders their corresponding weights but leaves the weighted sum unchanged.\n",
+          "blind_mapping": [
+            {
+              "case_id": "mixed_results",
+              "candidate": "A"
+            },
+            {
+              "case_id": "paper_framing",
+              "candidate": "B"
+            },
+            {
+              "case_id": "defensive_revision",
+              "candidate": "A"
+            },
+            {
+              "case_id": "methods_from_description",
+              "candidate": "B"
+            }
+          ],
+          "judgment": {
+            "cases": [
+              {
+                "case_id": "mixed_results",
+                "preference": "tie",
+                "reasons": [
+                  "Both organize all supplied findings into the same supported argument: scene-dependent AP gains, evidence from the weighting ablation, and increased latency despite unchanged parameter count.",
+                  "B explicitly calculates the AP differences; A calculates the 33% latency increase. Both additions are correct and useful, with neither displacing material evidence.",
+                  "Both meet the word limit and appropriately identify missing repeated-run uncertainty. This qualifies the stability of the differences without distracting from the findings."
+                ],
+                "errors_A": [],
+                "errors_B": []
+              },
+              {
+                "case_id": "paper_framing",
+                "preference": "tie",
+                "reasons": [
+                  "Both supply a central thesis, four Results items, and two Introduction contribution sentences while retaining every material experimental finding.",
+                  "Both correctly reject 'label-free robust prediction' and distinguish calibration improvement from unchanged classification accuracy. Explaining the target-label requirement is necessary correction of the proposed framing, not defensive boilerplate.",
+                  "A's contribution sentences retain the exact 0.117 result with 50 labels; B places that value in the outline and explicitly connects the overall 0.091 result to 500 labels there. These are comparable choices about where to present evidence."
+                ],
+                "errors_A": [],
+                "errors_B": []
+              },
+              {
+                "case_id": "defensive_revision",
+                "preference": "B",
+                "reasons": [
+                  "Both preserve the numerical results and confidence interval while removing repetition and the distracting warning about 'every conceivable distribution shift.'",
+                  "B narrowly better preserves the original practical interpretation through 'suitability for real-time use depends on the system’s latency requirements.' This is a concrete qualification connected to the measured tradeoff.",
+                  "A's calculated 4 ms cost is useful and its explanation that the interval includes zero is clear. B's 'Evidence of improvement was inconclusive' conveys the necessary uncertainty equally faithfully."
+                ],
+                "errors_A": [
+                  "The added 'defensive_revision' heading violates the instruction to return only the revised paragraphs."
+                ],
+                "errors_B": [
+                  "The added 'defensive_revision' heading violates the instruction to return only the revised paragraphs."
+                ]
+              },
+              {
+                "case_id": "methods_from_description",
+                "preference": "B",
+                "reasons": [
+                  "Both meet the word limit and accurately connect scalar scoring, setwise softmax, weighted aggregation, and classification, including a correct explanation of permutation invariance.",
+                  "B retains all material methodological content and omits internal labels and implementation paths appropriately.",
+                  "A's statement that weight interpretability has not been evaluated is accurate but unnecessary here: neither paragraph claims interpretability. B is more useful as Methods text because it avoids introducing that unrelated limitation."
+                ],
+                "errors_A": [],
+                "errors_B": []
+              }
+            ],
+            "overall_assessment": "Scientific fidelity is strong in both sets, with no material factual or numerical errors identified. B has a modest editorial advantage in two cases; the other two are substantively tied. Both violate the paragraphs-only requirement in defensive_revision. Preferences concern the supplied writing alone; there is no observed action difference to score."
+          },
+          "outcome": {
+            "candidate_preferred": 1,
+            "ties": 2,
+            "baseline_preferred": 1
+          },
+          "packaging_issue": "The evaluator treated the experiment's case headings as manuscript text in the paragraphs-only case. Those headings were harness packaging. The second evaluation passed only extracted deliverable text.",
+          "change_after_review": "Added a focused instruction to preserve relevant interpretive consequences when rewriting a defensive sentence."
+        },
+        {
+          "candidate_editorial_brief": "\n\n# Academic Research Harness\n\nTurn existing research materials into a paper with a clear central argument. Spend attention on what the findings establish, how they fit together, and how to express them.\n\nUse the author's supplied or designated methods and results as drafting inputs. Writing does not require independently reproducing or auditing them. Read code only for an explicit implementation task or a specific missing detail that affects the requested passage; a result file or internal label alone does not trigger code inspection. Resolve conflicting inputs locally.\n\nWork directly in the requested deliverable. Keep outlines and evidence organization in working context unless they are themselves requested outputs; no preliminary workspace, ledger, or approval sequence is needed.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature, position contributions, refine an idea | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Extract or check a method against implementation | [repo-to-paper.md](references/repo-to-paper.md) |\n| Manage a paper workspace or persistent literature collection | [workspace.md](references/workspace.md) |\n\nLoad additional references only to resolve a concrete need in the requested work. Numerical results and comparisons in ordinary drafting do not by themselves require the audit reference.\n\n\n# From Results to a Paper\n\n## Build the argument from the completed work\n\nStart with the supplied findings and the author's research question. Identify the central answer those findings support, then arrange the evidence around the questions a reader must resolve to accept it. When an early project slogan no longer fits the experiments, propose a framing grounded in the completed work; do not quietly redefine the method or evaluation to preserve the slogan.\n\nFor a full paper, settle that argument before polishing section prose. For a requested paragraph or section, work locally within the established argument. An outline is a working aid, not a mandatory intermediate deliverable.\n\nSeparate evidence that establishes the main finding, evidence that explains a design choice, and evidence that locates a boundary or cost. Order them by their role in the argument, rather than by experiment chronology or table number. If results are mixed, use the pattern of differences to shape the thesis rather than hiding exceptions in a final limitations paragraph.\n\n## Use each result for the question it answers\n\n| Writing situation | Useful move |\n|---|---|\n| Main benchmark table | Select the comparisons that decide the research question. Distinguish consistent gains from gains concentrated in a condition; do not let an average obscure a reversal that changes the thesis. |\n| Component ablation | State what changes under the tested removal or replacement. Its performance cost supports the component's role under that intervention; it does not by itself establish the proposed internal mechanism. |\n| Robustness or transfer | Organize by the shift or condition where behavior changes. Make adaptation inputs, such as labeled target examples, part of the interpretation when they determine what kind of robustness was evaluated. |\n| Efficiency comparison | Connect the observed quality gain to its measured cost. Equal parameter count does not cancel higher latency; a measured latency difference should not be converted into an untested deployment verdict. |\n| Sensitivity analysis | Explain where the conclusion holds, weakens, or reverses. Use this to locate an operating range rather than describing every curve point. |\n| Null or uncertain result | State what remains unresolved and how that affects the paper's central answer. Do not turn lack of established improvement into equivalence or add generic future-work prose. |\n\n## Carry the same argument across sections\n\nWrite contribution statements as research advances established by the work. A list of implemented modules or completed experiments does not explain the advance. Keep a proposed framing distinct from an author-approved change in research meaning.\n\nBuild Methods around the objects and operations needed to understand the result. Introduce a component's rationale where its role becomes clear; supply material settings where they affect interpretation or reproduction, without reconstructing the source tree.\n\nUse Discussion to explain what the combined findings change about the motivating problem. Separate observed patterns from candidate explanations; plausible explanations can be discussed as interpretations without claiming they were experimentally established.\n\nDerive the abstract and conclusion from the resulting argument. Keep any resource requirement, exception, or uncertainty that changes the central claim, even if it is already explained in Results. Apply outlet-specific structure and reporting rules when a target outlet is supplied; do not import another field's conventions by default.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution. Translate internal labels into the supplied scientific description without narrating files or runs; an unmapped label is a local wording question, not a reason to explore the repository.\n",
+          "candidate_outputs": {
+            "mixed_results": "Adaptive pooling improved detection AP in sparse and crowded scenes, with the largest gain in crowded scenes, but slightly reduced AP at night (Table 1). AP increased from 42.1 to 44.7 in sparse scenes and from 31.8 to 35.4 in crowded scenes; nighttime AP fell from 28.6 to 28.2. The benefit therefore depended on scene conditions. In crowded scenes, removing adaptive weights reduced AP from 35.4 to 32.6 (Figure 3), supporting their contribution to performance under this ablation. The gains also incurred a latency cost: although both models contained 18 million parameters, inference on the same GPU at batch size one took 16 ms/image for adaptive pooling versus 12 ms/image for the baseline (Table 2). These results establish an observed accuracy–latency tradeoff concentrated in sparse and crowded scenes. Repeated-run uncertainty was not measured, leaving the variability of these differences unresolved.",
+            "paper_framing": "Proposed central thesis: Post-hoc calibration using 500 labeled target examples improves mean calibration across the three evaluated corruption types while leaving classification accuracy unchanged; its benefit diminishes at higher corruption severity and with fewer target labels. This framing replaces the early description of ‘label-free robust prediction’ with target-supervised calibration under corruption.\n\nFour-item Results outline:\n1. Mean calibration improvement across evaluated corruptions. Present the reduction in mean expected calibration error from 0.128 to 0.091 using 500 labeled target examples.\n2. Calibration and classification accuracy. Establish that accuracy remains unchanged, locating the improvement in confidence calibration.\n3. Diminishing benefit at higher corruption severity. Show how the calibration benefit shrinks as severity rises, reaching a reduction of 0.004 at the most severe level.\n4. Dependence on target-label availability. Compare expected calibration error with 50 labeled target examples (0.117) and 500 (0.091). Interpret the findings as target-supervised adaptation; performance without target labels remains untested.\n\nWe show that post-hoc calibration with 500 labeled target examples reduces mean expected calibration error from 0.128 to 0.091 across three evaluated corruption types while preserving classification accuracy. We characterize the limits of this improvement through its attenuation at higher corruption severity and the smaller benefit obtained with 50 labeled target examples.",
+            "defensive_revision": "The method reduced mean error from 0.128 to 0.091 on the three evaluated shifted test sets (Figure 4), while inference latency increased from 12 to 16 ms per image (Table 2). The error reduction thus came at a higher inference cost.\n\nOn the fourth test set, the estimated error reduction was 0.003, with a 95% confidence interval of −0.002 to 0.008. The interval includes zero, leaving improvement on this test set unresolved.",
+            "methods_from_description": "The model aggregates a variable-length, unordered set of patch embeddings into a fixed-length representation for classification. A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into normalized weights. The model then computes a weighted sum of the embeddings and passes the resulting representation to a classifier. Weighted aggregation allows patches to contribute unequally, providing a means to emphasize informative patches. Because scoring is applied to each embedding and aggregation sums over the set, the representation is unchanged by permutations of the input embeddings."
+          },
+          "blind_mapping": [
+            {
+              "case_id": "mixed_results",
+              "candidate": "B"
+            },
+            {
+              "case_id": "paper_framing",
+              "candidate": "A"
+            },
+            {
+              "case_id": "defensive_revision",
+              "candidate": "B"
+            },
+            {
+              "case_id": "methods_from_description",
+              "candidate": "A"
+            }
+          ],
+          "judgment": {
+            "cases": [
+              {
+                "case_id": "mixed_results",
+                "preference": "A",
+                "reasons": [
+                  "Both satisfy the word limit and organize all supplied findings into a coherent argument: scene-dependent AP gains, evidence from the weighting ablation, and increased latency despite equal parameter counts.",
+                  "A explicitly quantifies the AP changes and more faithfully describes the uncertainty evidence: estimates are unavailable. B's statement that uncertainty 'was not measured' goes beyond what was supplied.",
+                  "The preference is slight. Both appropriately retain the nighttime decline and use uncertainty to qualify reproducibility without undermining the descriptive findings."
+                ],
+                "errors_A": [],
+                "errors_B": [
+                  "Minor unsupported assertion: unavailable repeated-run uncertainty estimates do not necessarily mean uncertainty was never measured."
+                ]
+              },
+              {
+                "case_id": "paper_framing",
+                "preference": "tie",
+                "reasons": [
+                  "Both provide the requested thesis, four-item Results outline, and two Introduction contribution sentences, accurately covering every supplied quantitative finding.",
+                  "Both correctly replace the unsupported 'label-free robust prediction' framing with calibration that requires labeled target examples, and distinguish improved calibration from unchanged classification accuracy.",
+                  "A integrates the untested label-free condition into the Results outline; B makes the numerical limits more explicit in the contribution sentences. These are useful presentation differences without a decisive quality advantage.",
+                  "Discussion of the missing label-free experiment is necessary here because it directly corrects the early project framing."
+                ],
+                "errors_A": [],
+                "errors_B": []
+              },
+              {
+                "case_id": "defensive_revision",
+                "preference": "tie",
+                "reasons": [
+                  "Both return only two revised paragraphs, preserve every empirical value and reference, and remove repetition and the distracting warning about 'every conceivable distribution shift.'",
+                  "A retains a concise practical qualification that real-time suitability depends on latency requirements. This preserves useful application context without repeating the original defensive wording.",
+                  "B explains the statistical uncertainty more explicitly: the interval includes zero, leaving improvement unresolved. A's 'Evidence of improvement was inconclusive' is equally faithful.",
+                  "B's shorter first paragraph and A's retained application context are both defensible editorial choices; neither loses material empirical content or necessary uncertainty."
+                ],
+                "errors_A": [],
+                "errors_B": []
+              },
+              {
+                "case_id": "methods_from_description",
+                "preference": "A",
+                "reasons": [
+                  "Both satisfy the word limit and accurately connect scoring, softmax normalization, weighted aggregation, and classification. Both appropriately omit the internal working label and implementation path.",
+                  "B gives the more explicit permutation-invariance explanation: permuting embeddings also permutes their weights, leaving the sum unchanged. A's explanation is nevertheless sufficient and correct.",
+                  "A is slightly more useful as focused Methods text. B's closing statement about untested interpretability is accurate but introduces an issue that neither the task nor the paragraph's preceding claims require. A already avoids claiming interpretability.",
+                  "This preference concerns relevance rather than brevity: A retains the complete mechanism and design rationale."
+                ],
+                "errors_A": [],
+                "errors_B": []
+              }
+            ],
+            "overall_assessment": "The pairs are closely matched, with no material numerical or methodological errors. A has narrow advantages in uncertainty wording and Methods focus; the framing and revision cases are ties. Necessary uncertainty concerns the reliability or interpretation of reported findings. The interpretability disclaimer is less useful because no interpretability claim needs qualification. These judgments concern the supplied text only; there is no observed action difference."
+          },
+          "outcome": {
+            "candidate_preferred": 1,
+            "ties": 2,
+            "baseline_preferred": 1
+          },
+          "remaining_issue": "In mixed_results the candidate changed unavailable uncertainty estimates into a claim that uncertainty was not measured. The reviewer correctly flagged this unsupported inference. No blanket rule for this basic distinction was added."
+        }
+      ],
+      "conclusion": "Both rounds favored the candidate's focused Methods prose and did not establish an overall writing-quality advantage. Neither condition inspected code, so no attention advantage over baseline was demonstrated. The revised package removes default audit/workspace loading by design; deployed routing remains untested.",
+      "checks": {
+        "unit_tests": "80 passed after final template cleanup",
+        "skill_validator": "passed",
+        "diff_check": "passed after final template cleanup"
+      }
+    }
+  ]
+}

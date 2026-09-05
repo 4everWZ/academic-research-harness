@@ -1,17 +1,9 @@
-# Repository to Paper
+# Methods from Implementation
 
-Use this reference to convert engineering evidence into paper-facing propositions before drafting or style revision.
+Use only when the author requests extracting or checking a method against code. Missing drafting material alone calls for an author question, not this workflow.
 
-## Establish the evidence boundary
+Identify the paper question the implementation must resolve, then inspect the relevant operation and only the configuration or caller needed to interpret it. Stop when the passage can be written. A source tree is not the structure of a Methods section.
 
-Distinguish implementation evidence, literature, author-supplied or designated drafting inputs, independently verified results, user intent, assumptions, and unresolved inference. Do not invent modules, equations, tensor shapes, training settings, datasets, metrics, losses, or results.
+When inferring what an experiment used, distinguish code that exists, a setting that enables it, and evidence that it was executed. Follow execution provenance only when that distinction matters to the requested claim. Do not turn a local method question into an experiment audit.
 
-Use author intent for framing or decisions, never as independent verification of factual, novelty, causal, or empirical claims. Author designation determines which result artifact to draft from; it does not independently verify the artifact.
-
-Every raw engineering, workflow, or provenance token is an evidence anchor, not reader-visible manuscript content. This includes source-level variables, function or module names, config keys, CLI flags, environment variables, paths, revisions, run or job IDs and names, branches, scratch labels, and internal codenames. Quoting or replacing a token with generic provenance language does not override this boundary. Retain an exact name already public in an authoritative source only when needed for attribution, disambiguation, or reproducibility. Express material settings through paper-facing names and values.
-
-Complete this filtering before passing propositions to `writing-style.md`. Do not launder evidence anchors into generic phrases such as "the recorded run."
-
-For material implementation claims, classify behavior as present, enabled, or executed. Keep the revision, entrypoint, overrides, and reachability in working context; persist them in `claims.md` only when a ledger is needed. Verify these facts before saying a method was used or evaluated; code presence establishes only availability, and an enabled setting does not establish execution in any experiment.
-
-Transform verified implementation behavior into mechanisms and material settings; do not mirror the module tree or narrate source files. Keep unsupported novelty, rationale, and causality outside manuscript source and output. Treat performance values under `evidence-and-citations.md`: author-supplied or designated results may be drafting inputs without being independently verified, while claims inferred from repository or run provenance or audited as verified require appropriate provenance. Route prose through `writing-style.md`.
+Convert the resolved behavior into scientific objects, operations, and material settings. Apply the manuscript identifier boundary in [writing-style.md](writing-style.md): code variables, internal aliases, file paths, run IDs, and workflow metadata do not belong in paper prose. If a necessary mapping remains unclear, pause the dependent passage and ask the author; keep that question outside the article.

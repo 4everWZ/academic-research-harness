@@ -1,49 +1,42 @@
-# Paper Workspace
+# Optional Paper Workspace Tools
 
-## Location
+Use only for requested workspace or collection maintenance. These utilities are not prerequisites for drafting, revising, searching, or discussing an idea. Use existing manuscript and bibliography conventions where available; the bundled index format is needed only when using this package's index validator.
 
-Prefer an established repository convention. Otherwise use one flat workspace:
+## Create only the requested artifacts
 
-```text
-docs/<paper_slug>/
-```
+Default new location: `docs/<paper_slug>/`.
 
-After a target outlet is confirmed, the optional form is:
-
-```text
-docs/<paper_slug>__<venue_slug>/
-```
-
-Ask before renaming an existing workspace. Repair internal links and subsequent paths after a rename. Treat venue name and status as user-owned decisions. The initializer's `provisional` value is an unconfirmed workflow default, not a recorded user decision. Never infer `confirmed` or change an existing target or status without explicit user direction. Run the initializer only with exclusive control of the workspace path; concurrent renames or link replacement are outside its containment guarantee.
-
-## Create artifacts on demand
-
-| Need | Create |
+| Requested artifact | Template or directory |
 |---|---|
-| literature collection | `paper_index.md`, `references.bib`, and `notes/` |
-| local source copies explicitly requested | `papers/` |
-| material or unresolved claim tracking | `claims.md` |
-| literature-grounded idea refinement | `idea_log.md` |
-| outlet-specific emphasis or constraints | `venue_profile.md` |
-| manuscript drafting | only the requested section, using the repository or user-selected name |
+| Indexed literature collection | [paper_index.md](../assets/templates/paper_index.md), [references.bib](../assets/templates/references.bib), and `notes/` |
+| Durable analysis of a source | [reading_note.md](../assets/templates/reading_note.md) |
+| Local paper copies | `papers/` |
+| Recurring claim or evidence gaps | [claims.md](../assets/templates/claims.md) |
+| Idea development record | [idea_log.md](../assets/templates/idea_log.md) |
+| Target outlet constraints | [venue_profile.md](../assets/templates/venue_profile.md) |
 
-Do not create a workspace README, empty section files, or a complete paper scaffold merely because a workspace exists.
-
-## Initialize
-
-Resolve `<skill-root>` as the directory containing this skill's `SKILL.md`. Run it from the target repository root; use `--workspace-root` only to authorize a different explicit root.
+Resolve `<skill-root>` to this package's directory. From the target repository root:
 
 ```bash
 python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --include literature
-python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --include literature,ideas,claims
-python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --include venue --venue "Target Venue" --venue-status confirmed --venue-authority "user confirmation, YYYY-MM-DD" --outlet-mode conference
-python "<skill-root>/scripts/init_paper_workspace.py" docs/<new_paper_slug> --include venue --venue "Target Venue" --venue-status confirmed --venue-authority "user confirmation, YYYY-MM-DD" --suffix-venue
 ```
 
-Available includes are `literature`, `papers`, `claims`, `ideas`, and `venue`. Existing files are preserved except when explicit venue arguments update `venue_profile.md`. Changing a confirmed profile to provisional clears its decision authority/date; later confirmation requires new authority. Repair a legacy provisional profile with stale authority by explicitly rebinding its venue with `--venue-status provisional`. Use `--suffix-venue` only when the unsuffixed workspace does not exist; rename an existing workspace separately after approval. Supply `--venue-slug` with `--suffix-venue` when the venue name has no usable ASCII slug.
+Available includes: `literature,papers,claims,ideas,venue`. Existing files are preserved except for explicit venue updates. Use `--workspace-root` for a different intended root. Run the initializer with exclusive control of the destination path; concurrent renames or link replacement are outside its containment guarantee.
 
-Validate the workspace after every index edit:
+## Maintain the bundled collection
+
+Selected index entries require matching BibTeX keys; excluded entries need not have bibliography entries or notes. Keys use `[A-Za-z][A-Za-z0-9_-]*`; note filenames use the same key. Verification fields use `YYYY-MM-DD / <checked version or status>`, with a nonfuture date and a resolved suffix. Templates define the remaining fields.
+
+The validator accepts a constrained plain-metadata BibTeX format. Reconstruct imported entries from checked metadata rather than copying directives or TeX commands. A percent prefix does not hide an entry from validation. Structural validation does not establish source support or compilation safety.
+
+After completing a batch of collection edits, run:
 
 ```bash
 python "<skill-root>/scripts/validate_paper_index.py" docs/<paper_slug>
 ```
+
+## Optional outlet profile
+
+The initializer's `provisional` status is a tool default. To record a confirmed target, use the author's chosen venue with `--venue`, `--venue-status confirmed`, `--venue-authority`, and `--outlet-mode`. These fields belong to the tool's profile schema; ordinary writing does not require a decision record.
+
+Changing confirmed to provisional clears authority/date; reconfirmation needs a new authority value. Repair a legacy provisional profile with stale authority by rebinding its venue as provisional. The `--suffix-venue` option applies only to a new workspace; it does not rename an existing one. Supply `--venue-slug` if the name has no usable ASCII slug.
