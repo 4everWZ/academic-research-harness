@@ -18,11 +18,11 @@ Rebase README material links to their original targets, repair paper asset/build
 
 When starting or resuming paper work, read `Research materials` in the paper-root `README.md`, or its existing equivalent. Reuse the mapping if it is already in context and unchanged. Resolve links from the README's directory, including when working in a paper subdirectory.
 
-The code-project link locates the code. Named document links are continuing author inputs: read relevant files across directories without asking again. For algorithms, read algorithm notes; for Results, read result summaries. Read their current content for each new edit request, reusing reads within that task. Do not load all materials, scan the code tree or follow documentation links into an implementation or experiment audit.
+The code-project link locates the code. Named document links are continuing author inputs: read relevant files across directories without asking again. For algorithms, read algorithm notes; for Results, read result summaries. Read their current content for each new edit request, reusing reads within that task. If the spec leaves a method detail unclear, use a [focused implementation lookup](repo-to-paper.md) along its pointers. Do not load all materials or expand into a code or experiment audit.
 
 Add new project materials and update explicitly replaced entries in place. Resolve supplied paths from their stated context, then write README-relative links. Preserve other entries and README content. One-time inputs apply only to the current task and never replace persistent entries. Use names, links and necessary purposes only; add no status, date, version or approval fields. Do not invent file locations. The [English section template](../assets/templates/paper_readme.md) is an example, not a list of actual project inputs; fenced/commented examples and unrelated README links do not register materials.
 
-If a needed path is broken or inaccessible, ask for an accessible location. If sources conflict or lack a necessary definition, pause that passage and ask specifically. An explicit author correction takes precedence; filenames and modification times do not settle scientific conflicts. Missing files do not mean unperformed research.
+If a needed path is broken or inaccessible, ask for an accessible location. For source conflicts, unresolved method details or missing experimental facts, pause that passage and ask specifically. An explicit author correction takes precedence; filenames and modification times do not settle scientific conflicts. Missing files do not mean unperformed research.
 
 ## Initialize and write
 

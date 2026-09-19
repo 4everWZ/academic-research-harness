@@ -2,7 +2,7 @@
 
 ## Remove defensive writing
 
-Missing material is an author question, not manuscript content. If it prevents writing the requested claim, pause that passage and ask for the specific result, method detail, or intended source. Do not fill it with statements about unavailable materials, unverified results, or what the research supposedly did not do. If the missing material is irrelevant to the passage, leave it out and write the requested text. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.
+Resolve method ambiguities through the document-led lookup in [repo-to-paper.md](repo-to-paper.md). If required inputs remain missing or conflicting, pause that passage and ask for the specific result, method detail or source. Do not fill the manuscript with unavailable-material reports, unverified results or invented nonperformance. If a missing input is irrelevant to the passage, leave it out and write. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.
 
 State the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.
 
@@ -22,4 +22,4 @@ Use figure and table references where they support that reasoning. Combine visua
 
 Explain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.
 
-Do not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as "the recorded run." Express the supplied scientific objects, operations, settings, and values directly. Mathematical notation defined for the paper and established scientific method names are distinct from implementation identifiers. If a necessary internal label has no supplied scientific meaning, stop that passage and ask the author; do not guess its expansion or inspect the repository to avoid asking.
+Do not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as "the recorded run." Express scientific objects, operations, settings and values directly. Mathematical notation defined for the paper and established method names are distinct from implementation identifiers. Translate an internal label only when its scientific meaning is established by the documents or focused lookup; otherwise ask rather than guessing.

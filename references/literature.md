@@ -14,7 +14,7 @@ For a candidate central to a result, comparison, or novelty claim, read the rele
 
 Resolve the actual publication venue and track from the official record. A workshop hosted alongside a leading conference is not a main-track paper; a repository upload or preprint is not evidence of acceptance. For a selected preprint, look for a formal or materially revised version. Keep the cited result and bibliographic metadata attached to the same version.
 
-Return each selected paper with its title, year, actual venue/track or preprint status, direct source link, and a concise statement of its role in the article. Explain an exception to the leading-venue preference by its concrete value, such as closest prior work or missing coverage. Note a limitation only when it changes the proposed use; no per-paper scorecard or automatic index is needed.
+For reading recommendations, give each selected paper's title, year, actual venue/track or preprint status, direct link and role in the article. Explain a venue-preference exception by its concrete value, such as closest prior work or missing coverage. For manuscript drafting, use normal citations and keep selection notes outside the prose. Note limitations only when they change the proposed use; no per-paper scorecard or automatic index is needed.
 
 ## Turn the search into positioning
 

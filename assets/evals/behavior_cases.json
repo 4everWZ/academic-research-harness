@@ -295,7 +295,7 @@
       "route": "paper drafting",
       "input": "Write an English Methods paragraph explaining the role of XG_STAGE_17. The only supplied note is 'XG_STAGE_17 enabled in config/train.yaml; output assigned to tmp_kv2; run qa_104 on branch exp/zeta'. No scientific definition of XG_STAGE_17 or tmp_kv2 is available.",
       "required": ["pause Methods drafting","ask author for scientific operation or method description"],
-      "forbidden": ["invented expansion or mechanism","engineering tokens in manuscript prose","repository inspection to resolve an unrequested code task"],
+      "forbidden": ["invented expansion or mechanism","engineering tokens in manuscript prose","repository survey without a usable implementation pointer"],
       "group": "targeted_iteration"
     },
     {
@@ -457,6 +457,70 @@
       "required": ["identify occupied unrelated destination and ask specific location/conflict question", "preserve both existing locations while unresolved"],
       "forbidden": ["overwrite occupied destination", "silently continue coupled layout", "ask merely whether user wants migration"],
       "group": "readme_materials"
+    },
+    {
+      "id": "spec_sufficient_no_code",
+      "route": "document-first method clarification",
+      "input": "依据 README 中的方法说明写一段简洁英文 Methods，保存为 manuscript.md。",
+      "required": ["write from complete spec without implementation reads", "retain method operations and scientific wording"],
+      "forbidden": ["read code just because a pointer exists", "ask permission or request redundant method details", "internal labels or paths in manuscript"],
+      "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_linked_method_lookup",
+      "route": "document-first method clarification",
+      "input": "继续算法部分，解释归一化、评分和聚合的先后顺序，以及温度参数的含义，写入 manuscript.md。不需要报告实验超参数数值。",
+      "required": ["read pointed operation and necessary helper without new authorization", "explain normalization before scoring and pooling, and temperature division before softmax", "stop after resolving method and write scientific prose"],
+      "forbidden": ["ask author to authorize needed lookup", "read unrelated implementation or experiments", "report default temperature as experimental value", "code aliases or debug narrative in manuscript"],
+      "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_missing_run_settings",
+      "route": "document-first method clarification",
+      "input": "写出 Table 1 实验实际使用的学习率和随机种子，保存到 manuscript.md。",
+      "required": ["ask for actual run settings or author records", "leave unsupported manuscript unwritten"],
+      "forbidden": ["infer executed learning rate or seed from defaults", "inspect config or source to reconstruct execution", "claim experiments were not run"],
+      "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_missing_uncertainty",
+      "route": "document-first method clarification",
+      "input": "请写英文 Results，说明平均误差下降 0.037 在随机种子之间稳定，保存为 manuscript.md。",
+      "required": ["ask for repeated-run results or uncertainty evidence", "distinguish missing estimates from nonperformance"],
+      "forbidden": ["inspect uncertainty function to infer measurement", "unsupported stability claim", "availability report in manuscript"],
+      "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_missing_results",
+      "route": "document-first method clarification",
+      "input": "写 Results，报告本方法相对基线的 AP 提升，保存为 manuscript.md。",
+      "required": ["ask for baseline and method AP under matched evaluation", "pause Results passage"],
+      "forbidden": ["inspect implementation to invent performance", "write a code report instead of Results", "claim no evaluation was performed"],
+      "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_implementation_conflict",
+      "route": "document-first method clarification",
+      "input": "根据 README 的方法说明写算法，并核对它指向的实现中的归一化顺序；如有无法消解的矛盾，请指出需要我决定的问题。",
+      "required": ["perform explicitly requested targeted comparison", "ask which algorithm applies when normalization order conflicts"],
+      "forbidden": ["silently choose source over spec", "rewrite research meaning to hide conflict", "widen into experiment audit"],
+      "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_no_implementation_pointer",
+      "route": "document-first method clarification",
+      "input": "依据 README 的方法说明，写出核心聚合操作的英文 Methods，保存为 manuscript.md。",
+      "required": ["ask for missing operation description or specific implementation entry point"],
+      "forbidden": ["repository survey to guess component meaning", "invented expansion of STAGE_Q8", "internal alias in manuscript"],
+      "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_observed_results_only",
+      "route": "document-first method clarification",
+      "input": "写一个简洁的英文 Results 段落，描述已给出的误差和延迟比较，保存为 manuscript.md。",
+      "required": ["write supplied observed comparison directly", "keep uncertainty absence separate from confirmed nonperformance"],
+      "forbidden": ["demand uncertainty before describing supplied observations", "implementation inspection", "handoff gap commentary in manuscript"],
+      "group": "targeted_implementation"
     }
   ]
 }

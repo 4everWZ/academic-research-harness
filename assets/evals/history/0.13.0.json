@@ -1,0 +1,1461 @@
+{
+  "version": "0.13.0",
+  "scope": "Persistent task-selected README material links, English README template, and direct migration of legacy paper projects.",
+  "summary": {
+    "full_package_independent_reviewers": 2,
+    "runtime_files_read_per_initial_review": 19,
+    "remaining_material_review_findings": 0,
+    "distinct_behavior_cases": 8,
+    "final_concise_guide_retests": 2,
+    "judge_passes": 10,
+    "judge_failures": 0,
+    "unit_tests": {
+      "passed": 112,
+      "seconds": 55.505
+    },
+    "skill_validator": "passed"
+  },
+  "protocol": {
+    "skills_activated": false,
+    "independent_contexts": true,
+    "full_read": "Two independent reviewers read all 19 runtime instruction, reference, template, metadata and script files in full as review data; no skills activated. They reread changed files after fixes. Tests, previous evaluations and parent conversation were excluded.",
+    "behavior": "Independent performers received author tasks and relevant instructions as a plain editorial brief. All fixture reads, writes, Git queries and moves passed through a logging bridge; parent compared actual files and resolved paths.",
+    "judge": "A separate fresh-context reviewer received tasks, initial/final paper files, action logs and mechanical checks, without candidate instructions or expected verdicts.",
+    "sequence": "Eight cases exercised the first complete README/migration rules. After the author requested English and less ceremony, new independent context reran algorithm resumption and legacy migration with the final concise guide. The initializer preservation fix was covered by focused and full unit tests."
+  },
+  "full_package_reviews": {
+    "initial": {
+      "writing": [
+        {
+          "files_read": [
+            "D:/Code/prompt/academic-research-harness/SKILL.md",
+            "D:/Code/prompt/academic-research-harness/references/evidence-and-citations.md",
+            "D:/Code/prompt/academic-research-harness/references/literature.md",
+            "D:/Code/prompt/academic-research-harness/references/paper-project.md",
+            "D:/Code/prompt/academic-research-harness/references/repo-to-paper.md",
+            "D:/Code/prompt/academic-research-harness/references/results-to-paper.md",
+            "D:/Code/prompt/academic-research-harness/references/workspace.md",
+            "D:/Code/prompt/academic-research-harness/references/writing-style.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/claims.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/idea_log.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/paper_index.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/paper_readme.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/reading_note.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/references.bib",
+            "D:/Code/prompt/academic-research-harness/assets/templates/venue_profile.md",
+            "D:/Code/prompt/academic-research-harness/agents/openai.yaml",
+            "D:/Code/prompt/academic-research-harness/scripts/init_paper_project.py",
+            "D:/Code/prompt/academic-research-harness/scripts/init_paper_workspace.py",
+            "D:/Code/prompt/academic-research-harness/scripts/validate_paper_index.py"
+          ],
+          "findings": [
+            {
+              "severity": "material",
+              "file": "D:/Code/prompt/academic-research-harness/references/paper-project.md",
+              "issue": "Line 7 requires a sibling paper repository, but line 35 still permits an absolute path to reuse a project elsewhere. The initializer likewise accepts destinations outside the sibling layout. An agent receives contradictory location instructions.",
+              "example": "An existing independent paper outside the code repository's parent can be reused under line 35 despite violating line 7 and SKILL.md line 14.",
+              "proposed_fix": "Remove the blanket elsewhere exception and align the initializer's destination check with the sibling requirement."
+            },
+            {
+              "severity": "material",
+              "file": "D:/Code/prompt/academic-research-harness/references/workspace.md",
+              "issue": "The collection setup uses the paper root's references.bib while promising to preserve existing bibliography conventions. Its prescribed validator requires every bibliography key to be indexed and rejects valid conventions such as colon-containing citation keys and TeX commands. The instructions do not resolve this collision when adding a bundled collection to an established manuscript.",
+              "example": "Adding an index for three new sources preserves an existing references.bib containing Smith:2024, but validation then rejects that key and demands index entries for unrelated existing citations.",
+              "proposed_fix": "State that bundled validation must not force changes to an established manuscript bibliography. Use existing conventions, or an explicitly selected separate collection, when that bibliography is incompatible."
+            },
+            {
+              "severity": "optional",
+              "file": "D:/Code/prompt/academic-research-harness/SKILL.md",
+              "issue": "Line 14 leaves 'standalone edits' undefined, while the prose-revision route lists only writing-style.md. The intended project rule is inferable, but a small manuscript edit could be classified as standalone and bypass project handling.",
+              "example": "An agent asked to polish one paragraph in code/paper/main.tex could skip README materials and migration because the requested edit is small.",
+              "proposed_fix": "Clarify in the existing sentence that edits to an existing paper project remain project work regardless of their size."
+            }
+          ],
+          "overall": "All 19 requested files were reviewed, with the changed files reread. The README template and generated README now satisfy the English requirement. The shortened guide retains useful workflow guidance; no additional ceremony is warranted. Two material issues and one optional clarification remain. No skills were activated or mutations run."
+        }
+      ],
+      "operations": [
+        {
+          "record": "Summary of the initial independent completion notification; subsequent followups superseded that tool status.",
+          "files_read": [
+            "D:/Code/prompt/academic-research-harness/SKILL.md",
+            "D:/Code/prompt/academic-research-harness/references/evidence-and-citations.md",
+            "D:/Code/prompt/academic-research-harness/references/literature.md",
+            "D:/Code/prompt/academic-research-harness/references/paper-project.md",
+            "D:/Code/prompt/academic-research-harness/references/repo-to-paper.md",
+            "D:/Code/prompt/academic-research-harness/references/results-to-paper.md",
+            "D:/Code/prompt/academic-research-harness/references/workspace.md",
+            "D:/Code/prompt/academic-research-harness/references/writing-style.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/claims.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/idea_log.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/paper_index.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/paper_readme.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/reading_note.md",
+            "D:/Code/prompt/academic-research-harness/assets/templates/references.bib",
+            "D:/Code/prompt/academic-research-harness/assets/templates/venue_profile.md",
+            "D:/Code/prompt/academic-research-harness/agents/openai.yaml",
+            "D:/Code/prompt/academic-research-harness/scripts/init_paper_project.py",
+            "D:/Code/prompt/academic-research-harness/scripts/init_paper_workspace.py",
+            "D:/Code/prompt/academic-research-harness/scripts/validate_paper_index.py"
+          ],
+          "findings": [
+            {
+              "severity": "material",
+              "file": "references/paper-project.md",
+              "issue": "Sibling location policy and the unrestricted elsewhere wording were inconsistent."
+            },
+            {
+              "severity": "optional",
+              "file": "references/workspace.md",
+              "issue": "Explain reverse index membership and canonical note ownership when adding a collection to an established paper."
+            }
+          ]
+        }
+      ]
+    },
+    "resolutions": [
+      "Clarified sibling placement with an explicit author-selected location exception retained from the accepted interface; no new override flag.",
+      "Documented the optional index validator collection boundary so established manuscript citations and notes are not rewritten to match its schema.",
+      "Clarified that small edits to an existing manuscript remain project work.",
+      "Changed template and generated README to English; shortened the project guide while retaining material selection and migration decisions.",
+      "Preserve existing README without rendering a new link. When a new relative link is impossible across volumes, fail before writes with a concrete remedy rather than invent an absolute local link."
+    ],
+    "final": {
+      "writing": {
+        "files_read": [
+          "D:/Code/prompt/academic-research-harness/SKILL.md",
+          "D:/Code/prompt/academic-research-harness/references/paper-project.md",
+          "D:/Code/prompt/academic-research-harness/references/workspace.md"
+        ],
+        "findings": [],
+        "overall": "No material issues remain under the clarified requirements. The current changes resolve the previous findings. Explicit author-selected destinations need no additional override flag, and no further workflow ceremony is warranted."
+      },
+      "operations": {
+        "files_read": [
+          "D:/Code/prompt/academic-research-harness/scripts/init_paper_project.py"
+        ],
+        "findings": [],
+        "overall": "No material issues remain in the reviewed behavior. Existing READMEs bypass rendering after artifact preflight. A new cross-volume README produces a specific error before directory creation, Git initialization, or file writes. This respects the README-relative convention and resolves the prior finding. Confirmed by static review; tests were not read or run."
+      }
+    }
+  },
+  "behavioral_briefs": {
+    "initial": "# Independent Paper Projects\n\nUse this guide when entering, resuming or relocating a paper project, or maintaining its material links. Once located, write there without repeating discovery or initialization. A standalone revision, discussion or search needs no repository.\n\n## Locate before creating\n\nCheck the author's explicit path, the known paper project, then sibling candidates and explicit manuscript links. From a code subdirectory, find its root with `git rev-parse --show-toplevel`. Inspect directory names, Git ownership and necessary project descriptions, without recursively searching code or experiments. A directory name alone does not establish an occupied directory's identity.\n\nDefault location: `<code-root>/../<paper_slug>/`, with independent Git. Preserve the author's established slug; ask if unknown instead of deriving `<code-name>-paper`. Ask about multiple candidates, unrelated occupants or uncertain Git ownership before writes.\n\nReuse an independent paper directory and its conventions; initialize missing Git in place outside other repositories. Migrate identified legacy manuscripts inside code directly to the sibling paper directory, without asking whether to retain the coupled layout. Move manuscripts, bibliography, formal figures and necessary build files; leave research source documents and unrelated files in code. Identify this file set in mixed directories. Check real paths and collisions first; ask only about unresolved ownership, file selection or conflicts, without overwriting either copy. Preserve a standalone paper's own `.git` when moving its whole repository; never transfer code Git metadata or worktree/submodule indirection. Resolve linked Git registrations before completing migration.\n\nPreserve edits, rebase README materials against their original targets, repair asset/build paths and update explicit links to the moved manuscript. Leave no old working copy, redirect stub or compatibility symlink. Report remaining locations after migration errors instead of continuing in the old layout. Initialize missing starter files after moving to avoid generated-file collisions.\n\n## Keep material links in the paper README\n\nAt entry or resume, read the paper-root `README.md` and its `研究材料` section (or existing equivalent). From a paper subdirectory, locate the root first. Resolve links relative to the README's directory, not the current directory. Reuse a mapping already in context; reread the README when links change or become uncertain.\n\nUse ordinary Markdown: a code-project link for location, and named document links with necessary writing purposes. Registered documents are continuing author inputs; read across directories without asking again. The code directory link does not authorize scanning. Fenced/commented examples and unrelated links are not registrations. The [README section template](../assets/templates/paper_readme.md) is illustrative; never register its example paths as real materials.\n\nSelect only task-relevant entries: algorithm documents for algorithms, result summaries for Results. Read current contents for each new edit request; reuse content already read for this task unless changed. Do not preload everything or follow links into implementation or experiment audits. Ask about missing scientific definitions instead of guessing engineering labels or investigating code.\n\nAdd newly designated project materials or update explicitly replaced entries in place. Resolve supplied paths from their stated context before making them README-relative. Preserve unrelated content and entries; reuse an equivalent section. One-time materials apply now but neither register nor replace persistent entries. Do not invent links for text with no file location. Explicit author corrections/replacements take precedence; otherwise ask about conflicts instead of selecting by filename or modification time. Add no status, date, version or approval fields.\n\nFor broken or inaccessible links, ask for a correct, accessible location. For conflicts or necessary missing definitions, pause the dependent passage and ask specifically. File availability does not establish whether research was performed; keep questions outside the manuscript.\n\n## Initialize the minimum\n\nAfter resolving the destination, run the helper without reading its implementation. Relative destinations use the actual code root's parent even when `--code-root` names a subdirectory. Absolute destinations can reuse projects elsewhere outside other repositories.\n\n```bash\npython \"<skill-root>/scripts/init_paper_project.py\" \"<paper_slug>\" --code-root \"<code-root>\"\n```\n\nThe helper creates independent Git, `README.md` and `.gitignore`, preserving existing files. Its README includes only the real code location; add document links when designated. It does not choose slugs, migrate, parse material lists, commit or configure remotes. Use existing file tools for reading, local README edits and migration, without a parser or sync service. Initialize with exclusive destination access; resolve failures before retrying.\n\nDo not precreate manuscript sections, a venue template, evidence ledgers, or reading collections. Add the actual manuscript, bibliography, and final figures or tables as writing needs them. Use [workspace.md](workspace.md) only for requested auxiliary artifacts.\n\n## Write and share from the paper repository\n\nResolve edits and Git operations against the paper root. Keep its manuscript format and build conventions. Express registered materials as scientific prose, formal algorithms and final figures in the paper, preserving scientific meaning when replacing engineering labels. Reading and building the formal paper must use paper-local files, without absolute local paths or symlinks into code. The README's external materials support authoring, not the paper build. Keep formal figures trackable; do not mirror code or experiment archives.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nMissing material is an author question, not manuscript content. If it prevents writing the requested claim, pause that passage and ask for the specific result, method detail, or intended source. Do not fill it with statements about unavailable materials, unverified results, or what the research supposedly did not do. If the missing material is irrelevant to the passage, leave it out and write the requested text. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express the supplied scientific objects, operations, settings, and values directly. Mathematical notation defined for the paper and established scientific method names are distinct from implementation identifiers. If a necessary internal label has no supplied scientific meaning, stop that passage and ask the author; do not guess its expansion or inspect the repository to avoid asking.\n",
+    "final_retests": "# Paper Projects and Materials\n\n## Find the paper\n\nUse the author's path or known project first, then sibling directories and explicit manuscript links. From a subdirectory, use Git to locate the repository root. Read only the project descriptions needed to identify the paper; do not search code or experiments.\n\nCreate and migrate papers beside the code repository at `<code-root>/../<paper_slug>/`, with independent Git, unless the author explicitly chose another location. Keep the established slug; ask if unknown. Reuse the matching paper directory; ask about ambiguous candidates or ownership.\n\n## Move an old manuscript\n\nMove an identified manuscript out of the code repository directly; do not offer to keep the old layout. Move its text, bibliography, formal figures and required build files, preserving edits. Leave research source documents and unrelated files in code.\n\nBefore moving, resolve source and destination paths, identify the paper files in mixed directories, and check collisions. Ask only about unresolved ownership, file selection or conflicts; do not overwrite either copy. Preserve a paper repository's own Git history, but never move the code repository's Git metadata or a shared worktree/submodule Git pointer. Resolve linked Git registrations before completing the move.\n\nRebase README material links to their original targets, repair paper asset/build paths, and update explicit links to the moved manuscript. Leave no duplicate, redirect stub or compatibility symlink. Initialize missing starter files after moving; on failure, report the actual remaining locations.\n\n## Use the README's materials\n\nWhen starting or resuming paper work, read `Research materials` in the paper-root `README.md`, or its existing equivalent. Reuse the mapping if it is already in context and unchanged. Resolve links from the README's directory, including when working in a paper subdirectory.\n\nThe code-project link locates the code. Named document links are continuing author inputs: read relevant files across directories without asking again. For algorithms, read algorithm notes; for Results, read result summaries. Read their current content for each new edit request, reusing reads within that task. Do not load all materials, scan the code tree or follow documentation links into an implementation or experiment audit.\n\nAdd new project materials and update explicitly replaced entries in place. Resolve supplied paths from their stated context, then write README-relative links. Preserve other entries and README content. One-time inputs apply only to the current task and never replace persistent entries. Use names, links and necessary purposes only; add no status, date, version or approval fields. Do not invent file locations. The [English section template](../assets/templates/paper_readme.md) is an example, not a list of actual project inputs; fenced/commented examples and unrelated README links do not register materials.\n\nIf a needed path is broken or inaccessible, ask for an accessible location. If sources conflict or lack a necessary definition, pause that passage and ask specifically. An explicit author correction takes precedence; filenames and modification times do not settle scientific conflicts. Missing files do not mean unperformed research.\n\n## Initialize and write\n\nFor a new project, or missing starter files after migration, run:\n\n```bash\npython \"<skill-root>/scripts/init_paper_project.py\" \"<paper_slug>\" --code-root \"<code-root>\"\n```\n\nRelative destinations use the actual code root's parent, even when `--code-root` names a subdirectory. Use an absolute path elsewhere only for an author's explicit location choice. The helper creates independent Git, an English README with only the real code link, and `.gitignore`, preserving existing files. It does not migrate, register documents, commit or configure remotes. Use ordinary file tools for reading, README edits and migration; no parser or sync service.\n\nContinue in the paper repository without repeating setup. Preserve its manuscript and build conventions. Turn supplied materials into scientific prose, formal algorithms and figures, preserving meaning when translating engineering labels. Keep formal reading/build inputs inside the paper repository; the README's external sources support authoring, not the build. Use [workspace.md](workspace.md) only for requested auxiliary artifacts. Pasted-text edits or searches without a paper project need no repository.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nMissing material is an author question, not manuscript content. If it prevents writing the requested claim, pause that passage and ask for the specific result, method detail, or intended source. Do not fill it with statements about unavailable materials, unverified results, or what the research supposedly did not do. If the missing material is irrelevant to the passage, leave it out and write the requested text. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express the supplied scientific objects, operations, settings, and values directly. Mathematical notation defined for the paper and established scientific method names are distinct from implementation identifiers. If a necessary internal label has no supplied scientific meaning, stop that passage and ask the author; do not guess its expansion or inspect the repository to avoid asking.\n"
+  },
+  "observations": {
+    "cases": [
+      {
+        "id": "readme_resume_algorithm",
+        "original_case_id": "readme_resume_algorithm",
+        "input": "继续写算法部分，把英文算法描述写入 manuscript.md。",
+        "before_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "after_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a classification output. Given embeddings \\(x_1,\\ldots,x_n \\in \\mathbb{R}^{d}\\), a learned linear projection assigns each embedding a scalar score \\(s_i = w^\\top x_i\\). Softmax normalization produces weights\n\\[\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{n}\\exp(s_j)}.\n\\]\nThe algorithm forms the pooled representation \\(z = \\sum_{i=1}^{n}\\alpha_i x_i\\) and passes it to a classifier. Applying the same scoring function to every embedding and aggregating by a weighted sum makes the pooled representation invariant to the order of the input embeddings.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration/sections",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md\nsections/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? manuscript.md\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/algorithm.md"
+            ],
+            "output": "Algorithm: input is an unordered variable-length set of patch embeddings. Score each embedding with a learned linear projection, normalize the scores with softmax, compute the weighted sum, then classify it. The weighted sum is permutation invariant. Internal working alias POOL_X7; vector name tmp_vec2. These names are not scientific terminology.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a classification output. Given embeddings \\(x_1,\\ldots,x_n \\in \\mathbb{R}^{d}\\), a learned linear projection assigns each embedding a scalar score \\(s_i = w^\\top x_i\\). Softmax normalization produces weights\n\\[\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{n}\\exp(s_j)}.\n\\]\nThe algorithm forms the pooled representation \\(z = \\sum_{i=1}^{n}\\alpha_i x_i\\) and passes it to a classifier. Applying the same scoring function to every embedding and aggregating by a weighted sum makes the pooled representation invariant to the order of the input embeddings.\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/manuscript.md"
+        ],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true
+        },
+        "agent_output": {
+          "id": "readme_resume_algorithm",
+          "response": "已写入英文算法描述，涵盖线性评分、softmax、加权池化、分类及排列不变性。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/manuscript.md"
+          ],
+          "notes": "保留原有标题和引言。"
+        }
+      },
+      {
+        "id": "readme_current_results",
+        "original_case_id": "readme_current_results",
+        "input": "更新 Results，写入 manuscript.md。上一轮上下文记录均值误差从 0.128 降到 0.091；当前沿用 README 的结果汇总作为依据。",
+        "before_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "after_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Results\n\nAcross the three evaluated test sets, mean error decreased from 0.140 to 0.096, an absolute reduction of 0.044 (31.4% relative). Latency increased from 12 to 16 ms per image, adding 4 ms per image (33.3%). The lower mean error therefore came with a higher per-image processing cost.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration/sections",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md\nsections/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? manuscript.md\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/results/summary.md"
+            ],
+            "output": "Current supplied findings: across three evaluated test sets, mean error fell from 0.140 to 0.096 and latency increased from 12 to 16 ms/image. Repeated-run estimates are not included in this handoff.\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Results\n\nAcross the three evaluated test sets, mean error decreased from 0.140 to 0.096, an absolute reduction of 0.044 (31.4% relative). Latency increased from 12 to 16 ms per image, adding 4 ms per image (33.3%). The lower mean error therefore came with a higher per-image processing cost.\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/manuscript.md"
+        ],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true
+        },
+        "agent_output": {
+          "id": "readme_current_results",
+          "response": "已按当前结果汇总更新 Results：均值误差从 0.140 降至 0.096，延迟从 12 增至 16 ms/image。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/manuscript.md"
+          ],
+          "notes": "使用作者指定的当前来源，保留误差与延迟的权衡。"
+        }
+      },
+      {
+        "id": "readme_update_registration",
+        "original_case_id": "readme_update_registration",
+        "input": "算法材料今后改为 docs/algorithm-v2.md，替换旧算法入口；新增 docs/context.md 作为 Introduction 材料。这两个路径都相对于代码仓库根目录。请维护论文 README，并根据新算法更新 manuscript.md。",
+        "before_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "after_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a classification output. Given embeddings \\(x_1,\\ldots,x_n \\in \\mathbb{R}^{d}\\), a shared two-layer multilayer perceptron \\(g_\\theta\\) assigns each embedding a scalar score \\(s_i = g_\\theta(x_i)\\). Softmax normalization produces weights\n\\[\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{n}\\exp(s_j)}.\n\\]\nThe algorithm forms the pooled representation \\(z = \\sum_{i=1}^{n}\\alpha_i x_i\\) and passes it to a classifier. Applying the same scoring function to every embedding and aggregating by a weighted sum makes the pooled representation invariant to the order of the input embeddings.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm-v2.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n- [研究背景](../method-code/docs/context.md)：用于 Introduction。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration/sections",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md\nsections/"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? manuscript.md\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/algorithm-v2.md"
+            ],
+            "output": "Updated algorithm: score each patch embedding with a two-layer MLP (replacing the linear projection), normalize with softmax, pool by weighted sum, and classify. Inputs are unordered variable-length sets. No other method change.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs"
+            ],
+            "output": "algorithm-v2.md\nalgorithm.md\ncontext.md\nmethod.md\none-time.md"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm-v2.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n- [研究背景](../method-code/docs/context.md)：用于 Introduction。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a classification output. Given embeddings \\(x_1,\\ldots,x_n \\in \\mathbb{R}^{d}\\), a shared two-layer multilayer perceptron \\(g_\\theta\\) assigns each embedding a scalar score \\(s_i = g_\\theta(x_i)\\). Softmax normalization produces weights\n\\[\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{n}\\exp(s_j)}.\n\\]\nThe algorithm forms the pooled representation \\(z = \\sum_{i=1}^{n}\\alpha_i x_i\\) and passes it to a classifier. Applying the same scoring function to every embedding and aggregating by a weighted sum makes the pooled representation invariant to the order of the input embeddings.\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/README.md",
+          "adaptive-calibration/manuscript.md"
+        ],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true,
+          "localized_persistent_link_update": true
+        },
+        "agent_output": {
+          "id": "readme_update_registration",
+          "response": "已替换算法材料入口、登记 Introduction 材料，并按两层 MLP 评分更新英文算法。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/README.md",
+            "$CASE/adaptive-calibration/manuscript.md"
+          ],
+          "notes": "材料链接相对于论文 README；保留其他登记及协作说明。"
+        }
+      },
+      {
+        "id": "readme_one_time_material",
+        "original_case_id": "readme_one_time_material",
+        "input": "仅本次使用代码仓库 docs/one-time.md，写一段英文说明放到 example.md；不要改变项目的正式算法说明。",
+        "before_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "after_files": {
+          "adaptive-calibration/example.md": "For this illustrative comparison, the patch embeddings \\(x_1,\\ldots,x_n\\) are pooled using their arithmetic mean, \\(z = \\frac{1}{n}\\sum_{i=1}^{n}x_i\\), and the resulting representation is passed to a classifier. Each patch contributes equally to the pooled representation.\n",
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration/sections",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md\nsections/"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? manuscript.md\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/one-time.md"
+            ],
+            "output": "For this one-time explanatory comparison only: take the arithmetic mean of patch embeddings, then classify. Do not describe this as the permanent algorithm.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/example.md"
+            ],
+            "output": "For this illustrative comparison, the patch embeddings \\(x_1,\\ldots,x_n\\) are pooled using their arithmetic mean, \\(z = \\frac{1}{n}\\sum_{i=1}^{n}x_i\\), and the resulting representation is passed to a classifier. Each patch contributes equally to the pooled representation.\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/example.md"
+        ],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true,
+          "one_time_input_not_registered": true
+        },
+        "agent_output": {
+          "id": "readme_one_time_material",
+          "response": "已将均值池化后分类的英文说明写入 example.md。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/example.md"
+          ],
+          "notes": "仅用于本次示例；README 和正式算法说明保持不变。"
+        }
+      },
+      {
+        "id": "readme_broken_link",
+        "original_case_id": "readme_broken_link",
+        "input": "继续写算法部分，写入 manuscript.md。",
+        "before_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/missing-algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "after_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/missing-algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration/sections",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md\nsections/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/missing-algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/missing-algorithm.md"
+            ],
+            "error": "[Errno 2] No such file or directory: 'D:\\\\Code\\\\prompt\\\\academic-research-harness\\\\tmp\\\\material-eval-013\\\\readme_broken_link\\\\method-code\\\\docs\\\\missing-algorithm.md'",
+            "returncode": 1
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          }
+        ],
+        "changed_files": [],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true,
+          "no_unsupported_writes": true
+        },
+        "agent_output": {
+          "id": "readme_broken_link",
+          "response": "README 登记的“算法与伪代码”文件不存在。请提供该材料正确、可访问的路径，以便继续撰写算法部分。",
+          "changed_files": [],
+          "notes": "已暂停依赖该材料的写作，保留原稿和登记链接。"
+        }
+      },
+      {
+        "id": "readme_conflicting_results",
+        "original_case_id": "readme_conflicting_results",
+        "input": "根据 README 登记的结果材料更新 Results，写入 manuscript.md。",
+        "before_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n- [结果补充](../method-code/results/summary-new.md)：同一模型和评估设置的 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "after_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n- [结果补充](../method-code/results/summary-new.md)：同一模型和评估设置的 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration/sections",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md\nsections/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n- [结果补充](../method-code/results/summary-new.md)：同一模型和评估设置的 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/results/summary.md"
+            ],
+            "output": "Current supplied findings: across three evaluated test sets, mean error fell from 0.140 to 0.096 and latency increased from 12 to 16 ms/image. Repeated-run estimates are not included in this handoff.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/results/summary-new.md"
+            ],
+            "output": "Same three test sets, model and protocol as summary.md: mean error changed from 0.140 to 0.122, latency from 12 to 20 ms/image. No explanation of the different values is supplied.\n"
+          }
+        ],
+        "changed_files": [],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true,
+          "no_unsupported_writes": true
+        },
+        "agent_output": {
+          "id": "readme_conflicting_results",
+          "response": "两份登记材料对相同模型、三个测试集和评估设置给出不同结果：“实验结果汇总”为误差 0.140→0.096、延迟 12→16 ms/image；“结果补充”为误差 0.140→0.122、延迟 12→20 ms/image。请确认采用哪组结果，以及是否应替换另一项登记。",
+          "changed_files": [],
+          "notes": "冲突解决前暂停 Results 写作，未按文件名选择结果。"
+        }
+      },
+      {
+        "id": "legacy_migrate_material_links",
+        "original_case_id": "legacy_migrate_material_links",
+        "input": "继续算法部分，paper_slug 是 adaptive-calibration。旧稿在代码仓库 docs/adaptive-calibration；请把英文算法描述写入该论文 manuscript.md。",
+        "before_files": {
+          "method-code/README.md": "# Method code\nManuscript: [paper](docs/adaptive-calibration/manuscript.md).\n",
+          "method-code/docs/adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "method-code/docs/adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../../)\n\n- [方法说明](../../docs/method.md)：用于 Methods。\n- [算法与伪代码](../../docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../../results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n",
+          "method-code/docs/adaptive-calibration/references.bib": "@article{fixture, title={Synthetic fixture}, year={2025}}\n",
+          "method-code/docs/adaptive-calibration/figures/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+        },
+        "after_files": {
+          "adaptive-calibration/.gitignore": "# Temporary work and build intermediates; keep final PDFs and images tracked.\n/tmp/\n*.aux\n*.log\n*.out\n*.toc\n*.lof\n*.lot\n*.fls\n*.fdb_latexmk\n*.synctex.gz\n*.blg\n*.bcf\n*.run.xml\n",
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm classifies an unordered, variable-length set of patch embeddings by aggregating them into a fixed-dimensional representation. Let the input embeddings be \\(\\{\\mathbf{x}_i\\}_{i=1}^{n}\\), where \\(\\mathbf{x}_i \\in \\mathbb{R}^{d}\\) and \\(n\\) may vary between inputs. A shared learned linear projection assigns a scalar score to each embedding:\n\n\\[\ns_i = \\mathbf{w}^{\\top}\\mathbf{x}_i.\n\\]\n\nThe scores are normalized across the input set using softmax, and the resulting weights define the aggregate representation:\n\n\\[\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{n}\\exp(s_j)},\n\\qquad\n\\mathbf{z} = \\sum_{i=1}^{n}\\alpha_i\\mathbf{x}_i.\n\\]\n\nA classifier maps \\(\\mathbf{z}\\) to the predicted class. The aggregate retains dimension \\(d\\) as the number of patches varies. Reordering the embeddings reorders their scores and weights together, leaving the weighted sum unchanged. Thus, the aggregate representation is permutation invariant.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n",
+          "adaptive-calibration/references.bib": "@article{fixture, title={Synthetic fixture}, year={2025}}\n",
+          "method-code/README.md": "# Method code\nManuscript: [paper](../adaptive-calibration/manuscript.md).\n",
+          "adaptive-calibration/figures/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../../)\n\n- [方法说明](../../docs/method.md)：用于 Methods。\n- [算法与伪代码](../../docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../../results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "method-code/"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs/adaptive-calibration"
+            ],
+            "output": "figures/\nmanuscript.md\nREADME.md\nreferences.bib\nsections/"
+          },
+          {
+            "action": "git",
+            "args": [
+              ".",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 128,
+            "output": "fatal: not a git repository (or any of the parent directories): .git\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\nManuscript: [paper](docs/adaptive-calibration/manuscript.md).\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code",
+              "ls-files"
+            ],
+            "returncode": 0,
+            "output": ""
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? docs/\n?? results/\n?? src/\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/algorithm.md"
+            ],
+            "output": "Algorithm: input is an unordered variable-length set of patch embeddings. Score each embedding with a learned linear projection, normalize the scores with softmax, compute the weighted sum, then classify it. The weighted sum is permutation invariant. Internal working alias POOL_X7; vector name tmp_vec2. These names are not scientific terminology.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code/docs/adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs/adaptive-calibration/sections"
+            ],
+            "output": ""
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/references.bib"
+            ],
+            "output": "@article{fixture, title={Synthetic fixture}, year={2025}}\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code"
+            ],
+            "output": ".git/\ndocs/\nREADME.md\nresults/\nsrc/"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs"
+            ],
+            "output": "adaptive-calibration/\nalgorithm-v2.md\nalgorithm.md\ncontext.md\nmethod.md\none-time.md"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs/adaptive-calibration/figures"
+            ],
+            "output": "final.svg"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/figures/final.svg"
+            ],
+            "output": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+          },
+          {
+            "action": "move",
+            "args": [
+              "method-code/docs/adaptive-calibration",
+              "adaptive-calibration"
+            ],
+            "output": "move: method-code/docs/adaptive-calibration -> adaptive-calibration"
+          },
+          {
+            "action": "init",
+            "args": [
+              "adaptive-calibration",
+              "method-code"
+            ],
+            "returncode": 0,
+            "output": "Initialized independent paper repository: $CASE\\adaptive-calibration\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\nManuscript: [paper](../adaptive-calibration/manuscript.md).\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm classifies an unordered, variable-length set of patch embeddings by aggregating them into a fixed-dimensional representation. Let the input embeddings be \\(\\{\\mathbf{x}_i\\}_{i=1}^{n}\\), where \\(\\mathbf{x}_i \\in \\mathbb{R}^{d}\\) and \\(n\\) may vary between inputs. A shared learned linear projection assigns a scalar score to each embedding:\n\n\\[\ns_i = \\mathbf{w}^{\\top}\\mathbf{x}_i.\n\\]\n\nThe scores are normalized across the input set using softmax, and the resulting weights define the aggregate representation:\n\n\\[\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{n}\\exp(s_j)},\n\\qquad\n\\mathbf{z} = \\sum_{i=1}^{n}\\alpha_i\\mathbf{x}_i.\n\\]\n\nA classifier maps \\(\\mathbf{z}\\) to the predicted class. The aggregate retains dimension \\(d\\) as the number of patches varies. Reordering the embeddings reorders their scores and weights together, leaving the weighted sum unchanged. Thus, the aggregate representation is permutation invariant.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short",
+              "--untracked-files=all"
+            ],
+            "returncode": 0,
+            "output": "?? .gitignore\n?? README.md\n?? figures/final.svg\n?? manuscript.md\n?? references.bib\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "check-ignore",
+              "figures/final.svg"
+            ],
+            "returncode": 1,
+            "output": ""
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs"
+            ],
+            "output": "algorithm-v2.md\nalgorithm.md\ncontext.md\nmethod.md\none-time.md"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/.gitignore",
+          "adaptive-calibration/README.md",
+          "adaptive-calibration/figures/final.svg",
+          "adaptive-calibration/manuscript.md",
+          "adaptive-calibration/references.bib",
+          "method-code/README.md",
+          "method-code/docs/adaptive-calibration/README.md",
+          "method-code/docs/adaptive-calibration/figures/final.svg",
+          "method-code/docs/adaptive-calibration/manuscript.md",
+          "method-code/docs/adaptive-calibration/references.bib"
+        ],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true,
+          "migrated_without_old_copy": true,
+          "independent_git": true,
+          "formal_assets_and_author_text_preserved": true,
+          "material_and_project_links_rebased": true
+        },
+        "agent_output": {
+          "id": "legacy_migrate_material_links",
+          "response": "已将旧稿迁至同级独立论文仓库，并在 manuscript.md 写入英文算法描述，涵盖线性评分、softmax 归一化、加权聚合、分类和排列不变性。已修复材料链接及代码 README 中的论文链接。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/manuscript.md",
+            "$CASE/adaptive-calibration/README.md",
+            "$CASE/adaptive-calibration/references.bib",
+            "$CASE/adaptive-calibration/figures/final.svg",
+            "$CASE/adaptive-calibration/.gitignore",
+            "$CASE/method-code/README.md"
+          ],
+          "notes": "旧稿目录已整体迁出，无遗留工作副本。保留原引言、参考文献和正式图；研究材料留在代码仓库。已初始化独立 Git，正式图可跟踪；未提交。"
+        }
+      },
+      {
+        "id": "legacy_destination_collision",
+        "original_case_id": "legacy_destination_collision",
+        "input": "继续算法部分，paper_slug 是 adaptive-calibration。旧稿在代码仓库 docs/adaptive-calibration。",
+        "before_files": {
+          "adaptive-calibration/README.md": "# Unrelated project\nThis directory stores a different project; preserve its contents.\n",
+          "method-code/README.md": "# Method code\nManuscript: [paper](docs/adaptive-calibration/manuscript.md).\n",
+          "method-code/docs/adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "method-code/docs/adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../../)\n\n- [方法说明](../../docs/method.md)：用于 Methods。\n- [算法与伪代码](../../docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../../results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n",
+          "method-code/docs/adaptive-calibration/references.bib": "@article{fixture, title={Synthetic fixture}, year={2025}}\n",
+          "method-code/docs/adaptive-calibration/figures/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+        },
+        "after_files": {
+          "adaptive-calibration/README.md": "# Unrelated project\nThis directory stores a different project; preserve its contents.\n",
+          "method-code/README.md": "# Method code\nManuscript: [paper](docs/adaptive-calibration/manuscript.md).\n",
+          "method-code/docs/adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "method-code/docs/adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../../)\n\n- [方法说明](../../docs/method.md)：用于 Methods。\n- [算法与伪代码](../../docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../../results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n",
+          "method-code/docs/adaptive-calibration/references.bib": "@article{fixture, title={Synthetic fixture}, year={2025}}\n",
+          "method-code/docs/adaptive-calibration/figures/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs/adaptive-calibration"
+            ],
+            "output": "figures/\nmanuscript.md\nREADME.md\nreferences.bib\nsections/"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "adaptive-calibration/\nmethod-code/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../../)\n\n- [方法说明](../../docs/method.md)：用于 Methods。\n- [算法与伪代码](../../docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../../results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": "README.md"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Unrelated project\nThis directory stores a different project; preserve its contents.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 128,
+            "output": "fatal: not a git repository (or any of the parent directories): .git\n"
+          }
+        ],
+        "changed_files": [],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true,
+          "no_unsupported_writes": true
+        },
+        "agent_output": {
+          "id": "legacy_destination_collision",
+          "response": "目标目录 $CASE/adaptive-calibration 的 README 明确说明它属于另一个项目。请指定可用的论文目标路径，或明确现有占用目录应如何处置。",
+          "changed_files": [],
+          "notes": "未迁移或覆盖文件，也未在旧布局继续写作；旧稿仍位于 $CASE/method-code/docs/adaptive-calibration。"
+        }
+      },
+      {
+        "id": "final_readme_resume_algorithm",
+        "original_case_id": "readme_resume_algorithm",
+        "input": "继续写算法部分，把英文算法描述写入 manuscript.md。",
+        "before_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "after_files": {
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a prediction through learned weighted aggregation. Let \\(X = \\{\\mathbf{x}_i\\}_{i=1}^{N}\\), where \\(N \\geq 1\\) and \\(\\mathbf{x}_i \\in \\mathbb{R}^{d}\\). A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into normalized weights:\n\n\\[\ns_i = \\mathbf{w}^{\\top}\\mathbf{x}_i,\n\\qquad\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{N}\\exp(s_j)}.\n\\]\n\nThe algorithm then computes the weighted representation\n\n\\[\n\\mathbf{z} = \\sum_{i=1}^{N}\\alpha_i\\mathbf{x}_i\n\\]\n\nand passes \\(\\mathbf{z}\\) to a classifier. This aggregation produces a representation in \\(\\mathbb{R}^{d}\\) regardless of the number of input embeddings, allowing the classifier to operate on sets of varying size.\n\nThe weighted representation is permutation invariant: reordering the embeddings reorders their scores and weights together, leaving the softmax denominator and weighted sum unchanged. The classifier therefore receives the same representation for any ordering of a given input set.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n",
+          "method-code/README.md": "# Method code\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration/sections",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../method-code/private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? manuscript.md\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md\nsections/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/algorithm.md"
+            ],
+            "output": "Algorithm: input is an unordered variable-length set of patch embeddings. Score each embedding with a learned linear projection, normalize the scores with softmax, compute the weighted sum, then classify it. The weighted sum is permutation invariant. Internal working alias POOL_X7; vector name tmp_vec2. These names are not scientific terminology.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a prediction through learned weighted aggregation. Let \\(X = \\{\\mathbf{x}_i\\}_{i=1}^{N}\\), where \\(N \\geq 1\\) and \\(\\mathbf{x}_i \\in \\mathbb{R}^{d}\\). A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into normalized weights:\n\n\\[\ns_i = \\mathbf{w}^{\\top}\\mathbf{x}_i,\n\\qquad\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{N}\\exp(s_j)}.\n\\]\n\nThe algorithm then computes the weighted representation\n\n\\[\n\\mathbf{z} = \\sum_{i=1}^{N}\\alpha_i\\mathbf{x}_i\n\\]\n\nand passes \\(\\mathbf{z}\\) to a classifier. This aggregation produces a representation in \\(\\mathbb{R}^{d}\\) regardless of the number of input embeddings, allowing the classifier to operate on sets of varying size.\n\nThe weighted representation is permutation invariant: reordering the embeddings reorders their scores and weights together, leaving the softmax denominator and weighted sum unchanged. The classifier therefore receives the same representation for any ordering of a given input set.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? manuscript.md\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/manuscript.md"
+        ],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true
+        },
+        "agent_output": {
+          "id": "final_readme_resume_algorithm",
+          "response": "已依据 README 登记的算法说明，在 manuscript.md 写入英文算法描述及公式，保留原有标题和引言。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/manuscript.md"
+          ],
+          "notes": "描述涵盖线性评分、softmax 权重、加权汇聚、分类及排列不变性；未使用内部实现别名。"
+        }
+      },
+      {
+        "id": "final_legacy_migrate_material_links",
+        "original_case_id": "legacy_migrate_material_links",
+        "input": "继续算法部分，paper_slug 是 adaptive-calibration。旧稿在代码仓库 docs/adaptive-calibration；请把英文算法描述写入该论文 manuscript.md。",
+        "before_files": {
+          "method-code/README.md": "# Method code\nManuscript: [paper](docs/adaptive-calibration/manuscript.md).\n",
+          "method-code/docs/adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n",
+          "method-code/docs/adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../../)\n\n- [方法说明](../../docs/method.md)：用于 Methods。\n- [算法与伪代码](../../docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../../results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n",
+          "method-code/docs/adaptive-calibration/references.bib": "@article{fixture, title={Synthetic fixture}, year={2025}}\n",
+          "method-code/docs/adaptive-calibration/figures/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+        },
+        "after_files": {
+          "adaptive-calibration/.gitignore": "# Temporary work and build intermediates; keep final PDFs and images tracked.\n/tmp/\n*.aux\n*.log\n*.out\n*.toc\n*.lof\n*.lot\n*.fls\n*.fdb_latexmk\n*.synctex.gz\n*.blg\n*.bcf\n*.run.xml\n",
+          "adaptive-calibration/manuscript.md": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a prediction through learned weighted aggregation. Let \\(X = \\{\\mathbf{x}_i\\}_{i=1}^{N}\\), where \\(N \\geq 1\\) and \\(\\mathbf{x}_i \\in \\mathbb{R}^{d}\\). A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into normalized weights:\n\n\\[\ns_i = \\mathbf{w}^{\\top}\\mathbf{x}_i,\n\\qquad\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{N}\\exp(s_j)}.\n\\]\n\nThe algorithm then computes the weighted representation\n\n\\[\n\\mathbf{z} = \\sum_{i=1}^{N}\\alpha_i\\mathbf{x}_i\n\\]\n\nand passes \\(\\mathbf{z}\\) to a classifier. This aggregation produces a representation in \\(\\mathbb{R}^{d}\\) regardless of the number of input embeddings, allowing the classifier to operate on sets of varying size.\n\nThe weighted representation is permutation invariant: reordering the embeddings reorders their scores and weights together, leaving the softmax denominator and weighted sum unchanged. The classifier therefore receives the same representation for any ordering of a given input set.\n",
+          "adaptive-calibration/README.md": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n",
+          "adaptive-calibration/references.bib": "@article{fixture, title={Synthetic fixture}, year={2025}}\n",
+          "method-code/README.md": "# Method code\nManuscript: [paper](../adaptive-calibration/manuscript.md).\n",
+          "adaptive-calibration/figures/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../../)\n\n- [方法说明](../../docs/method.md)：用于 Methods。\n- [算法与伪代码](../../docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../../results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs/adaptive-calibration"
+            ],
+            "output": "figures/\nmanuscript.md\nREADME.md\nreferences.bib\nsections/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\nManuscript: [paper](docs/adaptive-calibration/manuscript.md).\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "method-code/"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? README.md\n?? docs/\n?? results/\n?? src/\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/algorithm.md"
+            ],
+            "output": "Algorithm: input is an unordered variable-length set of patch embeddings. Score each embedding with a learned linear projection, normalize the scores with softmax, compute the weighted sum, then classify it. The weighted sum is permutation invariant. Internal working alias POOL_X7; vector name tmp_vec2. These names are not scientific terminology.\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs/adaptive-calibration/figures"
+            ],
+            "output": "final.svg"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/docs/adaptive-calibration/references.bib"
+            ],
+            "output": "@article{fixture, title={Synthetic fixture}, year={2025}}\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code/docs/adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel",
+              "--git-dir",
+              "--git-common-dir"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n$CASE/method-code/.git\n../../.git\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs/adaptive-calibration/sections"
+            ],
+            "output": ""
+          },
+          {
+            "action": "move",
+            "args": [
+              "method-code/docs/adaptive-calibration",
+              "adaptive-calibration"
+            ],
+            "output": "move: method-code/docs/adaptive-calibration -> adaptive-calibration"
+          },
+          {
+            "action": "init",
+            "args": [
+              "adaptive-calibration",
+              "method-code"
+            ],
+            "returncode": 0,
+            "output": "Initialized independent paper repository: $CASE\\adaptive-calibration\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor introduction to preserve.\n\n## Algorithm\n\nThe algorithm maps an unordered, variable-length set of patch embeddings to a prediction through learned weighted aggregation. Let \\(X = \\{\\mathbf{x}_i\\}_{i=1}^{N}\\), where \\(N \\geq 1\\) and \\(\\mathbf{x}_i \\in \\mathbb{R}^{d}\\). A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into normalized weights:\n\n\\[\ns_i = \\mathbf{w}^{\\top}\\mathbf{x}_i,\n\\qquad\n\\alpha_i = \\frac{\\exp(s_i)}{\\sum_{j=1}^{N}\\exp(s_j)}.\n\\]\n\nThe algorithm then computes the weighted representation\n\n\\[\n\\mathbf{z} = \\sum_{i=1}^{N}\\alpha_i\\mathbf{x}_i\n\\]\n\nand passes \\(\\mathbf{z}\\) to a classifier. This aggregation produces a representation in \\(\\mathbb{R}^{d}\\) regardless of the number of input embeddings, allowing the classifier to operate on sets of varying size.\n\nThe weighted representation is permutation invariant: reordering the embeddings reorders their scores and weights together, leaving the softmax denominator and weighted sum unchanged. The classifier therefore receives the same representation for any ordering of a given input set.\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive Calibration\n\nAuthor collaboration note: preserve the title and this paragraph.\n\n## 研究材料\n\n代码项目：[method-code](../method-code/)\n\n- [方法说明](../method-code/docs/method.md)：用于 Methods。\n- [算法与伪代码](../method-code/docs/algorithm.md)：用于算法描述。\n- [实验结果汇总](../method-code/results/summary.md)：用于 Results。\n\n## Collaboration\n\nKeep author comments in review notes.\n\nExample only, not project inputs:\n```markdown\n- [Example](../../private/ignore-this.md)\n```\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\nManuscript: [paper](../adaptive-calibration/manuscript.md).\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\n.gitignore\nfigures/\nmanuscript.md\nREADME.md\nreferences.bib\nsections/"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel",
+              "--git-dir",
+              "--git-common-dir"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n.git\n.git\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs"
+            ],
+            "output": "algorithm-v2.md\nalgorithm.md\ncontext.md\nmethod.md\none-time.md"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code",
+              "rev-parse",
+              "--show-toplevel",
+              "--git-dir"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n.git\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/figures/final.svg"
+            ],
+            "output": "<svg xmlns=\"http://www.w3.org/2000/svg\"><text>Final figure</text></svg>\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? .gitignore\n?? README.md\n?? figures/\n?? manuscript.md\n?? references.bib\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/.gitignore",
+          "adaptive-calibration/README.md",
+          "adaptive-calibration/figures/final.svg",
+          "adaptive-calibration/manuscript.md",
+          "adaptive-calibration/references.bib",
+          "method-code/README.md",
+          "method-code/docs/adaptive-calibration/README.md",
+          "method-code/docs/adaptive-calibration/figures/final.svg",
+          "method-code/docs/adaptive-calibration/manuscript.md",
+          "method-code/docs/adaptive-calibration/references.bib"
+        ],
+        "checks": {
+          "only_task_relevant_research_files_read": true,
+          "research_sources_preserved": true,
+          "migrated_without_old_copy": true,
+          "independent_git": true,
+          "formal_assets_and_author_text_preserved": true,
+          "material_and_project_links_rebased": true
+        },
+        "agent_output": {
+          "id": "final_legacy_migrate_material_links",
+          "response": "已将旧稿整体迁至代码仓库旁的 adaptive-calibration，建立独立 Git，并写入英文算法描述及公式。材料链接和代码 README 中的论文链接已修复。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/manuscript.md",
+            "$CASE/adaptive-calibration/README.md",
+            "$CASE/adaptive-calibration/references.bib",
+            "$CASE/adaptive-calibration/figures/final.svg",
+            "$CASE/adaptive-calibration/.gitignore",
+            "$CASE/method-code/README.md"
+          ],
+          "notes": "参考文献和正式图随目录迁移；旧目录已移除，无副本或跳转文件。研究材料及代码仓库 Git 保留原位；未创建提交。"
+        }
+      }
+    ]
+  },
+  "independent_judgment": {
+    "cases": [
+      {
+        "id": "readme_resume_algorithm",
+        "verdict": "pass",
+        "reason": "Reads the registered algorithm source and faithfully describes linear scoring, softmax, weighted pooling, classification and permutation invariance. Preserves author text, excludes implementation aliases and changes only manuscript.md.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "readme_current_results",
+        "verdict": "pass",
+        "reason": "Correctly follows the explicitly designated current source over prior-context numbers. Both percentage calculations are correct, the latency tradeoff is retained, and no unsupported significance or repeatability claim is introduced.",
+        "material_issues": [],
+        "optional_improvements": [
+          "Consider explicitly noting that repeated-run uncertainty estimates were not supplied."
+        ]
+      },
+      {
+        "id": "readme_update_registration",
+        "verdict": "pass",
+        "reason": "Correctly converts code-root paths into README-relative links, replaces the algorithm entry and registers the Introduction material through localized edits. The manuscript faithfully adopts two-layer MLP scoring. Listing context.md without reading it is sufficient for registration; Introduction writing was not requested.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "readme_one_time_material",
+        "verdict": "pass",
+        "reason": "Produces the requested English comparison using arithmetic-mean pooling and classification. Reads only the relevant research source and preserves both the formal manuscript and persistent material registrations.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "readme_broken_link",
+        "verdict": "pass",
+        "reason": "Verifies that the registered algorithm source is missing, identifies the affected entry and requests an accessible replacement path. Appropriately leaves the manuscript and registration unchanged rather than inventing content or selecting an unconfirmed substitute.",
+        "material_issues": [],
+        "optional_improvements": [
+          "Include the exact broken relative path in the clarification for easier identification."
+        ]
+      },
+      {
+        "id": "readme_conflicting_results",
+        "verdict": "pass",
+        "reason": "Reads both relevant registered sources and precisely reports their conflicting error and latency values under the same evaluation setting. Requests an authoritative selection and registration guidance without assuming that the filename establishes precedence.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "legacy_migrate_material_links",
+        "verdict": "pass",
+        "reason": "The migration preserves author text, bibliography and figure, leaves research sources in place, establishes independent Git and removes the old working copy. Active material links and the code README backlink are correctly rebased; the fenced example is appropriately preserved. The added algorithm is scientifically faithful.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "legacy_destination_collision",
+        "verdict": "pass",
+        "reason": "Confirms that the proposed destination belongs to another project and requests a usable destination or explicit disposition instructions. Preserves both projects without overwriting or merging them. This is appropriate handling of an unresolved migration prerequisite.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "final_readme_resume_algorithm",
+        "verdict": "pass",
+        "reason": "Independently reads the registered algorithm source and produces a faithful English account with correct equations and permutation-invariance reasoning. Fixed representation dimensionality follows from the aggregation, and the nonempty-input condition makes the formulas well-defined. Existing author text and sources are preserved.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "final_legacy_migrate_material_links",
+        "verdict": "pass",
+        "reason": "The fresh rerun preserves the paper and source materials, verifies separate paper and code Git roots, removes the old paper directory and repairs active links. Bibliography and figure contents remain intact, generated ignore-file comments are English, and the manuscript accurately describes the supplied algorithm.",
+        "material_issues": [],
+        "optional_improvements": []
+      }
+    ],
+    "overall": "pass",
+    "limitations": [
+      "Assessment is limited to the supplied files, logs, responses and mechanical checks. Scientific fidelity is assessed against supplied sources, not independent experimental validation.",
+      "Complete research-source before/after snapshots are not provided; preservation is supported by the logged operations and supplied mechanical checks.",
+      "The migration examples involve untracked paper files and do not establish preservation of existing paper Git history or behavior outside the evaluation bridge. Blocked-case passes recognize appropriate clarification, not completed writing."
+    ]
+  },
+  "judgment_disposition": "The optional suggestion to narrate unavailable repeated-run estimates was not adopted: this task asks for an observed comparison, and handoff gaps should not be added to manuscript prose. The optional suggestion to include the exact broken path is compatible with existing specific-question guidance and required no new rule.",
+  "limitations": [
+    "Targeted acceptance/regression tests and independent semantic review, not a controlled demonstration of general writing-quality improvement.",
+    "The evaluation bridge records permitted fixture operations, not unrestricted deployed tooling or automatic skill selection.",
+    "Material failures used a missing path and conflicting documents; no operating-system ACL failure was injected.",
+    "Migration used ordinary paper files in a dedicated code subdirectory. Complex linked-worktree/submodule migrations were reviewed in instructions, not executed.",
+    "Cross-volume link behavior was simulated in unit tests; no live second-drive migration was performed."
+  ],
+  "history": [
+    "history/0.12.0.json",
+    "history/0.11.0.json"
+  ]
+}

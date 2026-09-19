@@ -1,9 +1,9 @@
-# Methods from Implementation
+# Clarify a Method from Implementation
 
-Use only when the author requests extracting or checking a method against code. Missing drafting material alone calls for an author question, not this workflow.
+For drafting, use documents first. If the spec supports the passage, write without checking code. When algorithm details, operation order or parameter meaning are unclear, follow the spec's implementation link or named entry point without asking for separate permission. An explicit request to extract or check a method from code also uses this guide.
 
-Identify the paper question the implementation must resolve, then inspect the relevant operation and only the configuration or caller needed to interpret it. Stop when the passage can be written. A source tree is not the structure of a Methods section.
+Read the referenced operation and only the directly relevant helper, caller or definition needed to answer the method question. Stop when it is resolved. If there is no usable implementation pointer, or the narrow lookup leaves the meaning unclear, ask the author rather than expanding into a repository survey. If spec and code disagree about the method, ask which applies instead of silently choosing one.
 
-When inferring what an experiment used, distinguish code that exists, a setting that enables it, and evidence that it was executed. Follow execution provenance only when that distinction matters to the requested claim. Do not turn a local method question into an experiment audit.
+Code can explain what an operation or parameter means; it cannot establish which settings were actually run, which results were observed, or whether uncertainty was measured. A default value is not an experimental setting. If the requested passage needs missing results, actual run settings or uncertainty estimates, ask the author for those facts or relevant records. Do not reconstruct execution from source or run experiments to fill the gap. Missing estimates do not mean they were never measured.
 
-Convert the resolved behavior into scientific objects, operations, and material settings. Apply the manuscript identifier boundary in [writing-style.md](writing-style.md): code variables, internal aliases, file paths, run IDs, and workflow metadata do not belong in paper prose. If a necessary mapping remains unclear, pause the dependent passage and ask the author; keep that question outside the article.
+Express the resolved method as scientific objects, operations, equations or an algorithm block. Keep variable aliases, paths, debugging steps and other implementation metadata out of the manuscript, following [writing-style.md](writing-style.md). A source lookup should end in usable paper text or a specific author question, not a code report.
