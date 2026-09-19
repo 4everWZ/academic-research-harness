@@ -1,618 +1,557 @@
 {
-  "version": "0.14.0",
-  "scope": "Document-first drafting with automatic, bounded implementation reading to clarify method semantics; author input remains necessary for missing experimental facts.",
+  "version": "0.14.1",
+  "scope": "Interpret managing-project-docs specification sections as paper inputs under document-first drafting and bounded implementation lookup.",
   "summary": {
-    "independent_full_package_reviews": 2,
-    "files_read_per_full_review": 19,
+    "independent_instruction_reviews": 1,
+    "runtime_files_read": 16,
     "remaining_material_review_issues": 0,
-    "behavioral_cases": 8,
-    "judge_passes": 8,
-    "judge_failures": 0,
+    "behavioral_scenarios": 5,
+    "logged_attempts": 6,
+    "independent_initial_judgment": "pass",
+    "independent_recheck_judgment": "pass",
     "package_tests": 6,
     "behavior_fixture_tests": 1,
     "skill_validator": "passed"
   },
   "protocol": {
     "skills_activated": false,
-    "fresh_contexts": true,
-    "full_review": "Two reviewers read all runtime instruction, reference, template, UI metadata and script files as review data. Tests, eval records, tmp and the parent conversation were excluded.",
-    "performers": "Two independent performers received only the author tasks and plain editorial brief. A logged fixture bridge captured all permitted reads, writes and Git queries; parent inspected original-file preservation and actual source reads.",
-    "judge": "A separate fresh-context reviewer received author tasks, source-read records, final manuscript files and mechanical checks, without candidate instructions or intended verdicts."
+    "fresh_agent_contexts": true,
+    "review": "One independent reviewer fully read the entry, all seven references, all seven templates and UI metadata as review data. Unchanged scripts and test rubrics were excluded.",
+    "performers": "Two fresh-context performers received author tasks and plain editorial instructions. A third fresh-context performer repeated the case whose action log was incomplete. All fixture operations used a logged bridge.",
+    "judge": "A separate fresh-context agent judged source excerpts, tool records, final manuscript files and author responses without candidate instructions or intended verdicts; it then judged the isolated recheck."
   },
-  "reviews": {
-    "writing": {
-      "agent_id": "01a0b8fc-abe1-70c0-93b1-c78edd07ff03",
-      "output": {
-        "files_read": [
-          "D:/Code/prompt/academic-research-harness/SKILL.md",
-          "D:/Code/prompt/academic-research-harness/references/evidence-and-citations.md",
-          "D:/Code/prompt/academic-research-harness/references/literature.md",
-          "D:/Code/prompt/academic-research-harness/references/paper-project.md",
-          "D:/Code/prompt/academic-research-harness/references/repo-to-paper.md",
-          "D:/Code/prompt/academic-research-harness/references/results-to-paper.md",
-          "D:/Code/prompt/academic-research-harness/references/workspace.md",
-          "D:/Code/prompt/academic-research-harness/references/writing-style.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/claims.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/idea_log.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/paper_index.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/paper_readme.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/reading_note.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/references.bib",
-          "D:/Code/prompt/academic-research-harness/assets/templates/venue_profile.md",
-          "D:/Code/prompt/academic-research-harness/agents/openai.yaml",
-          "D:/Code/prompt/academic-research-harness/scripts/init_paper_project.py",
-          "D:/Code/prompt/academic-research-harness/scripts/init_paper_workspace.py",
-          "D:/Code/prompt/academic-research-harness/scripts/validate_paper_index.py"
-        ],
-        "findings": [
-          {
-            "severity": "optional",
-            "file": "D:/Code/prompt/academic-research-harness/references/literature.md",
-            "issue": "Line 17 unconditionally requires returning metadata and a selection rationale for every selected paper. This guide also governs manuscript positioning, so a Related Work drafting request inherits an unnecessary recommendation-list deliverable alongside the instruction to organize prose around scientific distinctions.",
-            "proposed_fix": "Scope that output format to literature recommendations. For manuscript drafting, integrate sources through normal citations and keep selection explanations outside the manuscript."
-          },
-          {
-            "severity": "optional",
-            "file": "D:/Code/prompt/academic-research-harness/assets/templates/references.bib",
-            "issue": "Line 2 prefers formal-publication metadata without preserving literature.md's requirement that the cited result and metadata refer to the same version. Collection maintenance can load this template through workspace.md without loading literature.md, leaving that route vulnerable to replacing preprint metadata when the formal version changed or omitted the cited result.",
-            "proposed_fix": "Qualify the existing comment: prefer the formal version when it supports the cited statement; otherwise retain the version actually used."
-          }
-        ],
-        "overall": "No material contradiction found in the core writing routes. They consistently support document-first drafting, targeted implementation reading without renewed permission, author input for missing experimental facts, and exclusion of implementation metadata from prose. Persistent README materials, independent sibling repositories, direct migration, and substantive literature and non-defensive writing guidance remain intact. All 19 requested files were read in full; no skills were activated, files edited, or package code executed, and excluded directories were not inspected."
-      }
-    },
-    "boundaries": {
-      "agent_id": "01a0b8fc-ad29-7d03-b6b5-5d7601a82de3",
-      "output": {
-        "files_read": [
-          "D:/Code/prompt/academic-research-harness/SKILL.md",
-          "D:/Code/prompt/academic-research-harness/references/evidence-and-citations.md",
-          "D:/Code/prompt/academic-research-harness/references/literature.md",
-          "D:/Code/prompt/academic-research-harness/references/paper-project.md",
-          "D:/Code/prompt/academic-research-harness/references/repo-to-paper.md",
-          "D:/Code/prompt/academic-research-harness/references/results-to-paper.md",
-          "D:/Code/prompt/academic-research-harness/references/workspace.md",
-          "D:/Code/prompt/academic-research-harness/references/writing-style.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/claims.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/idea_log.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/paper_index.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/paper_readme.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/reading_note.md",
-          "D:/Code/prompt/academic-research-harness/assets/templates/references.bib",
-          "D:/Code/prompt/academic-research-harness/assets/templates/venue_profile.md",
-          "D:/Code/prompt/academic-research-harness/agents/openai.yaml",
-          "D:/Code/prompt/academic-research-harness/scripts/init_paper_project.py",
-          "D:/Code/prompt/academic-research-harness/scripts/init_paper_workspace.py",
-          "D:/Code/prompt/academic-research-harness/scripts/validate_paper_index.py"
-        ],
-        "findings": [],
-        "overall": "No concrete actionable contradictions or loopholes found in the reviewed sources. Sufficient documents permit direct writing; unresolved method semantics permit targeted implementation reading without renewed permission. Missing observed results, actual run settings and necessary uncertainty estimates require author records; source defaults cannot substitute. Persistent README materials, independent sibling paper repositories, direct migration, strong literature selection and non-defensive scientific prose remain consistent. Review was static: no skills activated, files edited or package code executed. Excluded directories and generated bytecode caches were not read."
-      }
-    }
+  "review": {
+    "agent_id": "01a0b907-fb03-72b2-9601-3d423a8a4806",
+    "files_read": [
+      "SKILL.md",
+      "agents/openai.yaml",
+      "references/evidence-and-citations.md",
+      "references/literature.md",
+      "references/paper-project.md",
+      "references/repo-to-paper.md",
+      "references/results-to-paper.md",
+      "references/workspace.md",
+      "references/writing-style.md",
+      "assets/templates/claims.md",
+      "assets/templates/idea_log.md",
+      "assets/templates/paper_index.md",
+      "assets/templates/paper_readme.md",
+      "assets/templates/reading_note.md",
+      "assets/templates/references.bib",
+      "assets/templates/venue_profile.md"
+    ],
+    "findings": [],
+    "conclusion": "Section mapping preserves goals versus observations, optional headings, input ownership, bounded method lookup and experimental evidence boundaries. No material writing regression found."
   },
-  "review_resolutions": {
-    "literature": "Scope recommendation metadata lists to reading recommendations, and preserve the actually cited source version when a formal version does not support the statement.",
-    "literature_confirmation": {
-      "status": {
-        "01a0b8fc-abe1-70c0-93b1-c78edd07ff03": {
-          "completed": "Confirmed: both revised lines resolve the findings.\n\n- [literature.md](/D:/Code/prompt/academic-research-harness/references/literature.md:17) scopes recommendation lists appropriately and keeps selection notes outside manuscript prose.\n- [references.bib](/D:/Code/prompt/academic-research-harness/assets/templates/references.bib:2) preserves the source version supporting the cited statement.\n\nNo outstanding findings from the prior review."
-        }
-      },
-      "timed_out": false
-    },
-    "final_wording": "After the behavioral run, remove a possible intermediate question-naming deliverable and clarify that author-supplied experimental facts suffice without mandatory run logs. No behavior branch changed.",
-    "final_wording_confirmation": {
-      "status": {
-        "01a0b8fc-abe1-70c0-93b1-c78edd07ff03": {
-          "completed": "Confirmed: [repo-to-paper.md](/D:/Code/prompt/academic-research-harness/references/repo-to-paper.md) remains consistent. Neither reduction changes a behavior branch: targeted reading requires no intermediate deliverable, and author-supplied facts suffice without a mandatory run-log audit. Document-first drafting, lookup limits, conflict handling, and manuscript exclusions remain intact."
-        }
-      },
-      "timed_out": false
-    }
+  "tested_editorial_brief": "---\nname: academic-research-harness\ndescription: \"Use when explicitly requested to develop a paper from existing results, shape its argument, revise defensive prose, or support that writing with literature, source checks, or paper workspace tools.\"\n---\n\n# Academic Research Harness\n\nDevelop the paper's argument from existing research results and express it as manuscript prose.\n\nUse designated documents and README materials first. Write when sufficient. Use their implementation pointers only for unresolved algorithm details, operation order or parameter meaning needed by the passage; stop when resolved. Ask for necessary missing results, actual run settings or uncertainty estimates; source code cannot establish experimental facts.\n\nKeep questions and work notes outside the manuscript. Express scientific meaning, excluding code variables, internal labels, paths, run identifiers and workflow metadata. Ask if a necessary meaning remains unresolved.\n\nFor project writing, use a sibling `<paper_slug>/` with independent Git and migrate identified legacy manuscripts there. On entry or resume, use the README's material links, reusing their mapping when already in context. Register new project materials unless designated one-time. Even small manuscript edits follow the project guide; unrelated tasks need no setup.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Start, resume or migrate a paper; maintain its material links | [paper-project.md](references/paper-project.md), then the relevant writing guide |\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature from leading relevant venues; position contributions or refine ideas | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Use a method spec, clarify it through linked implementation, or inspect code on request | [repo-to-paper.md](references/repo-to-paper.md) |\n| Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |\n\nLoad extra references only for a concrete need. Numerical results alone do not require an audit.\n\n\n# Paper Projects and Materials\n\n## Find the paper\n\nUse the author's path or known project first, then sibling directories and explicit manuscript links. From a subdirectory, use Git to locate the repository root. Read only the project descriptions needed to identify the paper; do not search code or experiments.\n\nCreate and migrate papers beside the code repository at `<code-root>/../<paper_slug>/`, with independent Git, unless the author explicitly chose another location. Keep the established slug; ask if unknown. Reuse the matching paper directory; ask about ambiguous candidates or ownership.\n\n## Move an old manuscript\n\nMove an identified manuscript out of the code repository directly; do not offer to keep the old layout. Move its text, bibliography, formal figures and required build files, preserving edits. Leave research source documents and unrelated files in code.\n\nBefore moving, resolve source and destination paths, identify the paper files in mixed directories, and check collisions. Ask only about unresolved ownership, file selection or conflicts; do not overwrite either copy. Preserve a paper repository's own Git history, but never move the code repository's Git metadata or a shared worktree/submodule Git pointer. Resolve linked Git registrations before completing the move.\n\nRebase README material links to their original targets, repair paper asset/build paths, and update explicit links to the moved manuscript. Leave no duplicate, redirect stub or compatibility symlink. Initialize missing starter files after moving; on failure, report the actual remaining locations.\n\n## Use the README's materials\n\nWhen starting or resuming paper work, read `Research materials` in the paper-root `README.md`, or its existing equivalent. Reuse the mapping if it is already in context and unchanged. Resolve links from the README's directory, including when working in a paper subdirectory.\n\nThe code-project link locates the code. Named document links are continuing author inputs: read relevant files across directories without asking again. For algorithms, use the existing method spec's `Contract` and `Technical semantics`, or equivalent descriptions; for Results, use reported findings, not acceptance targets. Read current content for each new edit request, reusing reads within that task. The [method guide](repo-to-paper.md) explains the spec sections and focused implementation lookup for unresolved method details. Do not load all materials or expand into a code or experiment audit.\n\nAdd new project materials and update explicitly replaced entries in place. Resolve supplied paths from their stated context, then write README-relative links. Preserve other entries and README content. One-time inputs apply only to the current task and never replace persistent entries. Use names, links and necessary purposes only; add no status, date, version or approval fields. Do not invent file locations. The [English section template](../assets/templates/paper_readme.md) is an example, not a list of actual project inputs; fenced/commented examples and unrelated README links do not register materials.\n\nIf a needed path is broken or inaccessible, ask for an accessible location. For source conflicts, unresolved method details or missing experimental facts, pause that passage and ask specifically. An explicit author correction takes precedence; filenames and modification times do not settle scientific conflicts. Missing files do not mean unperformed research.\n\n## Initialize and write\n\nFor a new project, or missing starter files after migration, run:\n\n```bash\npython \"<skill-root>/scripts/init_paper_project.py\" \"<paper_slug>\" --code-root \"<code-root>\"\n```\n\nRelative destinations use the actual code root's parent, even when `--code-root` names a subdirectory. Use an absolute path elsewhere only for an author's explicit location choice. The helper creates independent Git, an English README with only the real code link, and `.gitignore`, preserving existing files. It does not migrate, register documents, commit or configure remotes. Use ordinary file tools for reading, README edits and migration; no parser or sync service.\n\nContinue in the paper repository without repeating setup. Preserve its manuscript and build conventions. Turn supplied materials into scientific prose, formal algorithms and figures, preserving meaning when translating engineering labels. Keep formal reading/build inputs inside the paper repository; the README's external sources support authoring, not the build. Use [workspace.md](workspace.md) only for requested auxiliary artifacts. Pasted-text edits or searches without a paper project need no repository.\n\n\n# From a Method Spec to Paper Text\n\nFor drafting, use documents first. If the spec supports the passage, write without checking code.\n\n## Read the spec\n\nFor the `managing-project-docs` spec format, use the sections by their purpose:\n\n| Section | Use in writing |\n|---|---|\n| Intent | Research aim and scope; an intended outcome is not an observed finding. |\n| Contract; Technical semantics, when present | Method inputs, outputs, operations, order, parameter meanings and constraints. These support Methods and formal algorithms. |\n| Governing decisions; Open decisions, when present | Read relevant rationale or unresolved choices only when they affect the requested passage. A proposal does not establish which method was evaluated. |\n| Acceptance | Requirements, evaluation definitions and verification methods. Use actual findings from supplied evidence for empirical claims; criteria or planned checks alone do not establish results. |\n\nUse equivalent sections in other layouts; missing headings do not imply missing information. Leave the source spec unchanged unless its maintenance is part of the task. Reading it for writing needs no separate algorithm document, contract acceptance or implementation audit. If a relevant method choice remains unresolved, ask the author; unrelated open items need not delay writing.\n\n## Resolve a method question\n\nWhen algorithm details, operation order or parameter meaning are unclear, follow the spec's implementation link or named entry point without asking for separate permission. Such pointers may appear in any relevant section; the format does not require them. An explicit request to extract or check a method from code also uses this guide.\n\nRead the referenced operation and only the directly relevant helper, caller or definition needed to answer the method question. Stop when it is resolved. If there is no usable implementation pointer, or the narrow lookup leaves the meaning unclear, ask the author rather than expanding into a repository survey. If spec and code disagree about the method, ask which applies instead of silently choosing one.\n\nCode can explain what an operation or parameter means; it cannot establish which settings were actually run, which results were observed, or whether uncertainty was measured. A default value is not an experimental setting. If the requested passage needs missing results, actual run settings or uncertainty estimates, ask the author for those facts or relevant records. Do not reconstruct execution from source or run experiments to fill the gap. Missing estimates do not mean they were never measured.\n\nExpress the resolved method as scientific objects, operations, equations or an algorithm block. Keep variable aliases, paths, debugging steps and other implementation metadata out of the manuscript, following [writing-style.md](writing-style.md). A source lookup should end in usable paper text or a specific author question, not a code report.\n\n\n# From Results to a Paper\n\n## Build the argument from the completed work\n\nStart with the supplied findings and the author's research question. Identify the central answer those findings support, then arrange the evidence around the questions a reader must resolve to accept it. When an early project slogan no longer fits the experiments, propose a framing grounded in the completed work; do not quietly redefine the method or evaluation to preserve the slogan.\n\nFor a full paper, settle that argument before polishing section prose. For a requested paragraph or section, work locally within the established argument. An outline is a working aid, not a mandatory intermediate deliverable.\n\nKeep research findings separate from the state of the handoff. Missing tables, logs, or definitions may require an author question; they are not findings to narrate in Results or Discussion. Pause the dependent passage rather than substituting a status report about files, verification, or unfinished workflow.\n\nSeparate evidence that establishes the main finding, evidence that explains a design choice, and evidence that locates a boundary or cost. Order them by their role in the argument, rather than by experiment chronology or table number. If results are mixed, use the pattern of differences to shape the thesis rather than hiding exceptions in a final limitations paragraph.\n\n## Use each result for the question it answers\n\n| Writing situation | Useful move |\n|---|---|\n| Main benchmark table | Select the comparisons that decide the research question. Distinguish consistent gains from gains concentrated in a condition; do not let an average obscure a reversal that changes the thesis. |\n| Component ablation | State what changes under the tested removal or replacement. Its performance cost supports the component's role under that intervention; it does not by itself establish the proposed internal mechanism. |\n| Robustness or transfer | Organize by the shift or condition where behavior changes. Make adaptation inputs, such as labeled target examples, part of the interpretation when they determine what kind of robustness was evaluated. |\n| Efficiency comparison | Connect the observed quality gain to its measured cost. Equal parameter count does not cancel higher latency; a measured latency difference should not be converted into an untested deployment verdict. |\n| Sensitivity analysis | Explain where the conclusion holds, weakens, or reverses. Use this to locate an operating range rather than describing every curve point. |\n| Null or uncertain result | State what remains unresolved and how that affects the paper's central answer. Do not turn lack of established improvement into equivalence or add generic future-work prose. |\n\n## Carry the same argument across sections\n\nWrite contribution statements as research advances established by the work. A list of implemented modules or completed experiments does not explain the advance. Keep a proposed framing distinct from an author-approved change in research meaning.\n\nBuild Methods around the objects and operations needed to understand the result. Introduce a component's rationale where its role becomes clear; supply material settings where they affect interpretation or reproduction, without reconstructing the source tree.\n\nUse Discussion to explain what the combined findings change about the motivating problem. Separate observed patterns from candidate explanations; plausible explanations can be discussed as interpretations without claiming they were experimentally established.\n\nDerive the abstract and conclusion from the resulting argument. Keep any resource requirement, exception, or uncertainty that changes the central claim, even if it is already explained in Results. Apply outlet-specific structure and reporting rules when a target outlet is supplied; do not import another field's conventions by default.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nResolve method ambiguities through the document-led lookup in [repo-to-paper.md](repo-to-paper.md). If required inputs remain missing or conflicting, pause that passage and ask for the specific result, method detail or source. Do not fill the manuscript with unavailable-material reports, unverified results or invented nonperformance. If a missing input is irrelevant to the passage, leave it out and write. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express scientific objects, operations, settings and values directly. Mathematical notation defined for the paper and established method names are distinct from implementation identifiers. Translate an internal label only when its scientific meaning is established by the documents or focused lookup; otherwise ask rather than guessing.\n",
+  "final_changed_instructions": {
+    "SKILL.md": "---\nname: academic-research-harness\ndescription: \"Use when explicitly requested to develop a paper from existing results, shape its argument, revise defensive prose, or support that writing with literature, source checks, or paper workspace tools.\"\n---\n\n# Academic Research Harness\n\nDevelop the paper's argument from existing research results and express it as manuscript prose.\n\nUse designated documents and README materials first. Write when sufficient. Use their implementation pointers only for unresolved algorithm details, operation order or parameter meaning needed by the passage; stop when resolved. Ask for necessary missing results, actual run settings or uncertainty estimates; source code cannot establish experimental facts.\n\nKeep questions and work notes outside the manuscript. Express scientific meaning, excluding code variables, internal labels, paths, run identifiers and workflow metadata. Ask if a necessary meaning remains unresolved.\n\nFor project writing, use a sibling `<paper_slug>/` with independent Git and migrate identified legacy manuscripts there. On entry or resume, use the README's material links, reusing their mapping when already in context. Register new project materials unless designated one-time. Even small manuscript edits follow the project guide; unrelated tasks need no setup.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Start, resume or migrate a paper; maintain its material links | [paper-project.md](references/paper-project.md), then the relevant writing guide |\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature from leading relevant venues; position contributions or refine ideas | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Read a method spec or clarify its implementation | [repo-to-paper.md](references/repo-to-paper.md) |\n| Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |\n\nLoad extra references only for a concrete need. Numerical results alone do not require an audit.\n",
+    "references/repo-to-paper.md": "# From a Method Spec to Paper Text\n\nFor drafting, use documents first. If the spec supports the passage, write without checking code.\n\n## Read the spec\n\nFor the `managing-project-docs` spec format, use the sections by their purpose:\n\n| Section | Use in writing |\n|---|---|\n| Intent | Research aim and scope; an intended outcome is not an observed finding. |\n| Contract; Technical semantics, when present | Method inputs, outputs, operations, order, parameter meanings and constraints. These support Methods and formal algorithms. |\n| Governing decisions; Open decisions, when present | Read relevant rationale or unresolved choices only when they affect the requested passage. A proposal does not establish which method was evaluated. |\n| Acceptance | Requirements, evaluation definitions and verification methods. Use actual findings from supplied evidence for empirical claims; criteria or planned checks alone do not establish results. |\n\nUse equivalent sections in other layouts; missing headings do not imply missing information. Leave the source spec unchanged unless its maintenance is part of the task. Reading it for writing needs no separate algorithm document, contract acceptance or implementation audit. If a relevant method choice remains unresolved, ask the author; unrelated open items need not delay writing.\n\n## Resolve a method question\n\nWhen algorithm details, operation order or parameter meaning are unclear, follow the spec's implementation link or named entry point without asking for separate permission. Such pointers may appear in any relevant section; the format does not require them. An explicit request to extract or check a method from code also uses this guide.\n\nRead the referenced operation and only the directly relevant helper, caller or definition needed to answer the method question. Stop when it is resolved. If there is no usable implementation pointer, or the narrow lookup leaves the meaning unclear, ask the author rather than expanding into a repository survey. If spec and code disagree about the method, ask which applies instead of silently choosing one.\n\nCode can explain what an operation or parameter means; it cannot establish which settings were actually run, which results were observed, or whether uncertainty was measured. A default value is not an experimental setting. If the requested passage needs missing results, actual run settings or uncertainty estimates, ask the author for those facts or relevant records. Do not reconstruct execution from source or run experiments to fill the gap. Missing estimates do not mean they were never measured.\n\nExpress the resolved method as scientific objects, operations, equations or an algorithm block. Keep variable aliases, paths, debugging steps and other implementation metadata out of the manuscript, following [writing-style.md](writing-style.md). A source lookup should end in usable paper text or a specific author question, not a code report.\n",
+    "references/paper-project.md": "# Paper Projects and Materials\n\n## Find the paper\n\nUse the author's path or known project first, then sibling directories and explicit manuscript links. From a subdirectory, use Git to locate the repository root. Read only the project descriptions needed to identify the paper; do not search code or experiments.\n\nCreate and migrate papers beside the code repository at `<code-root>/../<paper_slug>/`, with independent Git, unless the author explicitly chose another location. Keep the established slug; ask if unknown. Reuse the matching paper directory; ask about ambiguous candidates or ownership.\n\n## Move an old manuscript\n\nMove an identified manuscript out of the code repository directly; do not offer to keep the old layout. Move its text, bibliography, formal figures and required build files, preserving edits. Leave research source documents and unrelated files in code.\n\nBefore moving, resolve source and destination paths, identify the paper files in mixed directories, and check collisions. Ask only about unresolved ownership, file selection or conflicts; do not overwrite either copy. Preserve a paper repository's own Git history, but never move the code repository's Git metadata or a shared worktree/submodule Git pointer. Resolve linked Git registrations before completing the move.\n\nRebase README material links to their original targets, repair paper asset/build paths, and update explicit links to the moved manuscript. Leave no duplicate, redirect stub or compatibility symlink. Initialize missing starter files after moving; on failure, report the actual remaining locations.\n\n## Use the README's materials\n\nWhen starting or resuming paper work, read `Research materials` in the paper-root `README.md`, or its existing equivalent. Reuse the mapping if it is already in context and unchanged. Resolve links from the README's directory, including when working in a paper subdirectory.\n\nThe code-project link locates the code. Named document links are continuing author inputs: read relevant files across directories without asking again. For algorithms, use the existing method spec's `Contract` and `Technical semantics`, or equivalent descriptions; for Results, use reported findings, not acceptance targets. Read current content for each new edit request, reusing reads within that task. The [method guide](repo-to-paper.md) explains the spec sections and focused implementation lookup for unresolved method details. Do not load all materials or expand into a code or experiment audit.\n\nAdd new project materials and update explicitly replaced entries in place. Resolve supplied paths from their stated context, then write README-relative links. Preserve other entries and README content. One-time inputs apply only to the current task and never replace persistent entries. Use names, links and necessary purposes only; add no status, date, version or approval fields. Do not invent file locations. The [English section template](../assets/templates/paper_readme.md) is an example, not a list of actual project inputs; fenced/commented examples and unrelated README links do not register materials.\n\nIf a needed path is broken or inaccessible, ask for an accessible location. For source conflicts, unresolved method details or missing experimental facts, pause that passage and ask specifically. An explicit author correction takes precedence; filenames and modification times do not settle scientific conflicts. Missing files do not mean unperformed research.\n\n## Initialize and write\n\nFor a new project, or missing starter files after migration, run:\n\n```bash\npython \"<skill-root>/scripts/init_paper_project.py\" \"<paper_slug>\" --code-root \"<code-root>\"\n```\n\nRelative destinations use the actual code root's parent, even when `--code-root` names a subdirectory. Use an absolute path elsewhere only for an author's explicit location choice. The helper creates independent Git, an English README with only the real code link, and `.gitignore`, preserving existing files. It does not migrate, register documents, commit or configure remotes. Use ordinary file tools for reading, README edits and migration; no parser or sync service.\n\nContinue in the paper repository without repeating setup. Preserve its manuscript and build conventions. Turn supplied materials into scientific prose, formal algorithms and figures, preserving meaning when translating engineering labels. Keep formal reading/build inputs inside the paper repository; the README's external sources support authoring, not the build. Use [workspace.md](workspace.md) only for requested auxiliary artifacts. Pasted-text edits or searches without a paper project need no repository.\n",
+    "assets/templates/paper_readme.md": "# Paper README material section\n\nExample only: use real author-designated paths, relative to the paper README. Omit document entries until materials are supplied; preserve other README content.\n\n```markdown\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/specs/method.md): for Methods and algorithm descriptions.\n- [Experiment summary](../method-code/results/summary.md): for Results.\n```\n"
   },
-  "behavioral_brief": "---\nname: academic-research-harness\ndescription: \"Use when explicitly requested to develop a paper from existing results, shape its argument, revise defensive prose, or support that writing with literature, source checks, or paper workspace tools.\"\n---\n\n# Academic Research Harness\n\nDevelop the paper's argument from existing research results and express it as manuscript prose.\n\nUse designated documents and README materials first. Write when sufficient. Otherwise, clarify algorithm details, operation order or parameter meaning through their implementation pointers, stopping when resolved. Ask for necessary missing results, actual run settings or uncertainty estimates; source code cannot establish experimental facts.\n\nKeep questions and work notes outside the manuscript. Express scientific meaning, excluding code variables, internal labels, paths, run identifiers and workflow metadata. Ask if a necessary meaning remains unresolved.\n\nFor project writing, use a sibling `<paper_slug>/` with independent Git and migrate identified legacy manuscripts there. On entry or resume, use the README's material links, reusing their mapping when already in context. Register new project materials unless designated one-time. Even small manuscript edits follow the project guide; unrelated tasks need no setup.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Start, resume or migrate a paper; maintain its material links | [paper-project.md](references/paper-project.md), then the relevant writing guide |\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature from leading relevant venues; position contributions or refine ideas | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Clarify a method through linked implementation, or inspect code on request | [repo-to-paper.md](references/repo-to-paper.md) |\n| Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |\n\nLoad extra references only for a concrete need. Numerical results alone do not require an audit.\n\n\n# Paper Projects and Materials\n\n## Find the paper\n\nUse the author's path or known project first, then sibling directories and explicit manuscript links. From a subdirectory, use Git to locate the repository root. Read only the project descriptions needed to identify the paper; do not search code or experiments.\n\nCreate and migrate papers beside the code repository at `<code-root>/../<paper_slug>/`, with independent Git, unless the author explicitly chose another location. Keep the established slug; ask if unknown. Reuse the matching paper directory; ask about ambiguous candidates or ownership.\n\n## Move an old manuscript\n\nMove an identified manuscript out of the code repository directly; do not offer to keep the old layout. Move its text, bibliography, formal figures and required build files, preserving edits. Leave research source documents and unrelated files in code.\n\nBefore moving, resolve source and destination paths, identify the paper files in mixed directories, and check collisions. Ask only about unresolved ownership, file selection or conflicts; do not overwrite either copy. Preserve a paper repository's own Git history, but never move the code repository's Git metadata or a shared worktree/submodule Git pointer. Resolve linked Git registrations before completing the move.\n\nRebase README material links to their original targets, repair paper asset/build paths, and update explicit links to the moved manuscript. Leave no duplicate, redirect stub or compatibility symlink. Initialize missing starter files after moving; on failure, report the actual remaining locations.\n\n## Use the README's materials\n\nWhen starting or resuming paper work, read `Research materials` in the paper-root `README.md`, or its existing equivalent. Reuse the mapping if it is already in context and unchanged. Resolve links from the README's directory, including when working in a paper subdirectory.\n\nThe code-project link locates the code. Named document links are continuing author inputs: read relevant files across directories without asking again. For algorithms, read algorithm notes; for Results, read result summaries. Read their current content for each new edit request, reusing reads within that task. If the spec leaves a method detail unclear, use a [focused implementation lookup](repo-to-paper.md) along its pointers. Do not load all materials or expand into a code or experiment audit.\n\nAdd new project materials and update explicitly replaced entries in place. Resolve supplied paths from their stated context, then write README-relative links. Preserve other entries and README content. One-time inputs apply only to the current task and never replace persistent entries. Use names, links and necessary purposes only; add no status, date, version or approval fields. Do not invent file locations. The [English section template](../assets/templates/paper_readme.md) is an example, not a list of actual project inputs; fenced/commented examples and unrelated README links do not register materials.\n\nIf a needed path is broken or inaccessible, ask for an accessible location. For source conflicts, unresolved method details or missing experimental facts, pause that passage and ask specifically. An explicit author correction takes precedence; filenames and modification times do not settle scientific conflicts. Missing files do not mean unperformed research.\n\n## Initialize and write\n\nFor a new project, or missing starter files after migration, run:\n\n```bash\npython \"<skill-root>/scripts/init_paper_project.py\" \"<paper_slug>\" --code-root \"<code-root>\"\n```\n\nRelative destinations use the actual code root's parent, even when `--code-root` names a subdirectory. Use an absolute path elsewhere only for an author's explicit location choice. The helper creates independent Git, an English README with only the real code link, and `.gitignore`, preserving existing files. It does not migrate, register documents, commit or configure remotes. Use ordinary file tools for reading, README edits and migration; no parser or sync service.\n\nContinue in the paper repository without repeating setup. Preserve its manuscript and build conventions. Turn supplied materials into scientific prose, formal algorithms and figures, preserving meaning when translating engineering labels. Keep formal reading/build inputs inside the paper repository; the README's external sources support authoring, not the build. Use [workspace.md](workspace.md) only for requested auxiliary artifacts. Pasted-text edits or searches without a paper project need no repository.\n\n\n# Clarify a Method from Implementation\n\nFor drafting, use documents first. If the spec supports the passage, write without checking code. When algorithm details, operation order or parameter meaning are unclear, follow the spec's implementation link or named entry point without asking for separate permission. An explicit request to extract or check a method from code also uses this guide.\n\nName the unresolved method question, then read the referenced operation and only the directly relevant helper, caller or definition needed to answer it. Stop when it is resolved. If there is no usable implementation pointer, or the narrow lookup leaves the meaning unclear, ask the author rather than expanding into a repository survey. If spec and code disagree about the method, ask which applies instead of silently choosing one.\n\nCode can explain what an operation or parameter means; it cannot establish which settings were actually run, which results were observed, or whether uncertainty was measured. A default value is not an experimental setting. If the requested passage needs missing results, actual run settings or uncertainty estimates, ask for the author's records. Do not reconstruct execution from source or run experiments to fill the gap. Missing estimates do not mean they were never measured.\n\nExpress the resolved method as scientific objects, operations, equations or an algorithm block. Keep variable aliases, paths, debugging steps and other implementation metadata out of the manuscript, following [writing-style.md](writing-style.md). A source lookup should end in usable paper text or a specific author question, not a code report.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nResolve method ambiguities through the document-led lookup in [repo-to-paper.md](repo-to-paper.md). If required inputs remain missing or conflicting, pause that passage and ask for the specific result, method detail or source. Do not fill the manuscript with unavailable-material reports, unverified results or invented nonperformance. If a missing input is irrelevant to the passage, leave it out and write. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express scientific objects, operations, settings and values directly. Mathematical notation defined for the paper and established method names are distinct from implementation identifiers. Translate an internal label only when its scientific meaning is established by the documents or focused lookup; otherwise ask rather than guessing.\n",
-  "observations": {
-    "cases": [
-      {
-        "id": "spec_sufficient_no_code",
-        "input": "依据 README 中的方法说明写一段简洁英文 Methods，保存为 manuscript.md。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "The method accepts a variable-length unordered set of patch embeddings. A learned linear projection assigns one score per embedding; softmax over the set yields weights. A weighted sum of the input embeddings is passed to a classifier. The pooling is permutation invariant. This description is sufficient for the requested method. Implementation location: [pool_and_classify](../src/pool.py). Internal alias POOL_X7.\n"
-          },
-          {
-            "action": "list",
-            "args": [
-              "paper-slug"
-            ],
-            "output": ".git/\nREADME.md"
-          },
-          {
-            "action": "git",
-            "args": [
-              "paper-slug",
-              "status",
-              "--short"
-            ],
-            "returncode": 0,
-            "output": "?? README.md\n"
-          },
-          {
-            "action": "write",
-            "args": [
-              "paper-slug/manuscript.md"
-            ],
-            "output": "# Methods\n\nWe represent each sample as a variable-length, unordered set of patch embeddings. A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into weights. We compute a fixed-length representation as the weighted sum of the input embeddings and pass it to a classifier. This pooling operation is invariant to the ordering of the embeddings.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/manuscript.md"
-            ],
-            "output": "# Methods\n\nWe represent each sample as a variable-length, unordered set of patch embeddings. A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into weights. We compute a fixed-length representation as the weighted sum of the input embeddings and pass it to a classifier. This pooling operation is invariant to the ordering of the embeddings.\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/manuscript.md": "# Methods\n\nWe represent each sample as a variable-length, unordered set of patch embeddings. A learned linear projection assigns a scalar score to each embedding, and a softmax over the set converts these scores into weights. We compute a fixed-length representation as the weighted sum of the input embeddings and pass it to a classifier. This pooling operation is invariant to the ordering of the embeddings.\n",
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_sufficient_no_code",
-          "response": "已保存简洁英文 Methods，说明线性评分、softmax 权重、加权聚合及置换不变性。",
-          "changed_files": [
-            "$CASE/paper-slug/manuscript.md"
+  "observations": [
+    {
+      "id": "spec_format_contract_sufficient",
+      "input": "继续写算法部分。按 README 的材料写一段简洁英文 Methods，保存到 manuscript.md。",
+      "actions": [
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/README.md"
           ],
-          "notes": "方法说明已充分，未读取实现。已回读确认保存内容。"
+          "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
         },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [],
-          "source_reads_within_task_scope": true
-        }
-      },
-      {
-        "id": "spec_linked_method_lookup",
-        "input": "继续算法部分，解释归一化、评分和聚合的先后顺序，以及温度参数的含义，写入 manuscript.md。不需要报告实验超参数数值。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "The method takes nonzero patch embeddings, scores and pools them, then classifies the resulting fixed-length representation. A positive temperature parameter controls the weighting. The spec does not explain where normalization occurs or how temperature is applied. Implementation: [pool_and_classify](../src/pool.py), with a directly called weighting helper. Internal alias POOL_X7.\n"
-          },
-          {
-            "action": "list",
-            "args": [
-              "paper-slug"
-            ],
-            "output": ".git/\nREADME.md"
-          },
-          {
-            "action": "git",
-            "args": [
-              "paper-slug",
-              "status",
-              "--short"
-            ],
-            "returncode": 0,
-            "output": "?? README.md\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/src/pool.py"
-            ],
-            "output": "from .weights import softmax_weights\n\ndef pool_and_classify(embeddings, projection, classifier, temperature=2.0):\n    unit_tmp = embeddings / embeddings.norm(dim=-1, keepdim=True).clamp_min(1e-12)\n    logits_tmp = unit_tmp @ projection\n    weights_tmp = softmax_weights(logits_tmp, temperature)\n    pool_buf = (weights_tmp.unsqueeze(-1) * unit_tmp).sum(dim=0)\n    return classifier(pool_buf)\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/src/weights.py"
-            ],
-            "output": "def softmax_weights(scores, temperature):\n    return (scores / temperature).softmax(dim=0)\n"
-          },
-          {
-            "action": "write",
-            "args": [
-              "paper-slug/manuscript.md"
-            ],
-            "output": "# Methods\n\nGiven a variable-length set of nonzero patch embeddings, we first normalize each embedding by its Euclidean norm, with a small positive denominator floor for numerical stability. A linear projection assigns a scalar score to each normalized embedding. We divide these scores by a positive temperature before applying softmax across the set: for score $s_i$ and temperature $\\tau > 0$, the weight is $\\alpha_i = \\exp(s_i/\\tau)/\\sum_j \\exp(s_j/\\tau)$. We then form a fixed-length representation by taking the weighted sum of the normalized embeddings and pass this pooled vector directly to a classifier. Temperature controls the concentration of the weights: lower temperatures concentrate weight on the highest-scoring embeddings, whereas higher temperatures make the weights more uniform.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/manuscript.md"
-            ],
-            "output": "# Methods\n\nGiven a variable-length set of nonzero patch embeddings, we first normalize each embedding by its Euclidean norm, with a small positive denominator floor for numerical stability. A linear projection assigns a scalar score to each normalized embedding. We divide these scores by a positive temperature before applying softmax across the set: for score $s_i$ and temperature $\\tau > 0$, the weight is $\\alpha_i = \\exp(s_i/\\tau)/\\sum_j \\exp(s_j/\\tau)$. We then form a fixed-length representation by taking the weighted sum of the normalized embeddings and pass this pooled vector directly to a classifier. Temperature controls the concentration of the weights: lower temperatures concentrate weight on the highest-scoring embeddings, whereas higher temperatures make the weights more uniform.\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/manuscript.md": "# Methods\n\nGiven a variable-length set of nonzero patch embeddings, we first normalize each embedding by its Euclidean norm, with a small positive denominator floor for numerical stability. A linear projection assigns a scalar score to each normalized embedding. We divide these scores by a positive temperature before applying softmax across the set: for score $s_i$ and temperature $\\tau > 0$, the weight is $\\alpha_i = \\exp(s_i/\\tau)/\\sum_j \\exp(s_j/\\tau)$. We then form a fixed-length representation by taking the weighted sum of the normalized embeddings and pass this pooled vector directly to a classifier. Temperature controls the concentration of the weights: lower temperatures concentrate weight on the highest-scoring embeddings, whereas higher temperatures make the weights more uniform.\n",
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_linked_method_lookup",
-          "response": "已保存英文 Methods：先归一化嵌入，再线性评分，将分数除以正温度后计算 softmax，最后加权聚合归一化嵌入并分类。解释了温度对权重集中程度的影响。",
-          "changed_files": [
-            "$CASE/paper-slug/manuscript.md"
-          ],
-          "notes": "仅查看指定操作及其直接调用的权重函数；未报告实验超参数数值。已回读确认保存内容。"
-        },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [
-            "method-code/src/pool.py",
-            "method-code/src/weights.py"
-          ],
-          "source_reads_within_task_scope": true
-        }
-      },
-      {
-        "id": "spec_missing_run_settings",
-        "input": "写出 Table 1 实验实际使用的学习率和随机种子，保存到 manuscript.md。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "The method was trained and Table 1 is planned for the paper. Actual run settings were not supplied. Repository defaults are in [training config](../configs/train.yaml). No execution record is supplied.\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_missing_run_settings",
-          "response": "请提供 Table 1 对应实验实际使用的学习率（若随训练变化，请提供调度设置）和随机种子，以及对应的运行记录。",
-          "changed_files": [],
-          "notes": "材料未提供实际运行设置；仓库默认值不能证明实验使用值，未写入正文。"
-        },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [],
-          "source_reads_within_task_scope": true
-        }
-      },
-      {
-        "id": "spec_missing_uncertainty",
-        "input": "请写英文 Results，说明平均误差下降 0.037 在随机种子之间稳定，保存为 manuscript.md。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "The supplied mean error reduction is 0.037. Seed-level results and uncertainty estimates are not supplied, and it is unknown whether repeated runs were performed. There is a [confidence interval function](../src/metrics.py).\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_missing_uncertainty",
-          "response": "是否进行了多个随机种子的重复实验？请提供各随机种子的误差下降值，或支持跨种子稳定性判断的不确定性估计及重复次数。",
-          "changed_files": [],
-          "notes": "已知平均误差下降为 0.037，但不足以支持跨种子稳定性结论，未写入正文。"
-        },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [],
-          "source_reads_within_task_scope": true
-        }
-      },
-      {
-        "id": "spec_missing_results",
-        "input": "写 Results，报告本方法相对基线的 AP 提升，保存为 manuscript.md。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "The method takes nonzero patch embeddings, scores and pools them, then classifies the resulting fixed-length representation. A positive temperature parameter controls the weighting. The spec does not explain where normalization occurs or how temperature is applied. Implementation: [pool_and_classify](../src/pool.py), with a directly called weighting helper. Internal alias POOL_X7.\nNo measured AP scores or comparisons were supplied.\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_missing_results",
-          "response": "请提供本方法与基线在相同评估条件下的实测 AP、对应数据集、基线名称，以及 AP 的定义和数值尺度。",
-          "changed_files": [],
-          "notes": "材料未提供 AP 测量或比较结果；实现无法补足实验事实，未写入正文。"
-        },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [],
-          "source_reads_within_task_scope": true
-        }
-      },
-      {
-        "id": "spec_implementation_conflict",
-        "input": "根据 README 的方法说明写算法，并核对它指向的实现中的归一化顺序；如有无法消解的矛盾，请指出需要我决定的问题。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "The method first computes scores and softmax weights on the original embeddings, pools the original embeddings, then normalizes the pooled vector before classification. Implementation: [pool_and_classify](../src/pool.py). No author correction or precedence between these sources has been supplied.\n"
-          },
-          {
-            "action": "git",
-            "args": [
-              "paper-slug",
-              "status",
-              "--short"
-            ],
-            "returncode": 0,
-            "output": "?? README.md\n"
-          },
-          {
-            "action": "list",
-            "args": [
-              "paper-slug"
-            ],
-            "output": ".git/\nREADME.md"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/src/pool.py"
-            ],
-            "output": "from .weights import softmax_weights\n\ndef pool_and_classify(embeddings, projection, classifier, temperature=2.0):\n    unit_tmp = embeddings / embeddings.norm(dim=-1, keepdim=True).clamp_min(1e-12)\n    logits_tmp = unit_tmp @ projection\n    weights_tmp = softmax_weights(logits_tmp, temperature)\n    pool_buf = (weights_tmp.unsqueeze(-1) * unit_tmp).sum(dim=0)\n    return classifier(pool_buf)\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_implementation_conflict",
-          "response": "文档描述对原始嵌入评分并聚合，再归一化聚合向量；实现则先归一化各嵌入，再评分并聚合，聚合后直接分类。论文应采用哪一种算法？",
-          "changed_files": [],
-          "notes": "已核对指定实现；冲突涉及科学含义，待作者决定后再写入。"
-        },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [
-            "method-code/src/pool.py"
-          ],
-          "source_reads_within_task_scope": true
-        }
-      },
-      {
-        "id": "spec_no_implementation_pointer",
-        "input": "依据 README 的方法说明，写出核心聚合操作的英文 Methods，保存为 manuscript.md。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "git",
-            "args": [
-              "paper-slug",
-              "status",
-              "--short"
-            ],
-            "returncode": 0,
-            "output": "?? README.md\n"
-          },
-          {
-            "action": "list",
-            "args": [
-              "paper-slug"
-            ],
-            "output": ".git/\nREADME.md"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "The method uses the internal component STAGE_Q8 to aggregate a variable-length set. Its scientific operation and implementation entry point have not been supplied. The code repository location alone is known.\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_no_implementation_pointer",
-          "response": "请提供 STAGE_Q8 的聚合操作定义，包括如何从输入集合得到输出表示，或提供可明确该操作的实现文件路径及函数入口。",
-          "changed_files": [],
-          "notes": "现有材料仅给出内部名称，无法据此撰写科学方法；未扩大搜索代码仓库。"
-        },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [],
-          "source_reads_within_task_scope": true
-        }
-      },
-      {
-        "id": "spec_observed_results_only",
-        "input": "写一个简洁的英文 Results 段落，描述已给出的误差和延迟比较，保存为 manuscript.md。",
-        "actions": [
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/README.md"
-            ],
-            "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "method-code/docs/spec.md"
-            ],
-            "output": "Across three evaluated datasets mean error decreases from 0.128 to 0.091, and latency rises from 12 to 16 ms/image. Repeated-run estimates are not included in the handoff. These are the supplied observations for this paragraph.\n"
-          },
-          {
-            "action": "list",
-            "args": [
-              "paper-slug"
-            ],
-            "output": ".git/\nREADME.md"
-          },
-          {
-            "action": "git",
-            "args": [
-              "paper-slug",
-              "status",
-              "--short"
-            ],
-            "returncode": 0,
-            "output": "?? README.md\n"
-          },
-          {
-            "action": "write",
-            "args": [
-              "paper-slug/manuscript.md"
-            ],
-            "output": "## Results\n\nAcross the three evaluated datasets, mean error decreased from 0.128 to 0.091, an absolute reduction of 0.037. This reduction was accompanied by an increase in latency from 12 to 16 ms per image.\n"
-          },
-          {
-            "action": "read",
-            "args": [
-              "paper-slug/manuscript.md"
-            ],
-            "output": "## Results\n\nAcross the three evaluated datasets, mean error decreased from 0.128 to 0.091, an absolute reduction of 0.037. This reduction was accompanied by an increase in latency from 12 to 16 ms per image.\n"
-          }
-        ],
-        "after_paper_files": {
-          "paper-slug/manuscript.md": "## Results\n\nAcross the three evaluated datasets, mean error decreased from 0.128 to 0.091, an absolute reduction of 0.037. This reduction was accompanied by an increase in latency from 12 to 16 ms per image.\n",
-          "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method and result spec](../method-code/docs/spec.md): for the current manuscript.\n"
-        },
-        "agent_output": {
-          "id": "spec_observed_results_only",
-          "response": "Across the three evaluated datasets, mean error decreased from 0.128 to 0.091, an absolute reduction of 0.037. This reduction was accompanied by an increase in latency from 12 to 16 ms per image.",
-          "changed_files": [
+        {
+          "action": "read",
+          "args": [
             "paper-slug/manuscript.md"
           ],
-          "notes": "已保存并回读确认。"
+          "error": "[Errno 2] No such file or directory: 'D:\\\\Code\\\\prompt\\\\academic-research-harness\\\\tmp\\\\spec-format-eval-0141\\\\spec_format_contract_sufficient\\\\paper-slug\\\\manuscript.md'",
+          "returncode": 1
         },
-        "checks": {
-          "original_files_unchanged": true,
-          "source_reads": [],
-          "source_reads_within_task_scope": true
+        {
+          "action": "read",
+          "args": [
+            "method-code/docs/spec.md"
+          ],
+          "output": "# Adaptive pooling specification\n\n## Intent\nRepresent a variable-length unordered set of patch embeddings with a fixed-length vector.\n\n## Contract\nA learned linear projection assigns one scalar score to each embedding. Softmax across the set produces normalized weights. The weighted sum of the input embeddings is passed to a classifier. Aggregation is permutation invariant. Internal working alias: POOL_X7.\n\n## Acceptance\nPermutation invariance should be checked with [the permutation test](../tests/test_pool.py). No test execution is requested for this writing task.\n\n## Governing decisions\nUnequal weighting lets informative patches contribute differently. This is a design rationale, not an experimentally demonstrated interpretation of the weights.\n\n## Open decisions\nThe language used for a future deployment rewrite is undecided; it does not change the operation above.\n"
+        },
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n"
+        },
+        {
+          "action": "write",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "## Methods\n\nWe represent a variable-length unordered set of patch embeddings using learned weighted pooling. A learned linear projection assigns a scalar score to each embedding, and a softmax across the set converts these scores into normalized weights. We compute the weighted sum of the input embeddings and pass the resulting fixed-length representation to a classifier. This aggregation is permutation invariant and allows patches to contribute unequally to the representation.\n"
         }
+      ],
+      "log_errors": [],
+      "paper_files": {
+        "paper-slug/manuscript.md": "## Methods\n\nWe represent a variable-length unordered set of patch embeddings using learned weighted pooling. A learned linear projection assigns a scalar score to each embedding, and a softmax across the set converts these scores into normalized weights. We compute the weighted sum of the input embeddings and pass the resulting fixed-length representation to a classifier. This aggregation is permutation invariant and allows patches to contribute unequally to the representation.\n",
+        "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+      },
+      "agent_output": {
+        "id": "spec_format_contract_sufficient",
+        "response": "Saved concise English Methods describing learned scoring, softmax weighting, weighted pooling, classification, and permutation invariance.",
+        "changed_files": [
+          "paper-slug/manuscript.md"
+        ]
+      },
+      "checks": {
+        "original_files_unchanged": true,
+        "new_files": [
+          "paper-slug/manuscript.md"
+        ],
+        "source_reads": []
       }
-    ]
-  },
-  "independent_judgment": {
+    },
+    {
+      "id": "spec_format_semantics_pointer",
+      "input": "写英文算法段落，说明归一化顺序和温度参数如何影响权重，保存到 manuscript.md；不需要实验参数数值。",
+      "actions": [
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/README.md"
+          ],
+          "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/docs/spec.md"
+          ],
+          "output": "# Adaptive pooling specification\n\n## Intent\nRepresent an unordered set of nonzero patch embeddings.\n\n## Contract\nNormalize, score and aggregate embeddings, then classify the result. A positive temperature controls weighting. The order of normalization and weighting and the placement of temperature are not defined here.\n\n## Technical semantics\nImplementation entry point: [pool_and_classify](../src/pool.py). Its directly called weighting helper defines temperature use.\n\n## Acceptance\nThe operation should remain invariant to input permutations. Verification is specified in [the permutation test](../tests/test_pool.py).\n"
+        },
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "error": "[Errno 2] No such file or directory: 'D:\\\\Code\\\\prompt\\\\academic-research-harness\\\\tmp\\\\spec-format-eval-0141\\\\spec_format_semantics_pointer\\\\paper-slug\\\\manuscript.md'",
+          "returncode": 1
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/src/pool.py"
+          ],
+          "output": "from .weights import softmax_weights\n\ndef pool_and_classify(embeddings, projection, classifier, temperature=2.0):\n    unit_tmp = embeddings / embeddings.norm(dim=-1, keepdim=True).clamp_min(1e-12)\n    logits_tmp = unit_tmp @ projection\n    weights_tmp = softmax_weights(logits_tmp, temperature)\n    pool_buf = (weights_tmp.unsqueeze(-1) * unit_tmp).sum(dim=0)\n    return classifier(pool_buf)\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/src/weights.py"
+          ],
+          "output": "def softmax_weights(scores, temperature):\n    return (scores / temperature).softmax(dim=0)\n"
+        },
+        {
+          "action": "write",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "## Methods\n\nWe first normalize each patch embedding by its Euclidean norm, with the denominator bounded below by \\(10^{-12}\\) for numerical stability. A linear projection maps each normalized embedding \\(\\tilde{\\mathbf{h}}_i\\) to a scalar score \\(s_i\\). For a positive temperature \\(\\tau\\), we compute weights across the set as \\(\\alpha_i=\\exp(s_i/\\tau)/\\sum_j\\exp(s_j/\\tau)\\). Lower temperatures concentrate weight on the highest-scoring embeddings, whereas higher temperatures make the weights more uniform. We then form the weighted sum \\(\\mathbf{z}=\\sum_i\\alpha_i\\tilde{\\mathbf{h}}_i\\) and pass it to a classifier. Thus, normalization precedes scoring, and aggregation uses the normalized embeddings.\n"
+        }
+      ],
+      "log_errors": [],
+      "paper_files": {
+        "paper-slug/manuscript.md": "## Methods\n\nWe first normalize each patch embedding by its Euclidean norm, with the denominator bounded below by \\(10^{-12}\\) for numerical stability. A linear projection maps each normalized embedding \\(\\tilde{\\mathbf{h}}_i\\) to a scalar score \\(s_i\\). For a positive temperature \\(\\tau\\), we compute weights across the set as \\(\\alpha_i=\\exp(s_i/\\tau)/\\sum_j\\exp(s_j/\\tau)\\). Lower temperatures concentrate weight on the highest-scoring embeddings, whereas higher temperatures make the weights more uniform. We then form the weighted sum \\(\\mathbf{z}=\\sum_i\\alpha_i\\tilde{\\mathbf{h}}_i\\) and pass it to a classifier. Thus, normalization precedes scoring, and aggregation uses the normalized embeddings.\n",
+        "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+      },
+      "agent_output": {
+        "id": "spec_format_semantics_pointer",
+        "response": "Saved English Methods explaining normalization before scoring, temperature-scaled softmax, and aggregation of normalized embeddings. Resolved operation order through the linked implementation and weighting helper.",
+        "changed_files": [
+          "paper-slug/manuscript.md"
+        ]
+      },
+      "checks": {
+        "original_files_unchanged": true,
+        "new_files": [
+          "paper-slug/manuscript.md"
+        ],
+        "source_reads": [
+          "method-code/src/pool.py",
+          "method-code/src/weights.py"
+        ]
+      }
+    },
+    {
+      "id": "spec_format_acceptance_with_observations",
+      "input": "写一段英文 Results，报告已有实验的误差变化及代价，保存到 manuscript.md。",
+      "actions": [
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/README.md"
+          ],
+          "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+        },
+        {
+          "action": "list",
+          "args": [
+            "paper-slug"
+          ],
+          "output": ".git/\nREADME.md"
+        },
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/docs/spec.md"
+          ],
+          "output": "# Prediction specification\n\n## Intent\nReduce test error.\n\n## Contract\nEvaluate mean prediction error on the same three datasets for the baseline and proposed method.\n\n## Acceptance\nTarget: mean error at most 0.080. Verification method: compare held-out predictions. Available observations are recorded in [the experiment summary](../results/summary.md). The target is not a measured value.\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/results/summary.md"
+          ],
+          "output": "Across the same three evaluated datasets, mean error is 0.128 for the baseline and 0.091 for the proposed method. On the same GPU at batch size one, latency is 12 and 16 ms/image respectively. Uncertainty estimates were not included in this material; whether they were collected is unknown.\n"
+        },
+        {
+          "action": "write",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "## Results\n\nAcross the same three evaluated datasets, the proposed method reduced mean prediction error from 0.128 to 0.091, an absolute reduction of 0.037 (28.9%). This improvement came with higher latency: on the same GPU at batch size one, latency increased from 12 to 16 ms per image (33.3%). The mean error remained above the target of 0.080.\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "## Results\n\nAcross the same three evaluated datasets, the proposed method reduced mean prediction error from 0.128 to 0.091, an absolute reduction of 0.037 (28.9%). This improvement came with higher latency: on the same GPU at batch size one, latency increased from 12 to 16 ms per image (33.3%). The mean error remained above the target of 0.080.\n"
+        },
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n?? manuscript.md\n"
+        }
+      ],
+      "log_errors": [],
+      "paper_files": {
+        "paper-slug/manuscript.md": "## Results\n\nAcross the same three evaluated datasets, the proposed method reduced mean prediction error from 0.128 to 0.091, an absolute reduction of 0.037 (28.9%). This improvement came with higher latency: on the same GPU at batch size one, latency increased from 12 to 16 ms per image (33.3%). The mean error remained above the target of 0.080.\n",
+        "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+      },
+      "agent_output": {
+        "id": "spec_format_acceptance_with_observations",
+        "response": "已保存英文 Results：平均误差从 0.128 降至 0.091（降低 28.9%），同一 GPU、批大小为 1 时延迟从 12 增至 16 ms/image（增加 33.3%）。明确说明误差仍高于 0.080 的目标。",
+        "changed_files": [
+          "D:/Code/prompt/academic-research-harness/tmp/spec-format-eval-0141/spec_format_acceptance_with_observations/paper-slug/manuscript.md"
+        ]
+      },
+      "checks": {
+        "original_files_unchanged": true,
+        "new_files": [
+          "paper-slug/manuscript.md"
+        ],
+        "source_reads": []
+      }
+    },
+    {
+      "id": "spec_format_acceptance_without_observations",
+      "input": "根据 README 中的 spec，写 Results 说明本方法达到误差目标且相对基线提升显著，保存到 manuscript.md。",
+      "actions": [
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/README.md"
+          ],
+          "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+        },
+        {
+          "action": "list",
+          "args": [
+            "paper-slug"
+          ],
+          "output": ".git/\nREADME.md"
+        },
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/docs/spec.md"
+          ],
+          "output": "# Prediction specification\n\n## Intent\nReduce test error.\n\n## Contract\nEvaluate mean prediction error on held-out data.\n\n## Acceptance\nTarget: mean error at most 0.080 with a 95% confidence interval excluding the baseline error. Planned verification command: python src/evaluate.py. No observations, execution records or uncertainty estimates are supplied here; whether these were collected is unknown.\n"
+        }
+      ],
+      "log_errors": [],
+      "paper_files": {
+        "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+      },
+      "agent_output": {
+        "id": "spec_format_acceptance_without_observations",
+        "response": "spec 仅给出验收目标，无法据此断言已达标或提升显著，因此尚未创建 manuscript.md。请提供本方法与基线的实测平均误差、95% 置信区间及其计算方法，或包含这些信息的实验记录。",
+        "changed_files": []
+      },
+      "checks": {
+        "original_files_unchanged": true,
+        "new_files": [],
+        "source_reads": []
+      }
+    },
+    {
+      "id": "spec_format_equivalent_headings",
+      "input": "用 README 指向的现有方法说明写简洁英文 Methods，保存到 manuscript.md。",
+      "actions": [
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/README.md"
+          ],
+          "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+        },
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/docs/spec.md"
+          ],
+          "output": "# Set representation\n\n## Scientific definition\nThe input is a variable-length unordered set of embeddings. Average the embeddings elementwise to obtain a fixed-length representation, then apply a learned classifier. Averaging makes the representation invariant to permutations of the input. This is the author's current method description.\n\n## Engineering note\nThe future serialization format is undecided and has no effect on the averaging operation.\n"
+        },
+        {
+          "action": "write",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "## Methods\n\nWe represent a variable-length unordered set of embeddings by their elementwise mean. For \\(n\\) embeddings \\(\\mathbf{h}_1,\\ldots,\\mathbf{h}_n\\), we compute \\(\\mathbf{z}=n^{-1}\\sum_{i=1}^{n}\\mathbf{h}_i\\) and pass this fixed-length representation to a learned classifier. Averaging makes the representation invariant to permutations of the input embeddings.\n"
+        }
+      ],
+      "log_errors": [
+        {
+          "line": 3,
+          "raw": "\\\\Code\\\\\\\\prompt\\\\\\\\academic-research-harness\\\\\\\\tmp\\\\\\\\spec-format-eval-0141\\\\\\\\spec_format_equivalent_headings\\\\\\\\paper-slug\\\\\\\\manuscript.md'\", \"returncode\": 1}"
+        }
+      ],
+      "paper_files": {
+        "paper-slug/manuscript.md": "## Methods\n\nWe represent a variable-length unordered set of embeddings by their elementwise mean. For \\(n\\) embeddings \\(\\mathbf{h}_1,\\ldots,\\mathbf{h}_n\\), we compute \\(\\mathbf{z}=n^{-1}\\sum_{i=1}^{n}\\mathbf{h}_i\\) and pass this fixed-length representation to a learned classifier. Averaging makes the representation invariant to permutations of the input embeddings.\n",
+        "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+      },
+      "agent_output": {
+        "id": "spec_format_equivalent_headings",
+        "response": "Saved concise English Methods describing elementwise averaging, the learned classifier, and permutation invariance.",
+        "changed_files": [
+          "paper-slug/manuscript.md"
+        ]
+      },
+      "checks": {
+        "original_files_unchanged": true,
+        "new_files": [
+          "paper-slug/manuscript.md"
+        ],
+        "source_reads": []
+      }
+    },
+    {
+      "id": "spec_format_equivalent_headings_recheck",
+      "input": "用 README 指向的现有方法说明写简洁英文 Methods，保存到 manuscript.md。",
+      "actions": [
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n"
+        },
+        {
+          "action": "list",
+          "args": [
+            "paper-slug"
+          ],
+          "output": ".git/\nREADME.md"
+        },
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/README.md"
+          ],
+          "output": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/docs/spec.md"
+          ],
+          "output": "# Set representation\n\n## Scientific definition\nThe input is a variable-length unordered set of embeddings. Average the embeddings elementwise to obtain a fixed-length representation, then apply a learned classifier. Averaging makes the representation invariant to permutations of the input. This is the author's current method description.\n\n## Engineering note\nThe future serialization format is undecided and has no effect on the averaging operation.\n"
+        },
+        {
+          "action": "write",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "# Methods\n\nWe represent each variable-length, unordered set of embeddings by its elementwise mean. For a set of n embeddings, with each embedding x_i in R^d, the representation is\n\n\\[\nh = \\frac{1}{n}\\sum_{i=1}^{n} x_i.\n\\]\n\nThe resulting vector has dimension d regardless of the number of embeddings. A learned classifier maps this representation to a prediction. Because averaging is invariant to permutations of the input embeddings, the representation and the resulting prediction are independent of their order.\n"
+        },
+        {
+          "action": "write",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "# Methods\n\nWe represent each variable-length, unordered set of embeddings by its elementwise mean. For a set of \\(n\\) embeddings \\(x_i \\in \\mathbb{R}^d\\), the representation is\n\n\\[\nh = \\frac{1}{n}\\sum_{i=1}^{n} x_i.\n\\]\n\nThe resulting vector has dimension \\(d\\) regardless of the number of embeddings. A learned classifier maps this representation to a prediction. Because averaging is invariant to permutations of the input embeddings, the representation and the resulting prediction are independent of their order.\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "paper-slug/manuscript.md"
+          ],
+          "output": "# Methods\n\nWe represent each variable-length, unordered set of embeddings by its elementwise mean. For a set of \\(n\\) embeddings \\(x_i \\in \\mathbb{R}^d\\), the representation is\n\n\\[\nh = \\frac{1}{n}\\sum_{i=1}^{n} x_i.\n\\]\n\nThe resulting vector has dimension \\(d\\) regardless of the number of embeddings. A learned classifier maps this representation to a prediction. Because averaging is invariant to permutations of the input embeddings, the representation and the resulting prediction are independent of their order.\n"
+        },
+        {
+          "action": "git",
+          "args": [
+            "paper-slug",
+            "status",
+            "--short"
+          ],
+          "returncode": 0,
+          "output": "?? README.md\n?? manuscript.md\n"
+        }
+      ],
+      "log_errors": [],
+      "paper_files": {
+        "paper-slug/manuscript.md": "# Methods\n\nWe represent each variable-length, unordered set of embeddings by its elementwise mean. For a set of \\(n\\) embeddings \\(x_i \\in \\mathbb{R}^d\\), the representation is\n\n\\[\nh = \\frac{1}{n}\\sum_{i=1}^{n} x_i.\n\\]\n\nThe resulting vector has dimension \\(d\\) regardless of the number of embeddings. A learned classifier maps this representation to a prediction. Because averaging is invariant to permutations of the input embeddings, the representation and the resulting prediction are independent of their order.\n",
+        "paper-slug/README.md": "# Paper\n\n## Research materials\n\nCode project: [method-code](../method-code/)\n\n- [Method specification](../method-code/docs/spec.md): for this manuscript.\n"
+      },
+      "agent_output": {
+        "id": "spec_format_equivalent_headings_recheck",
+        "response": "Wrote concise English Methods covering mean aggregation, fixed-dimensional representation, learned classification, and permutation invariance, using the specification linked from README.",
+        "changed_files": [
+          "paper-slug/manuscript.md"
+        ]
+      },
+      "checks": {
+        "original_files_unchanged": true,
+        "new_files": [
+          "paper-slug/manuscript.md"
+        ],
+        "source_reads": []
+      }
+    }
+  ],
+  "independent_initial_judgment": {
     "cases": [
       {
-        "id": "spec_sufficient_no_code",
+        "id": "spec_format_contract_sufficient",
         "verdict": "pass",
-        "reason": "The saved Methods paragraph accurately describes scoring, softmax weighting, aggregation, classification, and permutation invariance. Reading was sufficient and proportional; unnecessary implementation details and the internal alias were excluded.",
+        "reason": "The saved Methods paragraph clearly and faithfully describes scoring, setwise softmax, weighted aggregation of input embeddings, classification, and permutation invariance. It avoids unsupported interpretations of the weights and excludes internal aliases and irrelevant engineering decisions. The specification supplies sufficient support, and the recorded actions are proportionate.",
         "material_issues": []
       },
       {
-        "id": "spec_linked_method_lookup",
+        "id": "spec_format_semantics_pointer",
         "verdict": "pass",
-        "reason": "Targeted implementation and helper reads resolve the missing semantics. The manuscript correctly describes normalization with a denominator floor, scoring, temperature division, softmax, and aggregation of normalized embeddings. It explains temperature without presenting the code default as an experimental setting. Defined mathematical notation is appropriate.",
+        "reason": "The saved prose accurately explains normalization before scoring, the numerical denominator bound, temperature division inside softmax, and aggregation of normalized embeddings. Its explanation of temperature effects is correct and readable. Following the specification's implementation pointer and directly called helper resolves the requested semantics without unnecessary investigation or experimental parameter claims.",
         "material_issues": []
       },
       {
-        "id": "spec_missing_run_settings",
+        "id": "spec_format_acceptance_with_observations",
         "verdict": "pass",
-        "reason": "The supplied materials cannot establish Table 1's actual learning rate or seed. Requesting run settings and supporting records is appropriate; repository defaults would not establish experimental use. Manuscript completion remains pending that evidence.",
+        "reason": "The saved Results paragraph reports the observed error and latency tradeoff clearly: 0.037 absolute error reduction, 28.9% relative reduction, and 33.3% higher latency are correct. It preserves the dataset and timing conditions, distinguishes the unmet 0.080 target from observations, and makes no statistical significance claim. Explicitly labeling the percentage as relative and mentioning unavailable uncertainty would improve precision, but neither omission materially undermines this descriptive paragraph.",
         "material_issues": []
       },
       {
-        "id": "spec_missing_uncertainty",
+        "id": "spec_format_acceptance_without_observations",
         "verdict": "pass",
-        "reason": "The supplied mean reduction does not establish stability across seeds. The focused request for repeated-run results or uncertainty estimates addresses the missing evidence. Reading a confidence-interval implementation would not resolve whether experiments were repeated.",
+        "reason": "The response correctly declines to turn acceptance criteria into experimental findings. It asks specifically for measured method and baseline errors, confidence intervals, and their calculation method or supporting records. Leaving the manuscript unwritten is appropriate under the missing-support exception; the response accurately reports this and does not run the planned evaluation without a supplied experimental basis.",
         "material_issues": []
       },
       {
-        "id": "spec_missing_results",
+        "id": "spec_format_equivalent_headings",
         "verdict": "pass",
-        "reason": "No measured AP comparison supports the requested Results. The questions seek relevant measurements, comparable evaluation conditions, and metric interpretation without pursuing unrelated method code or inventing results.",
-        "material_issues": []
-      },
-      {
-        "id": "spec_implementation_conflict",
-        "verdict": "pass",
-        "reason": "The response accurately identifies the scientifically consequential difference between normalizing after aggregation and normalizing individual embeddings before scoring and aggregation. The implementation read is sufficient to establish this conflict, and requesting author resolution follows the task.",
-        "material_issues": []
-      },
-      {
-        "id": "spec_no_implementation_pointer",
-        "verdict": "pass",
-        "reason": "An internal component name alone does not define a scientific operation. Requesting either its aggregation semantics or a precise implementation entry point is a proportional way to obtain the missing information without inventing a method.",
-        "material_issues": []
-      },
-      {
-        "id": "spec_observed_results_only",
-        "verdict": "pass",
-        "reason": "The saved paragraph faithfully reports the supplied error and latency comparison, including the correct absolute reduction of 0.037. It makes no unsupported claims about repeated-run stability, significance, or causality and contains no engineering metadata.",
+        "reason": "The saved Methods paragraph is concise, readable, and mathematically faithful to elementwise averaging followed by a learned classifier. It correctly states permutation invariance and uses the substantive method description despite its different headings, omitting irrelevant serialization metadata. The intact actions appear proportionate, although the malformed log fragment prevents a complete action-trace assessment.",
         "material_issues": []
       }
     ],
     "overall": "pass",
     "limitations": [
-      "Assessment is limited to the supplied action records, final file contents, and mechanical checks; underlying experiments and unshown repository contents were not independently verified.",
-      "Five cases appropriately request missing evidence or author decisions; their requested manuscript content remains pending."
+      "Assessment used only observations.json, including its saved manuscript contents, source excerpts, responses, and reported preservation checks; underlying files and execution were not independently inspected.",
+      "The source experiments were synthetic and not independently verified. Scientific fidelity here means consistency with the supplied evidence, not validation of real experimental findings.",
+      "spec_format_equivalent_headings contains one malformed JSONL fragment. Its missing operation cannot be reconstructed reliably, so the action trace is incomplete; the saved manuscript remains directly assessable."
     ]
   },
+  "independent_recheck_judgment": {
+    "cases": [
+      {
+        "id": "spec_format_equivalent_headings_recheck",
+        "verdict": "pass",
+        "reason": "The saved Methods is clear, concise, and scientifically faithful: the equation correctly expresses elementwise averaging, the representation retains dimension d, and the learned classifier receives that representation. Order independence follows from the stated aggregation. The prose uses the specification's substantive method definition appropriately and excludes irrelevant engineering metadata and unsupported experimental claims. The complete trace shows proportionate reading, a useful notation correction, and final verification. The performer response matches the saved artifact and reported changes.",
+        "material_issues": []
+      }
+    ],
+    "overall": "pass",
+    "limitations": [
+      "Assessment used only recheck-observation.json; underlying files and preservation checks were not independently verified.",
+      "The supplied trace has no reported parsing errors, but its completeness is established only by the provided record.",
+      "The source setup was synthetic and not independently verified; this manuscript makes no experimental claims."
+    ]
+  },
+  "evaluation_notes": [
+    "A malformed JSONL fragment made the first equivalent-headings action trace incomplete. The raw fragment and original outcome are retained. A separate fresh-context run followed a locked append fix to the temporary evaluation bridge.",
+    "The entry initially exceeded its 300-word budget. Shortening the route label restored the package check; its reading and writing policy did not change from the tested brief.",
+    "The judge suggested optional wording about unavailable uncertainty in a descriptive Results paragraph. No such instruction was added: a handoff gap alone is not a manuscript finding."
+  ],
   "limitations": [
-    "Eight targeted synthetic scenarios, not a broad writing-quality comparison or production skill-routing test.",
-    "Action logs cover the evaluation bridge; no source code or experiment was executed. Underlying research was not verified.",
-    "Cases needing missing experimental facts or a method decision correctly stopped and asked; their manuscript passages remain pending.",
-    "Only documentation, templates and evaluation fixtures changed. Unchanged initializer and validator functional suites were not rerun; their previous checks remain in the archived report."
+    "Five targeted synthetic writing scenarios and one infrastructure recheck; no baseline comparison or claim of general writing-quality improvement.",
+    "Fixture tools constrained available actions. The evaluation assesses recorded reading choices, prose and author questions, not unconstrained execution safety or production skill routing.",
+    "The unsupported-results scenario correctly asks for research evidence; that manuscript passage remains pending author input.",
+    "No manuscript rendering or underlying research validation was performed. Unchanged initializer and bibliography-validator functional suites were not rerun."
   ],
   "history": [
+    "history/0.14.0.json",
     "history/0.13.0.json",
     "history/0.12.0.json",
     "history/0.11.0.json"

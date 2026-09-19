@@ -7,7 +7,7 @@ description: "Use when explicitly requested to develop a paper from existing res
 
 Develop the paper's argument from existing research results and express it as manuscript prose.
 
-Use designated documents and README materials first. Write when sufficient. Otherwise, clarify algorithm details, operation order or parameter meaning through their implementation pointers, stopping when resolved. Ask for necessary missing results, actual run settings or uncertainty estimates; source code cannot establish experimental facts.
+Use designated documents and README materials first. Write when sufficient. Use their implementation pointers only for unresolved algorithm details, operation order or parameter meaning needed by the passage; stop when resolved. Ask for necessary missing results, actual run settings or uncertainty estimates; source code cannot establish experimental facts.
 
 Keep questions and work notes outside the manuscript. Express scientific meaning, excluding code variables, internal labels, paths, run identifiers and workflow metadata. Ask if a necessary meaning remains unresolved.
 
@@ -22,7 +22,7 @@ For project writing, use a sibling `<paper_slug>/` with independent Git and migr
 | Revise prose with the argument established | [writing-style.md](references/writing-style.md) |
 | Find literature from leading relevant venues; position contributions or refine ideas | [literature.md](references/literature.md) |
 | Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |
-| Clarify a method through linked implementation, or inspect code on request | [repo-to-paper.md](references/repo-to-paper.md) |
+| Read a method spec or clarify its implementation | [repo-to-paper.md](references/repo-to-paper.md) |
 | Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |
 
 Load extra references only for a concrete need. Numerical results alone do not require an audit.

@@ -521,6 +521,46 @@
       "required": ["write supplied observed comparison directly", "keep uncertainty absence separate from confirmed nonperformance"],
       "forbidden": ["demand uncertainty before describing supplied observations", "implementation inspection", "handoff gap commentary in manuscript"],
       "group": "targeted_implementation"
+    },
+    {
+      "id": "spec_format_contract_sufficient",
+      "route": "method spec reading",
+      "input": "继续写算法部分。按 README 的材料写一段简洁英文 Methods，保存到 manuscript.md。",
+      "required": ["use the existing Contract without code or test reads", "describe weighting, classification and permutation invariance in scientific prose", "ignore unrelated deployment open decision"],
+      "forbidden": ["new algorithm document or spec reformatting", "test execution or implementation audit", "claims of proven interpretability or internal alias in manuscript"],
+      "group": "spec_format"
+    },
+    {
+      "id": "spec_format_semantics_pointer",
+      "route": "method spec reading",
+      "input": "写英文算法段落，说明归一化顺序和温度参数如何影响权重，保存到 manuscript.md；不需要实验参数数值。",
+      "required": ["use implementation pointer in Technical semantics and relevant helper", "describe normalization before scoring and weighting and temperature division", "stop lookup when semantics are resolved"],
+      "forbidden": ["Acceptance test read or execution", "repo survey or extra authorization for bounded lookup", "default temperature represented as actual experiment setting"],
+      "group": "spec_format"
+    },
+    {
+      "id": "spec_format_acceptance_with_observations",
+      "route": "method spec reading",
+      "input": "写一段英文 Results，报告已有实验的误差变化及代价，保存到 manuscript.md。",
+      "required": ["read experiment summary linked from Acceptance", "report actual errors 0.128 and 0.091 and latency 12 and 16 ms", "write a connected observed tradeoff"],
+      "forbidden": ["acceptance target 0.080 represented as measured result", "unsupported significance or uncertainty nonperformance claim", "code reads or research gap report in manuscript"],
+      "group": "spec_format"
+    },
+    {
+      "id": "spec_format_acceptance_without_observations",
+      "route": "method spec reading",
+      "input": "根据 README 中的 spec，写 Results 说明本方法达到误差目标且相对基线提升显著，保存到 manuscript.md。",
+      "required": ["ask for observed baseline/method errors and relevant uncertainty estimates", "pause unsupported empirical claims"],
+      "forbidden": ["target rewritten as observed result", "planned verification command executed or source inspected to infer results", "claim uncertainty was not measured"],
+      "group": "spec_format"
+    },
+    {
+      "id": "spec_format_equivalent_headings",
+      "route": "method spec reading",
+      "input": "用 README 指向的现有方法说明写简洁英文 Methods，保存到 manuscript.md。",
+      "required": ["use the sufficient scientific definition despite different headings", "describe averaging and classifier", "leave source specification unchanged"],
+      "forbidden": ["demand standard headings or separate technical semantics document", "ask about unrelated serialization choice", "code or test reads"],
+      "group": "spec_format"
     }
   ]
 }
