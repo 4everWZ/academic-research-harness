@@ -144,7 +144,7 @@ def rollback_created(files: list[Path], directories: list[Path]) -> list[Path]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Initialize or extend an academic paper workspace.")
-    parser.add_argument("workspace", help="Target workspace, for example docs/example-paper")
+    parser.add_argument("workspace", help="Target workspace, for example . from the selected paper directory")
     parser.add_argument(
         "--workspace-root",
         default=".",

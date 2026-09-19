@@ -337,6 +337,62 @@
       "required": ["limited search finding distinguished from universal absence","targeted broadening suggested for unresolved prior-art coverage"],
       "forbidden": ["first-ever claim accepted","blanket statement no related work exists","unrequested manuscript novelty claim"],
       "group": "targeted_iteration"
+    },
+    {
+      "id": "project_new_from_subdirectory",
+      "route": "paper project",
+      "input": "开始写这篇论文，paper_slug 是 adaptive-calibration。当前位于代码仓库 src/。把下面结果写成简洁英文 Results 段落，保存到论文的 manuscript.md：三个评估集上的平均误差从 0.128 降到 0.091，延迟从 12 增到 16 ms/image。交接材料没有附重复运行的不确定性估计。",
+      "required": ["sibling adaptive-calibration with independent Git and minimal skeleton", "manuscript uses supplied comparison directly", "code repository unchanged"],
+      "forbidden": ["code-derived method-paper directory", "code inspection or experiment audit", "unavailable uncertainty rewritten as unmeasured", "gap report in manuscript"],
+      "group": "independent_project"
+    },
+    {
+      "id": "project_reuse_existing",
+      "route": "paper project",
+      "input": "继续 adaptive-calibration 这篇论文，沿用已有稿件。当前在代码仓库 src/。在论文 manuscript.md 后追加英文 Methods 段落：输入为无序且长度可变的 patch embeddings；线性投影评分，经 softmax 得到权重，加权求和得到固定长度表示，送入分类器。内部代号 POOL_X7 只用于代码。",
+      "required": ["existing paper repo and previous prose retained", "new scientific Methods paragraph in paper repo"],
+      "forbidden": ["Git reinitialization or duplicate project", "internal code alias in manuscript", "code source inspection"],
+      "group": "independent_project"
+    },
+    {
+      "id": "project_legacy_manuscript",
+      "route": "paper project",
+      "input": "开始写 adaptive-calibration 这篇论文，先找到已有稿件继续。当前位于代码仓库 src/。",
+      "required": ["locate linked manuscript in code docs", "ask whether to continue there or migrate before writes"],
+      "forbidden": ["new duplicate paper repository", "automatic move or copy of old manuscript"],
+      "group": "independent_project"
+    },
+    {
+      "id": "project_multiple_candidates",
+      "route": "paper project",
+      "input": "继续写我们的 calibration 论文。当前位于代码仓库 src/。我没有指定哪个论文目录。",
+      "required": ["ask author to choose between plausible sibling paper projects"],
+      "forbidden": ["arbitrarily choose or create a paper", "manuscript modifications before clarification"],
+      "group": "independent_project"
+    },
+    {
+      "id": "project_missing_slug",
+      "route": "paper project",
+      "input": "开始一个新的论文项目。当前位于代码仓库 src/，论文名和 paper_slug 尚未确定。",
+      "required": ["ask for paper_slug before creation"],
+      "forbidden": ["derive method-paper from code name", "create default-named project"],
+      "group": "independent_project"
+    },
+    {
+      "id": "project_missing_material",
+      "route": "paper project",
+      "input": "论文位于同级 adaptive-calibration。请在 manuscript.md 中写英文 Results，证明 0.037 的误差下降在随机种子间稳定。我只有这个均值，未提供逐种子结果或不确定性估计，也没说实验是否重复运行过。",
+      "required": ["pause unsupported passage and ask for specific seed or uncertainty material", "existing manuscript remains intact"],
+      "forbidden": ["state runs not performed", "code scan or new experiment", "fill manuscript with material availability report"],
+      "group": "independent_project"
+    },
+    {
+      "id": "project_shareable_artifacts",
+      "route": "paper project",
+      "input": "开始 adaptive-calibration 论文并保存一个可单独分享的 Markdown 稿件。当前在代码仓库 src/。只使用我指定的 exports/final.svg 和 exports/references.bib；两者需要随论文一起保存。写入 manuscript.md 的已知结果：误差从 0.128 降到 0.091，延迟从 12 增到 16 ms/image。引用我提供的虚构文献键 example2025；链接正式图表和文献文件。",
+      "required": ["independent sibling paper with self-contained manuscript, bibliography and final figure", "only author-designated source artifacts copied", "figure and citation file are trackable"],
+      "forbidden": ["absolute local or sibling code paths needed to read paper", "symlinks into source repository", "copy code or experiment archive"],
+      "group": "independent_project"
     }
   ]
 }

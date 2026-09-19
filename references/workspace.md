@@ -4,7 +4,7 @@ Use only for requested workspace or collection maintenance. These utilities are 
 
 ## Create only the requested artifacts
 
-Default new location: `docs/<paper_slug>/`.
+Use the paper directory already selected through [paper-project.md](paper-project.md), normally a sibling `<paper_slug>/` with independent Git. These optional tools do not choose or initialize its Git repository. Preserve an explicitly requested legacy location.
 
 | Requested artifact | Template or directory |
 |---|---|
@@ -15,10 +15,10 @@ Default new location: `docs/<paper_slug>/`.
 | Idea development record | [idea_log.md](../assets/templates/idea_log.md) |
 | Target outlet constraints | [venue_profile.md](../assets/templates/venue_profile.md) |
 
-Resolve `<skill-root>` to this package's directory. From the target repository root:
+Resolve `<skill-root>` to this package's directory. From the selected paper directory:
 
 ```bash
-python "<skill-root>/scripts/init_paper_workspace.py" docs/<paper_slug> --include literature
+python "<skill-root>/scripts/init_paper_workspace.py" . --include literature
 ```
 
 Available includes: `literature,papers,claims,ideas,venue`. Existing files are preserved except for explicit venue updates. Use `--workspace-root` for a different intended root. Run the initializer with exclusive control of the destination path; concurrent renames or link replacement are outside its containment guarantee.
@@ -32,7 +32,7 @@ The validator accepts a constrained plain-metadata BibTeX format. Reconstruct im
 After completing a batch of collection edits, run:
 
 ```bash
-python "<skill-root>/scripts/validate_paper_index.py" docs/<paper_slug>
+python "<skill-root>/scripts/validate_paper_index.py" .
 ```
 
 ## Optional outlet profile

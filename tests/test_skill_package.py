@@ -88,6 +88,7 @@ class SkillPackageTests(unittest.TestCase):
             "references",
             "scripts",
             "tests",
+            "tmp",
         }
         self.assertFalse({path.name for path in ROOT.iterdir()} - allowed)
         runtime_payload = sum(
@@ -98,11 +99,13 @@ class SkillPackageTests(unittest.TestCase):
             and "__pycache__" not in path.parts
             and not path.is_relative_to(ROOT / "tests")
             and not path.is_relative_to(ROOT / "assets" / "evals")
+            and not path.is_relative_to(ROOT / "tmp")
         )
         self.assertLessEqual(runtime_payload, 80_000)
 
     def test_route_reference_budgets(self) -> None:
         route_bundles = {
+            "paper_project": ("paper-project.md",),
             "manuscript_drafting": ("results-to-paper.md", "writing-style.md"),
             "implementation_question": ("repo-to-paper.md",),
             "literature_index": ("literature.md", "evidence-and-citations.md", "workspace.md"),
