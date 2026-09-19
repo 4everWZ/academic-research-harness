@@ -4,7 +4,7 @@ Use only for requested workspace or collection maintenance. These utilities are 
 
 ## Create only the requested artifacts
 
-Use the paper directory already selected through [paper-project.md](paper-project.md), normally a sibling `<paper_slug>/` with independent Git. These optional tools do not choose or initialize its Git repository. Preserve an explicitly requested legacy location.
+Use the independent paper directory selected through [paper-project.md](paper-project.md), normally a sibling `<paper_slug>/`. Migrate identified legacy manuscripts before extending their paper workspace. These optional tools do not locate, migrate or initialize its Git repository.
 
 | Requested artifact | Template or directory |
 |---|---|
@@ -26,6 +26,8 @@ Available includes: `literature,papers,claims,ideas,venue`. Existing files are p
 ## Maintain the bundled collection
 
 Selected index entries require matching BibTeX keys; excluded entries need not have bibliography entries or notes. Keys use `[A-Za-z][A-Za-z0-9_-]*`; note filenames use the same key. Verification fields use `YYYY-MM-DD / <checked version or status>`, with a nonfuture date and a resolved suffix. Templates define the remaining fields.
+
+Every bibliography key and reading note must also belong to the index; `notes/` accepts only canonical reading notes. If an existing bibliography uses other conventions, or references/notes include unrelated work, use a separate collection subdirectory. Do not rewrite the manuscript bibliography to satisfy this validator.
 
 The validator accepts a constrained plain-metadata BibTeX format. Reconstruct imported entries from checked metadata rather than copying directives or TeX commands. A percent prefix does not hide an entry from validation. Structural validation does not establish source support or compilation safety.
 

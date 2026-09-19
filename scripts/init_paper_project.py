@@ -91,15 +91,21 @@ def check_independent_repository(paper: Path) -> None:
 
 
 def readme_text(paper: Path, code: Path) -> str:
-    relative_code = Path(os.path.relpath(code, paper)).as_posix()
+    try:
+        relative_code = Path(os.path.relpath(code, paper)).as_posix()
+    except ValueError as exc:
+        raise ProjectError(
+            "Cannot create a README-relative code link across filesystem volumes; "
+            "choose a sibling paper location or provide an existing README with accessible material links"
+        ) from exc
     return (
         f"# {paper.name}\n\n"
         "Independent paper project. Maintain the manuscript, bibliography, and final figures "
         "and tables here, adding files as needed and following the manuscript's existing format.\n\n"
-        f"Related code: [code repository]({quote(relative_code, safe='/.-_~')}/). "
-        "This link is informational; the paper's reading and build inputs belong in this repository.\n\n"
         "Keep temporary work in `tmp/`. Track final figure PDFs and images alongside the "
-        "manuscript and references so collaborators can use the paper without the code checkout.\n"
+        "manuscript and references so collaborators can use the paper without the code checkout.\n\n"
+        "## Research materials\n\n"
+        f"Code project: [code repository]({quote(relative_code, safe='/.-_~')}/)\n"
     )
 
 
@@ -136,12 +142,14 @@ def initialize_project(destination: str, code_location: str) -> tuple[Path, bool
     elif (paper / ".git").exists() or (paper / ".git").is_symlink():
         raise ProjectError(f"unresolved Git metadata at {paper / '.git'}; ask the author")
 
-    artifacts = {"README.md": readme_text(paper, code), ".gitignore": GITIGNORE}
+    artifacts = {"README.md": None, ".gitignore": GITIGNORE}
     for name in artifacts:
         target = paper / name
         reject_links(target)
         if target.exists() and not target.is_file():
             raise ProjectError(f"project artifact is not a file: {target}")
+    if not (paper / "README.md").exists():
+        artifacts["README.md"] = readme_text(paper, code)
 
     try:
         paper.mkdir(exist_ok=True)
@@ -152,6 +160,8 @@ def initialize_project(destination: str, code_location: str) -> tuple[Path, bool
                 raise ProjectError("Git initialization did not produce the intended working tree")
             check_independent_repository(paper)
         for name, content in artifacts.items():
+            if content is None:
+                continue
             target = paper / name
             reject_links(target)
             try:

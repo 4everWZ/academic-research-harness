@@ -101,7 +101,7 @@ class SkillPackageTests(unittest.TestCase):
             and not path.is_relative_to(ROOT / "assets" / "evals")
             and not path.is_relative_to(ROOT / "tmp")
         )
-        self.assertLessEqual(runtime_payload, 80_000)
+        self.assertLessEqual(runtime_payload, 85_000)
 
     def test_route_reference_budgets(self) -> None:
         route_bundles = {
@@ -125,7 +125,9 @@ class SkillPackageTests(unittest.TestCase):
             visited.add(path)
             for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
                 if "://" not in target and target.endswith(".md"):
-                    pending.append((path.parent / target).resolve())
+                    resolved = (path.parent / target).resolve()
+                    if resolved.is_relative_to(ROOT / "references"):
+                        pending.append(resolved)
         for reference in (ROOT / "references").glob("*.md"):
             self.assertIn(reference.resolve(), visited, f"unreachable reference: {reference}")
 

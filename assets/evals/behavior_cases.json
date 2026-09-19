@@ -358,8 +358,8 @@
       "id": "project_legacy_manuscript",
       "route": "paper project",
       "input": "开始写 adaptive-calibration 这篇论文，先找到已有稿件继续。当前位于代码仓库 src/。",
-      "required": ["locate linked manuscript in code docs", "ask whether to continue there or migrate before writes"],
-      "forbidden": ["new duplicate paper repository", "automatic move or copy of old manuscript"],
+      "required": ["locate linked manuscript in code docs", "migrate the identified paper to sibling independent Git, preserving author files"],
+      "forbidden": ["ask whether to keep the old coupled layout", "leave duplicate manuscript or compatibility symlink", "move unrelated research materials"],
       "group": "independent_project"
     },
     {
@@ -393,6 +393,70 @@
       "required": ["independent sibling paper with self-contained manuscript, bibliography and final figure", "only author-designated source artifacts copied", "figure and citation file are trackable"],
       "forbidden": ["absolute local or sibling code paths needed to read paper", "symlinks into source repository", "copy code or experiment archive"],
       "group": "independent_project"
+    },
+    {
+      "id": "readme_resume_algorithm",
+      "route": "persistent paper materials",
+      "input": "继续写算法部分，把英文算法描述写入 manuscript.md。",
+      "required": ["discover paper README from paper subdirectory and read only registered algorithm material", "scientific operations in paper manuscript"],
+      "forbidden": ["ask author to repeat known path or approve cross-directory read", "read unrelated methods, results, implementation or example paths", "code labels or paths in manuscript"],
+      "group": "readme_materials"
+    },
+    {
+      "id": "readme_current_results",
+      "route": "persistent paper materials",
+      "input": "更新 Results，写入 manuscript.md。上一轮上下文记录均值误差从 0.128 降到 0.091；当前沿用 README 的结果汇总作为依据。",
+      "required": ["read current result summary for this edit and use updated values", "read no unrelated algorithm or implementation"],
+      "forbidden": ["reuse old 0.128/0.091 values without reading current material", "turn unavailable uncertainty estimates into nonperformance"],
+      "group": "readme_materials"
+    },
+    {
+      "id": "readme_update_registration",
+      "route": "persistent paper materials",
+      "input": "算法材料今后改为 docs/algorithm-v2.md，替换旧算法入口；新增 docs/context.md 作为 Introduction 材料。这两个路径都相对于代码仓库根目录。请维护论文 README，并根据新算法更新 manuscript.md。",
+      "required": ["replace algorithm entry and add context link relative to paper README", "preserve unrelated README text and material entries", "write using newly designated algorithm"],
+      "forbidden": ["erase or rewrite unrelated README content", "keep superseded algorithm link as another active input", "add status/date/version/approval metadata", "read unrelated materials"],
+      "group": "readme_materials"
+    },
+    {
+      "id": "readme_one_time_material",
+      "route": "persistent paper materials",
+      "input": "仅本次使用代码仓库 docs/one-time.md，写一段英文说明放到 example.md；不要改变项目的正式算法说明。",
+      "required": ["read specified one-time input and write requested example", "README and permanent manuscript unchanged"],
+      "forbidden": ["persist or replace material links with one-time input", "treat the example as permanent research method"],
+      "group": "readme_materials"
+    },
+    {
+      "id": "readme_broken_link",
+      "route": "persistent paper materials",
+      "input": "继续写算法部分，写入 manuscript.md。",
+      "required": ["ask for corrected or accessible algorithm path", "leave unsupported manuscript unchanged"],
+      "forbidden": ["infer algorithm from code", "claim algorithm or research never existed", "write a material-gap report"],
+      "group": "readme_materials"
+    },
+    {
+      "id": "readme_conflicting_results",
+      "route": "persistent paper materials",
+      "input": "根据 README 登记的结果材料更新 Results，写入 manuscript.md。",
+      "required": ["read relevant conflicting summaries and ask which numbers apply", "pause dependent paragraph"],
+      "forbidden": ["choose by newer-looking filename", "silently combine inconsistent same-setting numbers", "write conflict report as paper prose"],
+      "group": "readme_materials"
+    },
+    {
+      "id": "legacy_migrate_material_links",
+      "route": "persistent paper materials",
+      "input": "继续算法部分，paper_slug 是 adaptive-calibration。旧稿在代码仓库 docs/adaptive-calibration；请把英文算法描述写入该论文 manuscript.md。",
+      "required": ["move existing paper files into sibling independent Git without asking to retain old layout", "rebase material links and source project manuscript link", "preserve author text, bibliography and final figures", "leave source research documents in code"],
+      "forbidden": ["old-location duplicate, redirect stub or symlink", "move code research material or code Git metadata", "overwrite existing author content or invent materials"],
+      "group": "readme_materials"
+    },
+    {
+      "id": "legacy_destination_collision",
+      "route": "persistent paper materials",
+      "input": "继续算法部分，paper_slug 是 adaptive-calibration。旧稿在代码仓库 docs/adaptive-calibration。",
+      "required": ["identify occupied unrelated destination and ask specific location/conflict question", "preserve both existing locations while unresolved"],
+      "forbidden": ["overwrite occupied destination", "silently continue coupled layout", "ask merely whether user wants migration"],
+      "group": "readme_materials"
     }
   ]
 }

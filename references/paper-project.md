@@ -1,29 +1,37 @@
-# Independent Paper Projects
+# Paper Projects and Materials
 
-Use this guide when starting or locating a paper project. Once its location is established, write there without repeating discovery or initialization. A standalone revision, discussion, or literature search does not require a repository.
+## Find the paper
 
-## Locate before creating
+Use the author's path or known project first, then sibling directories and explicit manuscript links. From a subdirectory, use Git to locate the repository root. Read only the project descriptions needed to identify the paper; do not search code or experiments.
 
-Check the author's explicit path first, then the known paper project, then sibling candidates and explicit manuscript links in project descriptions. From a code subdirectory, use `git rev-parse --show-toplevel` to find the code root. Inspect only directory names, Git ownership, and the minimum project description needed to establish correspondence; do not recursively search code or experiment files. A directory name alone does not establish that an occupied directory belongs to this paper.
+Create and migrate papers beside the code repository at `<code-root>/../<paper_slug>/`, with independent Git, unless the author explicitly chose another location. Keep the established slug; ask if unknown. Reuse the matching paper directory; ask about ambiguous candidates or ownership.
 
-The default new location is `<code-root>/../<paper_slug>/`, with its own Git repository. Preserve the author's specified or already established slug. If none is known, ask for it; do not derive a `<code-name>-paper` name. Multiple candidates, an unrelated occupant, or uncertain Git ownership require an author choice before writes. If a known or discovered manuscript is still inside the code repository, ask whether to continue there or move it into an independent project; do not create a duplicate or move files while waiting.
+## Move an old manuscript
 
-Reuse a clearly corresponding existing paper directory and its conventions. If it has independent Git, do not reinitialize it. If it has no Git and is outside other repositories, initialize it in place without overwriting its files. A code subdirectory, linked worktree, or submodule does not provide the intended independent project; ask how to handle it. An explicit choice to continue a legacy layout overrides the default, without converting its Git arrangement.
+Move an identified manuscript out of the code repository directly; do not offer to keep the old layout. Move its text, bibliography, formal figures and required build files, preserving edits. Leave research source documents and unrelated files in code.
 
-## Initialize the minimum
+Before moving, resolve source and destination paths, identify the paper files in mixed directories, and check collisions. Ask only about unresolved ownership, file selection or conflicts; do not overwrite either copy. Preserve a paper repository's own Git history, but never move the code repository's Git metadata or a shared worktree/submodule Git pointer. Resolve linked Git registrations before completing the move.
 
-After resolving the destination, run the helper without reading its implementation. Relative destinations are resolved against the actual code root's parent, even when `--code-root` names a code subdirectory. An explicit absolute destination can reuse a project elsewhere outside other repositories.
+Rebase README material links to their original targets, repair paper asset/build paths, and update explicit links to the moved manuscript. Leave no duplicate, redirect stub or compatibility symlink. Initialize missing starter files after moving; on failure, report the actual remaining locations.
+
+## Use the README's materials
+
+When starting or resuming paper work, read `Research materials` in the paper-root `README.md`, or its existing equivalent. Reuse the mapping if it is already in context and unchanged. Resolve links from the README's directory, including when working in a paper subdirectory.
+
+The code-project link locates the code. Named document links are continuing author inputs: read relevant files across directories without asking again. For algorithms, read algorithm notes; for Results, read result summaries. Read their current content for each new edit request, reusing reads within that task. Do not load all materials, scan the code tree or follow documentation links into an implementation or experiment audit.
+
+Add new project materials and update explicitly replaced entries in place. Resolve supplied paths from their stated context, then write README-relative links. Preserve other entries and README content. One-time inputs apply only to the current task and never replace persistent entries. Use names, links and necessary purposes only; add no status, date, version or approval fields. Do not invent file locations. The [English section template](../assets/templates/paper_readme.md) is an example, not a list of actual project inputs; fenced/commented examples and unrelated README links do not register materials.
+
+If a needed path is broken or inaccessible, ask for an accessible location. If sources conflict or lack a necessary definition, pause that passage and ask specifically. An explicit author correction takes precedence; filenames and modification times do not settle scientific conflicts. Missing files do not mean unperformed research.
+
+## Initialize and write
+
+For a new project, or missing starter files after migration, run:
 
 ```bash
 python "<skill-root>/scripts/init_paper_project.py" "<paper_slug>" --code-root "<code-root>"
 ```
 
-The helper creates independent Git, a short `README.md`, and `.gitignore`; existing files are preserved. It does not choose a slug, discover the matching project, commit, configure a remote, or push. It checks paths and Git ownership before writing. Run it with exclusive control of the destination; if initialization fails, use the reported state to resolve the problem rather than blindly retrying or deleting contents.
+Relative destinations use the actual code root's parent, even when `--code-root` names a subdirectory. Use an absolute path elsewhere only for an author's explicit location choice. The helper creates independent Git, an English README with only the real code link, and `.gitignore`, preserving existing files. It does not migrate, register documents, commit or configure remotes. Use ordinary file tools for reading, README edits and migration; no parser or sync service.
 
-Do not precreate manuscript sections, a venue template, evidence ledgers, or reading collections. Add the actual manuscript, bibliography, and final figures or tables as writing needs them. Use [workspace.md](workspace.md) only for requested auxiliary artifacts.
-
-## Write and share from the paper repository
-
-Resolve subsequent edits and Git operations against the paper root, even if the conversation started in the code repository. Keep manuscript format and build conventions already in use; choose a new format when needed for the deliverable. A README's relative code link is informational: the files needed to read or build the paper must live in the paper repository, without absolute local paths or symlinks into code. Formal figure PDFs and images must remain trackable. Copy only author-designated materials needed by the paper; do not mirror the code repository or experiment archives.
-
-Creating a project supplies no research evidence. When a requested passage needs missing material, ask the author and pause that passage. Do not inspect code, validate experiments, or perform new research to avoid asking. Keep these questions outside manuscript prose and retain the writing and literature rules for the actual task.
+Continue in the paper repository without repeating setup. Preserve its manuscript and build conventions. Turn supplied materials into scientific prose, formal algorithms and figures, preserving meaning when translating engineering labels. Keep formal reading/build inputs inside the paper repository; the README's external sources support authoring, not the build. Use [workspace.md](workspace.md) only for requested auxiliary artifacts. Pasted-text edits or searches without a paper project need no repository.

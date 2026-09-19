@@ -1,0 +1,936 @@
+{
+  "version": "0.12.0",
+  "scope": "Sibling paper projects using author-supplied paper_slug, independent Git, preserved writing and literature boundaries.",
+  "protocol": {
+    "independent_contexts": true,
+    "skills_activated": false,
+    "candidate_instructions": "Relevant package references supplied as a plain editorial brief, not skill activation. No parent conversation, prior evaluations, fixtures/rubrics or package source supplied to performers.",
+    "roles": {
+      "test_author": "Huygens",
+      "project_actions_initial": "Newton",
+      "project_actions_corrected_fixture": "Laplace",
+      "project_choices": "Gibbs",
+      "writing_regressions": "Averroes",
+      "independent_judge": "Cicero"
+    },
+    "actions": "Filesystem and Git actions in disposable fixtures recorded by an evaluation-only bridge. Parent compared actual files, Git state and standalone manuscript links. No source or content hashes computed.",
+    "judge": "Fresh context; author tasks, initial files, recorded actions and final files/responses supplied, without candidate brief or intended verdicts."
+  },
+  "summary": {
+    "project_cases": 7,
+    "writing_and_literature_regressions": 4,
+    "judge_passes": 11,
+    "judge_failures": 0,
+    "code_repositories_unchanged": 7,
+    "unit_tests": {
+      "passed": 110,
+      "seconds": 50.569
+    },
+    "skill_validator": "passed"
+  },
+  "candidate_brief": "# Independent Paper Projects\n\nUse this guide when starting or locating a paper project. Once its location is established, write there without repeating discovery or initialization. A standalone revision, discussion, or literature search does not require a repository.\n\n## Locate before creating\n\nCheck the author's explicit path first, then the known paper project, then sibling candidates and explicit manuscript links in project descriptions. From a code subdirectory, use `git rev-parse --show-toplevel` to find the code root. Inspect only directory names, Git ownership, and the minimum project description needed to establish correspondence; do not recursively search code or experiment files. A directory name alone does not establish that an occupied directory belongs to this paper.\n\nThe default new location is `<code-root>/../<paper_slug>/`, with its own Git repository. Preserve the author's specified or already established slug. If none is known, ask for it; do not derive a `<code-name>-paper` name. Multiple candidates, an unrelated occupant, or uncertain Git ownership require an author choice before writes. If a known or discovered manuscript is still inside the code repository, ask whether to continue there or move it into an independent project; do not create a duplicate or move files while waiting.\n\nReuse a clearly corresponding existing paper directory and its conventions. If it has independent Git, do not reinitialize it. If it has no Git and is outside other repositories, initialize it in place without overwriting its files. A code subdirectory, linked worktree, or submodule does not provide the intended independent project; ask how to handle it. An explicit choice to continue a legacy layout overrides the default, without converting its Git arrangement.\n\n## Initialize the minimum\n\nAfter resolving the destination, run the helper without reading its implementation. Relative destinations are resolved against the actual code root's parent, even when `--code-root` names a code subdirectory. An explicit absolute destination can reuse a project elsewhere outside other repositories.\n\n```bash\npython \"<skill-root>/scripts/init_paper_project.py\" \"<paper_slug>\" --code-root \"<code-root>\"\n```\n\nThe helper creates independent Git, a short `README.md`, and `.gitignore`; existing files are preserved. It does not choose a slug, discover the matching project, commit, configure a remote, or push. It checks paths and Git ownership before writing. Run it with exclusive control of the destination; if initialization fails, use the reported state to resolve the problem rather than blindly retrying or deleting contents.\n\nDo not precreate manuscript sections, a venue template, evidence ledgers, or reading collections. Add the actual manuscript, bibliography, and final figures or tables as writing needs them. Use [workspace.md](workspace.md) only for requested auxiliary artifacts.\n\n## Write and share from the paper repository\n\nResolve subsequent edits and Git operations against the paper root, even if the conversation started in the code repository. Keep manuscript format and build conventions already in use; choose a new format when needed for the deliverable. A README's relative code link is informational: the files needed to read or build the paper must live in the paper repository, without absolute local paths or symlinks into code. Formal figure PDFs and images must remain trackable. Copy only author-designated materials needed by the paper; do not mirror the code repository or experiment archives.\n\nCreating a project supplies no research evidence. When a requested passage needs missing material, ask the author and pause that passage. Do not inspect code, validate experiments, or perform new research to avoid asking. Keep these questions outside manuscript prose and retain the writing and literature rules for the actual task.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nMissing material is an author question, not manuscript content. If it prevents writing the requested claim, pause that passage and ask for the specific result, method detail, or intended source. Do not fill it with statements about unavailable materials, unverified results, or what the research supposedly did not do. If the missing material is irrelevant to the passage, leave it out and write the requested text. A limitation explicitly established by the author or source remains a research fact and may belong in the paper.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength.\n\nPut necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\n## Make the evidence carry the paragraph\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express the supplied scientific objects, operations, settings, and values directly. Mathematical notation defined for the paper and established scientific method names are distinct from implementation identifiers. If a necessary internal label has no supplied scientific meaning, stop that passage and ask the author; do not guess its expansion or inspect the repository to avoid asking.\n\n\n# Literature for the Paper's Argument\n\n## Search stronger sources first\n\nUse the author's field and topic to identify the relevant leading journals and conference main tracks. If no outlet list is supplied, infer a small field-specific search set from the nearest established work; verify unfamiliar venue standing rather than inventing a universal ranking. Search these outlets first, prioritizing directly relevant formal publications. Search placement, citation count, and a familiar publisher name do not substitute for this selection.\n\nStart with the writing question and the closest method, explanation, or measurement choice. Combine its terms with the selected outlets, then follow citations and terminology from the strongest relevant papers. Use official proceedings, journal records, and paper pages to resolve candidates; aggregators and search snippets are discovery aids.\n\nBuild the core reading and citation set from strong, directly relevant work in those outlets. If that search leaves a concrete gap, broaden to specialist venues and preprints for that gap. Do not fill a requested count with weak matches, or replace a directly relevant study with a prestigious but unrelated one. Keep an earlier overlapping method or important contrary result even if it comes from a less prominent venue; its bearing on the argument is the reason to include it.\n\n## Select papers that can support the writing\n\nFor a candidate central to a result, comparison, or novelty claim, read the relevant method and result passages before recommending it as support. Check the concrete issue that could change its use, such as supervision available to each method or whether the compared metric uses the same evaluation population. A top-venue paper can be a useful starting point and still fail to support the intended claim.\n\nResolve the actual publication venue and track from the official record. A workshop hosted alongside a leading conference is not a main-track paper; a repository upload or preprint is not evidence of acceptance. For a selected preprint, look for a formal or materially revised version. Keep the cited result and bibliographic metadata attached to the same version.\n\nReturn each selected paper with its title, year, actual venue/track or preprint status, direct source link, and a concise statement of its role in the article. Explain an exception to the leading-venue preference by its concrete value, such as closest prior work or missing coverage. Note a limitation only when it changes the proposed use; no per-paper scorecard or automatic index is needed.\n\n## Turn the search into positioning\n\nCompare the nearest work on the axis the paper changes, such as supervision, adaptation access, objective, or evaluation setting. Organize Related Work around those distinctions instead of one summary per paper. Earlier overlap and comparable negative findings should change the positioning when they undermine the proposed contribution.\n\nStop when additional searching is unlikely to change the scoped argument. Report a material coverage gap when it affects a novelty claim; finding no overlap in a limited search does not establish that none exists. Ordinary article writing does not require systematic-review machinery.\n\nUse [evidence-and-citations.md](evidence-and-citations.md) when a particular support problem remains. For idea refinement, explain how a proposed change would alter the contribution, keeping unperformed experiments as proposals. Use [workspace.md](workspace.md) only for a requested persistent collection or idea record.\n",
+  "observations": {
+    "cases": [
+      {
+        "id": "project_new_from_subdirectory",
+        "input": "开始写这篇论文，paper_slug 是 adaptive-calibration。当前位于代码仓库 src/。把下面结果写成简洁英文 Results 段落，保存到论文的 manuscript.md：三个评估集上的平均误差从 0.128 降到 0.091，延迟从 12 增到 16 ms/image。交接材料没有附重复运行的不确定性估计。",
+        "before_files": {
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "after_files": {
+          "adaptive-calibration/.gitignore": "# Temporary work and build intermediates; keep final PDFs and images tracked.\n/tmp/\n*.aux\n*.log\n*.out\n*.toc\n*.lof\n*.lot\n*.fls\n*.fdb_latexmk\n*.synctex.gz\n*.blg\n*.bcf\n*.run.xml\n",
+          "adaptive-calibration/manuscript.md": "# Results\n\nAcross the three evaluation sets, mean error decreased from 0.128 to 0.091, a 28.9% reduction. This improvement came with higher latency, which increased from 12 to 16 ms/image.\n",
+          "adaptive-calibration/README.md": "# adaptive-calibration\n\nIndependent paper project. Maintain the manuscript, bibliography, and final figures and tables here, adding files as needed and following the manuscript's existing format.\n\nRelated code: [code repository](../method-code/). This link is informational; the paper's reading and build inputs belong in this repository.\n\nKeep temporary work in `tmp/`. Track final figure PDFs and images alongside the manuscript and references so collaborators can use the paper without the code checkout.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "method-code/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\n"
+          },
+          {
+            "action": "init",
+            "args": [
+              "adaptive-calibration",
+              "method-code/src"
+            ],
+            "returncode": 0,
+            "output": "Initialized independent paper repository: $CASE\\adaptive-calibration\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Results\n\nAcross the three evaluation sets, mean error decreased from 0.128 to 0.091, a 28.9% reduction. This improvement came with higher latency, which increased from 12 to 16 ms/image.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short",
+              "--untracked-files=all"
+            ],
+            "returncode": 0,
+            "output": "?? .gitignore\n?? README.md\n?? manuscript.md\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/.gitignore",
+          "adaptive-calibration/README.md",
+          "adaptive-calibration/manuscript.md"
+        ],
+        "checks": {
+          "code_files_unchanged": true,
+          "code_git_head_unchanged": true,
+          "code_worktree_clean": true,
+          "independent_paper_git": true,
+          "no_automatic_commit_or_remote": true
+        },
+        "agent_output": {
+          "id": "project_new_from_subdirectory",
+          "response": "已创建独立论文仓库并保存英文 Results 段落，包含三个评估集上的平均误差降低及延迟增加。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/README.md",
+            "$CASE/adaptive-calibration/.gitignore",
+            "$CASE/adaptive-calibration/manuscript.md"
+          ],
+          "notes": [
+            "未补写不确定性估计或统计显著性结论。",
+            "未创建提交。"
+          ]
+        }
+      },
+      {
+        "id": "project_reuse_existing",
+        "input": "继续 adaptive-calibration 这篇论文，沿用已有稿件。当前在代码仓库 src/。在论文 manuscript.md 后追加英文 Methods 段落：输入为无序且长度可变的 patch embeddings；线性投影评分，经 softmax 得到权重，加权求和得到固定长度表示，送入分类器。内部代号 POOL_X7 只用于代码。",
+        "before_files": {
+          "adaptive-calibration/.gitignore": "/tmp/\n",
+          "adaptive-calibration/manuscript.md": "# Adaptive calibration\n\nExisting author introduction.\n",
+          "adaptive-calibration/README.md": "# Adaptive calibration\nPaper project for ../method-code/.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "after_files": {
+          "adaptive-calibration/.gitignore": "/tmp/\n",
+          "adaptive-calibration/manuscript.md": "# Adaptive calibration\n\nExisting author introduction.\n\n## Methods\n\nThe method takes an unordered, variable-length set of patch embeddings as input. A linear projection assigns a score to each embedding, and a softmax converts these scores into weights. The weighted sum of the embeddings forms a fixed-length representation that is passed to a classifier.\n",
+          "adaptive-calibration/README.md": "# Adaptive calibration\nPaper project for ../method-code/.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "adaptive-calibration/\nmethod-code/"
+          },
+          {
+            "action": "list",
+            "args": [
+              "adaptive-calibration"
+            ],
+            "output": ".git/\n.gitignore\nmanuscript.md\nREADME.md"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/README.md"
+            ],
+            "output": "# Adaptive calibration\nPaper project for ../method-code/.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive calibration\n\nExisting author introduction.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? .gitignore\n?? README.md\n?? manuscript.md\n"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive calibration\n\nExisting author introduction.\n\n## Methods\n\nThe method takes an unordered, variable-length set of patch embeddings as input. A linear projection assigns a score to each embedding, and a softmax converts these scores into weights. The weighted sum of the embeddings forms a fixed-length representation that is passed to a classifier.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "# Adaptive calibration\n\nExisting author introduction.\n\n## Methods\n\nThe method takes an unordered, variable-length set of patch embeddings as input. A linear projection assigns a score to each embedding, and a softmax converts these scores into weights. The weighted sum of the embeddings forms a fixed-length representation that is passed to a classifier.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short"
+            ],
+            "returncode": 0,
+            "output": "?? .gitignore\n?? README.md\n?? manuscript.md\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/manuscript.md"
+        ],
+        "checks": {
+          "code_files_unchanged": true,
+          "code_git_head_unchanged": true,
+          "code_worktree_clean": true,
+          "independent_paper_git": true,
+          "no_automatic_commit_or_remote": true
+        },
+        "agent_output": {
+          "id": "project_reuse_existing",
+          "response": "已在现有 manuscript.md 后追加英文 Methods 段落，保留原有内容。新增段落描述线性投影评分、softmax 权重、加权求和及分类器，未包含内部代号 POOL_X7。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/manuscript.md"
+          ],
+          "notes": [
+            "复用了现有独立 Git 仓库，未重新初始化。",
+            "已回读确认文件内容。",
+            "未创建提交。"
+          ]
+        }
+      },
+      {
+        "id": "project_legacy_manuscript",
+        "input": "开始写 adaptive-calibration 这篇论文，先找到已有稿件继续。当前位于代码仓库 src/。",
+        "before_files": {
+          "method-code/README.md": "# Method code\nManuscript: [draft](docs/draft.md).\n",
+          "method-code/docs/draft.md": "# Existing draft\nAuthor text to preserve.\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "after_files": {
+          "method-code/README.md": "# Method code\nManuscript: [draft](docs/draft.md).\n",
+          "method-code/docs/draft.md": "# Existing draft\nAuthor text to preserve.\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code"
+            ],
+            "output": ".git/\ndocs/\nREADME.md\nsrc/"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "method-code/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\nManuscript: [draft](docs/draft.md).\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code/docs"
+            ],
+            "output": "draft.md"
+          },
+          {
+            "action": "git",
+            "args": [
+              "method-code/docs",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          }
+        ],
+        "changed_files": [],
+        "checks": {
+          "code_files_unchanged": true,
+          "code_git_head_unchanged": true,
+          "code_worktree_clean": true,
+          "no_project_mutations": true
+        },
+        "agent_output": {
+          "id": "project_legacy_manuscript",
+          "response": "代码仓库 README 指向已有稿件 docs/draft.md，已确认该目录仍属于代码仓库。你希望继续在原位置写作，还是将稿件迁入独立的 adaptive-calibration 项目？",
+          "changed_files": [],
+          "notes": "稿件位置：$CASE/method-code/docs/draft.md。按操作简报等待布局选择，未创建、移动或修改文件。"
+        }
+      },
+      {
+        "id": "project_multiple_candidates",
+        "input": "继续写我们的 calibration 论文。当前位于代码仓库 src/。我没有指定哪个论文目录。",
+        "before_files": {
+          "calibration-study-a/manuscript.md": "# Study a\n",
+          "calibration-study-a/README.md": "# Calibration study a\nPaper project related to ../method-code/.\n",
+          "calibration-study-b/manuscript.md": "# Study b\n",
+          "calibration-study-b/README.md": "# Calibration study b\nPaper project related to ../method-code/.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "after_files": {
+          "calibration-study-a/manuscript.md": "# Study a\n",
+          "calibration-study-a/README.md": "# Calibration study a\nPaper project related to ../method-code/.\n",
+          "calibration-study-b/manuscript.md": "# Study b\n",
+          "calibration-study-b/README.md": "# Calibration study b\nPaper project related to ../method-code/.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "method-code"
+            ],
+            "output": ".git/\nREADME.md\nsrc/"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "calibration-study-a/\ncalibration-study-b/\nmethod-code/"
+          },
+          {
+            "action": "list",
+            "args": [
+              "calibration-study-b"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md"
+          },
+          {
+            "action": "list",
+            "args": [
+              "calibration-study-a"
+            ],
+            "output": ".git/\nmanuscript.md\nREADME.md"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "calibration-study-a/README.md"
+            ],
+            "output": "# Calibration study a\nPaper project related to ../method-code/.\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "calibration-study-b/README.md"
+            ],
+            "output": "# Calibration study b\nPaper project related to ../method-code/.\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "calibration-study-a",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/calibration-study-a\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "calibration-study-b",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/calibration-study-b\n"
+          }
+        ],
+        "changed_files": [],
+        "checks": {
+          "code_files_unchanged": true,
+          "code_git_head_unchanged": true,
+          "code_worktree_clean": true,
+          "no_project_mutations": true
+        },
+        "agent_output": {
+          "id": "project_multiple_candidates",
+          "response": "找到 calibration-study-a 和 calibration-study-b，两个目录都有稿件，README 均关联当前代码仓库，Git 根目录也分别位于各自目录。你要继续哪一个？",
+          "changed_files": [],
+          "notes": "候选目录位于 $CASE/。现有说明无法唯一确定目标，未修改文件。"
+        }
+      },
+      {
+        "id": "project_missing_slug",
+        "input": "开始一个新的论文项目。当前位于代码仓库 src/，论文名和 paper_slug 尚未确定。",
+        "before_files": {
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "after_files": {
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          }
+        ],
+        "changed_files": [],
+        "checks": {
+          "code_files_unchanged": true,
+          "code_git_head_unchanged": true,
+          "code_worktree_clean": true,
+          "no_project_mutations": true
+        },
+        "agent_output": {
+          "id": "project_missing_slug",
+          "response": "请提供新论文项目的 paper_slug；论文标题可以稍后确定。确认 slug 后，将在代码仓库的同级目录初始化独立项目。",
+          "changed_files": [],
+          "notes": "已确认代码根目录为 $CASE/method-code。未自行命名或初始化。"
+        }
+      },
+      {
+        "id": "project_missing_material",
+        "input": "论文位于同级 adaptive-calibration。请在 manuscript.md 中写英文 Results，证明 0.037 的误差下降在随机种子间稳定。我只有这个均值，未提供逐种子结果或不确定性估计，也没说实验是否重复运行过。",
+        "before_files": {
+          "adaptive-calibration/.gitignore": "/tmp/\n",
+          "adaptive-calibration/manuscript.md": "# Adaptive calibration\n\nExisting author introduction.\n",
+          "adaptive-calibration/README.md": "# Adaptive calibration\nPaper project for ../method-code/.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "after_files": {
+          "adaptive-calibration/.gitignore": "/tmp/\n",
+          "adaptive-calibration/manuscript.md": "# Adaptive calibration\n\nExisting author introduction.\n",
+          "adaptive-calibration/README.md": "# Adaptive calibration\nPaper project for ../method-code/.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "actions": [],
+        "changed_files": [],
+        "checks": {
+          "code_files_unchanged": true,
+          "code_git_head_unchanged": true,
+          "code_worktree_clean": true,
+          "no_project_mutations": true
+        },
+        "agent_output": {
+          "id": "project_missing_material",
+          "response": "实验是否使用多个随机种子重复运行过？若是，请提供种子数和逐种子的配对误差下降，或能够支持稳定性判断的不确定性估计及其计算方法。仅凭均值下降 0.037，无法证明种子间稳定性。",
+          "changed_files": [],
+          "notes": "暂停该 Results 段落，等待作者提供证据；未读取或修改文件。"
+        }
+      },
+      {
+        "id": "project_shareable_artifacts",
+        "input": "开始 adaptive-calibration 论文并保存一个可单独分享的 Markdown 稿件。当前在代码仓库 src/。只使用我指定的 exports/final.svg 和 exports/references.bib；两者需要随论文一起保存。写入 manuscript.md 的已知结果：误差从 0.128 降到 0.091，延迟从 12 增到 16 ms/image。引用我提供的虚构文献键 example2025；链接正式图表和文献文件。",
+        "before_files": {
+          "method-code/README.md": "# Method code\n",
+          "method-code/exports/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"260\" height=\"70\"><text x=\"10\" y=\"35\">Error: 0.128 to 0.091</text></svg>\n",
+          "method-code/exports/references.bib": "@article{example2025, author={Example, A.}, title={Synthetic calibration study}, journal={Fictional Journal}, year={2025}}\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n"
+        },
+        "after_files": {
+          "adaptive-calibration/.gitignore": "# Temporary work and build intermediates; keep final PDFs and images tracked.\n/tmp/\n*.aux\n*.log\n*.out\n*.toc\n*.lof\n*.lot\n*.fls\n*.fdb_latexmk\n*.synctex.gz\n*.blg\n*.bcf\n*.run.xml\n",
+          "adaptive-calibration/manuscript.md": "---\ntitle: Adaptive Calibration\nbibliography: exports/references.bib\n---\n\n# Adaptive Calibration\n\n## Results\n\nError decreased from 0.128 to 0.091, a 28.9% reduction (Figure 1) [@example2025]. This improvement came with higher latency, which increased from 12 to 16 ms/image.\n\n![Figure 1. Error decreased from 0.128 to 0.091.](exports/final.svg)\n\n[Figure 1 (SVG)](exports/final.svg)\n\n## References\n\n[@example2025] Example, A. (2025). *Synthetic calibration study*. *Fictional Journal*. (Author-supplied fictional reference.)\n\n[Bibliography (BibTeX)](exports/references.bib)\n",
+          "adaptive-calibration/README.md": "# adaptive-calibration\n\nIndependent paper project. Maintain the manuscript, bibliography, and final figures and tables here, adding files as needed and following the manuscript's existing format.\n\nRelated code: [code repository](../method-code/). This link is informational; the paper's reading and build inputs belong in this repository.\n\nKeep temporary work in `tmp/`. Track final figure PDFs and images alongside the manuscript and references so collaborators can use the paper without the code checkout.\n",
+          "method-code/README.md": "# Method code\n",
+          "method-code/exports/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"260\" height=\"70\"><text x=\"10\" y=\"35\">Error: 0.128 to 0.091</text></svg>\n",
+          "method-code/exports/references.bib": "@article{example2025, author={Example, A.}, title={Synthetic calibration study}, journal={Fictional Journal}, year={2025}}\n",
+          "method-code/src/implementation.py": "# implementation not supplied as drafting material\nraise RuntimeError(\"not a writing input\")\n",
+          "adaptive-calibration/exports/final.svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"260\" height=\"70\"><text x=\"10\" y=\"35\">Error: 0.128 to 0.091</text></svg>\n",
+          "adaptive-calibration/exports/references.bib": "@article{example2025, author={Example, A.}, title={Synthetic calibration study}, journal={Fictional Journal}, year={2025}}\n"
+        },
+        "actions": [
+          {
+            "action": "git",
+            "args": [
+              "method-code/src",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/method-code\n"
+          },
+          {
+            "action": "list",
+            "args": [
+              "."
+            ],
+            "output": "method-code/"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/README.md"
+            ],
+            "output": "# Method code\n"
+          },
+          {
+            "action": "init",
+            "args": [
+              "adaptive-calibration",
+              "method-code/src"
+            ],
+            "returncode": 0,
+            "output": "Initialized independent paper repository: $CASE\\adaptive-calibration\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/exports/final.svg"
+            ],
+            "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"260\" height=\"70\"><text x=\"10\" y=\"35\">Error: 0.128 to 0.091</text></svg>\n"
+          },
+          {
+            "action": "read",
+            "args": [
+              "method-code/exports/references.bib"
+            ],
+            "output": "@article{example2025, author={Example, A.}, title={Synthetic calibration study}, journal={Fictional Journal}, year={2025}}\n"
+          },
+          {
+            "action": "copy",
+            "args": [
+              "method-code/exports/final.svg",
+              "adaptive-calibration/exports/final.svg"
+            ],
+            "output": "copied method-code/exports/final.svg to adaptive-calibration/exports/final.svg"
+          },
+          {
+            "action": "copy",
+            "args": [
+              "method-code/exports/references.bib",
+              "adaptive-calibration/exports/references.bib"
+            ],
+            "output": "copied method-code/exports/references.bib to adaptive-calibration/exports/references.bib"
+          },
+          {
+            "action": "write",
+            "args": [
+              "adaptive-calibration/manuscript.md"
+            ],
+            "output": "---\ntitle: Adaptive Calibration\nbibliography: exports/references.bib\n---\n\n# Adaptive Calibration\n\n## Results\n\nError decreased from 0.128 to 0.091, a 28.9% reduction (Figure 1) [@example2025]. This improvement came with higher latency, which increased from 12 to 16 ms/image.\n\n![Figure 1. Error decreased from 0.128 to 0.091.](exports/final.svg)\n\n[Figure 1 (SVG)](exports/final.svg)\n\n## References\n\n[@example2025] Example, A. (2025). *Synthetic calibration study*. *Fictional Journal*. (Author-supplied fictional reference.)\n\n[Bibliography (BibTeX)](exports/references.bib)\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "rev-parse",
+              "--show-toplevel"
+            ],
+            "returncode": 0,
+            "output": "$CASE/adaptive-calibration\n"
+          },
+          {
+            "action": "git",
+            "args": [
+              "adaptive-calibration",
+              "status",
+              "--short",
+              "--untracked-files=all"
+            ],
+            "returncode": 0,
+            "output": "?? .gitignore\n?? README.md\n?? exports/final.svg\n?? exports/references.bib\n?? manuscript.md\n"
+          }
+        ],
+        "changed_files": [
+          "adaptive-calibration/.gitignore",
+          "adaptive-calibration/README.md",
+          "adaptive-calibration/exports/final.svg",
+          "adaptive-calibration/exports/references.bib",
+          "adaptive-calibration/manuscript.md"
+        ],
+        "checks": {
+          "code_files_unchanged": true,
+          "code_git_head_unchanged": true,
+          "code_worktree_clean": true,
+          "independent_paper_git": true,
+          "no_automatic_commit_or_remote": true
+        },
+        "agent_output": {
+          "id": "project_shareable_artifacts",
+          "response": "已创建独立论文仓库并保存 Markdown 稿件，引用 example2025，附带指定图表和文献文件及其相对链接。",
+          "changed_files": [
+            "$CASE/adaptive-calibration/README.md",
+            "$CASE/adaptive-calibration/.gitignore",
+            "$CASE/adaptive-calibration/manuscript.md",
+            "$CASE/adaptive-calibration/exports/final.svg",
+            "$CASE/adaptive-calibration/exports/references.bib"
+          ],
+          "notes": [
+            "分享时请一并提供 manuscript.md 和 exports 文件夹；无需代码仓库。",
+            "图表与文献文件可被 Git 跟踪；未创建提交。"
+          ]
+        }
+      },
+      {
+        "id": "uncertainty_not_needed",
+        "input": "Write a concise English Results paragraph from the author's supplied extract: across three evaluated test sets, mean error fell from 0.128 to 0.091, and latency increased from 12 to 16 ms/image. Repeated-run estimates are not included in the handoff. Report the observed error-latency comparison.",
+        "agent_output": {
+          "id": "uncertainty_not_needed",
+          "response": "Across the three evaluated test sets, mean error decreased from 0.128 to 0.091, a reduction of 0.037, while latency increased from 12 to 16 ms/image.",
+          "changed_files": [],
+          "notes": "Preserved the observed error–latency tradeoff."
+        },
+        "actions": []
+      },
+      {
+        "id": "unknown_internal_mapping",
+        "input": "Write an English Methods paragraph explaining the role of XG_STAGE_17. The only supplied note is 'XG_STAGE_17 enabled in config/train.yaml; output assigned to tmp_kv2; run qa_104 on branch exp/zeta'. No scientific definition of XG_STAGE_17 or tmp_kv2 is available.",
+        "agent_output": {
+          "id": "unknown_internal_mapping",
+          "response": "What scientific operation does XG_STAGE_17 perform, what are its inputs and outputs, and what does tmp_kv2 represent? Please explain how this operation contributes to the method.",
+          "changed_files": [],
+          "notes": "Paused the Methods paragraph pending scientific definitions."
+        },
+        "actions": []
+      },
+      {
+        "id": "defensive_revision_regression",
+        "input": "Revise these two sentences into concise English manuscript prose. Keep the quantities and interpretation: On both evaluated datasets, the method reduced error by 0.03. However, this does not mean that it is better on all possible datasets. On the third dataset, the estimated reduction was 0.002 with a 95% confidence interval from -0.003 to 0.007, so improvement was not established.",
+        "agent_output": {
+          "id": "defensive_revision_regression",
+          "response": "The method reduced error by 0.03 on each of the first two evaluated datasets. On the third dataset, the estimated reduction was 0.002 (95% confidence interval: −0.003 to 0.007), so improvement was not established.",
+          "changed_files": [],
+          "notes": "Removed the universal-superiority disclaimer while preserving the uncertainty and interpretation."
+        },
+        "actions": []
+      },
+      {
+        "id": "venue_priority_selection",
+        "input": "Using only these fictional candidate records, choose a compact reading set for an article on label-assisted calibration under shift, ordered by where to start reading; briefly give each paper's role. Atlas main track and Beacon Journal are leading outlets in this field; Cedar Symposium is a specialist venue. All official records described here are verified. A: Atlas main-track study, directly matches label-assisted calibration under shift, controlled comparisons using the same label budget. B: Beacon Journal study of database indexing, shares the word calibration but no ML experiments. C: Cedar Symposium study closely matching the setting with a useful contrary result. D: arXiv preprint introducing the earliest overlapping method, no formal version found. E: Atlas-hosted workshop overview, reuses A's results and offers no new comparison. F: heavily cited anonymous search-engine summary claiming universal superiority; no primary source is identifiable. Do not browse; these are synthetic records.",
+        "agent_output": {
+          "id": "venue_priority_selection",
+          "response": "1. A — Atlas main track. Start with the directly matching study; its controlled comparisons at the same label budget anchor the article’s comparison of label-assisted calibration under shift.\n2. C — Cedar Symposium, specialist venue. Read for the closely matched contrary result, which should inform the scope of performance claims. Its direct relevance justifies inclusion.\n3. D — arXiv preprint; no formal version found. Read the earliest overlapping method to establish prior overlap and distinguish the proposed contribution. Its historical and methodological relevance justifies inclusion.",
+          "changed_files": [],
+          "notes": "Exclude B because it is unrelated, E because the workshop overview adds no comparison beyond A, and F because its claim has no identifiable primary source. Used only the supplied synthetic records."
+        },
+        "actions": []
+      }
+    ],
+    "sharing_check": {
+      "manuscript_links_resolve_in_standalone_copy": true,
+      "linked_files": [
+        "exports/final.svg",
+        "exports/final.svg",
+        "exports/references.bib"
+      ],
+      "figure_and_bibliography_trackable": true,
+      "no_code_symlinks": true
+    }
+  },
+  "independent_judgment": {
+    "cases": [
+      {
+        "id": "project_new_from_subdirectory",
+        "verdict": "pass",
+        "reason": "Created an independent sibling paper repository from the code subdirectory without changing the code repository. The Results paragraph preserves the error–latency comparison, calculates the 28.9% reduction correctly, and makes no unsupported uncertainty claims.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "project_reuse_existing",
+        "verdict": "pass",
+        "reason": "Reused the existing paper repository and preserved its introduction. The appended Methods paragraph accurately describes the supplied operations and omits the code-only identifier.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "project_legacy_manuscript",
+        "verdict": "pass",
+        "reason": "Located the existing manuscript and correctly established that it belongs to the code repository. Asking about retaining its location versus migration makes the consequential layout choice explicit without moving or replacing author material.",
+        "material_issues": [],
+        "optional_improvements": [
+          "Read the located draft to ground the continuation; the observed actions establish its location but do not inspect its content."
+        ]
+      },
+      {
+        "id": "project_multiple_candidates",
+        "verdict": "pass",
+        "reason": "Verified two plausible independent paper repositories and asked the author to choose. The supplied evidence does not justify selecting either automatically.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "project_missing_slug",
+        "verdict": "pass",
+        "reason": "Requested the unresolved project identifier without inventing a name or creating an unwanted directory. Correctly distinguished that identifier from a title that can be decided later.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "project_missing_material",
+        "verdict": "pass",
+        "reason": "Correctly declined to infer stability across seeds from a mean alone. Asked whether repetitions occurred and requested paired results or suitable uncertainty estimates and their calculation method.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "project_shareable_artifacts",
+        "verdict": "pass",
+        "reason": "Created an independent paper repository, copied the two designated assets unchanged, and supplied resolving relative links and the requested fictional citation. The manuscript reports the supplied quantities accurately, and the response explains which files to share together.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "uncertainty_not_needed",
+        "verdict": "pass",
+        "reason": "Concisely reports the observed comparison and the correct absolute reduction of 0.037. Missing repeated-run estimates do not prevent this descriptive statement or require a clarification.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "unknown_internal_mapping",
+        "verdict": "pass",
+        "reason": "Requested the scientific operation, inputs, outputs, and role rather than inventing a method from configuration names and execution metadata.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "defensive_revision_regression",
+        "verdict": "pass",
+        "reason": "Preserved all quantities, the confidence interval, and the conclusion that improvement was not established on the third dataset. Explicit dataset scoping retains the limited interpretation without the redundant universal-superiority disclaimer.",
+        "material_issues": [],
+        "optional_improvements": []
+      },
+      {
+        "id": "venue_priority_selection",
+        "verdict": "pass",
+        "reason": "Selected a compact, defensible reading order: the directly relevant controlled study, the relevant contrary result, and the earliest overlapping method. Excluded unrelated, redundant, and untraceable material using only the supplied records.",
+        "material_issues": [],
+        "optional_improvements": []
+      }
+    ],
+    "overall": "pass",
+    "limitations": [
+      "Assessment relies exclusively on the supplied tasks, logs, file contents, responses, and mechanical checks; no independent execution or inspection was performed.",
+      "The observations support fidelity to supplied scientific claims, not validation of the underlying experiments.",
+      "Standalone link resolution and asset trackability are reported, but visual and citation rendering are not demonstrated."
+    ]
+  },
+  "infrastructure_retry": {
+    "issue": "The first action fixture set GIT_CEILING_DIRECTORIES to the directory being probed. Git continued discovering the enclosing harness repository, so the initializer correctly rejected two new destinations.",
+    "resolution": "Move the ceiling above the case root. The two affected cases were rerun in a new independent context; no production behavior was weakened. Existing-project reuse and choice cases were unaffected.",
+    "excluded_first_attempts": {
+      "project_new_from_subdirectory": [
+        {
+          "action": "git",
+          "args": [
+            "method-code/src",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "returncode": 0,
+          "output": "$EVAL/project_new_from_subdirectory/method-code\n"
+        },
+        {
+          "action": "list",
+          "args": [
+            "."
+          ],
+          "output": "method-code/"
+        },
+        {
+          "action": "list",
+          "args": [
+            "method-code"
+          ],
+          "output": ".git/\nREADME.md\nsrc/"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/README.md"
+          ],
+          "output": "# Method code\n"
+        },
+        {
+          "action": "init",
+          "args": [
+            "adaptive-calibration",
+            "method-code/src"
+          ],
+          "returncode": 2,
+          "output": "usage: init_paper_project.py [-h] --code-root CODE_ROOT paper_dir\ninit_paper_project.py: error: paper path belongs to another repository (D:\\Code\\prompt\\academic-research-harness); ask the author: $EVAL\\project_new_from_subdirectory\\adaptive-calibration\n"
+        },
+        {
+          "action": "list",
+          "args": [
+            "."
+          ],
+          "output": "method-code/"
+        }
+      ],
+      "project_shareable_artifacts": [
+        {
+          "action": "git",
+          "args": [
+            "method-code/src",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "returncode": 0,
+          "output": "$EVAL/project_shareable_artifacts/method-code\n"
+        },
+        {
+          "action": "list",
+          "args": [
+            "."
+          ],
+          "output": "method-code/"
+        },
+        {
+          "action": "list",
+          "args": [
+            "method-code"
+          ],
+          "output": ".git/\nexports/\nREADME.md\nsrc/"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/README.md"
+          ],
+          "output": "# Method code\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/exports/references.bib"
+          ],
+          "output": "@article{example2025, author={Example, A.}, title={Synthetic calibration study}, journal={Fictional Journal}, year={2025}}\n"
+        },
+        {
+          "action": "read",
+          "args": [
+            "method-code/exports/final.svg"
+          ],
+          "output": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"260\" height=\"70\"><text x=\"10\" y=\"35\">Error: 0.128 to 0.091</text></svg>\n"
+        },
+        {
+          "action": "init",
+          "args": [
+            "adaptive-calibration",
+            "method-code/src"
+          ],
+          "returncode": 2,
+          "output": "usage: init_paper_project.py [-h] --code-root CODE_ROOT paper_dir\ninit_paper_project.py: error: paper path belongs to another repository (D:\\Code\\prompt\\academic-research-harness); ask the author: $EVAL\\project_shareable_artifacts\\adaptive-calibration\n"
+        },
+        {
+          "action": "list",
+          "args": [
+            "."
+          ],
+          "output": "method-code/"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Targeted behavioral acceptance and regression checks, not a controlled proof that writing quality improves over a no-brief baseline.",
+    "The evaluation-only action bridge observes permitted tool operations; it does not instrument unrestricted production tools or deployed skill routing.",
+    "Paper sharing checked a Markdown manuscript with supplied SVG and BibTeX. No LaTeX compilation, publication, remote hosting or collaborator access was tested.",
+    "Literature regression used synthetic records. The previous live retrieval evaluation remains in the archived 0.11.0 report; it was not rerun because literature guidance was unchanged."
+  ],
+  "history": [
+    "history/0.11.0.json"
+  ]
+}

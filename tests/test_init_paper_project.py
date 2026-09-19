@@ -303,6 +303,7 @@ class InitPaperProjectTests(unittest.TestCase):
         self.assertNotIn(self.fixture.as_posix(), normalized)
         links = re.findall(r"\[[^\]]*\]\(\s*<?([^\n)>]+)>?\s*\)", readme)
         destinations = [urlsplit(unquote(link.strip())) for link in links]
+        self.assertEqual(len(destinations), 1, "without designated documents, only the real code link is generated")
         self.assertTrue(
             any(
                 not link.scheme and not link.netloc and not Path(link.path).is_absolute()
@@ -311,6 +312,33 @@ class InitPaperProjectTests(unittest.TestCase):
             ),
             "README needs a relative Markdown link to the actual code repository",
         )
+
+    def test_existing_readme_does_not_require_a_new_relative_code_link(self) -> None:
+        paper = self.projects / "existing-readme"
+        paper.mkdir()
+        readme = paper / "README.md"
+        readme.write_bytes(b"# Author README\nKeep existing accessible material links.\n")
+        original = readme.read_bytes()
+        module = runpy.run_path(str(INITIALIZER))
+        with (
+            mock.patch.dict(os.environ, self.env, clear=True),
+            mock.patch("os.path.relpath", side_effect=ValueError("different volumes")) as relative,
+        ):
+            module["initialize_project"](str(paper), str(self.code))
+        relative.assert_not_called()
+        self.assertEqual(readme.read_bytes(), original)
+        self.assert_independent_repo(paper)
+
+    def test_unrepresentable_readme_link_fails_before_creating_project(self) -> None:
+        paper = self.projects / "unrepresentable-link"
+        module = runpy.run_path(str(INITIALIZER))
+        with (
+            mock.patch.dict(os.environ, self.env, clear=True),
+            mock.patch("os.path.relpath", side_effect=ValueError("different volumes")),
+            self.assertRaisesRegex(ValueError, "README-relative.*volumes"),
+        ):
+            module["initialize_project"](str(paper), str(self.code))
+        self.assertFalse(paper.exists())
 
     def test_copy_outside_sibling_layout_keeps_manuscript_bibliography_and_figure(self) -> None:
         paper = self.projects / "shareable-paper"
