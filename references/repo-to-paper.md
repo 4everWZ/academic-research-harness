@@ -1,6 +1,6 @@
 # From a Method Spec to Paper Text
 
-For drafting, use documents first. If the spec supports the passage, write without checking code.
+Use this guide only when a supplied spec or author-designated implementation is relevant. A manuscript need not have either. If the manuscript or supplied description supports the passage, write directly.
 
 ## Read the spec
 
@@ -17,10 +17,10 @@ Use equivalent sections in other layouts; missing headings do not imply missing 
 
 ## Resolve a method question
 
-When algorithm details, operation order or parameter meaning are unclear, follow the spec's implementation link or named entry point without asking for separate permission. Such pointers may appear in any relevant section; the format does not require them. An explicit request to extract or check a method from code also uses this guide.
+When a necessary method detail is unclear, ask the author for its meaning or the material to use. Inspect code when the author requests it, designates an implementation as the source for that question, or has already authorized this use. That instruction remains valid; do not ask again. An incidental implementation link in a document does not itself trigger inspection. Code held by a collaborator is not a prerequisite: a sufficient explanation can resolve the question.
 
-Read the referenced operation and only the directly relevant helper, caller or definition needed to answer the method question. Stop when it is resolved. If there is no usable implementation pointer, or the narrow lookup leaves the meaning unclear, ask the author rather than expanding into a repository survey. If spec and code disagree about the method, ask which applies instead of silently choosing one.
+Read the referenced operation and only helpers, callers or definitions needed to resolve the question; then stop. If the entry point is unknown or the meaning remains unclear, ask instead of surveying the repository. If spec and code disagree, ask which method applies.
 
-Code can explain what an operation or parameter means; it cannot establish which settings were actually run, which results were observed, or whether uncertainty was measured. A default value is not an experimental setting. If the requested passage needs missing results, actual run settings or uncertainty estimates, ask the author for those facts or relevant records. Do not reconstruct execution from source or run experiments to fill the gap. Missing estimates do not mean they were never measured.
+Code explains operations and parameters, not observed results, actual run settings or whether uncertainty was measured. Defaults are not execution evidence. Ask for necessary missing facts or records; do not reconstruct execution from source or run experiments to fill gaps. Missing estimates do not mean they were never measured.
 
-Express the resolved method as scientific objects, operations, equations or an algorithm block. Keep variable aliases, paths, debugging steps and other implementation metadata out of the manuscript, following [writing-style.md](writing-style.md). A source lookup should end in usable paper text or a specific author question, not a code report.
+Express the method as scientific prose, equations or an algorithm, following [writing-style.md](writing-style.md). End with usable paper text or a specific author question, never a code report.

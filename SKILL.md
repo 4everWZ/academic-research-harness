@@ -1,28 +1,28 @@
 ---
 name: academic-research-harness
-description: "Use when explicitly requested to develop a paper from existing results, shape its argument, revise defensive prose, or support that writing with literature, source checks, or paper workspace tools."
+description: "Use when explicitly requested to write or revise an academic manuscript, shape its argument, revise defensive prose, or support that writing with literature, source checks, or paper workspace tools."
 ---
 
 # Academic Research Harness
 
-Develop the paper's argument from existing research results and express it as manuscript prose.
+Develop the paper's argument from the author's manuscript and research materials.
 
-Use designated documents and README materials first. Write when sufficient. Use their implementation pointers only for unresolved algorithm details, operation order or parameter meaning needed by the passage; stop when resolved. Ask for necessary missing results, actual run settings or uncertainty estimates; source code cannot establish experimental facts.
+Work in the selected paper workspace. Read the requested passage and only the context needed to write it. Use optional material links when the task needs them; do not scan the workspace or seek a code repository by default. Writing requires no spec, README or Git setup.
 
-Keep questions and work notes outside the manuscript. Express scientific meaning, excluding code variables, internal labels, paths, run identifiers and workflow metadata. Ask if a necessary meaning remains unresolved.
+Write when materials suffice. Ask about necessary missing facts, conflicting sources or unclear research meaning, then follow the author's answer. Inspect implementation only when requested or already designated by the author for that purpose; stop when the method question is resolved. Code cannot establish experimental results or actual run settings.
 
-For project writing, use a sibling `<paper_slug>/` with independent Git and migrate identified legacy manuscripts there. On entry or resume, use the README's material links, reusing their mapping when already in context. Register new project materials unless designated one-time. Even small manuscript edits follow the project guide; unrelated tasks need no setup.
+Produce manuscript argument and prose, never an experiment log, implementation audit or material-gap report. Keep author questions and work notes outside the paper. Exclude internal code labels, paths and workflow metadata; preserve scientific meaning and real uncertainty.
 
 ## Load for the writing task
 
 | Intent | Load |
 |---|---|
-| Start, resume or migrate a paper; maintain its material links | [paper-project.md](references/paper-project.md), then the relevant writing guide |
+| Establish unclear material scope, maintain material links, or create or organize a project | [paper-project.md](references/paper-project.md) |
 | Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |
 | Revise prose with the argument established | [writing-style.md](references/writing-style.md) |
 | Find literature from leading relevant venues; position contributions or refine ideas | [literature.md](references/literature.md) |
 | Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |
-| Read a method spec or clarify its implementation | [repo-to-paper.md](references/repo-to-paper.md) |
+| Use a method spec or author-designated implementation | [repo-to-paper.md](references/repo-to-paper.md) |
 | Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |
 
 Load extra references only for a concrete need. Numerical results alone do not require an audit.

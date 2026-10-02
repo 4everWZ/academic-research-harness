@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Initialize an already selected paper directory independently of its code repo."""
+"""Initialize an explicitly selected, independent paper project."""
 from __future__ import annotations
 
 import argparse
 import os
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 from urllib.parse import quote
 
@@ -90,41 +91,51 @@ def check_independent_repository(paper: Path) -> None:
         raise ProjectError(f"paper repository is a submodule: {paper}")
 
 
-def readme_text(paper: Path, code: Path) -> str:
-    try:
-        relative_code = Path(os.path.relpath(code, paper)).as_posix()
-    except ValueError as exc:
-        raise ProjectError(
-            "Cannot create a README-relative code link across filesystem volumes; "
-            "choose a sibling paper location or provide an existing README with accessible material links"
-        ) from exc
-    return (
+def readme_text(paper: Path, code: Path | None = None, *, notices: list[str] | None = None) -> str:
+    text = (
         f"# {paper.name}\n\n"
         "Independent paper project. Maintain the manuscript, bibliography, and final figures "
         "and tables here, adding files as needed and following the manuscript's existing format.\n\n"
         "Keep temporary work in `tmp/`. Track final figure PDFs and images alongside the "
-        "manuscript and references so collaborators can use the paper without the code checkout.\n\n"
-        "## Research materials\n\n"
-        f"Code project: [code repository]({quote(relative_code, safe='/.-_~')}/)\n"
+        "manuscript and references to keep the paper self-contained.\n"
     )
+    if code is not None:
+        try:
+            relative_code = Path(os.path.relpath(code, paper)).as_posix()
+        except ValueError:
+            if notices is not None:
+                notices.append(
+                    "Optional code-project link omitted from the new README: "
+                    "a relative path between the paper and code repository is unavailable "
+                    "(for example, across filesystem volumes)."
+                )
+            return text
+        text += (
+            "\n## Research materials\n\n"
+            f"Optional code project: [code repository]({quote(relative_code, safe='/.-_~')}/)\n"
+        )
+    return text
 
 
-def initialize_project(destination: str, code_location: str) -> tuple[Path, bool]:
+def initialize_project(destination: str, code_location: str | None = None) -> tuple[Path, bool]:
     if shutil.which("git") is None:
         raise ProjectError("Git is required; no project files were created")
-    code_input = Path(code_location).absolute()
-    reject_links(code_input)
-    if not code_input.is_dir():
-        raise ProjectError(f"code location is not a directory: {code_input}")
-    code = repository_root(code_input)
-    if code is None:
-        raise ProjectError(f"code location is not in a Git working tree: {code_input}")
-    reject_links(code)
+    code = None
+    if code_location is not None:
+        code_input = Path(code_location).absolute()
+        reject_links(code_input)
+        if not code_input.is_dir():
+            raise ProjectError(f"code location is not a directory: {code_input}")
+        code = repository_root(code_input)
+        if code is None:
+            raise ProjectError(f"code location is not in a Git working tree: {code_input}")
+        reject_links(code)
     requested = Path(destination)
-    candidate = requested if requested.is_absolute() else code.parent / requested
+    base = code.parent if code is not None else Path.cwd()
+    candidate = requested if requested.is_absolute() else base / requested
     reject_links(candidate)
     paper = candidate.resolve()
-    if paper.is_relative_to(code) or code.is_relative_to(paper):
+    if code is not None and (paper.is_relative_to(code) or code.is_relative_to(paper)):
         raise ProjectError(f"paper must be outside, and not contain, the code repository: {paper}")
     if paper.exists() and not paper.is_dir():
         raise ProjectError(f"paper path is not a directory: {paper}")
@@ -143,13 +154,15 @@ def initialize_project(destination: str, code_location: str) -> tuple[Path, bool
         raise ProjectError(f"unresolved Git metadata at {paper / '.git'}; ask the author")
 
     artifacts = {"README.md": None, ".gitignore": GITIGNORE}
+    notices: list[str] = []
+    readme_created = False
     for name in artifacts:
         target = paper / name
         reject_links(target)
         if target.exists() and not target.is_file():
             raise ProjectError(f"project artifact is not a file: {target}")
     if not (paper / "README.md").exists():
-        artifacts["README.md"] = readme_text(paper, code)
+        artifacts["README.md"] = readme_text(paper, code, notices=notices)
 
     try:
         paper.mkdir(exist_ok=True)
@@ -167,6 +180,8 @@ def initialize_project(destination: str, code_location: str) -> tuple[Path, bool
             try:
                 with target.open("x", encoding="utf-8", newline="\n") as stream:
                     stream.write(content)
+                if name == "README.md":
+                    readme_created = True
             except FileExistsError:
                 if not target.is_file():
                     raise ProjectError(f"project artifact became invalid: {target}")
@@ -176,13 +191,19 @@ def initialize_project(destination: str, code_location: str) -> tuple[Path, bool
             f"{exc}\nInitialization incomplete at {paper}; retained project entries: "
             f"{present or '(none)'}. Existing contents were not overwritten or removed."
         ) from exc
+    if readme_created:
+        for notice in notices:
+            print(notice, file=sys.stderr)
     return paper, owner == paper
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("paper_dir", help="Selected paper slug relative to the code root's parent, or an absolute path")
-    parser.add_argument("--code-root", required=True, help="Code repository root or one of its subdirectories")
+    parser.add_argument(
+        "paper_dir",
+        help="Selected paper path relative to the current directory (the code root's parent with --code-root), or an absolute path",
+    )
+    parser.add_argument("--code-root", help="Optional code repository root or one of its subdirectories")
     args = parser.parse_args()
     try:
         paper, reused = initialize_project(args.paper_dir, args.code_root)

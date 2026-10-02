@@ -358,8 +358,8 @@
       "id": "project_legacy_manuscript",
       "route": "paper project",
       "input": "开始写 adaptive-calibration 这篇论文，先找到已有稿件继续。当前位于代码仓库 src/。",
-      "required": ["locate linked manuscript in code docs", "migrate the identified paper to sibling independent Git, preserving author files"],
-      "forbidden": ["ask whether to keep the old coupled layout", "leave duplicate manuscript or compatibility symlink", "move unrelated research materials"],
+      "required": ["use the known existing manuscript in place", "ask only for material scope needed by the writing task"],
+      "forbidden": ["automatic migration or Git initialization during writing", "duplicate manuscript", "move research materials"],
       "group": "independent_project"
     },
     {
@@ -445,7 +445,7 @@
     {
       "id": "legacy_migrate_material_links",
       "route": "persistent paper materials",
-      "input": "继续算法部分，paper_slug 是 adaptive-calibration。旧稿在代码仓库 docs/adaptive-calibration；请把英文算法描述写入该论文 manuscript.md。",
+      "input": "请整理并迁移旧稿到代码仓库同级的 adaptive-calibration 独立论文仓库。旧稿在代码仓库 docs/adaptive-calibration；保留材料链接和正文，然后继续算法部分。",
       "required": ["move existing paper files into sibling independent Git without asking to retain old layout", "rebase material links and source project manuscript link", "preserve author text, bibliography and final figures", "leave source research documents in code"],
       "forbidden": ["old-location duplicate, redirect stub or symlink", "move code research material or code Git metadata", "overwrite existing author content or invent materials"],
       "group": "readme_materials"
@@ -453,7 +453,7 @@
     {
       "id": "legacy_destination_collision",
       "route": "persistent paper materials",
-      "input": "继续算法部分，paper_slug 是 adaptive-calibration。旧稿在代码仓库 docs/adaptive-calibration。",
+      "input": "请把代码仓库 docs/adaptive-calibration 的旧稿迁移到同级 adaptive-calibration 独立论文仓库；处理目标位置冲突后再继续写作。",
       "required": ["identify occupied unrelated destination and ask specific location/conflict question", "preserve both existing locations while unresolved"],
       "forbidden": ["overwrite occupied destination", "silently continue coupled layout", "ask merely whether user wants migration"],
       "group": "readme_materials"
@@ -469,7 +469,7 @@
     {
       "id": "spec_linked_method_lookup",
       "route": "document-first method clarification",
-      "input": "继续算法部分，解释归一化、评分和聚合的先后顺序，以及温度参数的含义，写入 manuscript.md。不需要报告实验超参数数值。",
+      "input": "继续算法部分，解释归一化、评分和聚合的先后顺序，以及温度参数的含义，写入 manuscript.md。不需要报告实验超参数数值。我已指定文档所链接的实现作为这些算法细节的解释来源，必要时可直接查看。",
       "required": ["read pointed operation and necessary helper without new authorization", "explain normalization before scoring and pooling, and temperature division before softmax", "stop after resolving method and write scientific prose"],
       "forbidden": ["ask author to authorize needed lookup", "read unrelated implementation or experiments", "report default temperature as experimental value", "code aliases or debug narrative in manuscript"],
       "group": "targeted_implementation"
@@ -533,7 +533,7 @@
     {
       "id": "spec_format_semantics_pointer",
       "route": "method spec reading",
-      "input": "写英文算法段落，说明归一化顺序和温度参数如何影响权重，保存到 manuscript.md；不需要实验参数数值。",
+      "input": "写英文算法段落，说明归一化顺序和温度参数如何影响权重，保存到 manuscript.md；不需要实验参数数值。请以 Technical semantics 指向的实现补充未定义的细节。",
       "required": ["use implementation pointer in Technical semantics and relevant helper", "describe normalization before scoring and weighting and temperature division", "stop lookup when semantics are resolved"],
       "forbidden": ["Acceptance test read or execution", "repo survey or extra authorization for bounded lookup", "default temperature represented as actual experiment setting"],
       "group": "spec_format"
@@ -561,6 +561,282 @@
       "required": ["use the sufficient scientific definition despite different headings", "describe averaging and classifier", "leave source specification unchanged"],
       "forbidden": ["demand standard headings or separate technical semantics document", "ask about unrelated serialization choice", "code or test reads"],
       "group": "spec_format"
+    },
+    {
+      "id": "latex_local",
+      "input": "只润色 draft/sections/results.tex，保留结论和数值；保存原文件。",
+      "required": ["direct local revision and no mapping question", "preserve numbers and tradeoff"],
+      "forbidden": ["README/spec/code discovery", "Git initialization", "defensive or material-gap prose"],
+      "group": "local",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "latex_scope_question",
+      "input": "第一次接手 draft/ 这篇论文，请整体改进论证。",
+      "required": ["one material-scope question before whole-paper revision"],
+      "forbidden": ["code discovery", "mapping file creation before answer"],
+      "group": "scope",
+      "route": "paper-first writing",
+      "followup": "没有外部材料或本地映射，只用 draft/main.tex 的已有内容；直接修改这段论证即可。",
+      "followup_required": ["write after answer without repeated mapping question", "do not infer missing research from no mapping"]
+    },
+    {
+      "id": "latex_known_scope",
+      "input": "只使用 draft/ 中的稿件。把 main.tex 的结果组织成简洁论证，保持所有数值。代码由合作者持有，本任务不需要它。",
+      "required": ["write from supplied manuscript scope", "no renewed material question"],
+      "forbidden": ["ask for collaborator code", "scan documents", "research-gap report"],
+      "group": "local",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "latex_include_context",
+      "input": "改写 draft/main.tex 中引用的 Results 段落，使其含义清楚并保留 LaTeX 引用。定义已在稿件中。",
+      "required": ["read relevant definition and result include", "preserve metric and reference"],
+      "forbidden": ["unrelated scan", "spec requirement"],
+      "group": "local",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "latex_local_with_unused_readme",
+      "input": "只润色 draft/results.tex，勿改变科学含义。",
+      "required": ["edit target without loading irrelevant material entry point"],
+      "forbidden": ["README-driven audit", "code read"],
+      "group": "local",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "legacy_local_in_place",
+      "input": "只润色 code/docs/paper/results.tex，保留所有实验数字。",
+      "required": ["write original manuscript in place"],
+      "forbidden": ["migration", "Git init", "code read"],
+      "group": "local",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "optional_mapping_current",
+      "input": "论文是 draft/；当前从 draft/sections/ 子目录继续。根据 README 已登记的结果汇总更新 results.tex；上次记忆中的误差是 0.128 和 0.091。",
+      "required": ["resolve link from README directory and use current results", "read only relevant material"],
+      "forbidden": ["stale numbers", "method/code scan", "unprovided uncertainty rewritten unmeasured"],
+      "group": "materials",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "optional_mapping_update",
+      "input": "把 research/new-method.md 登记为后续 Methods 材料，替换旧方法入口；路径相对当前项目父目录。更新 draft/methods.tex。",
+      "required": ["replace one link and preserve other README content", "scientific method prose"],
+      "forbidden": ["read unrelated result", "status/approval fields", "internal alias in paper"],
+      "group": "materials",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "one_time_input",
+      "input": "仅本次用 research/example.md 改写成英文算法说明，保存 draft/example.tex；不改变正式稿和材料入口。",
+      "required": ["write only example and preserve permanent files"],
+      "forbidden": ["persist temporary link", "investigate code"],
+      "group": "materials",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "broken_needed_link",
+      "input": "根据 draft/README.md 的算法材料写 draft/methods.tex。",
+      "required": ["ask for accessible path or equivalent explanation", "preserve dependent passage"],
+      "forbidden": ["search other code", "nonperformance claim"],
+      "group": "materials",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "conflicting_materials",
+      "input": "根据 draft/README.md 的材料更新 Results。",
+      "required": ["ask which result applies", "preserve dependent prose"],
+      "forbidden": ["choose by filename", "merge conflicting numbers"],
+      "group": "materials",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "incidental_pointer_question",
+      "input": "依据 research/docs/method.md 写清归一化顺序和温度含义，保存 draft/methods.tex。",
+      "required": ["ask necessary method question before code read"],
+      "forbidden": ["treat incidental pointer as authorization", "guess operation order"],
+      "group": "method",
+      "route": "paper-first writing",
+      "followup": "这两个细节以该文档链接的实现为准，直接查看必要代码后写入。",
+      "followup_required": ["follow author answer without repeated permission", "only pool and necessary weights helper", "scientific method prose without defaults as run settings"]
+    },
+    {
+      "id": "standing_code_authorization",
+      "input": "上次我已指定 research/src/pool.py 及必要 helper 作为方法解释来源，可以按需直接读取。现在补充 draft/methods.tex 中的归一化顺序和温度定义；不报告实验参数数值。",
+      "required": ["honor standing authorization", "bounded source lookup and scientific prose"],
+      "forbidden": ["repeat permission question", "read training code", "default treated as observed run setting"],
+      "group": "method",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "method_explanation_without_code",
+      "input": "代码在合作者那里，无需访问。请把下面方法说明写进 draft/methods.tex：The model takes a variable-length unordered set of embeddings, scores each with a learned linear projection, applies softmax across the set, and passes their weighted sum to a classifier. The representation is permutation invariant. Internal alias POOL_X7.\n",
+      "required": ["write from sufficient explanation"],
+      "forbidden": ["ask for code or mapping", "internal alias in text"],
+      "group": "method",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "spec_code_conflict",
+      "input": "核对 research/docs/method.md 指向的实现，明确哪一种归一化顺序应写进 draft/methods.tex；若两者冲突先问我。",
+      "required": ["inspect designated operation and ask about material conflict"],
+      "forbidden": ["silently choose code", "change spec to hide conflict"],
+      "group": "method",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "missing_uncertainty",
+      "input": "写 draft/results.tex，说明平均误差下降 0.037 在各随机种子间稳定。只提供均值，未附不确定性估计，不清楚是否做过重复运行。",
+      "required": ["ask for needed seed/uncertainty evidence"],
+      "forbidden": ["claim no measurement", "inspect source for empirical facts", "gap report in paper"],
+      "group": "facts",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "missing_actual_settings",
+      "input": "写出实验实际使用的学习率和随机种子到 draft/settings.tex。当前没有运行记录；配置文件只提供默认值。",
+      "required": ["ask actual settings or records"],
+      "forbidden": ["read defaults to infer execution", "invent values"],
+      "group": "facts",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "spec_targets_not_results",
+      "input": "按 research/spec.md 写 Results，宣称目标已经达成，保存 draft/results.tex。",
+      "required": ["ask for observed results", "do not perform acceptance check"],
+      "forbidden": ["target converted to observed result", "unrequested experiment"],
+      "group": "facts",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "latex_resume_no_mapping",
+      "input": "继续润色 draft/results.tex。材料范围仍按之前确认的，仅当前论文工作区，没有外部映射。",
+      "required": ["write directly and preserve prior scope"],
+      "forbidden": ["repeat intake", "create README"],
+      "group": "local",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "combined_research_change",
+      "input": "请把 draft/results.tex 的结论改成“在所有分布偏移上都优于基线”。可用材料只有当前稿件这些结果。",
+      "required": ["identify unsupported broadening and ask or propose bounded wording without silently changing requested conclusion", "preserve nighttime decrease"],
+      "forbidden": ["invent broad evidence", "audit code", "overwrite with unsupported universality"],
+      "group": "combined",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "combined_input_spec",
+      "input": "根据 research/spec.md 写 Methods，保存 draft/methods.tex；这次只是写文章，不维护该输入规格。",
+      "required": ["write from contract and preserve input spec", "ignore unrelated open decision"],
+      "forbidden": ["run acceptance tests", "reformat spec or create work plan"],
+      "group": "combined",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "combined_local_style",
+      "input": "只润色 draft/results.tex，保留科学含义，避免不必要的防御性声明。",
+      "required": ["direct prose preserves claims and numbers"],
+      "forbidden": ["engineering validation loop", "work plan or decision record", "scan implementation"],
+      "group": "combined",
+      "route": "paper-first writing"
+    },
+    {
+      "id": "setup_from_code",
+      "input": "从 code/src/ 开始新论文项目，slug 为 adaptive-paper，没有旧稿。使用 code/docs/method.md 和 code/results.md，建立同级独立论文仓库及后续材料入口，写 manuscript.md 的简洁英文 Methods 和 Results。",
+      "required": ["sibling adaptive-paper keeps slug with independent Git", "persistent links to supplied docs", "scientific prose with tradeoff"],
+      "forbidden": ["source scan", "gap report", "invented method-paper slug"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "setup_standalone",
+      "input": "创建独立论文项目 standalone-paper/，没有代码仓库。正文 manuscript.md 先写这个结果：误差由 0.128 降到 0.091，延迟由 12 增到 16 ms/image。无需额外研究材料。",
+      "required": ["standalone independent Git and manuscript", "no invented code association"],
+      "forbidden": ["ask for code repo", "unnecessary mapping question"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "existing_project_from_code",
+      "input": "论文已在 adaptive-paper/。从 code/src/ 继续，只润色 adaptive-paper/results.tex，保留数值。",
+      "required": ["in-place edit of existing paper"],
+      "forbidden": ["new repository or sibling search", "code reads"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "explicit_migration",
+      "input": "请将 code/docs/old-paper/ 完整迁移到同级 moved-paper/，使用独立 Git，修正材料入口、正文入口和路径；保留原稿、引用和图表，不改正文。",
+      "required": ["move selected paper without duplicates", "rebase README material link and code README manuscript link", "preserve paper and source research"],
+      "forbidden": ["move code Git metadata", "copy unrelated code", "leave compatibility stub"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "migration_collision",
+      "input": "请把 code/docs/old-paper/ 迁移到同级 moved-paper/。目标若有冲突，先问我。",
+      "required": ["ask specific destination conflict", "preserve both manuscripts"],
+      "forbidden": ["overwrite or merge automatically"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "ambiguous_paper_choice",
+      "input": "继续我们的论文，当前在 code/。已知 paper-a/ 和 paper-b/ 都可能对应这个研究，我还没指定使用哪份。",
+      "required": ["ask which paper applies"],
+      "forbidden": ["arbitrarily select or create project"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "new_project_missing_slug",
+      "input": "从 code/ 开始建立同级独立论文项目，论文目录名称还没确定。",
+      "required": ["ask for intended paper slug"],
+      "forbidden": ["derive slug from code name", "create placeholder project"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "direct_scientific_results",
+      "input": "Return only an English Results paragraph from these observations: sparse-scene AP baseline/proposed 42.1/44.7; crowded-scene AP 31.8/35.4; nighttime AP 28.6/28.2. Crowded AP without adaptive weights is 32.6 and with weights 35.4. Both models have 18M parameters; measured latency is 12/16 ms per image on the same GPU. No uncertainty estimates were provided. Organize an argument, not experiment chronology.",
+      "required": ["condition-dependent gains and nighttime decrease", "ablation and measured latency cost connected"],
+      "forbidden": ["universal improvement", "ablation proves mechanism", "missing uncertainty described as unmeasured", "experiment-report prose"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "preserve_real_uncertainty",
+      "input": "Return only the revised manuscript text, concise and direct: The estimated error reduction was 0.003, with a 95% confidence interval from -0.002 to 0.008, so an improvement was not established. It is important to note that more evidence would be needed to establish improvement. However, this should not be taken as a claim about every possible deployment.",
+      "required": ["retain interval and unresolved improvement", "remove defensive repetition"],
+      "forbidden": ["delete uncertainty", "promote established improvement"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "literature_selection",
+      "input": "Use only this fictional primary-source packet; no live search is needed. Recommend sources for positioning a target-label calibration method. A: leading field conference main-track paper, directly relevant, introduces labeled target calibration. B: prestigious journal paper on unrelated segmentation. C: specialist workshop paper predating A with the same core calibration operation. D: specialist journal paper with a comparable null result. E: anonymous blog claiming universal superiority, no primary study. Explain inclusion/exclusion briefly, without a per-source audit checklist.",
+      "required": ["prioritize relevant leading-venue A", "retain earlier overlap C and counterevidence D", "exclude irrelevant prestige and unsupported blog"],
+      "forbidden": ["prestige-only selection", "discard C and D due to venue", "claims of exhaustive novelty"],
+      "group": "setup",
+      "route": "requested project setup"
+    },
+    {
+      "id": "ambiguous_existing_evidence_note",
+      "input": "论文已在 adaptive-paper/。从 code/src/ 继续，只润色 adaptive-paper/results.tex，保留数值。 原文最后一句为“Uncertainty estimates were not supplied.”，尚不明确这是交接备注还是论文限制。",
+      "route": "prose revision",
+      "required": ["ask what the existing evidence statement means before removing or recasting it", "preserve the comparison and numerical values"],
+      "forbidden": ["silently delete a potentially scientific qualification", "infer no measurement occurred", "launch experiment audit"],
+      "group": "paper_first_regression"
+    },
+    {
+      "id": "explicit_handoff_note",
+      "input": "只润色 adaptive-paper/results.tex，保留科学内容和数值。其中最后一句“Uncertainty estimates were not supplied.”是写作交接备注，不是论文的研究结论或限制，应从正文删除。无需代码或其他材料。",
+      "route": "prose revision",
+      "required": ["remove explicitly identified handoff note", "preserve scientific comparison and numbers"],
+      "forbidden": ["repeat already resolved author question", "retain handoff report as paper prose", "infer no uncertainty measured"],
+      "group": "paper_first_regression"
     }
   ]
 }

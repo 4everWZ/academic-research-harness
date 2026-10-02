@@ -1,4 +1,4 @@
 interface:
   display_name: "Academic Research Harness"
   short_description: "Paper arguments from results and direct academic prose"
-  default_prompt: "Use $academic-research-harness to develop the requested paper text from existing results, with a clear argument and direct academic prose."
+  default_prompt: "Use $academic-research-harness to write or revise the requested manuscript from its existing content and supplied research materials, with a clear argument and direct academic prose."

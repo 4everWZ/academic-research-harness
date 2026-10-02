@@ -1,12 +1,12 @@
 # Paper README material section
 
-Example only: use real author-designated paths, relative to the paper README. Omit document entries until materials are supplied; preserve other README content.
+Optional example: keep confirmed, reusable material links relative to this README. Preserve existing content and omit unused entries, including the code link. No external materials needs no section. Example paths are not actual inputs.
 
 ```markdown
 ## Research materials
 
 Code project: [method-code](../method-code/)
 
-- [Method specification](../method-code/docs/specs/method.md): for Methods and algorithm descriptions.
-- [Experiment summary](../method-code/results/summary.md): for Results.
+- [Method description](../research-notes/method.md): for Methods and algorithm descriptions.
+- [Result summary](../research-notes/results.md): for Results.
 ```

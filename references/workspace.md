@@ -4,7 +4,7 @@ Use only for requested workspace or collection maintenance. These utilities are 
 
 ## Create only the requested artifacts
 
-Use the independent paper directory selected through [paper-project.md](paper-project.md), normally a sibling `<paper_slug>/`. Migrate identified legacy manuscripts before extending their paper workspace. These optional tools do not locate, migrate or initialize its Git repository.
+Use the author's existing paper workspace. Adding requested auxiliary artifacts does not require a code repository, migration or Git initialization. Use [paper-project.md](paper-project.md) when project setup or organization is also requested. These optional tools do not locate, migrate or initialize Git repositories.
 
 | Requested artifact | Template or directory |
 |---|---|

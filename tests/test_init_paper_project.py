@@ -43,7 +43,7 @@ def tree_state(root: Path) -> dict[str, tuple]:
 
 class InitPaperProjectTests(unittest.TestCase):
     def setUp(self) -> None:
-        temporary_root = ROOT / "tmp"
+        temporary_root = Path(os.environ.get("TMPDIR", ROOT / "tmp"))
         temporary_root.mkdir(exist_ok=True)
         temporary = tempfile.TemporaryDirectory(prefix="paper-project-test-", dir=temporary_root)
         self.addCleanup(temporary.cleanup)
@@ -123,11 +123,15 @@ class InitPaperProjectTests(unittest.TestCase):
         paper: Path | str,
         *,
         code_root: Path | str | None = None,
+        standalone: bool = False,
         env: dict[str, str] | None = None,
     ) -> subprocess.CompletedProcess[str]:
         before = self.source_state()
+        arguments = [sys.executable, "-B", str(INITIALIZER), str(paper)]
+        if not standalone:
+            arguments.extend(["--code-root", str(code_root or self.code)])
         result = subprocess.run(
-            [sys.executable, "-B", str(INITIALIZER), str(paper), "--code-root", str(code_root or self.code)],
+            arguments,
             cwd=self.caller,
             env=env if env is not None else self.env,
             capture_output=True,
@@ -162,6 +166,102 @@ class InitPaperProjectTests(unittest.TestCase):
         for name, original in before.items():
             if original[0] != "directory":
                 self.assertEqual(path_state(root / name), original, f"existing file changed: {name}")
+
+    def test_standalone_cli_resolves_relative_and_absolute_targets(self) -> None:
+        for argument in ("Standalone Article", self.projects / "absolute-paper"):
+            with self.subTest(argument=argument):
+                paper = self.caller / argument
+                self.assert_success(self.run_initializer(argument, standalone=True))
+                self.assert_independent_repo(paper)
+                self.assert_no_commit_or_remote(paper)
+                self.assertEqual({entry.name for entry in paper.iterdir()}, {".git", "README.md", ".gitignore"})
+                readme = (paper / "README.md").read_text(encoding="utf-8")
+                self.assertIn("manuscript", readme)
+                self.assertIn("bibliography", readme)
+                self.assertIn("self-contained", readme)
+                self.assertNotRegex(readme.lower(), r"code|dependenc|install|research materials")
+                self.assertNotRegex(readme, r"\[[^\]]*\]\([^)]+\)")
+                before = tree_state(paper)
+                repeated = self.run_initializer(argument, standalone=True)
+                self.assert_success(repeated)
+                self.assertIn("Reused", repeated.stdout)
+                self.assertEqual(tree_state(paper), before)
+        self.assertFalse((self.projects / "Standalone Article").exists())
+
+    def test_standalone_preserves_existing_latex_and_author_starter_files(self) -> None:
+        for starters in (False, True):
+            with self.subTest(starters=starters):
+                paper = self.caller / f"existing-latex-{starters}"
+                (paper / "figures").mkdir(parents=True)
+                (paper / "draft.tex").write_bytes(b"\\documentclass{article}\r\n% preserve draft\r\n")
+                (paper / "references.bib").write_bytes(b"@article{result, title={Existing result}}\n")
+                (paper / "figures" / "final.pdf").write_bytes(b"%PDF-1.4\nexisting figure\n")
+                if starters:
+                    (paper / "README.md").write_bytes(b"# Author README\r\n")
+                    (paper / ".gitignore").write_bytes(b"author-cache/\r\n")
+                before = tree_state(paper)
+                self.assert_success(self.run_initializer(paper, standalone=True))
+                self.assert_original_files(paper, before)
+                self.assert_independent_repo(paper)
+                self.assert_no_commit_or_remote(paper)
+
+    def test_standalone_api_omitted_or_none_code_does_not_discover_or_scan_code(self) -> None:
+        module = runpy.run_path(str(INITIALIZER))
+        initialize = module["initialize_project"]
+        namespace = initialize.__globals__
+        for explicit_none in (False, True):
+            with self.subTest(explicit_none=explicit_none):
+                paper = self.caller / f"api-paper-{explicit_none}"
+                discover = mock.Mock(wraps=namespace["repository_root"])
+                before = self.source_state()
+                with (
+                    mock.patch.dict(os.environ, self.env, clear=True),
+                    mock.patch.dict(namespace, repository_root=discover),
+                    mock.patch.object(Path, "cwd", return_value=self.caller),
+                    mock.patch.object(Path, "iterdir", side_effect=AssertionError("no directory scan")),
+                    mock.patch.object(Path, "rglob", side_effect=AssertionError("no recursive scan")),
+                    mock.patch("os.path.relpath", side_effect=AssertionError("no code link")),
+                ):
+                    args = (paper.name, None) if explicit_none else (paper.name,)
+                    self.assertEqual(initialize(*args), (paper, False))
+                self.assertEqual(discover.call_args_list, [mock.call(self.caller), mock.call(paper)])
+                self.assertEqual(self.source_state(), before)
+                self.assert_independent_repo(paper)
+
+    def test_standalone_rejects_foreign_ownership_and_nested_repositories(self) -> None:
+        foreign = self.init_repo(self.fixture / "foreign-standalone")
+        existing = foreign / "existing-paper"
+        existing.mkdir()
+        (existing / "draft.tex").write_bytes(b"precious author draft\r\n")
+        nested = self.init_repo(foreign / "nested-paper")
+        for target in (foreign / "new-paper", existing, nested, self.code / "src" / "../paper"):
+            with self.subTest(target=target):
+                before = tree_state(foreign)
+                result = self.run_initializer(target, standalone=True)
+                self.assert_rejected(result)
+                self.assertRegex(result.stderr, r"another repository")
+                self.assertEqual(tree_state(foreign), before)
+
+    def test_standalone_rejects_path_and_artifact_collisions_before_writing(self) -> None:
+        target = self.caller / "paper-file"
+        target.write_bytes(b"keep file\x00\xff")
+        for argument in (target, target / "paper", self.caller / "missing" / "paper"):
+            with self.subTest(argument=argument):
+                before = tree_state(self.caller)
+                self.assert_rejected(self.run_initializer(argument, standalone=True))
+                self.assertEqual(tree_state(self.caller), before)
+        for name in ("README.md", ".gitignore", ".git"):
+            with self.subTest(name=name):
+                paper = self.caller / f"collision-{name}"
+                paper.mkdir()
+                if name == ".git":
+                    (paper / name).write_bytes(b"gitdir: missing-metadata\n")
+                else:
+                    (paper / name).mkdir()
+                (paper / "draft.tex").write_bytes(b"keep draft\n")
+                before = tree_state(paper)
+                self.assert_rejected(self.run_initializer(paper, standalone=True))
+                self.assertEqual(tree_state(paper), before)
 
     def test_relative_slug_is_verbatim_and_resolves_from_actual_code_root(self) -> None:
         slug = "My Paper_Évaluation.v2"
@@ -320,25 +420,92 @@ class InitPaperProjectTests(unittest.TestCase):
         readme.write_bytes(b"# Author README\nKeep existing accessible material links.\n")
         original = readme.read_bytes()
         module = runpy.run_path(str(INITIALIZER))
+        stdout, stderr = io.StringIO(), io.StringIO()
         with (
             mock.patch.dict(os.environ, self.env, clear=True),
             mock.patch("os.path.relpath", side_effect=ValueError("different volumes")) as relative,
+            mock.patch.object(sys, "argv", [str(INITIALIZER), str(paper), "--code-root", str(self.code)]),
+            contextlib.redirect_stdout(stdout),
+            contextlib.redirect_stderr(stderr),
         ):
-            module["initialize_project"](str(paper), str(self.code))
+            self.assertEqual(module["main"](), 0)
         relative.assert_not_called()
         self.assertEqual(readme.read_bytes(), original)
+        self.assertIn("Initialized independent paper repository", stdout.getvalue())
+        self.assertEqual(stderr.getvalue(), "", "preserving an existing README must not report an omitted link")
         self.assert_independent_repo(paper)
 
-    def test_unrepresentable_readme_link_fails_before_creating_project(self) -> None:
+    def test_unrepresentable_readme_link_allows_independent_project(self) -> None:
         paper = self.projects / "unrepresentable-link"
         module = runpy.run_path(str(INITIALIZER))
+        before = self.source_state()
         with (
             mock.patch.dict(os.environ, self.env, clear=True),
             mock.patch("os.path.relpath", side_effect=ValueError("different volumes")),
-            self.assertRaisesRegex(ValueError, "README-relative.*volumes"),
+            contextlib.redirect_stderr(io.StringIO()),
         ):
-            module["initialize_project"](str(paper), str(self.code))
-        self.assertFalse(paper.exists())
+            self.assertEqual(module["initialize_project"](str(paper), str(self.code)), (paper, False))
+            self.assertEqual(module["readme_text"](paper, self.code), module["readme_text"](paper))
+        self.assertEqual((paper / "README.md").read_text(encoding="utf-8"), module["readme_text"](paper))
+        self.assert_independent_repo(paper)
+        self.assert_no_commit_or_remote(paper)
+        self.assertEqual(self.source_state(), before)
+
+    def test_cli_reports_unavailable_code_link_only_when_readme_created(self) -> None:
+        paper = self.projects / "cross-volume-cli"
+        paper.mkdir()
+        (paper / "draft.tex").write_bytes(b"author manuscript\r\n")
+        original = tree_state(paper)
+        module = runpy.run_path(str(INITIALIZER))
+        for repeated in (False, True):
+            with self.subTest(repeated=repeated):
+                before = tree_state(paper)
+                stdout, stderr = io.StringIO(), io.StringIO()
+                with (
+                    mock.patch.dict(os.environ, self.env, clear=True),
+                    mock.patch("os.path.relpath", side_effect=ValueError("different volumes")) as relative,
+                    mock.patch.object(sys, "argv", [str(INITIALIZER), str(paper), "--code-root", str(self.code)]),
+                    contextlib.redirect_stdout(stdout),
+                    contextlib.redirect_stderr(stderr),
+                ):
+                    self.assertEqual(module["main"](), 0)
+                if repeated:
+                    relative.assert_not_called()
+                    self.assertEqual(stderr.getvalue(), "")
+                    self.assertEqual(tree_state(paper), before)
+                    self.assertIn("Reused independent paper repository", stdout.getvalue())
+                else:
+                    relative.assert_called_once()
+                    self.assertIn("Initialized independent paper repository", stdout.getvalue())
+                    self.assertIn("Optional code-project link omitted from the new README", stderr.getvalue())
+                    self.assertIn("relative path", stderr.getvalue())
+                    self.assertIn("volumes", stderr.getvalue())
+                self.assert_original_files(paper, original)
+                self.assertEqual((paper / "README.md").read_text(encoding="utf-8"), module["readme_text"](paper))
+
+    def test_concurrently_created_readme_is_preserved_without_omission_notice(self) -> None:
+        paper = self.projects / "concurrent-readme"
+        module = runpy.run_path(str(INITIALIZER))
+        real_open = Path.open
+        author_readme = b"# Author README\r\nKeep my links.\r\n"
+
+        def intercepted(path, mode="r", *args, **kwargs):
+            if path == paper / "README.md" and mode == "x":
+                with real_open(path, "wb") as stream:
+                    stream.write(author_readme)
+            return real_open(path, mode, *args, **kwargs)
+
+        stderr = io.StringIO()
+        with (
+            mock.patch.dict(os.environ, self.env, clear=True),
+            mock.patch("os.path.relpath", side_effect=ValueError("different volumes")),
+            mock.patch.object(Path, "open", intercepted),
+            contextlib.redirect_stderr(stderr),
+        ):
+            self.assertEqual(module["initialize_project"](str(paper), str(self.code)), (paper, False))
+        self.assertEqual((paper / "README.md").read_bytes(), author_readme)
+        self.assertEqual(stderr.getvalue(), "")
+        self.assert_independent_repo(paper)
 
     def test_copy_outside_sibling_layout_keeps_manuscript_bibliography_and_figure(self) -> None:
         paper = self.projects / "shareable-paper"
@@ -439,7 +606,8 @@ class InitPaperProjectTests(unittest.TestCase):
         before_owner, before_worktree = tree_state(owner), tree_state(worktree)
         for target in (worktree, worktree / "new-paper"):
             with self.subTest(target=target):
-                self.assert_rejected(self.run_initializer(target))
+                for standalone in (False, True):
+                    self.assert_rejected(self.run_initializer(target, standalone=standalone))
         self.assertEqual(tree_state(owner), before_owner)
         self.assertEqual(tree_state(worktree), before_worktree)
 
@@ -452,7 +620,8 @@ class InitPaperProjectTests(unittest.TestCase):
         before_parent, before_origin = tree_state(parent), tree_state(origin)
         for target in (submodule, submodule / "new-paper"):
             with self.subTest(target=target):
-                self.assert_rejected(self.run_initializer(target))
+                for standalone in (False, True):
+                    self.assert_rejected(self.run_initializer(target, standalone=standalone))
         self.assertEqual(tree_state(parent), before_parent)
         self.assertEqual(tree_state(origin), before_origin)
 
@@ -484,7 +653,8 @@ class InitPaperProjectTests(unittest.TestCase):
         before = tree_state(destination)
         for target in (alias, alias / "new-paper"):
             with self.subTest(target=target):
-                self.assert_rejected(self.run_initializer(target))
+                for standalone in (False, True):
+                    self.assert_rejected(self.run_initializer(target, standalone=standalone))
                 self.assertEqual(tree_state(destination), before)
         code_alias = self.fixture / "code-alias"
         self.make_directory_link(code_alias, self.code, junction=junction)
