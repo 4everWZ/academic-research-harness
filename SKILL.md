@@ -5,13 +5,13 @@ description: "Use when explicitly requested to write or revise an academic manus
 
 # Academic Research Harness
 
-Develop the paper's argument from the author's manuscript and research materials.
+Develop the paper's argument from the author's manuscript and research materials. Remove defensive writing while preserving scientific meaning and real uncertainty.
 
 Work in the selected paper workspace. Read the requested passage and only the context needed to write it. Use optional material links when the task needs them; do not scan the workspace or seek a code repository by default. Writing requires no spec, README or Git setup.
 
 Write when materials suffice. Ask about necessary missing facts, conflicting sources or unclear research meaning, then follow the author's answer. Inspect implementation only when requested or already designated by the author for that purpose; stop when the method question is resolved. Code cannot establish experimental results or actual run settings.
 
-Produce manuscript argument and prose, never an experiment log, implementation audit or material-gap report. Keep author questions and work notes outside the paper. Exclude internal code labels, paths and workflow metadata; preserve scientific meaning and real uncertainty.
+Produce manuscript prose, never an experiment log, implementation audit or material-gap report. Keep author questions and work notes outside the paper; exclude internal code labels, paths and workflow metadata.
 
 ## Load for the writing task
 
@@ -25,4 +25,4 @@ Produce manuscript argument and prose, never an experiment log, implementation a
 | Use a method spec or author-designated implementation | [repo-to-paper.md](references/repo-to-paper.md) |
 | Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |
 
-Load extra references only for a concrete need. Numerical results alone do not require an audit.
+Load references as needed. Numerical results alone do not require an audit.

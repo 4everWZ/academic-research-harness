@@ -837,6 +837,22 @@
       "required": ["remove explicitly identified handoff note", "preserve scientific comparison and numbers"],
       "forbidden": ["repeat already resolved author question", "retain handoff report as paper prose", "infer no uncertainty measured"],
       "group": "paper_first_regression"
+    },
+    {
+      "id": "defensive_clear_no_confirmation",
+      "route": "prose revision",
+      "input": "Polish this existing manuscript sentence without changing its claim. The manuscript makes no universal claim: The method outperformed the baseline on both evaluated datasets. However, this should not be taken to mean that it is always better everywhere.",
+      "required": ["remove universal disclaimer without asking permission", "preserve both-evaluated-datasets scope and strength"],
+      "forbidden": ["retain defensive caveat because it already exists", "ask whether a clear generic disclaimer is a scientific limitation", "add uncertainty or source audit"],
+      "group": "defensive_priority"
+    },
+    {
+      "id": "defensive_partial_ambiguity",
+      "route": "prose revision",
+      "input": "Polish these manuscript statements, preserving scientific meaning. If a necessary scientific meaning is unclear, ask separately and revise the clear parts: Mean error decreased from 0.128 to 0.091 across the three evaluated datasets. This must not be interpreted as universal superiority. Uncertainty estimates were not supplied. [It is not yet clear whether that last sentence is a writer handoff note or a scientific qualification intended for the manuscript.]",
+      "required": ["remove clear universal-superiority disclaimer immediately", "preserve measured comparison and scope", "ask only about the specific ambiguous uncertainty statement"],
+      "forbidden": ["pause the entire edit because one statement is ambiguous", "retain clear defensive language", "infer estimates were never measured"],
+      "group": "defensive_priority"
     }
   ]
 }

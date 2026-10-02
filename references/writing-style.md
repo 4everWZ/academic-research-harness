@@ -2,17 +2,19 @@
 
 ## Remove defensive writing
 
-For a necessary unresolved fact or conflicting meaning, ask the author and pause only the dependent passage. Use the [method guide](repo-to-paper.md) when a spec or author-designated implementation is needed. A style-only edit does not require recovering experimental provenance. Do not fill the manuscript with unavailable-material reports, unverified results or invented nonperformance. If a missing input is irrelevant to the passage, leave it out and write. A limitation established by the author or source remains a research fact and may belong in the paper.
+Actively remove defensive writing in drafting and revision. Delete disclaimers about claims the paper never makes, hypothetical objections, redundant hedging and repeated qualifications. Their presence in an existing draft does not justify keeping them. Routine removal needs no author confirmation when scientific meaning is clear.
 
-State the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. For style-only edits, preserve its epistemic strength. If an existing statement about absent evidence could be a handoff note or a scientific limitation, ask before removing or recasting it.
+State the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. Preserve scientific content and epistemic strength while removing defensive phrasing.
 
-Put necessary scope inside the claim. Remove disclaimers about claims the paper never makes, hypothetical confounder lists, and repeated qualifications. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.
+Put necessary scope inside the claim. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.
 
 Preserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.
 
 - Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`
 - Direct: `The method outperforms the baseline on both evaluated datasets.`
 - Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`
+
+Ask only when a concrete unresolved fact or intended claim would change the scientific interpretation, pausing only that part. Continue removing clear defensive prose elsewhere. For an ambiguous evidence statement, ask about its specific meaning; do not treat every caveat as protected or reopen clear author decisions. A style edit needs no provenance audit. Missing handoff materials are not research findings or proof of nonperformance. Use the [method guide](repo-to-paper.md) only when relevant source clarification is needed.
 
 ## Make the evidence carry the paragraph
 
