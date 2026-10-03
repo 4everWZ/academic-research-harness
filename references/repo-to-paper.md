@@ -13,7 +13,7 @@ For the `managing-project-docs` spec format, use the sections by their purpose:
 | Governing decisions; Open decisions, when present | Read relevant rationale or unresolved choices only when they affect the requested passage. A proposal does not establish which method was evaluated. |
 | Acceptance | Requirements, evaluation definitions and verification methods. Use actual findings from supplied evidence for empirical claims; criteria or planned checks alone do not establish results. |
 
-Use equivalent sections in other layouts; missing headings do not imply missing information. Leave the source spec unchanged unless its maintenance is part of the task. Reading it for writing needs no separate algorithm document, contract acceptance or implementation audit. If a relevant method choice remains unresolved, ask the author; unrelated open items need not delay writing.
+Use equivalent sections in other layouts; missing headings do not imply missing information. Leave the spec unchanged unless maintenance is requested. No separate algorithm document, contract acceptance or implementation audit is needed. Use a spec for the study it describes; ask about concrete mismatches with reported results or unresolved method choices, without routine version audits. Unrelated open items need not delay writing.
 
 ## Resolve a method question
 
@@ -23,4 +23,4 @@ Read the referenced operation and only helpers, callers or definitions needed to
 
 Code explains operations and parameters, not observed results, actual run settings or whether uncertainty was measured. Defaults are not execution evidence. Ask for necessary missing facts or records; do not reconstruct execution from source or run experiments to fill gaps. Missing estimates do not mean they were never measured.
 
-Express the method as scientific prose, equations or an algorithm, following [writing-style.md](writing-style.md). End with usable paper text or a specific author question, never a code report.
+Express the method through its scientific objects, operations and material assumptions, following [writing-style.md](writing-style.md). Define an abstraction by what it represents and how it is used; do not turn source exclusions into manuscript disclaimers. End with usable paper text and any necessary author question separately, never a code report.

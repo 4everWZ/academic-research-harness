@@ -18,7 +18,7 @@ For reading recommendations, give each selected paper's title, year, actual venu
 
 ## Turn the search into positioning
 
-Compare the nearest work on the axis the paper changes, such as supervision, adaptation access, objective, or evaluation setting. Organize Related Work around those distinctions instead of one summary per paper. Earlier overlap and comparable negative findings should change the positioning when they undermine the proposed contribution.
+Compare the nearest work on the axis the paper changes, such as supervision, adaptation access, objective, or evaluation setting. Organize Related Work around those distinctions instead of one summary per paper. Earlier overlap and comparable negative findings should change the positioning when they undermine the proposed contribution. Apply [writing-style.md](writing-style.md) to state contributions without novelty disclaimers or apologies.
 
 Stop when additional searching is unlikely to change the scoped argument. Report a material coverage gap when it affects a novelty claim; finding no overlap in a limited search does not establish that none exists. Ordinary article writing does not require systematic-review machinery.
 

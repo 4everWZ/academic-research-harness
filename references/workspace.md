@@ -2,6 +2,8 @@
 
 Use only for requested workspace or collection maintenance. These utilities are not prerequisites for drafting, revising, searching, or discussing an idea. Use existing manuscript and bibliography conventions where available; the bundled index format is needed only when using this package's index validator.
 
+Evidence-status fields and reading-note cautions guide authors; translate useful content into scientific claims, not manuscript disclaimers.
+
 ## Create only the requested artifacts
 
 Use the author's existing paper workspace. Adding requested auxiliary artifacts does not require a code repository, migration or Git initialization. Use [paper-project.md](paper-project.md) when project setup or organization is also requested. These optional tools do not locate, migrate or initialize Git repositories.

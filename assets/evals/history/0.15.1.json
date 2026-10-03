@@ -1,0 +1,130 @@
+{
+  "version": "0.15.1",
+  "scope": "Make removal of defensive writing an explicit default; scientific fidelity constrains meaning rather than protecting defensive form.",
+  "summary": {
+    "independent_writing_cases": 6,
+    "passed": 6,
+    "failed": 0,
+    "package_tests": 6,
+    "behavior_fixture_tests": 1,
+    "skill_validator": "passed"
+  },
+  "protocol": {
+    "fresh_contexts": true,
+    "skills_activated": false,
+    "performer": "One independent agent read only the plain editorial brief and supplied excerpts; returned revisions and separate author questions without file edits or source investigation.",
+    "judge": "A separate independent agent read only author tasks and outputs, without candidate instructions or prior verdicts."
+  },
+  "tested_brief": "---\nname: academic-research-harness\ndescription: \"Use when explicitly requested to write or revise an academic manuscript, shape its argument, revise defensive prose, or support that writing with literature, source checks, or paper workspace tools.\"\n---\n\n# Academic Research Harness\n\nDevelop the paper's argument from the author's manuscript and research materials.\n\nWork in the selected paper workspace. Read the requested passage and only the context needed to write it. Use optional material links when the task needs them; do not scan the workspace or seek a code repository by default. Writing requires no spec, README or Git setup.\n\nWrite when materials suffice. Ask about necessary missing facts, conflicting sources or unclear research meaning, then follow the author's answer. Inspect implementation only when requested or already designated by the author for that purpose; stop when the method question is resolved. Code cannot establish experimental results or actual run settings.\n\nRemove defensive writing while preserving scientific meaning and real uncertainty. Produce manuscript prose, never an experiment log, implementation audit or material-gap report. Keep author questions and work notes outside the paper; exclude internal code labels, paths and workflow metadata.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Establish unclear material scope, maintain material links, or create or organize a project | [paper-project.md](references/paper-project.md) |\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature from leading relevant venues; position contributions or refine ideas | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Use a method spec or author-designated implementation | [repo-to-paper.md](references/repo-to-paper.md) |\n| Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |\n\nLoad references as needed. Numerical results alone do not require an audit.\n\n\n# Direct Academic Prose\n\n## Remove defensive writing\n\nActively remove defensive writing in drafting and revision. Delete disclaimers about claims the paper never makes, hypothetical objections, redundant hedging and repeated qualifications. Their presence in an existing draft does not justify keeping them. Routine removal needs no author confirmation when scientific meaning is clear.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. Preserve scientific content and epistemic strength while removing defensive phrasing.\n\nPut necessary scope inside the claim. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\nAsk only when a concrete unresolved fact or intended claim would change the scientific interpretation, pausing only that part. Continue removing clear defensive prose elsewhere. For an ambiguous evidence statement, ask about its specific meaning; do not treat every caveat as protected or reopen clear author decisions. A style edit needs no provenance audit. Missing handoff materials are not research findings or proof of nonperformance. Use the [method guide](repo-to-paper.md) only when relevant source clarification is needed.\n\n## Make the evidence carry the paragraph\n\nOrganize manuscript prose around the research question, method, findings and interpretation. Never substitute a chronological experiment log, implementation audit or account of locating and checking materials. Put necessary author questions and work notes in the conversation, not the paper.\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express scientific objects, operations, settings and values directly. Mathematical notation defined for the paper and established method names are distinct from implementation identifiers. Translate an internal label only when its scientific meaning is established by the documents or focused lookup; otherwise ask rather than guessing.\n",
+  "final_instructions": {
+    "SKILL.md": "---\nname: academic-research-harness\ndescription: \"Use when explicitly requested to write or revise an academic manuscript, shape its argument, revise defensive prose, or support that writing with literature, source checks, or paper workspace tools.\"\n---\n\n# Academic Research Harness\n\nDevelop the paper's argument from the author's manuscript and research materials. Remove defensive writing while preserving scientific meaning and real uncertainty.\n\nWork in the selected paper workspace. Read the requested passage and only the context needed to write it. Use optional material links when the task needs them; do not scan the workspace or seek a code repository by default. Writing requires no spec, README or Git setup.\n\nWrite when materials suffice. Ask about necessary missing facts, conflicting sources or unclear research meaning, then follow the author's answer. Inspect implementation only when requested or already designated by the author for that purpose; stop when the method question is resolved. Code cannot establish experimental results or actual run settings.\n\nProduce manuscript prose, never an experiment log, implementation audit or material-gap report. Keep author questions and work notes outside the paper; exclude internal code labels, paths and workflow metadata.\n\n## Load for the writing task\n\n| Intent | Load |\n|---|---|\n| Establish unclear material scope, maintain material links, or create or organize a project | [paper-project.md](references/paper-project.md) |\n| Frame a paper, draft or reorganize sections | [results-to-paper.md](references/results-to-paper.md) and [writing-style.md](references/writing-style.md) |\n| Revise prose with the argument established | [writing-style.md](references/writing-style.md) |\n| Find literature from leading relevant venues; position contributions or refine ideas | [literature.md](references/literature.md) |\n| Check a disputed claim or citation | [evidence-and-citations.md](references/evidence-and-citations.md) |\n| Use a method spec or author-designated implementation | [repo-to-paper.md](references/repo-to-paper.md) |\n| Add auxiliary artifacts or maintain a literature collection | [workspace.md](references/workspace.md) |\n\nLoad references as needed. Numerical results alone do not require an audit.\n",
+    "references/writing-style.md": "# Direct Academic Prose\n\n## Remove defensive writing\n\nActively remove defensive writing in drafting and revision. Delete disclaimers about claims the paper never makes, hypothetical objections, redundant hedging and repeated qualifications. Their presence in an existing draft does not justify keeping them. Routine removal needs no author confirmation when scientific meaning is clear.\n\nState the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. Preserve scientific content and epistemic strength while removing defensive phrasing.\n\nPut necessary scope inside the claim. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.\n\nPreserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.\n\n- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`\n- Direct: `The method outperforms the baseline on both evaluated datasets.`\n- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`\n\nAsk only when a concrete unresolved fact or intended claim would change the scientific interpretation, pausing only that part. Continue removing clear defensive prose elsewhere. For an ambiguous evidence statement, ask about its specific meaning; do not treat every caveat as protected or reopen clear author decisions. A style edit needs no provenance audit. Missing handoff materials are not research findings or proof of nonperformance. Use the [method guide](repo-to-paper.md) only when relevant source clarification is needed.\n\n## Make the evidence carry the paragraph\n\nOrganize manuscript prose around the research question, method, findings and interpretation. Never substitute a chronological experiment log, implementation audit or account of locating and checking materials. Put necessary author questions and work notes in the conversation, not the paper.\n\nLead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.\n\nUse figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.\n\nExplain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.\n\nDo not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as \"the recorded run.\" Express scientific objects, operations, settings and values directly. Mathematical notation defined for the paper and established method names are distinct from implementation identifiers. Translate an internal label only when its scientific meaning is established by the documents or focused lookup; otherwise ask rather than guessing.\n"
+  },
+  "tasks": [
+    {
+      "id": "routine_defensive_removal",
+      "input": "Revise directly as manuscript prose, preserving scope and numbers: Across three evaluated datasets, mean error fell from 0.128 to 0.091. This is a reduction on those datasets. However, it should not be interpreted as universal superiority on every possible shift. It is important to emphasize that additional evaluation would be needed to claim universal superiority. Latency increased from 12 to 16 ms/image."
+    },
+    {
+      "id": "clear_existing_caveat",
+      "input": "Polish this existing manuscript sentence without changing its claim. The manuscript makes no universal claim: The method outperformed the baseline on both evaluated datasets. However, this should not be taken to mean that it is always better everywhere."
+    },
+    {
+      "id": "real_uncertainty",
+      "input": "Revise concisely while preserving empirical meaning: The estimated error reduction was 0.003, with a 95% confidence interval of -0.002 to 0.008, so improvement was not established. It is worth noting that this does not establish improvement. This should not be construed as a claim about every future application."
+    },
+    {
+      "id": "real_tradeoff",
+      "input": "Revise for direct academic prose, preserving the stated interpretation: Calibration improved on both evaluated datasets. However, latency increased from 12 to 16 ms/image. The measured increase limits use in the evaluated real-time setting. This does not mean that every conceivable deployment is infeasible."
+    },
+    {
+      "id": "specific_ambiguity_not_global_stop",
+      "input": "Polish these manuscript statements, preserving scientific meaning. If a necessary scientific meaning is unclear, ask separately and revise the clear parts: Mean error decreased from 0.128 to 0.091 across the three evaluated datasets. This must not be interpreted as universal superiority. Uncertainty estimates were not supplied. [It is not yet clear whether that last sentence is a writer handoff note or a scientific qualification intended for the manuscript.]"
+    },
+    {
+      "id": "resolved_handoff_note",
+      "input": "Polish this manuscript, preserving scientific comparison. The final sentence is explicitly a note to the writer about the handoff, not a research finding or limitation; remove it. Mean error fell from 0.128 to 0.091 across the three evaluated datasets. However, this is not proof of superiority in every possible setting. Uncertainty estimates were not supplied."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "routine_defensive_removal",
+      "manuscript": "Across the three evaluated datasets, mean error decreased from 0.128 to 0.091, while latency increased from 12 to 16 ms/image.",
+      "author_question": ""
+    },
+    {
+      "id": "clear_existing_caveat",
+      "manuscript": "The method outperformed the baseline on both evaluated datasets.",
+      "author_question": ""
+    },
+    {
+      "id": "real_uncertainty",
+      "manuscript": "The estimated error reduction was 0.003 (95% confidence interval: −0.002 to 0.008), so improvement was not established.",
+      "author_question": ""
+    },
+    {
+      "id": "real_tradeoff",
+      "manuscript": "Calibration improved on both evaluated datasets, but latency increased from 12 to 16 ms/image, limiting use in the evaluated real-time setting.",
+      "author_question": ""
+    },
+    {
+      "id": "specific_ambiguity_not_global_stop",
+      "manuscript": "Mean error decreased from 0.128 to 0.091 across the three evaluated datasets.",
+      "author_question": "Does “Uncertainty estimates were not supplied” refer only to the writer’s handoff materials, or to a scientific qualification intended for the manuscript? If the latter, what uncertainty estimates were unavailable?"
+    },
+    {
+      "id": "resolved_handoff_note",
+      "manuscript": "Mean error decreased from 0.128 to 0.091 across the three evaluated datasets.",
+      "author_question": ""
+    }
+  ],
+  "independent_judgment": {
+    "cases": [
+      {
+        "id": "routine_defensive_removal",
+        "verdict": "pass",
+        "reason": "Preserves dataset scope, error values, and latency increase while removing repetition and unnecessary universal-superiority disclaimers. No author question is needed."
+      },
+      {
+        "id": "clear_existing_caveat",
+        "verdict": "pass",
+        "reason": "Preserves the comparison on both evaluated datasets without implying universal superiority. Removes an unnecessary caveat; no clarification is needed."
+      },
+      {
+        "id": "real_uncertainty",
+        "verdict": "pass",
+        "reason": "Retains the estimated reduction, confidence interval, and conclusion that improvement was not established. Removes only repetition and an unnecessary future-application disclaimer."
+      },
+      {
+        "id": "real_tradeoff",
+        "verdict": "pass",
+        "reason": "Preserves calibration gains, latency values, and the stated limitation in the evaluated real-time setting. Removes the speculative deployment disclaimer without weakening the tradeoff."
+      },
+      {
+        "id": "specific_ambiguity_not_global_stop",
+        "verdict": "pass",
+        "reason": "Revises the clear empirical statement and removes unnecessary defensive language. Separately flags the unresolved sentence rather than silently deciding its meaning. The question is necessary and narrowly focused on its manuscript relevance and the potentially missing uncertainty estimates."
+      },
+      {
+        "id": "resolved_handoff_note",
+        "verdict": "pass",
+        "reason": "Preserves the scientific comparison and follows the explicit instruction to remove the handoff note. Removes unnecessary defensive language without asking an already-resolved question."
+      }
+    ],
+    "overall": "pass",
+    "limitations": []
+  },
+  "limitations": [
+    "Six targeted text-revision tasks, not a baseline comparison or rerun of the historical corpus.",
+    "No code changed; project-initialization and bibliography-tool suites were not rerun. Their latest results remain in history/0.15.0.json.",
+    "The entrypoint directive was moved to its opening paragraph after the performer brief was captured; its wording and substantive rule were unchanged."
+  ],
+  "history": [
+    "history/0.15.0.json",
+    "history/0.14.1.json",
+    "history/0.14.0.json",
+    "history/0.13.0.json",
+    "history/0.12.0.json",
+    "history/0.11.0.json"
+  ]
+}

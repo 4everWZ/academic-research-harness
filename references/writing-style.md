@@ -2,28 +2,38 @@
 
 ## Remove defensive writing
 
-Actively remove defensive writing in drafting and revision. Delete disclaimers about claims the paper never makes, hypothetical objections, redundant hedging and repeated qualifications. Their presence in an existing draft does not justify keeping them. Routine removal needs no author confirmation when scientific meaning is clear.
+Remove defensive writing throughout drafting and revision. A whole-paper task includes abstract, contributions, body, conclusion, captions, tables and supplementary prose; a local edit stays local. Existing wording has no exemption. Routine removal needs no author confirmation.
 
-State the strongest supported proposition at its actual scope. Do not weaken an observed result to make it harder to challenge. Preserve scientific content and epistemic strength while removing defensive phrasing.
+Delete rebuttals to unmade claims, imagined objections, apologetic self-diminishment, redundant hedging and repeated qualifications. Do not move them to Limitations or polish them into disclaimers. Rebuild useful scope around what the study models, measures or establishes. An overclaiming guard constrains the claim; it does not require appending its negation once the claim is correctly scoped.
 
-Put necessary scope inside the claim. Retain a boundary wherever omitting it would change the interpretation, including in an independently read abstract or conclusion.
+## Replace rebuttal with a precise research model
 
-Preserve real uncertainty and tradeoffs. When a defensive sentence also contains a relevant interpretive consequence, express that consequence directly rather than deleting the whole sentence. Remove a contrast only when it denies an unmade claim; do not mechanically ban contrast words or erase a measured disadvantage. A proposed explanation may remain an explicitly identified interpretation, without being promoted to a demonstrated mechanism.
+State the strongest supported proposition at its actual scope. In machine learning and computer science, use relevant task distributions, supervision, model assumptions, comparison protocols or resource budgets. Select details that explain the argument, not a modeling checklist. Other fields use their own research objects and study conditions.
 
-- Defensive: `The method outperforms the baseline on both evaluated datasets. However, this does not imply superiority on every possible dataset.`
-- Direct: `The method outperforms the baseline on both evaluated datasets.`
-- Material boundary: `The estimated reduction was positive, but its confidence interval included zero.`
+| Defensive pattern | Substantive replacement |
+|---|---|
+| Lists of what a dataset or system is not | Task, inputs, outputs, data construction and system role. |
+| Dismissing an ablation as "only" a test | Measured effect, e.g., accuracy loss after removing attention, under its comparison protocol. |
+| Denials of universal superiority | Evaluated distribution and supervision inside the finding. |
+| Apologies for simplifications | Material assumptions and their interpretive consequences. |
+| Generic deployment warnings | Observed operating constraints or measured tradeoffs. |
 
-Ask only when a concrete unresolved fact or intended claim would change the scientific interpretation, pausing only that part. Continue removing clear defensive prose elsewhere. For an ambiguous evidence statement, ask about its specific meaning; do not treat every caveat as protected or reopen clear author decisions. A style edit needs no provenance audit. Missing handoff materials are not research findings or proof of nonperformance. Use the [method guide](repo-to-paper.md) only when relevant source clarification is needed.
+Match optimality, causal, independence, invariance and generalization claims to the proof, design or evaluation. Distinct inputs or modules do not establish independence; an observed best score is not an upper bound. Meaning-preserving edits need no approval or audit; propose central claim changes separately. Preserve input provenance and metric definitions.
+
+Preserve real uncertainty, negative findings and tradeoffs with their consequences. Negative syntax is not inherently defensive: `Improvement was not established` can be the result. Keep explanations identifiable as interpretations. State an unevaluated recommendation's status once within its purpose: `We propose an untested retrieval extension to reduce unsupported answers.` Do not append a second nonvalidation warning. Include necessary scope in independently read abstracts, conclusions and captions without generic warnings.
+
+Ask about necessary missing facts or scientific ambiguity; pause that part and revise the rest. Do not reopen resolved decisions. Missing material is not a negative finding or proof of nonperformance; even "untested" requires author evidence. Use the [method guide](repo-to-paper.md) for source clarification.
+
+Check every included surface for residual or new defensive framing. Keep author questions separate; no removal ledger.
 
 ## Make the evidence carry the paragraph
 
-Organize manuscript prose around the research question, method, findings and interpretation. Never substitute a chronological experiment log, implementation audit or account of locating and checking materials. Put necessary author questions and work notes in the conversation, not the paper.
+Organize prose around the research question, method, findings and interpretation, never an experiment log, implementation audit or material-gap report.
 
-Lead a results paragraph with the finding that matters to the argument. Select the values and comparisons that establish it, then explain the consequence when it adds information. Do not append a paraphrase of the finding as a substitute for interpretation or force this into a fixed sentence template.
+Lead with the finding, support it with decisive comparisons and explain useful consequences. Avoid repetition and fixed sentence templates.
 
-Use figure and table references where they support that reasoning. Combine visuals answering the same question; remove body text that merely repeats a caption. Keep a visual-led sentence when it introduces organization needed to read the analysis.
+Use figure and table references for reasoning and navigation; combine related visuals and remove caption repetition.
 
-Explain method choices through the research need and the operation that addresses it. Avoid retrospective justifications invented to make every implementation choice sound like a contribution.
+Explain method choices through research needs and operations, without inventing retrospective rationales.
 
-Do not put source-code intermediate variables, internal module aliases, configuration keys, CLI flags, paths, run/job IDs, branches, or workflow metadata into manuscript prose, even as quoted tokens or generic phrases such as "the recorded run." Express scientific objects, operations, settings and values directly. Mathematical notation defined for the paper and established method names are distinct from implementation identifiers. Translate an internal label only when its scientific meaning is established by the documents or focused lookup; otherwise ask rather than guessing.
+Exclude internal variables, module aliases, configuration keys, CLI flags, paths, run/job IDs, branches and workflow metadata, including substitutes such as "the recorded run." Express scientific objects, operations and settings directly. Preserve paper-defined notation and established method names. Translate internal labels only when their meaning is known; otherwise ask. Author-requested reproduction commands belong in separate reproduction files, not narrative prose.

@@ -2,9 +2,9 @@
 
 Use for a requested audit or a concrete support problem in the current passage. Ordinary drafting from designated results does not require this workflow.
 
-Start from the disputed proposition and inspect the source passage, table, or result artifact that could resolve it. Return the supported wording or the precise unresolved issue. A conflicting value calls for resolving that value's source, not a standard audit of the entire pipeline.
+Start from the disputed proposition and inspect the source passage, table, or result artifact that could resolve it. Return supported manuscript wording, with any precise unresolved issue separately. A conflicting value calls for resolving that value's source, not a standard audit of the entire pipeline.
 
-Scope negative findings to the evidence inspected. A supplied extract lacking an ablation does not establish that the study omitted ablations; a search finding no overlapping paper does not establish that none exists. Preserve the difference between missing material and confirmed nonperformance when proposing a revision or requesting the specific missing information.
+Scope negative findings to inspected evidence: an extract lacking ablations does not establish their omission; a search finding no overlap does not establish novelty. Distinguish missing material from confirmed nonperformance. Express supported scope using [writing-style.md](writing-style.md); keep search and verification notes outside manuscript prose unless they describe the study's methodology.
 
 For comparative claims, examine the protocol difference that could change the conclusion: for example, target labels available to one method, a different evaluation split, or a different aggregation underlying the same metric name. If the comparison is indirect, write its actual basis instead of ranking unlike results as a controlled comparison.
 

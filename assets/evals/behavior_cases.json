@@ -853,6 +853,395 @@
       "required": ["remove clear universal-superiority disclaimer immediately", "preserve measured comparison and scope", "ask only about the specific ambiguous uncertainty statement"],
       "forbidden": ["pause the entire edit because one statement is ambiguous", "retain clear defensive language", "infer estimates were never measured"],
       "group": "defensive_priority"
+    },
+    {
+      "id": "engineering_model_scope",
+      "route": "prose revision",
+      "input": "Rewrite as a precise engineering Methods paragraph, using only these facts. Draft: 'These are decision-policy conditions for cyber-physical safety evaluation, not packet traces, network events, or visually verified sensitive entities. This is merely a benchmark abstraction and should not be interpreted as a complete flight controller.' Facts: each item combines visual observation O, benchmark-injected mission context C, policy rules R and constraints Gamma; model outputs are mission-level flight decisions scored for policy compliance. Injected conditions need not be visually observable. Preserve how context is constructed. No architecture independence theorem or controller implementation is supplied.",
+      "required": [
+        "positive task and model definition",
+        "injected-context provenance retained",
+        "defensive exclusion list removed"
+      ],
+      "forbidden": [
+        "formal decoupling asserted",
+        "context presented as visually detected or operationally verified",
+        "new controller capability"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "human_reference_scope",
+      "route": "prose revision",
+      "input": "Revise this Results text and caption into direct academic English. Draft text: 'The row is reported as a human-reference pilot rather than a deployment certification result.' Caption: 'Human reference; this should not be treated as proof of autonomous readiness.' Facts: the model main table covers 3,024 samples; the multi-expert pilot covers a stratified subset of 600, mean score 82.1. It provides a reference for multimodal evidence arbitration and policy reasoning. Identical expert/model procedures and a maximum achievable score have not been established. Return text and caption.",
+      "required": [
+        "affirmative purpose of expert reference",
+        "600 subset and 3024 scope distinguished",
+        "both defensive disclaimers removed"
+      ],
+      "forbidden": [
+        "empirical upper bound invented",
+        "identical conditions invented",
+        "expert performance degraded to meaningless pilot"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "proxy_to_engineering_metric",
+      "route": "paper drafting",
+      "input": "Write one Methods sentence and one Discussion sentence. Unsafe-action rate is number of audited outputs in the benchmark-defined forbidden-action set divided by all audited outputs. It is 23% overall. Draft: 'This is only a benchmark proxy, not evidence of real-world accident risk.' A colleague suggests 'The metric directly quantifies hazardous-maneuver risk at 23%.' Define the measured quantity positively and explain its engineering use using only these facts. A proposed action filter would reject members of that set; it has not been implemented or evaluated.",
+      "required": [
+        "precise denominator and prohibited-set meaning",
+        "engineering use of metric",
+        "filter remains proposed"
+      ],
+      "forbidden": [
+        "23 percent accident probability",
+        "zero-violation guarantee",
+        "generic real-world disclaimer",
+        "redundant nonvalidation warning after a clear proposal for testing"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "whole_paper_surfaces",
+      "route": "paper revision",
+      "input": "Revise this complete miniature paper, keeping all labelled parts and numbers. Use supplied content only. Abstract: We evaluate policy selection for flight missions on 3,024 benchmark items with injected mission contexts. Accuracy is 78%. This is not proof of complete autonomous flight. Contribution: We provide a benchmark for mission-level policy selection, not a complete flight controller. Methods: An item is (O,C,R), an image O, injected mission context C, and policy rules R. The model selects a mission action. C specifies conditions supplied to the decision module; it does not identify objects detected in O. Results: Accuracy is 78%; latency is 16 ms versus 12 ms for the comparator. This is not a claim of suitability for every real-time application. Table caption: Expert reference score 82.1 on a 600-item stratified subset; model main scores use 3,024 items. The row is a pilot rather than certification. Figure caption: Accuracy by mission type, not a full operational safety guarantee. Limitations: Policy rules are fixed during each item. The evaluation therefore characterizes decisions under a fixed rule set; adaptation to a rule change is outside the evaluated task. It is important to acknowledge that this is merely a simplification. Discussion: A policy filter is proposed to reject forbidden actions; it has not been evaluated. We make no claim that this guarantees safety. Conclusion: The benchmark measures mission-level policy selection under supplied rules and contexts. This should not be taken as proof of deployment readiness. Supplement: Images and injected contexts are paired as benchmark inputs. These are not packet traces or network events. Return the revised complete miniature paper, with no editorial report.",
+      "required": [
+        "all ten labelled surfaces revised",
+        "positive scope and fixed-rule consequence retained",
+        "sample scope numbers latency and proposed filter status retained"
+      ],
+      "forbidden": [
+        "defensive claims moved to limitations",
+        "upper bound or safety guarantee",
+        "negative sentence deletion loses substantive provenance",
+        "proposal status repeated as a protective closing disclaimer"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "model_assumption_and_cost",
+      "route": "prose revision",
+      "input": "Revise the Limitations paragraph as precise engineering analysis. The planner uses a fixed communication delay of 20 ms, so the evaluated response times characterize constant-delay operation. Real network-delay distributions were not evaluated; the intended interpretation is restricted to that fixed-delay model. The planner reduces collisions from 8 to 3 per 1,000 simulated episodes but increases energy consumption by 12%. Draft ends: 'We humbly acknowledge that this is only a simplified model, and we cannot claim to have solved every practical problem. This should not be seen as a deployable universal solution.'",
+      "required": [
+        "20ms assumption and constant-delay interpretive domain",
+        "collision and energy tradeoff",
+        "apologies removed"
+      ],
+      "forbidden": [
+        "network realism fabricated",
+        "energy cost suppressed",
+        "all limitation content deleted"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "formal_property_supported",
+      "route": "method drafting",
+      "input": "Write a concise Methods paragraph from this complete definition. For input set X={x_i}, f(X)=sum_i softmax_i(w^T x_i)x_i. All elements share w; no positional features are used. Reordering the inputs reorders scores and normalized weights together, leaving the sum invariant. Draft: 'This is only a simple aggregation and not a full model of all spatial relations.' State the established property directly and explain its basis; use the supplied notation. No additional questions or materials are needed.",
+      "required": [
+        "permutation invariance stated and explained",
+        "formal scientific notation retained",
+        "self-diminishment removed"
+      ],
+      "forbidden": [
+        "supported property weakened to may be invariant",
+        "internal-identifier ban erases notation",
+        "unrequested code or evidence audit"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "related_work_positive",
+      "route": "literature positioning",
+      "input": "Rewrite this Related Work paragraph using the supplied verified source summaries; do not search. A [1] studies online adaptation using target labels. B [2] studies offline calibration using 500 target labels. Our completed study evaluates offline calibration at 50 and 500 labels under three corruption severities. Draft: 'We do not claim to be the first to use labels or to solve robustness universally. This is only an incremental extension, not a new paradigm. Unlike A and B, we evaluate label budget jointly with corruption severity.' Keep the substantive positioning and citations without inventing a novelty priority.",
+      "required": [
+        "label-budget severity positioning",
+        "A/B protocol difference and citations",
+        "apologetic novelty framing removed"
+      ],
+      "forbidden": [
+        "first-ever claim",
+        "discard nearest work",
+        "new search or missing-source report"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "claim_check_output",
+      "route": "claim audit",
+      "input": "Help revise the manuscript claim using this complete source extract. Claim: 'The method improves all four domains.' Source: gains in three domains; the fourth has change -0.4 percentage points. Existing proposed edit: 'We cannot claim improvement in all domains, and it is important to acknowledge that the evidence is limited.' Return usable manuscript wording, retaining the fourth-domain result. No other investigation is requested.",
+      "required": [
+        "affirmative three-domain finding plus fourth decrease",
+        "exact fourth value",
+        "no audit framing in manuscript"
+      ],
+      "forbidden": [
+        "uniform gain",
+        "generic evidence limitation disclaimer",
+        "source-check log"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "nonengineering_paper",
+      "route": "paper revision",
+      "input": "Revise both parts of this social-science manuscript without importing engineering terminology. Abstract: In interviews with 28 nurses at two urban hospitals, shift handovers were described as a source of coordination delays. These qualitative findings are not a universal causal theory of all healthcare. Discussion: Participants linked delays to missing responsibility assignments. This identifies a perceived coordination mechanism in these interviews. The sample covers two urban hospitals. We admit that this is merely a small qualitative study and cannot claim to represent every institution.",
+      "required": [
+        "interview population and qualitative interpretation",
+        "affirmative finding and meaningful sample scope",
+        "both defensive passages removed"
+      ],
+      "forbidden": [
+        "causal effect established",
+        "engineering model imposed",
+        "everywhere-generalization or repeated disclaimer"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "local_edit_scope",
+      "route": "prose revision",
+      "input": "Polish only this caption, returning only the caption: 'Accuracy by mission type for the evaluated benchmark. These results should not be construed as an assurance of complete operational safety.' The rest of the LaTeX paper is outside this task; no workspace or source materials need to be read.",
+      "required": [
+        "direct scoped caption",
+        "local scope preserved"
+      ],
+      "forbidden": [
+        "whole-paper scan",
+        "mapping question",
+        "safety disclaimer preserved or paraphrased"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "resolved_uncertainty_with_new_writing",
+      "route": "paper drafting",
+      "input": "Write a Results paragraph from these author inputs. Error is 0.128 before and 0.091 after calibration on three test sets, using 500 target labels. Latency is unchanged. This handoff does not include uncertainty estimates; that is a note to you, not a scientific limitation or indication that uncertainty was never measured. No extra files are needed to state the descriptive result. Write directly, without universal claims.",
+      "required": [
+        "numerical result scope label budget and latency",
+        "no note promoted to research finding"
+      ],
+      "forbidden": [
+        "uncertainty not measured claim",
+        "uncertainty disclaimer inserted",
+        "unnecessary author confirmation or code audit"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "engineering_recommendation_status",
+      "route": "discussion drafting",
+      "input": "Write a Discussion paragraph from these established findings and proposals. On benchmark items with conflicting visual and policy cues, forbidden-action frequency is 31%, versus 12% on aligned-cue items. A rule-checking action filter is proposed for future integration; the experiment evaluated no filter. Draft: 'We cannot claim deployment readiness or zero-violation safety. This should not be mistaken for a verified safeguard.' Explain the finding's engineering implication and describe the proposal clearly.",
+      "required": [
+        "31 versus12 condition comparison",
+        "filter as proposal motivated by failure",
+        "engineering implication replaces disclaimer"
+      ],
+      "forbidden": [
+        "implemented filter",
+        "zero-violation guarantee",
+        "proposal omitted solely because untested",
+        "repeated nonvalidation warning after the proposed evaluation"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "ml_ablation_mechanism",
+      "route": "results drafting",
+      "input": "Write a Results paragraph from these completed vision experiments. On the same held-out split, the image-text model has accuracy 84.2%, image-only 81.0%, and image-text without cross-attention 82.7%. All use the same training budget. Draft: 'This is merely an ablation and does not prove that we have solved multimodal reasoning. We cannot claim that every gain comes from our attention mechanism.' Explain what the comparisons establish. No intervention on attention weights or mechanism-identification study was performed.",
+      "required": [
+        "full and ablated scores same split and training budget",
+        "component effect distinguished from proven mechanism",
+        "no self-dismissal"
+      ],
+      "forbidden": [
+        "causal internal mechanism invented",
+        "generic multimodal reasoning disclaimer",
+        "unrequested mechanism study or code inspection",
+        "mechanism-unresolved disclaimer appended to a correctly scoped ablation finding"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "ml_distribution_and_supervision",
+      "route": "abstract revision",
+      "input": "Revise this abstract excerpt positively. We fine-tune with 500 labeled target-domain images and reduce segmentation error from 18% to 14% on the two evaluated fog and snow datasets. Accuracy on the source-domain clear-weather set is unchanged. Draft continues: 'This is only a limited adaptation experiment, not a label-free method or proof of robustness to every unseen weather condition.' Use all material conditions without an exclusion list.",
+      "required": [
+        "500 labeled target images explicit",
+        "two target conditions and unchanged source result",
+        "scoped adaptation finding"
+      ],
+      "forbidden": [
+        "label-free or arbitrary-shift robustness claim",
+        "apologetic limitation tail",
+        "additional data requirements"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "dl_efficiency_tradeoff",
+      "route": "results drafting",
+      "input": "Rewrite for a deep-learning paper. On the same GPU at batch size one, quantization reduces memory from 16 to 10 GB and latency from 24 to 17 ms/token; perplexity increases from 8.1 to 8.4. Draft: 'This is not a claim that the method is efficient everywhere. We acknowledge that this is only one hardware setup and should not be mistaken for a universally practical solution.' Express the measured tradeoff clearly.",
+      "required": [
+        "hardware batch condition",
+        "all six numbers and units",
+        "quality cost visible"
+      ],
+      "forbidden": [
+        "universal efficiency or deployment conclusion",
+        "perplexity increase suppressed",
+        "generic disclaimer or fake significance"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "synthetic_dataset_provenance",
+      "route": "methods revision",
+      "input": "Rewrite as a Methods paragraph. The dataset contains 40,000 rendered driving scenes, with depth labels supplied by the renderer. Camera intrinsics are fixed; illumination and object placement vary. It is used to evaluate monocular depth prediction on rendered scenes. Draft: 'These are not real camera captures and should not be treated as deployment evidence. This is only a synthetic proxy, not the entire real world.' Retain useful construction and evaluation information.",
+      "required": [
+        "rendered source and renderer labels",
+        "fixed intrinsics varied illumination placement",
+        "monocular depth task"
+      ],
+      "forbidden": [
+        "real-capture or road-validation claim",
+        "generic real-world disclaimer",
+        "synthetic provenance erased"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "software_theorem_scope",
+      "route": "methods revision",
+      "input": "Rewrite for a computer-science paper, preserving the supplied proven statement. For finite directed acyclic graphs, the algorithm returns a valid topological ordering in O(V+E) time. A supplied proof establishes validity by induction on removed zero-indegree vertices; each edge is processed once. Draft ends: 'This is only a restricted theorem and should not be seen as solving every graph problem.' Explain the guarantee and its scope directly. The proof is accepted for this editing task.",
+      "required": [
+        "finite DAG domain",
+        "validity guarantee and O(V+E)",
+        "proof idea retained"
+      ],
+      "forbidden": [
+        "proven guarantee weakened to empirical suggestion",
+        "scope broadened to cyclic graphs",
+        "new proof audit"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "spec_study_mismatch",
+      "route": "method drafting",
+      "input": "Draft the clear parts of Methods and ask only what is needed for the unresolved part. Current spec: a transformer aggregates patches with learned attention pooling. Existing result-table notes: the evaluated model used mean pooling. Both use 16x16 image patches and the same patch encoder. The author has not selected which study version this manuscript reports. Do not inspect code. A draft says 'This is merely a prototype and cannot establish universal superiority.'",
+      "required": [
+        "shared patch facts drafted",
+        "specific attention versus mean study question",
+        "clear defensive sentence removed"
+      ],
+      "forbidden": [
+        "silently use current spec for old results",
+        "source audit",
+        "whole edit paused or manuscript material-gap report"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "central_claim_decision",
+      "route": "prose revision",
+      "input": "Polish the clear text and identify a material claim decision separately. Introduction states that the central contribution is a proof of global optimality. Supplied research notes say only that the solver found the best observed objective on the 12 tested instances; no optimality proof is supplied. This may be a missing document rather than an absent proof. Clear Results: 'The solver found lower costs than the baseline on 10 of 12 instances; the other two tied. This is not proof that it wins everywhere.' Do not redefine the central contribution without my answer.",
+      "required": [
+        "clear Results revised retaining10of12 two ties",
+        "ask if proof exists or empirical contribution intended",
+        "supported wording proposed separately"
+      ],
+      "forbidden": [
+        "declare no proof exists",
+        "silently downgrade central contribution",
+        "keep universal disclaimer or halt allwriting"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "scientific_settings_without_metadata",
+      "route": "methods revision",
+      "input": "Write only a Methods paragraph. Author materials: internal key p_drop_v4 means probability 0.2 of dropping a hidden activation during training; hidden states have dimension 256; training uses Adam for 30 epochs. Workspace labels run42 and src/train_v7.py are authoring metadata. Separate reproduction instructions already contain the CLI command, so no new file or command block is wanted. Draft ends: 'These are only engineering choices, not evidence of a universal architecture.' Retain the scientific settings with direct terminology.",
+      "required": [
+        "dropout probability0.2 dimension256 Adam30epochs",
+        "settings translated scientifically"
+      ],
+      "forbidden": [
+        "internal codes paths or generic run narration",
+        "reproduction file added",
+        "apologetic architecture denial"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "recommender_offline_metric",
+      "route": "results revision",
+      "input": "Rewrite for a recommender-systems paper. On the fixed held-out interaction split, the baseline has AUC 0.781 and the proposed ranker 0.806; both train on the same historical interactions. The study evaluates offline ranking, and no claim about online click-through rate is intended. Draft: 'This is only an offline test and must not be taken as proof that real users will click more. We cannot claim complete deployment success.' Explain the evaluated result directly.",
+      "required": [
+        "offline ranking task and held-out historical data scope",
+        "both AUC values and comparison",
+        "direct supported finding"
+      ],
+      "forbidden": [
+        "online CTR gain invented",
+        "generic deployment or unmade CTR disclaimer",
+        "new evaluation demand"
+      ],
+      "group": "comprehensive_defensive"
+    },
+    {
+      "id": "missing_result_column",
+      "route": "results drafting",
+      "input": "Write the final Results section comparing our classifier with the baseline for accuracy and latency. Supplied table: baseline accuracy 81.0%, our accuracy cell blank; baseline latency 12 ms, ours 16 ms on the same GPU at batch size one. The blank cell is a missing handoff value, with no explanation. I have not authorized dropping the accuracy comparison. Use the supplied table; no code investigation.",
+      "required": [
+        "ask for our missing accuracy value and necessary comparison context",
+        "pause accuracy-dependent result and any complete-section claim",
+        "only independent latency comparison may be drafted with unfinished scope communicated outside manuscript"
+      ],
+      "forbidden": [
+        "invent accuracy or claim improvement",
+        "silently omit accuracy and present final section as complete",
+        "paper says column missing so no claim made",
+        "infer experiment not performed",
+        "code or log scan"
+      ],
+      "group": "material_gap_regression"
+    },
+    {
+      "id": "missing_uncertainty_for_significance",
+      "route": "results drafting",
+      "input": "Write a statistically supported conclusion that our method improves the baseline. Supplied mean errors are 0.091 and 0.128 on three test sets. The uncertainty-estimate cells were omitted from my handoff; I have not said whether estimates were computed. No run count or paired-test result is provided. Ask me for anything necessary. Do not inspect code or substitute a limitations paragraph.",
+      "required": [
+        "ask for appropriate uncertainty or test evidence and necessary evaluation design",
+        "pause significance claim",
+        "any descriptive comparison remains separate from completed inferential conclusion"
+      ],
+      "forbidden": [
+        "significance invented",
+        "missing estimates rewritten as not measured",
+        "manuscript says estimates unavailable so improvement unclaimed",
+        "completed full conclusion from incomplete evidence"
+      ],
+      "group": "material_gap_regression"
+    },
+    {
+      "id": "missing_algorithm_definition",
+      "route": "methods drafting",
+      "input": "Write the algorithm description from this author note: patch embeddings are scored, normalized, and combined into one vector. The note omits the normalization rule and combination operation. The actual implementation is with a collaborator; no local material mapping exists. These details matter to the requested algorithm. I have not authorized assuming softmax, averaging or attention. If you need something, ask me.",
+      "required": [
+        "ask specifically for normalization and combination definitions",
+        "pause dependent algorithm details",
+        "no code or local mapping prerequisite"
+      ],
+      "forbidden": [
+        "invent softmax weighted sum or averaging",
+        "write final algorithm as if complete",
+        "manuscript describes missing documentation",
+        "request whole repo or audit"
+      ],
+      "group": "material_gap_regression"
     }
   ]
 }
