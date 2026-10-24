@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "record_type": "transcript recovery manifest",
+  "provenance": "from retained tool-output transcript after original tmp cleanup",
+  "original_location": "D:/Code/prompt/academic-research-harness/tmp/progressive-writing-20261025/baseline",
+  "original_location_status": "Removed before recovery; original files were not available for comparison.",
+  "recovered_run_directory": "assets/evals/progressive_writing/runs/2026-10-25",
+  "scope": "Recovery of nine actual output artifacts and the prior seven-case review from this agent's retained tool-output transcript. No new test specification, installed skill, expected answer, rerun, or new evaluation was used.",
+  "artifact_provenance_policy": "Every file under outputs/ is a reconstruction from the retained tool-output transcript after original tmp cleanup. Provenance is kept here without inserting new comments into the observed manuscript or note text.",
+  "artifacts": [
+    {
+      "recovered_path": "outputs/draft/results.tex",
+      "original_relative_path": "cases/draft/results.tex",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained five-case tool-output batch: CASE draft / OUTPUT results.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 405,
+      "observed_final_read_characters": 405,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/revise/discussion.tex",
+      "original_relative_path": "cases/revise/discussion.tex",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained five-case tool-output batch: CASE revise / OUTPUT discussion.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 407,
+      "observed_final_read_characters": 407,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/literature/related.tex",
+      "original_relative_path": "cases/literature/related.tex",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained five-case tool-output batch: CASE literature / OUTPUT related.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 1277,
+      "observed_final_read_characters": 1277,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/claim_check/claim.tex",
+      "original_relative_path": "cases/claim_check/claim.tex",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained five-case tool-output batch: CASE claim_check / OUTPUT claim.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 336,
+      "observed_final_read_characters": 336,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/method_spec/methods.tex",
+      "original_relative_path": "cases/method_spec/methods.tex",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained five-case tool-output batch: CASE method_spec / OUTPUT methods.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 555,
+      "observed_final_read_characters": 555,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/material_links/README.md",
+      "original_relative_path": "cases/material_links/README.md",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained material_links tool-output batch: OUTPUT README.md / OUTPUT abstract.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 144,
+      "observed_final_read_characters": 144,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/material_links/abstract.tex",
+      "original_relative_path": "cases/material_links/abstract.tex",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained material_links tool-output batch: OUTPUT README.md / OUTPUT abstract.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 538,
+      "observed_final_read_characters": 538,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/reading_note/notes/study2025.md",
+      "original_relative_path": "cases/reading_note/notes/study2025.md",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained reading_note tool-output batch: OUTPUT notes/study2025.md / OUTPUT related.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 1050,
+      "observed_final_read_characters": 1050,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    },
+    {
+      "recovered_path": "outputs/reading_note/related.tex",
+      "original_relative_path": "cases/reading_note/related.tex",
+      "provenance": "from retained tool-output transcript after original tmp cleanup",
+      "observed_source": "Retained reading_note tool-output batch: OUTPUT notes/study2025.md / OUTPUT related.tex.",
+      "precision": "Complete emitted text transcribed as observed, using UTF-8 without BOM and LF newlines; reconstructed character count matches the observed final-read character count. Original on-disk encoding and newline bytes cannot be certified.",
+      "reconstructed_characters": 386,
+      "observed_final_read_characters": 386,
+      "character_count_matches_observed_final_read": true,
+      "missing_text_observed": false
+    }
+  ],
+  "historical_review": {
+    "recovered_path": "review.json",
+    "provenance": "from retained tool-output transcript after original tmp cleanup",
+    "precision": "Structured preservation of the prior seven pass verdicts, actual evidence, and important boundaries; not an original machine log or a new evaluation."
+  },
+  "trace_recovery": {
+    "original_jsonl_recovered": false,
+    "original_raw_serialization_available": false,
+    "original_trace_files_created": [],
+    "reason": "The retained tool outputs exposed parsed metadata, not original raw JSONL lines or a read-output text payload. Recreating traces/<case>.jsonl would guess original serialization and misrepresent a reconstruction as an original log.",
+    "recovered_observations": [
+      {
+        "case": "draft",
+        "provenance": "from retained tool-output transcript after original tmp cleanup",
+        "observed_skill_and_reference_path_order": [
+          "candidate/SKILL.md",
+          "candidate/references/results-to-paper.md",
+          "candidate/references/writing-style.md"
+        ],
+        "writing_style_check": {
+          "path": "candidate/references/writing-style.md",
+          "observed_entries": 1,
+          "characters": 4077,
+          "full_file_emitted": true
+        },
+        "precision": "Observed path order and complete-read check only; not original trace JSONL."
+      },
+      {
+        "case": "revise",
+        "provenance": "from retained tool-output transcript after original tmp cleanup",
+        "observed_skill_and_reference_path_order": [
+          "candidate/SKILL.md",
+          "candidate/references/writing-style.md"
+        ],
+        "writing_style_check": {
+          "path": "candidate/references/writing-style.md",
+          "observed_entries": 1,
+          "characters": 4077,
+          "full_file_emitted": true
+        },
+        "precision": "Observed path order and complete-read check only; not original trace JSONL."
+      },
+      {
+        "case": "literature",
+        "provenance": "from retained tool-output transcript after original tmp cleanup",
+        "observed_skill_and_reference_path_order": [
+          "candidate/SKILL.md",
+          "candidate/references/literature.md",
+          "candidate/references/results-to-paper.md",
+          "candidate/references/writing-style.md"
+        ],
+        "writing_style_check": {
+          "path": "candidate/references/writing-style.md",
+          "observed_entries": 1,
+          "characters": 4077,
+          "full_file_emitted": true
+        },
+        "precision": "Observed path order and complete-read check only; not original trace JSONL."
+      },
+      {
+        "case": "claim_check",
+        "provenance": "from retained tool-output transcript after original tmp cleanup",
+        "observed_skill_and_reference_path_order": [
+          "candidate/SKILL.md",
+          "candidate/references/evidence-and-citations.md",
+          "candidate/references/writing-style.md"
+        ],
+        "writing_style_check": {
+          "path": "candidate/references/writing-style.md",
+          "observed_entries": 1,
+          "characters": 4077,
+          "full_file_emitted": true
+        },
+        "precision": "Observed path order and complete-read check only; not original trace JSONL."
+      },
+      {
+        "case": "method_spec",
+        "provenance": "from retained tool-output transcript after original tmp cleanup",
+        "observed_skill_and_reference_path_order": [
+          "candidate/SKILL.md",
+          "candidate/references/repo-to-paper.md",
+          "candidate/references/writing-style.md"
+        ],
+        "writing_style_check": {
+          "path": "candidate/references/writing-style.md",
+          "observed_entries": 1,
+          "characters": 4077,
+          "full_file_emitted": true
+        },
+        "precision": "Observed path order and complete-read check only; not original trace JSONL."
+      },
+      {
+        "case": "material_links",
+        "provenance": "from retained tool-output transcript after original tmp cleanup",
+        "observed_skill_and_reference_path_order": [
+          "candidate/SKILL.md",
+          "candidate/references/paper-project.md",
+          "candidate/references/results-to-paper.md",
+          "candidate/references/writing-style.md"
+        ],
+        "writing_style_check": {
+          "path": "candidate/references/writing-style.md",
+          "observed_entries": 1,
+          "characters": 4077,
+          "full_file_emitted": true
+        },
+        "precision": "Observed path order and complete-read check only; not original trace JSONL."
+      },
+      {
+        "case": "reading_note",
+        "provenance": "from retained tool-output transcript after original tmp cleanup",
+        "observed_skill_and_reference_path_order": [
+          "candidate/SKILL.md",
+          "candidate/references/workspace.md",
+          "candidate/references/writing-style.md",
+          "candidate/references/results-to-paper.md",
+          "candidate/assets/templates/reading_note.md"
+        ],
+        "writing_style_check": {
+          "path": "candidate/references/writing-style.md",
+          "observed_entries": 1,
+          "characters": 4077,
+          "full_file_emitted": true
+        },
+        "precision": "Observed path order and complete-read check only; not original trace JSONL."
+      }
+    ]
+  },
+  "unavailable_records": [
+    {
+      "record": "response.md for all seven cases",
+      "status": "Not present when the historical review read the case directories; no response text recovered."
+    },
+    {
+      "record": "Original trace.jsonl raw line text and original file bytes",
+      "status": "Not retained in the observed tool outputs; not reconstructed."
+    }
+  ]
+}

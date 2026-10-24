@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "provenance": "Seven synthetic cases used in the 2026-10-25 progressive-disclosure evaluation; requests and source materials restored from its retained setup-tool transcript. Route labels and execution guidance are maintained evaluation metadata, not additional writer instructions.",
+  "writer_prompt": "独立执行一个论文编辑任务，不继承其他评估结论。工作目录为 {case_dir}。先读 request.txt，再以 candidate/SKILL.md 为待测编辑指引，按任务自行选择并跟随所需引用，不预加载整包。不要启用安装的其他 skills，也不要读取其他场景或评估文件。所有文本读取使用工作目录内 `python read.py <relative-path>`，例如 request.txt 或 candidate/SKILL.md；candidate/ 是该工具支持的包根路径，其他相对路径指当前任务材料。每次读取一个文件并保留完整工具输出；该接口仅记录实际读取，不要求选择任何特定引用。禁止绕过该接口以其他方式读取候选包或材料。按用户 request.txt 编辑指定输出，必要作者问题单独写 response.md。只写本场景目录，不联网或运行研究实验。最终列出实际改动、实际读取的引用文件和未完成部分，不自行打分。",
+  "scoring": "Use a separate fresh-context reviewer. Give the reviewer author requests, raw inputs, actual outputs and read records; withhold candidate instructions, prior run outputs and prior conclusions. Check actual full writing-style loading through each writing route, selective reference loading, manuscript usefulness and scientific fidelity. Editorial/verification notes and redundant defensive prose stay outside manuscript text; genuine uncertainty, negative findings and evaluation conditions remain. Judge meaning, not exact wording or a ban on negative syntax. Notes and README may retain requested work information. An unexecuted or incomplete case is not a pass. Interface read records show emitted content, not model comprehension or downstream tool truncation. Deterministic checks do not grade writing behavior.",
+  "cases": [
+    {
+      "id": "draft",
+      "route": "draft from results",
+      "request": "用 results.md 写一段可用于论文的英文 Results，保存 results.tex。围绕收益与代价组织论证，保留实际研究条件。材料范围仅当前文件夹，不需要其他材料。",
+      "outputs": [
+        "results.tex"
+      ],
+      "files": {
+        "results.md": "Author-confirmed descriptive findings: On the same fixed test samples from three target domains, temperature calibration reduces mean expected calibration error from 0.128 to 0.091. It uses 500 labeled target images to fit the temperature, holding the classifier parameters fixed. Inference latency rises from 12 to 16 ms/image on the same GPU at batch size one. Classification accuracy is unchanged. We request a descriptive comparison, without a significance claim.\nEditorial handoff: repeated-seed materials were not attached to this writing packet. Verification checklist: means and latency match the table; do not call this universal superiority. These are work notes, not empirical study findings.\n"
+      }
+    },
+    {
+      "id": "revise",
+      "route": "revise established prose",
+      "request": "仅润色 discussion.tex，使论证紧凑、准确，保留研究结论与数值。",
+      "outputs": [
+        "discussion.tex"
+      ],
+      "files": {
+        "discussion.tex": "\\section{Discussion}\nThe estimated reduction in calibration error is 0.003, with a 95\\% confidence interval of $[-0.002,0.008]$, so improvement was not established. On the low-light subset, error is 0.142 for the proposed method and 0.131 for the baseline. This does not establish universal superiority or guarantee deployment success. With a fixed communication delay of 20 ms, the response-time measurements characterize that operating condition. We propose evaluating adaptive delay compensation. Editorial checklist: the confidence interval and the low-light values were checked against the table. This checklist documents the writing process.\n"
+      }
+    },
+    {
+      "id": "literature",
+      "route": "position supplied literature",
+      "request": "用 source-packet.md 中已提供的两篇来源摘录写英文 Related Work，保存 related.tex，解释它们与本文工作的联系和区别，使用既有引用键。来源为本次合成测试材料，完整事实都已给出，不要联网。",
+      "outputs": [
+        "related.tex"
+      ],
+      "files": {
+        "source-packet.md": "# Supplied primary-source extracts (synthetic records)\nchen2024online: Online target-supervised calibration. Receives labeled target examples sequentially, updating calibration parameters during operation. Mean calibration error is 0.08 versus baseline 0.12 on three corruptions.\nrao2025frozen: Pre-evaluation target-supervised calibration. Fits a scalar temperature using 500 labeled target examples; classifier parameters are fixed. On two fog datasets, mean calibration error is 0.09 versus baseline 0.13.\nOur study: fits a scalar temperature with 500 labeled target images and fixed classifier parameters; evaluates calibration error on three fixed target-domain test sets. The contribution is examining the measured quality/latency tradeoff across these domains, not the invention of target-label calibration.\n## Previous reading note\nVerified status: stipulated final source records. Safe citation scope: operations and evaluated results above. Must not be cited as universal superiority or label-free adaptation. Citation audit checklist: source/version checked; metric checked. These are author-facing source-selection notes.\n"
+      }
+    },
+    {
+      "id": "claim_check",
+      "route": "check and revise a disputed claim",
+      "request": "核对并修订 claim.tex 中的主张，依据 source.md 写出可以直接使用的论文表述，保留引用键。",
+      "outputs": [
+        "claim.tex"
+      ],
+      "files": {
+        "claim.tex": "The method improves calibration on all four evaluated domains \\cite{study2025}. This should not be construed as general superiority. Source-check status: comparison coverage still needs verification.\n",
+        "source.md": "Complete stipulated source extract for study2025: We use the same test membership for both methods in each of four domains. Calibration error falls from 0.12 to 0.08 in A, 0.13 to 0.09 in B, and 0.11 to 0.08 in C. In D the estimated reduction is 0.003 with a 95% confidence interval [-0.002,0.008]; improvement is not established there.\nVerification note: the source extract covers all four domains. No extra code or research records are needed for this claim check.\n"
+      }
+    },
+    {
+      "id": "method_spec",
+      "route": "write from a supplied method specification",
+      "request": "根据 method-spec.md 修订 methods.tex 中的定义和公式，直接纠正能确定的错误，保留既有符号体系。method-spec.md 是本次写作输入，不在这次维护范围内，无需检查代码。",
+      "outputs": [
+        "methods.tex"
+      ],
+      "files": {
+        "method-spec.md": "# Shared attention aggregation\n## Intent\nAggregate an unordered variable-length set of patch embeddings into a fixed-length vector.\n## Contract\ns_i=w^T x_i; alpha_i=exp(s_i)/sum_j exp(s_j); z=sum_i alpha_i x_i. The parameter w is shared across all patches. There are no positional features. The weighted sum is invariant to patch reordering.\n## Acceptance\nFor input scores log(2), log(3), weights are 0.4, 0.6 and sum to one. This example checks the formula, rather than establishing an empirical performance result.\n## Author clarification\nThe denominator index and the worked weights in the manuscript are transcription mistakes; the evaluated method is exactly the Contract above.\n",
+        "methods.tex": "We score each patch as $s_i=w^\\top x_i$, normalize it as $\\alpha_i=\\exp(s_i)/\\sum_j\\exp(s_i)$, and compute $z=\\sum_i\\alpha_i x_i$. Scores $\\log 2$ and $\\log 3$ yield weights $0.5$ and $0.5$. To preserve scientific meaning, the original symbols and example are retained pending a consistency check. The representation does not imply statistical independence of patches.\n"
+      }
+    },
+    {
+      "id": "material_links",
+      "route": "maintain material links then write an abstract",
+      "request": "更新 README.md 中后续会继续使用的研究材料入口，沿用现有结构；随后根据材料写一段简洁英文摘要，保存 abstract.tex。论文就在当前目录，外部材料范围已明确，不需要建项目或核对代码。",
+      "outputs": [
+        "README.md",
+        "abstract.tex"
+      ],
+      "files": {
+        "README.md": "# Calibration paper\n\n## Research materials\n\n- [Method](materials/method.md): Methods source.\n\nThe confirmed ongoing Results source is materials/results.md; please add this link to the section above.\n",
+        "materials/method.md": "Fit a scalar temperature using 500 labeled target images; hold classifier parameters fixed. Evaluate on fixed test samples from three target domains.\n",
+        "materials/results.md": "Author-confirmed descriptive findings: mean expected calibration error drops from 0.128 to 0.091; latency increases from 12 to 16 ms/image at batch size one on the same GPU. Classification accuracy is unchanged. Author work note: the handoff packet omits seed-analysis files; no significance claim is requested. Verification notes and missing-file information describe the writing packet, not the study.\n"
+      }
+    },
+    {
+      "id": "reading_note",
+      "route": "maintain a reading note then write related work",
+      "request": "用 source.md 更新现有 notes/study2025.md 阅读笔记，并据此给论文写一段简洁英文 Related Work，保存 related.tex，引用键为 study2025。只使用所给来源，无需搜索或建立索引。",
+      "outputs": [
+        "notes/study2025.md",
+        "related.tex"
+      ],
+      "files": {
+        "notes/study2025.md": "# Reading Note: study2025\n## Method and Protocol\nTo be updated from source.md.\n## Use in This Paper\n- Relevant role or claim: closest prior target-label calibration method.\n- Safe citation scope: operations and stated evaluated findings.\n- Must not be cited as: label-free learning or universal superiority.\n## Editorial checklist\nCheck the source metric and supervision. Keep this section as an author work note.\n",
+        "source.md": "Complete synthetic source extract: Study2025 fits one scalar temperature using 500 labeled target images, holding the classifier parameters fixed. On two fog test sets, mean expected calibration error falls from 0.13 to 0.09. Classification accuracy is unchanged. Our study evaluates the same calibration operation on three target domains and reports both calibration error and inference latency.\n"
+      }
+    }
+  ]
+}

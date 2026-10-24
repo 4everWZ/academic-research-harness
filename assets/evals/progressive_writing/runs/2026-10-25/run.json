@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "skill_version": "0.16.0",
+  "skill_source_revision": "306ce367a46916e830a387680637e5fe801477bb",
+  "fixture": "../../cases.json",
+  "execution": "Seven independent fresh-context writers started with the task and candidate/SKILL.md and selected references through the logged read interface. A separate fresh-context reviewer inspected actual deliverables and observed read records.",
+  "status": "historical run recovered from retained tool-output transcripts",
+  "model_tasks_rerun_during_retention": false,
+  "provenance": "recovery.json"
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "record_type": "recovered historical review",
+  "provenance": "from retained tool-output transcript after original tmp cleanup",
+  "reviewed_run": "baseline",
+  "review_timing": "Historical review completed before the original tmp directory was cleaned; this file preserves that judgment and does not constitute a rerun or a new evaluation.",
+  "overall_verdict": "pass",
+  "cases": [
+    {
+      "case": "draft",
+      "verdict": "pass",
+      "outputs": [
+        "outputs/draft/results.tex"
+      ],
+      "evidence": [
+        "Three fixed target-domain test sets; 500 labeled target images; classifier parameters fixed.",
+        "Mean ECE 0.128 to 0.091; accuracy unchanged; latency 12 to 16 ms/image on the same GPU at batch size one.",
+        "Benefit and cost are linked; editorial handoff and missing repeated-seed materials do not enter the manuscript."
+      ],
+      "boundaries": [
+        "The source requested a descriptive comparison; the output makes no significance or universal-superiority claim."
+      ]
+    },
+    {
+      "case": "revise",
+      "verdict": "pass",
+      "outputs": [
+        "outputs/revise/discussion.tex"
+      ],
+      "evidence": [
+        "Estimated reduction 0.003 and 95% CI [-0.002,0.008] retained; improvement explicitly not established.",
+        "Low-light error remains 0.142 versus baseline 0.131; fixed communication delay remains 20 ms; adaptive delay compensation remains a proposal.",
+        "Editorial checklist and redundant general-superiority/deployment disclaimer removed."
+      ],
+      "boundaries": [
+        "The scientific uncertainty and operating condition remain; their negative wording is not treated as editorial contamination."
+      ]
+    },
+    {
+      "case": "literature",
+      "verdict": "pass",
+      "outputs": [
+        "outputs/literature/related.tex"
+      ],
+      "evidence": [
+        "chen2024online retains sequential target-label updates during operation, 0.08 versus 0.12, and three corruptions.",
+        "rao2025frozen retains pre-evaluation scalar-temperature fitting, 500 labeled target examples, fixed classifier parameters, and 0.09 versus 0.13 on two fog datasets.",
+        "Both citation keys remain; the present study is related through its calibration operation and distinguished by its quality/latency tradeoff across three fixed domains."
+      ],
+      "boundaries": [
+        "The output does not claim invention of target-label calibration or import source-selection checklists."
+      ]
+    },
+    {
+      "case": "claim_check",
+      "verdict": "pass",
+      "outputs": [
+        "outputs/claim_check/claim.tex"
+      ],
+      "evidence": [
+        "The original all-four-domains-improve claim is corrected.",
+        "A/B/C retain 0.12 to 0.08, 0.13 to 0.09, and 0.11 to 0.08; D retains reduction 0.003, 95% CI [-0.002, 0.008], and improvement not established.",
+        "Identical test membership within each domain and citation study2025 remain; pending source-check status is removed."
+      ],
+      "boundaries": [
+        "D is not presented as an established improvement; the real uncertainty remains in manuscript prose."
+      ]
+    },
+    {
+      "case": "method_spec",
+      "verdict": "pass",
+      "outputs": [
+        "outputs/method_spec/methods.tex"
+      ],
+      "evidence": [
+        "The denominator is corrected to sum_j exp(s_j), with existing symbols retained.",
+        "The worked weights are corrected to 0.4 and 0.6 for log 2 and log 3.",
+        "Shared parameter w, no positional features, unordered variable-length input, fixed-length output, and invariance to patch reordering are stated accurately."
+      ],
+      "boundaries": [
+        "The worked example is an algebraic illustration, not an empirical result; the pending consistency-check statement is removed."
+      ]
+    },
+    {
+      "case": "material_links",
+      "verdict": "pass",
+      "outputs": [
+        "outputs/material_links/README.md",
+        "outputs/material_links/abstract.tex"
+      ],
+      "evidence": [
+        "README preserves the Research materials structure and Method entry and adds the Results link; the fulfilled instruction is removed.",
+        "The abstract retains scalar temperature, 500 labeled target images, fixed classifier parameters, fixed samples in three domains, ECE 0.128 to 0.091, unchanged accuracy, and latency 12 to 16 ms/image at batch size one on the same GPU.",
+        "Descriptive findings connect calibration gain to inference cost; missing seed-analysis files are not converted into a study limitation."
+      ],
+      "boundaries": [
+        "Maintained material links are author work information in README, not manuscript contamination."
+      ]
+    },
+    {
+      "case": "reading_note",
+      "verdict": "pass",
+      "outputs": [
+        "outputs/reading_note/notes/study2025.md",
+        "outputs/reading_note/related.tex"
+      ],
+      "evidence": [
+        "The note records scalar-temperature calibration, 500 labeled target images, fixed classifier parameters, two fog test sets, ECE 0.13 to 0.09, and unchanged accuracy.",
+        "The note preserves citation scope and author-facing metric/supervision checks.",
+        "Related Work uses study2025 and states the same operation, source results, and present-study distinction of three target domains plus inference latency; author work notes remain outside manuscript prose."
+      ],
+      "boundaries": [
+        "Citation cautions and the editorial checklist retained in the maintained reading note are not counted as manuscript contamination."
+      ]
+    }
+  ],
+  "historical_read_record_findings": {
+    "writing_style": "All seven observed trace metadata records included candidate/references/writing-style.md once, characters=4077, full_file_emitted=true.",
+    "selection": "Observed skill/reference path combinations varied by task; no indiscriminate whole-package reading pattern was observed.",
+    "limitation": "The retained trace observations had only path, characters, and full_file_emitted fields. They support the recorded complete-read check, not a byte-for-byte reconstruction of the original JSONL or inspection of a read-output payload.",
+    "responses": "response.md was absent in all seven case directories at review time; verdicts were based on actual output files."
+  },
+  "recovery_scope": "Only retained tool-output observations were used. No manuscript was rerun, rewritten, or newly evaluated."
+}
